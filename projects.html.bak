@@ -45,7 +45,7 @@ address {
 }
 
 #subheading {
-  font-size: 180%;
+  font-size: 160%;
 }
 
 </style></head>
@@ -63,16 +63,31 @@ address {
           <ul id="menu">
             <li><a href="index.html">about</a></li>
             <li><a href="code.html">code</a></li>
-            <li><a href="projects.html">projects</a></li>
-            <li class="selected"><a href="cv.html">cv</a></li>
+            <li class="selected"><a href="projects.html">projects</a></li>
+            <li><a href="cv.html">cv</a></li>
             <li><a href="contact.html">contact </a></li>
           </ul>
         </div>
       </div>
       <div id="site_content">
         <div>
-          <h1 id="subheading">CV</h1>
-          <p><span id="text"></span>My CV can be found <a href="Daniel_Williams_CV.pdf">here</a>.</p>
+          <h1 id="subheading">Chicago Crime</h1>
+          <p><span id="text"></span>My most recent project was a group project
+            as part of the first term of my CDT. It involved modelling different
+            aspects of a large data set detailing crimes in Chicago. My input to
+            this project was to use logistic regression methods to classify
+            whether an arrest would be successful or not, given other covariates
+            in the crime set; detailing the location, the area,&nbsp; the type
+            of crime type, amongst others.</p>
+          <p>The package that was created for this project can be found as a
+            Github repository <a href="https://github.com/jakespiteri/chicagocrime">here</a>.
+          </p>
+          <h1 id="subheading">Post-Processing Ordinal Cloud Cover Forecasts</h1>
+          <p> During a summer project at the University of Bristol, I developed
+            methodology that extended the polynomial odds logistic regression
+            approach that is currently used to post-process weather forecasts
+            for total cloud cover from an ensemble forecast model. This used
+            Bayesian methods, using MCMC to increase flexibility. </p>
         </div>
       </div>
       <div id="footer">

@@ -71,8 +71,9 @@ address {
       </div>
       <div id="site_content">
         <div>
-          <h1 id="subheading">Chicago Crime</h1>
-          <p><span id="text"></span>My CV can be found <a href="Daniel_Williams_CV.pdf">here</a>.</p>
+          <h1 id="subheading">Biography</h1>
+          <p><span id="text"></span>I am a PhD student.<br>
+          </p>
         </div>
       </div>
       <div id="footer">
@@ -80,6 +81,5 @@ address {
         </address>
       </div>
     </div>
-    
   </body>
 </html>
