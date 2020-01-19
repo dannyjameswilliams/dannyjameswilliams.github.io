@@ -9,18 +9,23 @@ html {
 
 body {
   background-color: #f0efe2;
-  background-repeat: repeat;
-  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-clip: border-box;
   background-origin: padding-box;
   background-position: 0% 0%;
-  background-size: auto auto;
+  background-size: cover;
   color: #777777;
 }
 
 p {
   padding: 0px 0px 20px;
-  line-height: 1.7em;
+  color: rgba(0, 0, 0, 0.9);
+  font-family: "Montserrat";
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none;
+  font-variant: normal;
 }
 
 img {
@@ -55,7 +60,6 @@ h4, h5, h6 {
 }
 
 h5, h6 {
-  font: italic 95% "arial sans-serif" "Montserrat";
   padding: 0px 0px 15px;
   color: black;
 }
@@ -203,7 +207,7 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover {
   overflow: hidden;
   margin: 0px auto;
   padding: 20px 24px 20px 37px;
-  background: rgba(204, 204, 204, 0.84) url("transparent_light.png") repeat scroll 0% 0%;
+  background: rgba(204, 204, 204, 0.9) url("transparent_light.png") repeat scroll 0% 0%;
 }
 
 .sidebar {

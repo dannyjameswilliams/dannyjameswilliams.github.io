@@ -62,26 +62,18 @@ address {
         <div id="menubar">
           <ul id="menu">
             <li><a href="index.html">about</a></li>
-            <li class="selected"><a href="code.html">code</a></li>
+            <li><a href="code.html">code</a></li>
             <li><a href="projects.html">projects</a></li>
             <li><a href="cv.html">cv</a></li>
-            <li><a href="contact.html">contact </a></li>
+            <li class="selected"><a href="contact.html">contact </a></li>
           </ul>
         </div>
       </div>
       <div id="site_content">
         <div>
-          <h1 id="subheading">R Code</h1>
-          <p><span id="text">Most of my programming is done in R, because of its
-              statistical use and its commonplace use amongst academics in this
-              field. </span><br>
-          </p>
-          <p><span id="text">My github username is <a href="https://github.com/dannyjameswilliams/">dannyjameswilliams</a>,
-              which is where you can find all code that I make publicly
-              available. The repository danielR contains a collection of code
-              which I have saved over the years, during my time at university.
-              This will contain code I have written myself, and currently
-              contains model fitting for logistic regression.</span><br>
+          <h1 id="subheading">Email</h1>
+          <p><span id="text">My email address is <a href="mailto:daniel.williams@bristol.ac.uk">daniel.williams@bristol.ac.uk</a>,
+              which is my preferred method of contact.</span><br>
             <br>
           </p>
         </div>

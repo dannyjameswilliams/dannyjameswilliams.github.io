@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-    <title>textured_green</title>
+    <title>CV - Daniel Williams</title>
     <link href="https://fonts.googleapis.com/css?family=Lora%7CMontserrat&amp;display=swap"
       rel="stylesheet">
     <meta name="description" content="website description">
@@ -72,10 +72,7 @@ address {
       <div id="site_content">
         <div>
           <h1 id="subheading">CV</h1>
-          <p><span id="text"></span></p>
-          <p>My CV can be found <a href="file:///home/fs19144/Documents/GithubPages/dannyjameswilliams.github.io/Daniel_Williams_CV.pdf">here</a>.<br>
-            <br>
-          </p>
+          <p><span id="text"></span>My CV can be found <a href="Daniel_Williams_CV.pdf">here</a>.</p>
         </div>
       </div>
       <div id="footer">

@@ -77,11 +77,20 @@ address {
             aspects of a large data set detailing crimes in Chicago. My input to
             this project was to use logistic regression methods to classify
             whether an arrest would be successful or not, given other covariates
-            in the crime set; detailing the location, the area,&nbsp; the type
-            of crime type, amongst others.</p>
+            in the crime set; detailing the location, the area, the type of
+            crime type, amongst others.</p>
           <p>The package that was created for this project can be found as a
             Github repository <a href="https://github.com/jakespiteri/chicagocrime">here</a>.
           </p>
+          <h1 id="subheading">Downscaling Extremes of Precipitation in the South
+            West</h1>
+          <p> For my Masters dissertation project, I used extreme value theory
+            to model the extremes of precipitation across the South West of the
+            UK. Using extreme value theory to model low resolution gridded model
+            output, and observations at a local level, a separate downscaling
+            model was able to accurately predict for a new area where local
+            observations are sparse. </p>
+          <p>The final dissertation can be found <a href="DownscalingExtremes_MastersDiss.pdf">here</a>.</p>
           <h1 id="subheading">Post-Processing Ordinal Cloud Cover Forecasts</h1>
           <p> During a summer project at the University of Bristol, I developed
             methodology that extended the polynomial odds logistic regression
