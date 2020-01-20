@@ -72,8 +72,9 @@ address {
       <div id="site_content">
         <div>
           <h1 id="subheading">Email</h1>
-          <p><span id="text">My email address is <a href="mailto:daniel.williams@bristol.ac.uk">daniel.williams@bristol.ac.uk</a>,
-              which is my preferred method of contact.</span><br>
+          <p><span id="text">My email address is
+              daniel.williams(at)bristol.ac.uk, which is my preferred method of
+              contact.</span><br>
             <br>
           </p>
         </div>

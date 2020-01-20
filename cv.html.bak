@@ -14,7 +14,7 @@
 }
 
 #new {
-  background-image: url("banner.jpg");
+  background-image: url("images/venice.jpg");
 }
 
 span {

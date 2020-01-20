@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-    <title>textured_green</title>
+    <title>Projects - Daniel Williams</title>
     <link href="https://fonts.googleapis.com/css?family=Lora%7CMontserrat&amp;display=swap"
       rel="stylesheet">
     <meta name="description" content="website description">
@@ -45,7 +45,7 @@ address {
 }
 
 #subheading {
-  font-size: 160%;
+  font-size: 180%;
 }
 
 </style></head>
@@ -81,7 +81,6 @@ address {
             crime type, amongst others.</p>
           <p>The package that was created for this project can be found as a
             Github repository <a href="https://github.com/jakespiteri/chicagocrime">here</a>.
-          </p>
           <h1 id="subheading">Downscaling Extremes of Precipitation in the South
             West</h1>
           <p> For my Masters dissertation project, I used extreme value theory
@@ -97,12 +96,12 @@ address {
             approach that is currently used to post-process weather forecasts
             for total cloud cover from an ensemble forecast model. This used
             Bayesian methods, using MCMC to increase flexibility. </p>
-        </div>
       </div>
       <div id="footer">
         <address id="copyright"> HTML TEMPLATE Copyright © textured_green&nbsp;
         </address>
       </div>
     </div>
+    
   </body>
 </html>

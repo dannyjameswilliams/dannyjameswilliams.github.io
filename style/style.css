@@ -8,13 +8,7 @@ html {
 }
 
 body {
-  background-color: #f0efe2;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-clip: border-box;
-  background-origin: padding-box;
-  background-position: 0% 0%;
-  background-size: cover;
+  background: rgba(204, 204, 204, 0.91) url("images/venice.jpg") no-repeat fixed 0% 0% / cover;
   color: #777777;
 }
 
