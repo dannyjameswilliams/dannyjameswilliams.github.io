@@ -20,12 +20,11 @@ body {
 
 p {
   padding: 0px 0px 20px;
+  line-height: 1.7em;
   color: rgba(0, 0, 0, 0.9);
   font-family: "Montserrat";
   font-weight: normal;
-  text-decoration: none;
-  text-transform: none;
-  font-variant: normal;
+  text-align: justify;
 }
 
 img {
