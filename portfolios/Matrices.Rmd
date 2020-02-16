@@ -1,0 +1,160 @@
+---
+title: 'Portfolio Section 7: Matrices'
+output:
+  html_document:
+    df_print: paged
+  includes:
+    in_header: mystyle.sty
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Matrices
+
+A matrix is a two-dimensional data structure. The `matrix` function is used to create matrices, and can have multiple arguments. You can specify the names of the columns and rows by supplying a list to the `dimnames` argument, and can choose to populate the matrix by column (default) or by row with `byrow=TRUE`. The function `as.matrix` will convert a relevant argument to a matrix, and `is.matrix` results a `TRUE` or `FALSE` if the argument is or isn't a matrix. We can see these here:
+```{r}
+A = matrix(1:12, nrow=3, ncol=4)
+A
+A = matrix(1:12, nrow=3, ncol=4, byrow=TRUE)
+A
+A = matrix(1:12, nrow=3, ncol=4, 
+           dimnames = list(c("Row1", "Row2", "Row3"), 
+                           c("Column1", "Column2", "Column3", "Column4")))
+A
+```
+
+Accessing elements in a matrix can be done by indexing over either the column or the row. `A[,i]` will access the $i$-th column, and `A[i,]` will access the $i$-th row. These arguments will return a vector, and will lose the structure of the matrix. For example, if we take the 1st column of `A` we get
+```{r}
+A[,1]
+```
+which is not a column any more! This is important to consider when working with matrices. To keep the structure of the matrix intact, we can specify `drop=FALSE` when indexing, e.g.
+```{r}
+A[,1,drop=FALSE]
+```
+
+The `array` function in R works like a 'stack of matrices', and any number of dimensions can be specified. Instead of the `matrix` function, `array` takes one argument corresponding to the dimension, which is a vector; each element being the length of the corresponding dimension, i.e.
+```{r}
+array(1:27,c(3,3,3))
+```
+
+Matrix multiplication between more than 2 matrices can also be sped up by precisely choosing the location of your brackets. Since matrix multiplication works right-to-left, the brackets need to be on the right side. For a large matrix, if we test the speeds of two forms of multiplication, we get
+```{r}
+N = 1000
+M1 = matrix(rnorm(N^2),N,N)
+M2 = matrix(rnorm(N^2),N,N)
+M3 = matrix(rnorm(N^2),N,N)
+
+system.time(M1 %*% M2 %*% M3)
+system.time(M1 %*% (M2 %*% M3))
+all.equal(M1 %*% M2 %*% M3, M1 %*% (M2 %*% M3))
+```
+
+So specification of brackets is quite a bit faster, and can speed up computation times for larger problems. Note that the function `all.equal` checks whether the two arguments are the same within some tolerance, as they are not exactly the same (see later section on Numerical types in R).
+
+### Solving linear systems
+
+Often a linear algebra problem we are interested in is solving $A\boldsymbol{x} =\boldsymbol{b}$ for $\boldsymbol{x},\boldsymbol{b} \in \mathbb{R}^n$ and $A \in \mathbb{R}^{n\times n}$. One solution to this is simply $\boldsymbol{x} = A^{-1}\boldsymbol{b}$, but the problem here is that *getting* the matrix inverse, as it will take of order $n^3$ operations. For example, a 1000x1000 matrix (which is not uncommon) will take around 1000$^3$ =  1,000,000,000 operations, which is inefficient. If you did want to solve the system this way, the function for inverting a matrix in R is `solve`, e.g.
+```{r}
+A = matrix(rnorm(9),3,3)
+solve(A)
+```
+This function can also take a second argument, being the right hand side of the system, which in our case is $b$. This will roughly be the same as `solve(A) %*% b`.
+```{r}
+b = c(1,2,3)
+solve(A) %*% b
+solve(A, b)
+```
+Although you can see the dimension of the output is different, `solve(A) %*% b` maintains the column structure. However, the method `solve(A,b)` is faster than `solve(A) %*% b`.
+
+
+### Numerical types in R
+If we were to find the 'type' of a normal integer in R, we get
+```{r}
+typeof(2)
+```
+What does it mean by a 'double'? This means that it is a `binary64` floating point number, i.e. the information stored in the computer for this value is stored in 64 bits; 1 bit for the *sign* of the number, 11 bits for the *exponent* and 52 bits for the *significant precision*. So the largest number we can store is `2^1023`, since 
+```{r}
+2^1024
+```
+simply returns `Inf`. We know this number isn't **actually** infinity, but R recognises that it is too large, and anything over the largest number is stored as the highest possible value. This also means that really *small* numbers aren't stored correctly either. There is always some form of **floating point error** in R, of order 2$^{-52}$. Showing this in practice:
+```{r}
+print(1 + 2^(-52), digits=22)
+print(1 + 2^(-53), digits=22)
+```
+
+Another format R can store numbers in is in the format 'Long', specified by a `L` after the number. 
+
+
+#### Effect on Matrices
+
+Any form of arithmetic in R is going to be affected by floating point error. Most of the time it does not cause any problems though, as it will only affect things at *really small* or *really large* magnitudes. Matrices are specifically succeptible to floating point errors however, as matrix multiplication contains many operations.
+
+Let's look at some simple matrix multiplication on large matrices and inspect whether there are floating point errors.
+```{r}
+N = 100  # Square Number
+A = matrix(rnorm(N),sqrt(N),sqrt(N))
+B = matrix(rnorm(N),sqrt(N),sqrt(N))
+C = matrix(rnorm(N),sqrt(N),sqrt(N))
+
+test = c(solve(A %*% (B %*% C)) - solve(A %*% B %*% C))
+```
+Since these two operations are the same, all entries in the matrix `test` should be zero. However, this is not the case, as seen below.
+
+```{r}
+summary(test)
+```
+This is due to floating point error. Not all entries in `test` are zero, but they are very small. Most of the time, this might not make much of a difference, but when performing calculations involving small numbers this is important to consider.
+
+## Sparse Matrices
+
+A sparse matrix is one where most of the entries are zero. The problem with sparse matrices in programming is that  a very large matrix (for example a $10000 \times 10000$ matrix), the computer would store *every* element in the matrix, even though most are zero. There are various package for dealing with sparse matrices in a better way in R, but the most popular is the `Matrix` package. This package extends the base R functionality with both sparse and dense matrices, allolwing more operations and more efficient calculations. In this package, we can use the function `rankMatrix` to return the rank of a input matrix. For example:
+
+```{r echo=FALSE}
+library(Matrix)
+```
+
+```{r}
+A = matrix(rnorm(25),5,5)
+c(rankMatrix(A))
+```
+
+A sparse matrix can be stored as a `dgCMatrix` (where the `C` stands for storing by column, other options are row or triplet). Let's look at the difference between storing a sparse matrix in this way against the default way.
+```{r include = FALSE}
+set.seed(3)
+```
+```{r}
+A = matrix(0, 1000, 1000)
+for(i in 1:1000) A[sample(1:1000,50,1),i] = sample(1:10,50,replace=TRUE)
+B = Matrix(A, sparse=TRUE)
+A[1:4,1:15]
+B[1:4,1:15]
+c(object.size(A),object.size(B))
+```
+So the sparse matrix is stored at a much smaller object size than a normal matrix. Note that the `Matrix` function is part of the `Matrix` package, not to be confused with `matrix` from base R. The conversion to being stored as a sparse `dgCMatrix` was done after construction of the matrix, but it could be constructed as a sparse matrix from the start. We can inspect the `dgCMatrix` object.
+```{r}
+str(B)
+```
+This has a few pieces of information relating to the non-zero elements of the matrix `B`. The often most interesting ones being the `i` attribute: the locations of the non-zero entries, and the `x` attribute: the non-zero entries in these corresponding spots.
+
+## Example
+Sparse matrices can have relevant application in many scenarios. For example, in a modelling problem where you want to model the effects of different categorical predictors, you can use 'one-hot encoding'. This replaces a multi-class input $\boldsymbol{x} \in \{0, 1, \dots, K \}^n$ with a vector of 1's and 0's, where the location of the 1's correspond to which class is being represented. For example, if we set up a vector of factors in R, we have
+```{r include=FALSE}
+set.seed(1)
+```
+```{r}
+x.factor = factor(sample(c("Class1", "Class2", "Class3", "Class4"), 20, replace=TRUE))
+x.factor
+```
+When fitting a model, we typically will add these entries to a model matrix, and work with that. The `model.matrix` function in R will automatically set up one-hot encoding in this scenario.
+```{r}
+M = model.matrix(~x.factor)
+M
+```
+This matrix is primarily made up of 1's and 0's, and so would be better suited to being stored as a sparse matrix.
+```{r}
+Matrix(M, sparse=TRUE)
+```
+In the case of a large data set, when using categorical variables, this will speed up computation time quite significantly.
