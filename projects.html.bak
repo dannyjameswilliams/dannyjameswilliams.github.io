@@ -14,7 +14,7 @@
 }
 
 #new {
-  background-image: url("banner.jpg");
+  background-image: url("images/stives.jpg");
 }
 
 span {
@@ -81,6 +81,7 @@ address {
             crime type, amongst others.</p>
           <p>The package that was created for this project can be found as a
             Github repository <a href="https://github.com/jakespiteri/chicagocrime">here</a>.
+          </p>
           <h1 id="subheading">Downscaling Extremes of Precipitation in the South
             West</h1>
           <p> For my Masters dissertation project, I used extreme value theory
@@ -96,10 +97,11 @@ address {
             approach that is currently used to post-process weather forecasts
             for total cloud cover from an ensemble forecast model. This used
             Bayesian methods, using MCMC to increase flexibility. </p>
-      </div>
-      <div id="footer">
-        <address id="copyright"> HTML TEMPLATE Copyright © textured_green&nbsp;
-        </address>
+        </div>
+        <div id="footer">
+          <address id="copyright"> HTML TEMPLATE Copyright ©
+            textured_green&nbsp; </address>
+        </div>
       </div>
     </div>
     
