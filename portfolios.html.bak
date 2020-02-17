@@ -54,9 +54,9 @@ address {
     <div id="main">
       <div id="header">
         <div id="logo">
-          <div id="logo_text"> <br>
-            <h1><span style="font-family: Lora;" id="title">Daniel Williams</span></h1>
-          </div>
+         <div id="heading"><a href="index.html"><img src="file:///home/fs19144/Documents/GithubPages/dannyjameswilliams.github.io/images/portrait.png"
+                alt="" title="Me" style="top: 16px; left: 0px; width: 111px; height: 112px; vertical-align: middle"></a>
+            Daniel Williams</div>
         </div>
         <div id="menubar">
           <ul id="menu">
@@ -72,11 +72,10 @@ address {
       <div id="site_content">
         <p>Below are some portfolios written by me as part of the COMPASS CDT.
           Maybe some people will find them useful. </p>
-        <h1 id="subheading">Statistical Computing</h1> 
-        <p> <a href="portfolios/Matrices.html">Matrices</a> <br />
-          <a href="portfolios/Optimisation.html">Optimisation</a> <br />
-          <a href="portfolios/OOP.html">Object Oriented Programming</a> 
-        </p>
+        <h1 id="subheading">Statistical Computing in R</h1>
+        <p> <a href="portfolios/Matrices.html">Matrices</a> <br>
+          <a href="portfolios/Optimisation.html">Optimisation</a> <br>
+          <a href="portfolios/OOP.html">Object Oriented Programming</a> </p>
       </div>
       <div id="footer">
         <address id="copyright"> HTML TEMPLATE Copyright © textured_green&nbsp;

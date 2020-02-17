@@ -53,17 +53,16 @@ address {
     <div id="main">
       <div id="header">
         <div id="logo">
-          <div id="logo_text"> <br>
-            <h1><span style="font-family: Lora;" id="title">Daniel Williams</span></h1>
-            <h2><br>
-            </h2>
-          </div>
+          <div id="heading" class="OutlineText"><a href="index.html"><img src="file:///home/fs19144/Documents/GithubPages/dannyjameswilliams.github.io/images/portrait.png"
+                alt="" title="Me" style="top: 16px; left: 0px; width: 111px; height: 112px; vertical-align: middle"></a>
+            Daniel Williams</div>
         </div>
         <div id="menubar">
           <ul id="menu">
             <li><a href="index.html">about</a></li>
             <li><a href="code.html">code</a></li>
             <li class="selected"><a href="projects.html">projects</a></li>
+            <li><a href="portfolios.html">portfolios </a></li>
             <li><a href="cv.html">cv</a></li>
             <li><a href="contact.html">contact </a></li>
           </ul>
@@ -99,8 +98,9 @@ address {
             Bayesian methods, using MCMC to increase flexibility. </p>
         </div>
         <div id="footer">
-          <address id="copyright"> HTML TEMPLATE Copyright ©
-            textured_green&nbsp; </address>
+         <div id="footer">
+        <address id="copyright"> © 2020 | Daniel Williams </address>
+      </div>
         </div>
       </div>
     </div>

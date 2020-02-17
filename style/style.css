@@ -26,14 +26,10 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #009900;
   margin: 0px 0px 15px;
   padding: 15px 0px 5px;
 }
 
-h2 {
-  color: #068900;
-}
 
 h4, h5, h6 {
   margin: 0px;
@@ -121,19 +117,13 @@ ol li {
 
 #header {
   height: 240px;
-  background-color: rgba(204, 204, 204, 0.59);
+  background-color: transparent;
 }
 
 #logo {
   width: 825px;
   position: relative;
   height: 168px;
-}
-
-#logo #logo_text {
-  position: absolute;
-  top: 20px;
-  left: 0px;
 }
 
 #logo h1, #logo h2 {
@@ -144,19 +134,19 @@ ol li {
 
 #logo_text h1, #logo_text h1 a, #logo_text h1 a:hover {
   padding: 22px 0px 0px;
-  color: black;
+  color: #000000;
   letter-spacing: 0.1em;
   text-decoration: none;
 }
 
 #logo_text h1 a .logo_colour {
-  color: #068900;
+  color: #000000;
 }
 
 #logo_text h2 {
   font-size: 100%;
   padding: 4px 0px 0px;
-  color: #676767;
+  color: #068900;
 }
 
 #menubar {
@@ -195,9 +185,11 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover {
   background: #068900 none repeat scroll 0% 0%;
 }
 
+
+
 #site_content {
   width: 837px;
-  overflow: hidden;
+  overflow: auto;
   margin: 0px auto;
   padding: 20px 24px 20px 37px;
   background: rgba(204, 204, 204, 0.9) url("transparent_light.png") repeat scroll 0% 0%;
@@ -328,7 +320,20 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover {
 .form_settings select {
   width: 310px;
 }
-
+.OutlineText {
+	font-size: 64px;
+    color: white;
+    text-shadow:
+    /* Outline */
+    -1px -1px 0 #ffffff,
+    1px -1px 0 #ffffff,
+    -1px 1px 0 #ffffff,
+    1px 1px 0 #ffffff,  
+    -2px 0 0 #ffffff,
+    2px 0 0 #ffffff,
+    0 2px 0 #ffffff,
+    0 -2px 0 #ffffff; /* Terminate with a semi-colon */
+}
 .form_settings .checkbox {
   margin: 4px 0px;
   padding: 0px;
@@ -362,3 +367,15 @@ table tr td {
   border-top: 1px solid white;
 }
 
+#subheading {
+  font-size: 180%;
+  color:#1a8f35;
+}
+
+#heading {
+  color:#000000;
+  font-size: 270%;
+  font-weight: bold;
+  font-family: "Lora";
+  padding: 30px 0px;
+}
