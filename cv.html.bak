@@ -75,10 +75,10 @@ address {
         </div>
       </div>
       <div id="footer">
-        <address id="copyright"> HTML TEMPLATE Copyright © textured_green&nbsp;
-        </address>
+        <div id="footer">
+        <address id="copyright"> © 2020 | Daniel Williams </address>
+      </div>
       </div>
     </div>
-    
   </body>
 </html>
