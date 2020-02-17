@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-    <title>Contact - Daniel Williams</title>
+    <title>Blog - Daniel Williams</title>
     <link href="https://fonts.googleapis.com/css?family=Lora%7CMontserrat&amp;display=swap"
       rel="stylesheet">
     <link rel="apple-touch-icon" sizes="57x57" href="images/icon/apple-icon-57x57.png">
@@ -31,7 +31,7 @@
 }
 
 #new {
-  background-image: url("images/prague.jpg");
+  background-image: url("banner.jpg");
 }
 
 span {
@@ -39,10 +39,11 @@ span {
   font-weight: normal;
 }
 
-h1 {
+h1, h2 {
   font-family: "Lora";
 }
 
+      
 #copyright {
   text-decoration: none;
 }
@@ -61,16 +62,14 @@ address {
   font-weight: bold;
 }
 
-#subheading {
-  font-size: 180%;
-}
+
 
 </style></head>
   <body id="new">
     <div id="main">
       <div id="header" style="vertical-align: middle;">
         <div id="logo">
-          <div id="heading" class="OutlineText"><a href="image.html"><img src="images/portrait_small.png"
+          <div id="heading" class="OutlineText"><a href="index.html"><img src="images/portrait_small.png"
                 alt="" title="Me" style="top: 16px; left: 0px; width: 111px; height: 112px; vertical-align: middle"></a>
             Danny Williams</div>
         </div>
@@ -78,22 +77,26 @@ address {
           <ul id="menu">
             <li><a href="index.html">about</a></li>
             <li><a href="code.html">code</a></li>
-            <li><a href="blog.html">blog</a></li>
+            <li class="selected"><a href="blog.html">blog</a></li>
             <li><a href="projects.html">projects</a></li>
             <li><a href="portfolios.html">portfolios </a></li>
             <li><a href="cv.html">cv</a></li>
-            <li class="selected"><a href="contact.html">contact </a></li>
+            <li><a href="contact.html">contact </a></li>
           </ul>
         </div>
       </div>
+      <div id="menubar2">
+        <ul id="menu2">
+          <li><a href="blog_hackathon1.html">February 2020</a></li>
+        </ul>
+      </div>
       <div id="site_content">
+        <h2 id="subheading">Blog</h2>
         <div>
-          <h1 id="subheading">Email</h1>
-          <p><span id="text">My email address is
-              daniel.williams(at)bristol.ac.uk, which is my preferred method of
-              contact. </span><br>
-            <br>
-          </p>
+          <p>Here you will find my musings. Above are links to the most recent
+            entries. These blog posts may include relevant entries to my work,
+            or activities I've engaged in as part of my PhD. They could also be
+            my ramblings on a particular topic. </p>
         </div>
       </div>
       <div id="footer">

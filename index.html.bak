@@ -52,14 +52,15 @@ address {
     <div id="main">
       <div id="header" style="vertical-align: middle;">
         <div id="logo">
-          <div id="heading" class="OutlineText"><a href="index.html"><img src="images/portrait_small.png"
-                alt="" title="Me" style="top: 16px; left: 0px; width: 111px; height: 112px; vertical-align: middle"></a>
-            Daniel Williams</div>
+          <div id="heading" class="OutlineText"><a href="index.html"><img
+                src="images/portrait_small.png" alt="" title="Me" style="top: 16px; left: 0px; width: 111px; height: 112px; vertical-align: middle"></a>
+            Danny Williams</div>
         </div>
         <div id="menubar">
           <ul id="menu">
             <li class="selected"><a href="index.html">about</a></li>
             <li><a href="code.html">code</a></li>
+            <li><a href="blog.html">blog</a></li>
             <li><a href="projects.html">projects</a></li>
             <li><a href="portfolios.html">portfolios </a></li>
             <li><a href="cv.html">cv</a></li>
@@ -74,6 +75,10 @@ address {
             COMPASS CDT (Computational Statistics and Data Science Centre for
             Doctoral Training). I graduated from the University of Exeter with a
             Masters in Mathematics in 2019. </p>
+          <p> The photos you will see on my website are from my personal
+            travels! On this page you will see Bristol, near where I live. Other
+            places include Burano, Cologne, the Brecon beacons, Cornwall and
+            Prague. </p>
         </div>
       </div>
       <div id="footer">

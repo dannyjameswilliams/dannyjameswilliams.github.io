@@ -110,7 +110,7 @@ ol li {
   margin: 0px 0px 11px;
 }
 
-#main, #logo, #menubar, #site_content, #footer {
+#main, #logo, #menubar, #menubar2, #site_content, #footer {
   margin-left: auto;
   margin-right: auto;
 }
@@ -150,8 +150,14 @@ ol li {
 }
 
 #menubar {
-  width: 900px;
+  width: 895px;
   height: 72px;
+  padding: 0px;
+  background: transparent url("transparent.png") repeat scroll 0% 0%;
+}
+#menubar2 {
+  width: 895px;
+  height: 54px;
   padding: 0px;
   background: transparent url("transparent.png") repeat scroll 0% 0%;
 }
@@ -180,9 +186,37 @@ ul#menu li a {
   background: transparent none repeat scroll 0% 0%;
 }
 
+ul#menu2, ul#menu2 li {
+  float: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul#menu2 li {
+  list-style: outside none none;
+}
+
+ul#menu2 li a {
+  letter-spacing: 0.1em;
+  font: 90% arial sans-serif;
+  display: block;
+  float: left;
+  height: 30px;
+  padding: 20px 23px 4px;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent none repeat scroll 0% 0%;
+}
 ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover {
   color: white;
   background: #068900 none repeat scroll 0% 0%;
+}
+
+ul#menu2 li a:hover, ul#menu2 li.selected a, ul#menu2 li.selected a:hover {
+  color: white;
+  background: #539164 none repeat scroll 0% 0%;
 }
 
 
@@ -371,7 +405,16 @@ table tr td {
   font-size: 180%;
   color:#1a8f35;
 }
-
+#blogimages {
+  text-align:center;
+  margin:20px auto;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 #heading {
   color:#000000;
   font-size: 270%;
