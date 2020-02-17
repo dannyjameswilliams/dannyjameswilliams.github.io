@@ -189,7 +189,7 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover {
 
 #site_content {
   width: 837px;
-  overflow: auto;
+  overflow: hidden;
   margin: 0px auto;
   padding: 20px 24px 20px 37px;
   background: rgba(204, 204, 204, 0.9) url("transparent_light.png") repeat scroll 0% 0%;
