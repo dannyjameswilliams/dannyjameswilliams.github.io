@@ -73,6 +73,9 @@ address {
           <div id="heading" class="OutlineText"><a href="image.html"><img src="images/portrait_small.png"
                 alt="" title="Me" style="top: 16px; left: 0px; width: 111px; height: 112px; vertical-align: middle"></a>
             Danny Williams</div>
+          <div align="right" style="vertical-align: top;">
+            <p>hello</p>
+          </div>
         </div>
         <div id="menubar">
           <ul id="menu">
@@ -92,13 +95,13 @@ address {
           <p><span id="text">My email address is
               daniel.williams(at)bristol.ac.uk, which is my preferred method of
               contact. </span><br>
-            <br>
           </p>
           <h1 id="subheading"> Social </h1>
           <p> Below are links to my social media accounts, for Twitter and
             Linkedin.</p>
           <a href="https://twitter.com/DanielW966"><img src="images/Twitter_Logo_WhiteOnBlue.png"
-              alt="" style="width: 62px; height: 62px;"> </a> &nbsp; &nbsp; &nbsp; <a href="https://www.linkedin.com/in/dannyjameswilliams/"><img
+              alt="" style="width: 62px; height: 62px;"> </a> &nbsp; &nbsp;
+          &nbsp; <a href="https://www.linkedin.com/in/dannyjameswilliams/"><img
               src="images/linkedin.png" alt="" style="width: 62px; height: 62px;"></a>
         </div>
       </div>
@@ -106,6 +109,5 @@ address {
         <address id="copyright"> © 2020 | Daniel Williams </address>
       </div>
     </div>
-    
   </body>
 </html>
