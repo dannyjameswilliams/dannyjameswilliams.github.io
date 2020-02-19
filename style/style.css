@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  background: rgba(204, 204, 204, 0.91) url("images/venice.jpg") no-repeat fixed 0% 0% / cover;
+  background: rgba(204, 204, 204, 0.91)  no-repeat fixed 0% 0% / cover;
   color: #777777;
 }
 
@@ -150,16 +150,16 @@ ol li {
 }
 
 #menubar {
-  width: 895px;
+  width: 897px;
   height: 72px;
   padding: 0px;
-  background: transparent url("transparent.png") repeat scroll 0% 0%;
+  background: rgba(0, 0, 0, 0.35) url("transparent.png") repeat scroll 0% 0%;
 }
 #menubar2 {
-  width: 895px;
+  width: 897px;
   height: 54px;
   padding: 0px;
-  background: transparent url("transparent.png") repeat scroll 0% 0%;
+  background: rgba(0,200,20,0.7)  url("transparent.png") repeat scroll 0% 0%;
 }
 
 ul#menu, ul#menu li {
@@ -211,7 +211,7 @@ ul#menu2 li a {
 }
 ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover {
   color: white;
-  background: #068900 none repeat scroll 0% 0%;
+  background:#539164 none repeat scroll 0% 0%;
 }
 
 ul#menu2 li a:hover, ul#menu2 li.selected a, ul#menu2 li.selected a:hover {
@@ -226,7 +226,7 @@ ul#menu2 li a:hover, ul#menu2 li.selected a, ul#menu2 li.selected a:hover {
   overflow: hidden;
   margin: 0px auto;
   padding: 20px 24px 20px 37px;
-  background: rgba(204, 204, 204, 0.9) url("transparent_light.png") repeat scroll 0% 0%;
+  background: rgba(234, 234, 234, 0.95) url("transparent_light.png") repeat scroll 0% 0%;
 }
 
 .sidebar {
