@@ -62,9 +62,14 @@ address {
 }
 
 #subheading {
-  font-size: 180%;
+  font-size: 180%
 }
 
+#dropdowna {
+  background: black none repeat scroll 0% 0%;
+}
+
+      
 </style></head>
   <body id="new">
     <div id="main">
@@ -78,7 +83,10 @@ address {
           <ul id="menu">
             <li><a href="index.html">about</a></li>
             <li><a href="code.html">code</a></li>
-            <li><a href="blog.html">blog</a></li>
+            <li class="dropdown"> <button class="dropbtn"> <a href="blog.html">Blog
+                  </a></button> <div class="dropdown-content"> <a href="blog_hackathon1.html"
+                  id="dropdownlink">February 2020</a> </div>
+            </li>
             <li><a href="projects.html">projects</a></li>
             <li><a href="portfolios.html">portfolios </a></li>
             <li><a href="cv.html">cv</a></li>
@@ -86,25 +94,24 @@ address {
           </ul>
         </div>
       </div>
-      <div id="site_content">
-        <div>
-          <h1 id="subheading">Email</h1>
-          <p><span id="text">My email address is
-              daniel.williams(at)bristol.ac.uk, which is my preferred method of
-              contact. </span><br>
-          </p>
-          <h1 id="subheading"> Social </h1>
-          <p> Below are links to my social media accounts, for Twitter and
-            Linkedin.</p>
-          <a href="https://twitter.com/DanielW966"><img src="images/Twitter_Logo_WhiteOnBlue.png"
-              alt="" style="width: 62px; height: 62px;"></a> &nbsp; &nbsp;
-          &nbsp; <a href="https://www.linkedin.com/in/dannyjameswilliams/"><img
-              src="images/linkedin.png" alt="" style="width: 62px; height: 62px;"></a>
-        </div>
-      </div>
-      <div id="footer">
-        <address id="copyright"> © 2020 | Daniel Williams </address>
-      </div>
     </div>
+    <div id="site_content">
+      <div>
+        <h1 id="subheading">Email</h1>
+        <p><span id="text">My email address is daniel.williams(at)bristol.ac.uk,
+            which is my preferred method of contact. </span><br>
+        </p>
+        <h1 id="subheading"> Social </h1>
+        <p> Below are links to my social media accounts, for Twitter and
+          Linkedin.</p>
+        <a href="https://twitter.com/DanielW966"><img src="images/Twitter_Logo_WhiteOnBlue.png"
+            alt="" style="width: 62px; height: 62px;"></a> &nbsp; &nbsp; &nbsp;
+        <a href="https://www.linkedin.com/in/dannyjameswilliams/"><img src="images/linkedin.png"
+            alt="" style="width: 62px; height: 62px;"></a> </div>
+    </div>
+    <div id="footer">
+      <address id="copyright"> © 2020 | Daniel Williams </address>
+    </div>
+    
   </body>
 </html>
