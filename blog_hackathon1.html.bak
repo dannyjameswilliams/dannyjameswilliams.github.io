@@ -90,11 +90,6 @@ address {
           </ul>
         </div>
       </div>
-      <div id="menubar2">
-        <ul id="menu2">
-          <li class="selected"><a href="blog_hackathon1.html">February 2020</a></li>
-        </ul>
-      </div>
       <div id="site_content">
         <h2 id="subheading">Electricity Demand Forecasting Hackathon</h2>
         <div>
