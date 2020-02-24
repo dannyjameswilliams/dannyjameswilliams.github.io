@@ -22,8 +22,8 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="images/icon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="website description">
-    <meta name="keywords" content="website keywords, website keywords">
+    <meta name="description" content="List of projects by Daniel Williams">
+    <meta name="keywords" content="projects R python data science compass cdt phd statistics stats bristol exeter">
     <link rel="stylesheet" type="text/css" href="style/style.css" title="style">
     <style type="text/css">
 #back {
@@ -80,7 +80,7 @@ address {
             <li><a href="code.html">code</a></li>
             <li class="dropdown"> <button class="dropbtn"> <a href="blog.html">Blog
                   </a></button> <div class="dropdown-content"> <a href="blog_hackathon1.html"
-                  id="dropdownlink">February 2020</a> </div>
+                  id="dropdownlink">17/02/2020</a> </div>
             </li>
             <li class="selected"><a href="projects.html">projects</a></li>
             <li><a href="portfolios.html">portfolios </a></li>

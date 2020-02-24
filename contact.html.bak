@@ -75,8 +75,8 @@ address {
     <div id="main">
       <div id="header" style="vertical-align: middle;">
         <div id="logo">
-          <div id="heading" class="OutlineText"><a href="image.html"><img src="images/portrait_small.png"
-                alt="" title="Me" style="top: 16px; left: 0px; width: 111px; height: 112px; vertical-align: middle"></a>
+          <div id="heading" class="OutlineText"><a href="image.html"><img
+                src="images/portrait_small.png" alt="" title="Me" style="top: 16px; left: 0px; width: 111px; height: 112px; vertical-align: middle"></a>
             Danny Williams</div>
         </div>
         <div id="menubar">
@@ -85,7 +85,7 @@ address {
             <li><a href="code.html">code</a></li>
             <li class="dropdown"> <button class="dropbtn"> <a href="blog.html">Blog
                   </a></button> <div class="dropdown-content"> <a href="blog_hackathon1.html"
-                  id="dropdownlink">February 2020</a> </div>
+                  id="dropdownlink">17/02/2020</a> </div>
             </li>
             <li><a href="projects.html">projects</a></li>
             <li><a href="portfolios.html">portfolios </a></li>
@@ -112,6 +112,5 @@ address {
     <div id="footer">
       <address id="copyright"> © 2020 | Daniel Williams </address>
     </div>
-    
   </body>
 </html>

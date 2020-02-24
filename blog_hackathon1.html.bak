@@ -81,7 +81,7 @@ address {
             <li><a href="code.html">code</a></li>
             <li class="dropdown"> <button class="dropbtnselected"> <a href="blog.html">Blog
                   </a></button> <div class="dropdown-content"> <a href="blog_hackathon1.html"
-                  id="dropdownlinkselected">February 2020</a> </div>
+                  id="dropdownlinkselected">17/02/2020</a> </div>
             </li>
             <li><a href="projects.html">projects</a></li>
             <li><a href="portfolios.html">portfolios </a></li>
