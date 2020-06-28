@@ -1,0 +1,1111 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction Rcpp sugar and Armadillo are libraries included in Rcpp that allow different processes:
+ Sugar provides an array of basic functions in Rcpp that are similar to inbuilt base R functions.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/">
+  <meta property="og:title" content="Local Polynomial Regression with Rcpp | Danny James Williams">
+  <meta property="og:description" content="Introduction Rcpp sugar and Armadillo are libraries included in Rcpp that allow different processes:
+ Sugar provides an array of basic functions in Rcpp that are similar to inbuilt base R functions."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Local Polynomial Regression with Rcpp | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Local Polynomial Regression with Rcpp</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Rcpp <em>sugar</em> and <em>Armadillo</em> are libraries included in Rcpp that allow different processes:</p>
+<ul>
+<li><em>Sugar</em> provides an array of basic functions in Rcpp that are similar to inbuilt base R functions. These include functions such as <code>cbind</code>, <code>sum</code>, <code>sin</code>, <code>sample</code> and many more. These are essential for writing simple code in Rcpp.</li>
+<li><em>Armadillo</em> is a package used for linear algebra operations in Rcpp. It allows specification of matrices, 3D matrices, vectors and others.</li>
+</ul>
+<p>This portfolio will explain the use of key functions and features of <em>Armadillo</em> and <em>sugar</em> by implementing local polynomial regression on a data set on solar electricity production in Sydney. We can load this data into the R environment first.</p>
+<pre class="r"><code>load(&quot;solarAU.RData&quot;)</code></pre>
+<pre class="r"><code>head(solarAU)</code></pre>
+<pre><code>##       prod          toy tod   logprod
+## 8832 0.019 0.000000e+00   0 -3.540459
+## 8833 0.032 5.708088e-05   1 -3.170086
+## 8834 0.020 1.141618e-04   2 -3.506558
+## 8835 0.038 1.712427e-04   3 -3.036554
+## 8836 0.036 2.283235e-04   4 -3.079114
+## 8837 0.012 2.854044e-04   5 -3.816713</code></pre>
+<p>The column <code>prod</code> is a production measure, and <code>logprod</code> is the log of the production measure, which will be the response variable. The covariates are <code>toy</code> - the time of year, within 0 and 1 as a percentage, and <code>tod</code> - the time of day, from 0 to 47, measured in half an hour intervals. A simple polynomial regression model is of the form
+<span class="math display">\[
+\mathbb{E}(y|\bm{x}) = \beta_0 + \beta_1\text{tod} + \beta_2\text{tod}^2 + \beta_3\text{toy} + \beta_4 \text{toy}^2 = \tilde{\bm{x}}\bm{\beta}.
+\]</span></p>
+</div>
+<div id="fitting-a-linear-regression-model" class="section level1">
+<h1>Fitting a linear regression model</h1>
+<p>We can use <em>Armadillo</em> to fit a linear regression model, and to solve the least squares optimisation problem
+<span class="math display">\[
+\hat{\bm{\beta}} := \argmin_{\bm{\beta}}\norm{\bm{y}-\bm{X}\bm{\beta}}^2,
+\]</span>
+which has solution
+<span class="math display">\[
+\bm{\hat{\beta}} = (\bm{X}^T\bm{X})^{-1}\bm{X}^T\bm{y}.
+\]</span>
+This can be implemented in C using QR decomposition of <span class="math inline">\(\bm{X}\)</span>.</p>
+<pre class="r"><code>library(Rcpp)
+sourceCpp(code=&#39;
+// [[Rcpp::depends(RcppArmadillo)]]
+#include &lt;RcppArmadillo.h&gt;
+#include &lt;Rcpp.h&gt;
+using namespace Rcpp;
+
+// [[Rcpp::export(name=&quot;lm_cpp&quot;)]]
+arma::vec lm_cpp_I(arma::vec&amp; y, arma::mat&amp; X)
+{
+  arma::mat Q, R;
+  arma::qr_econ(Q, R, X);
+  arma::vec beta = solve(R, (trans(Q) * y));
+  return beta;
+}&#39;)
+ls = function(formula, data){
+  y = data[,all.vars(formula)[1]]
+  x = model.matrix(formula, data)
+  lm_cpp(y, x)
+}</code></pre>
+<p>Note that the <code>sourceCpp</code> function has a differing argument <code>code</code>, where instead of reading code from a file in the directory, the code is supplied directly here. Running <code>sourceCpp</code> adds the <code>lm_cpp</code> function to the environment. An R function is set up which takes the inputs <code>formula</code> and <code>data</code> and runs the Rcpp function with the given inputs. This makes it comparable to <code>lm</code>. Firstly though, we can see that both functions output the same parameter estimates.</p>
+<pre class="r"><code>ls(logprod ~ tod + I(tod^2) + toy + I(toy^2), data = solarAU)</code></pre>
+<pre><code>##             [,1]
+## [1,] -6.26275685
+## [2,]  0.86440391
+## [3,] -0.01757599
+## [4,] -5.91806924
+## [5,]  6.14298863</code></pre>
+<pre class="r"><code>lm(logprod ~ tod + I(tod^2) + toy + I(toy^2), data = solarAU)$coef</code></pre>
+<pre><code>## (Intercept)         tod    I(tod^2)         toy    I(toy^2) 
+## -6.26275685  0.86440391 -0.01757599 -5.91806924  6.14298863</code></pre>
+<p>But which is faster?</p>
+<pre class="r"><code>microbenchmark(
+  R_lm = lm(logprod ~ tod + I(tod^2) + toy + I(toy^2), data = solarAU),
+  C_lm = ls(logprod ~ tod + I(tod^2) + toy + I(toy^2), data = solarAU),
+  times = 500
+)</code></pre>
+<pre><code>## Unit: milliseconds
+##  expr      min       lq     mean   median       uq      max neval
+##  R_lm 3.531021 4.047208 5.079068 4.205777 5.222140 57.54048   500
+##  C_lm 2.522135 2.927327 3.615145 3.026044 3.654492 37.26725   500</code></pre>
+<p>So the C code is approximately twice as fast with this method, and would be even faster without the R wrapper function. However, the R function <code>lm</code> performs a number of checks and computes a number of statistics that the C++ code does not, which explains part of the performance gap.</p>
+<p>For a more fair comparison, we can set up the model matrices in advance, and perform the same operations in R and in RCpp.</p>
+<pre class="r"><code>R_ls_solve = function(y,X){
+  QR = qr(X)
+  beta = solve(qr.R(QR), (t(qr.Q(QR)) %*% y))
+  return(beta)
+}
+y = solarAU$logprod
+X = with(solarAU, cbind(1, tod, tod^2, toy, toy^2))
+microbenchmark(R_solve = R_ls_solve(y,X),
+               C_solve = lm_cpp(y, X), 
+               times = 500)</code></pre>
+<pre><code>## Unit: microseconds
+##     expr      min       lq      mean   median       uq       max neval
+##  R_solve 1942.200 2176.820 4659.2470 2511.320 4010.905 64206.810   500
+##  C_solve  440.409  510.482  688.3188  573.852  689.738  3547.974   500</code></pre>
+<p>So this has come with an approximate speed up of ten times, exemplifying how much more computationally efficient code written in C++ is over R. However, there is a (non-computational) problem with the model. A plot of the residuals from the linear model shows this.</p>
+<pre class="r"><code>beta = ls(logprod ~ tod + I(tod^2) + toy + I(toy^2), data = solarAU)
+res = y - X %*% beta
+predplot = ggplot(solarAU, mapping = aes(x=toy, y=tod, z= X%*%beta)) +
+  stat_summary_hex() +  xlab(&quot;Time of Year&quot;) + ylab(&quot;Time of Day&quot;) +
+  theme(legend.title = element_blank())
+resplot = ggplot(solarAU, mapping=aes(x=toy, y = tod, z = res)) +
+  stat_summary_hex() +  xlab(&quot;Time of Year&quot;) + ylab(&quot;Time of Day&quot;) +
+  theme(legend.title = element_blank())
+grid.arrange(predplot, resplot, ncol=2)</code></pre>
+<p><img src="/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
+There is a pattern in the residuals! This means that there is a feature not included in the model that can explain some of the noise. We need to extend this model to account for this.</p>
+</div>
+<div id="local-regression" class="section level1">
+<h1>Local Regression</h1>
+<p>We can improve the model fit by adopting a local regression approach, that is, making the parameter estimates depend on the covariates <span class="math inline">\(\bm{x}\)</span>, i.e. <span class="math inline">\(\hat{\bm{\beta}} = \hat{\bm{\beta}}(\bm{x})\)</span>. This is achieved by minimising <span class="math inline">\(\hat{\bm{\beta}}(\bm{x}_0)\)</span> for a fixed <span class="math inline">\(\bm{x}_0\)</span>:
+<span class="math display">\[
+\hat{\bm{\beta}}(\bm{x}_0) = \argmin_{\bm{\beta}} \sum^n_{i=1}\kappa_{\bm{H}}(\bm{x}_0 - \bm{x}_i)(y_i-\tilde{\bm{x}}_i^T\bm{\beta})^2,
+\]</span>
+for a density kernel <span class="math inline">\(\kappa_{\bm{H}}\)</span> with positive definite bandwidth matrix <span class="math inline">\(\bm{H}\)</span>. Fitting this model involves re-fitting the linear model once for each row in the data set, which for large data sets is not viable, but shows the need of computationally efficient code in C++. Now we can write the local regression function in RCpp.</p>
+<pre class="c"><code>vec local_lm_I(vec&amp; y, rowvec x0, rowvec X0, mat&amp; x, mat&amp; X, mat&amp; H)
+{
+  mat Hstar = chol(H, &quot;lower&quot;); 
+  vec w = dmvnInt(x, x0, Hstar);
+  vec beta = lm_cpp_I(y % sqrt(w), X.each_col() % sqrt(w));
+  return X0 * beta;
+}
+
+// [[Rcpp::export(name=&quot;local_lm_fit&quot;)]]
+vec local_lm_fit_I(vec&amp; y, mat x0, mat X0, mat&amp; x, mat&amp; X, mat&amp; H)
+{
+  int n0 = x0.n_rows;
+  vec out(n0);
+  for(int ii=0; ii &lt; n0; ii++)
+  {
+    rowvec x00 = x0.row(ii);
+    rowvec X00 = X0.row(ii);
+    out(ii) = as_scalar(local_lm_I(y, x00, X00, x, X, H));
+    if(ii % 50 == 0) {R_CheckUserInterrupt();}
+  }
+  return out;
+}</code></pre>
+<p>These two functions, as well as <code>lm_cpp</code> from earlier all combine to implement local regression. <code>local_lm_fit_I</code> loops over all rows in <code>x0</code> and <code>X0</code> and fits linear regression for a constant <span class="math inline">\(\bm{x}_0\)</span>, using weights from a Gaussian kernel, imeplemented by a multivariate normal density (given by <code>dmvnInt</code>, defined separately). <code>local_lm_I</code> simply calculates the weights and pre-multiplies them by <span class="math inline">\(\bm{y}\)</span> and <span class="math inline">\(\bm{X}\)</span> to go into the fitting function. We can source these functions and run these for a subsetted data set.</p>
+<pre class="r"><code>sourceCpp(&#39;lm_cpp.cpp&#39;)
+nsub = 2000
+
+sub = sample(1:nrow(solarAU), nsub)
+y = solarAU$logprod
+x = as.matrix(solarAU[c(&quot;tod&quot;, &quot;toy&quot;)])
+X = model.matrix(~tod+toy+I(tod^2)+I(toy^2),data=solarAU)
+x0 = x[sub, ]
+X0 = X[sub, ]
+H = diag(c(1,0.01))
+
+cpp_pred_local = local_lm_fit(y, x0, X0, x, X, H)</code></pre>
+<p>Of which we can plot, for both the predictions and the residuals.</p>
+<pre class="r"><code>predPlot = ggplot(mapping=aes(x=x0[,2], y = x0[,1], z = cpp_pred_local)) + stat_summary_hex() +
+  xlab(&quot;Time of Year&quot;) + ylab(&quot;Time of Day&quot;) + theme(legend.title = element_blank())
+resPlot = ggplot(mapping=aes(x=x0[,2], y = x0[,1], z = y[sub] - cpp_pred_local)) + stat_summary_hex() +
+  xlab(&quot;Time of Year&quot;) + ylab(&quot;Time of Day&quot;) + theme(legend.title = element_blank())
+grid.arrange(predPlot, resPlot, ncol=2)</code></pre>
+<p><img src="/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" />
+These look a lot better! There isn’t a systematic pattern in these residuals which show that the model isn’t missing anything important. Now we can check this C++ code against the basic R code.</p>
+<pre class="r"><code>library(mvtnorm)
+lmLocal &lt;- function(y, x0, X0, x, X, H){
+  w &lt;- dmvnorm(x, x0, H)
+  fit &lt;- lm(y ~ -1 + X, weights = w)
+  return( t(X0) %*% coef(fit) )
+}
+R_pred_local &lt;- sapply(1:nsub, function(ii){
+  lmLocal(y = y, x0 = x0[ii, ], X0 = X0[ii, ], x = x, X = X, H = diag(c(1, 0.1)^2))
+})
+
+all.equal(R_pred_local, as.vector(cpp_pred_local))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Since all these predictions are equal in R and Rcpp, how does the speed difference compare? This function takes a long time to run, so we will only time each of them once.</p>
+<pre class="r"><code>system.time(sapply(1:nsub, function(ii){
+  lmLocal(y = y, x0 = x0[ii, ], X0 = X0[ii, ], x = x, X = X, H = diag(c(1, 0.1)^2))
+}))</code></pre>
+<pre><code>##    user  system elapsed 
+##  23.527   0.076  23.606</code></pre>
+<pre class="r"><code>system.time(
+  local_lm_fit(y, x0, X0, x, X, H)
+)</code></pre>
+<pre><code>##    user  system elapsed 
+## 872.113   0.309 145.901</code></pre>
+<p>So the Rcpp code has come with an approximate ten times speed up again. However, this model could still be improved. We have chosen the bandwidth matrix <span class="math inline">\(\bm{H}\)</span> arbitrarily, but this could be improved with cross-validation. Whilst this is not shown here, a similar approach to that given in section 2 could be implemented.</p>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc2/rnc/" rel="next">Integrating R and C</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc2/openmp/" rel="prev">Intro to OpenMP in C&#43;&#43;</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

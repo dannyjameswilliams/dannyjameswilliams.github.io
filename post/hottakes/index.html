@@ -1,0 +1,1186 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The arrow assigment operator &lt;- is useless. Before I’m crucified by the R community, hear me out and read this post.
+Every time I read code written by an academic, lecturer or someone who uses R frequently, I come across the arrow symbol &lt;- used for assignment of variables.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/post/hottakes/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/post/hottakes/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/post/hottakes/">
+  <meta property="og:title" content="Hot Takes for R | Danny James Williams">
+  <meta property="og:description" content="The arrow assigment operator &lt;- is useless. Before I’m crucified by the R community, hear me out and read this post.
+Every time I read code written by an academic, lecturer or someone who uses R frequently, I come across the arrow symbol &lt;- used for assignment of variables."><meta property="og:image" content="http://dannyjameswilliams.co.uk/post/hottakes/featured.jpg">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/post/hottakes/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-06-28T15:39:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-06-28T15:39:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://dannyjameswilliams.co.uk/post/hottakes/"
+  },
+  "headline": "Hot Takes for R",
+  
+  "image": [
+    "http://dannyjameswilliams.co.uk/post/hottakes/featured.jpg"
+  ],
+  
+  "datePublished": "2020-06-28T15:39:00Z",
+  "dateModified": "2020-06-28T15:39:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Daniel Williams"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "University of Bristol",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "The arrow assigment operator \u0026lt;- is useless. Before I’m crucified by the R community, hear me out and read this post.\nEvery time I read code written by an academic, lecturer or someone who uses R frequently, I come across the arrow symbol \u0026lt;- used for assignment of variables."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Hot Takes for R | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Hot Takes for R</h1>
+
+  
+  <p class="page-subtitle">Why you should stop pointing and accept equality.</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span ><a href="/author/daniel-williams/">Daniel Williams</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 28, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 480px;">
+  <div style="position: relative">
+    <img src="/post/hottakes/featured_hu3d03a01dcc18bc5be0e67db3d8d209a6_920394_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>The arrow assigment operator <code>&lt;-</code> is useless. Before I’m crucified by the R community, hear me out and read this post.</p>
+<p>Every time I read code written by an academic, lecturer or someone who uses R frequently, I come across the arrow symbol <code>&lt;-</code> used for assignment of variables. Never in my career have I seen someone systematically use the equals symbol <code>=</code> across their code.</p>
+<div id="benefits-of-the-arrow" class="section level3">
+<h3>Benefits of the arrow</h3>
+<p>A frequent association with <code>&lt;-</code> is in how assignment works in R. The variable on the right hand side of the operator is assigned to the one on the left. Hence the arrow makes a lot of sense. We can also do it the other way around, for instance:</p>
+<pre class="r"><code>3 -&gt; x
+y &lt;- 5
+cat(&quot;x is&quot;, x, &quot;and y is&quot;, y, &quot;\n&quot;)</code></pre>
+<pre><code>## x is 3 and y is 5</code></pre>
+<p>So the arrow has a benefit when teaching programming, so if you’re a beginner it is obvious which way around variables are assigned. If you’re not a beginner, it might reinforce this knowledge so that you don’t make mistakes.</p>
+<p>You can also use the arrow inside of functions to assign variables, for example:</p>
+<pre class="r"><code>system.time(x &lt;- solve(matrix(rnorm(100^2), 100, 100)))</code></pre>
+<pre><code>##    user  system elapsed 
+##   0.018   0.033   0.009</code></pre>
+<p>Now we can view <code>x</code> separately, even though it was assigned inside the <code>system.time</code> function.</p>
+<pre class="r"><code>x[1:5, 1:5]</code></pre>
+<pre><code>##             [,1]       [,2]       [,3]       [,4]       [,5]
+## [1,] -0.07482568  0.6427499 -0.1947583  0.1690757 -0.2573277
+## [2,] -0.15561525  1.0841499 -0.4724514  0.3181951 -0.4211544
+## [3,] -0.32538675  1.3230322 -0.5908897  0.5176599 -0.4780499
+## [4,]  0.15819071 -0.5936676  0.2467117 -0.2535382  0.1871421
+## [5,] -0.13568061  0.5875340 -0.1513268  0.2604827 -0.1427210</code></pre>
+<p>This is perhaps its most useful application, which you cannot do with <code>=</code>. The <code>=</code> sign inside of a function argument is strictly used for matching the function argument with the variable you’re passing through.</p>
+<p>The arrow also has historical significance, since R’s predecessor, S, used <code>&lt;-</code> exclusively. This <a href="https://www.r-bloggers.com/why-do-we-use-arrow-as-an-assignment-operator/">R-bloggers post</a> explains that S was based on an older language called APL, which was designed on a keyboard that had an arrow key exactly like <code>&lt;-</code>. But our keyboards now only have a key for <code>=</code>, right?</p>
+</div>
+<div id="why-you-should-accept-the-equals-sign" class="section level3">
+<h3>Why you should accept the equals sign</h3>
+<p>But I’m here today to tell you to not use <code>&lt;-</code> and to use <code>=</code> instead. Start by asking yourself why you use the arrow? Maybe you have historical reasons and used R before 2001, or more likely, you’re following convention for coding in R that even <a href="https://google.github.io/styleguide/Rguide.html">styling guides</a> <a href="http://adv-r.had.co.nz/Style.html">recommend</a>.</p>
+<p>Firstly, no other programming language uses the arrows, at least, none of the most frequently used ones such as Python, MATLAB, C++, Julia, Javascript, etc. So if you’re like me and use R alongside other programming languages, why would you bother using <code>&lt;-</code> instead of <code>=</code>? Wouldn’t you like consistency across the languages you write in, at least so that your muscle memory doesn’t have to change depending on whether you’re fitting a Neural network in Python, or a GAM in R?</p>
+<p>Okay fair enough, maybe you don’t mind switching coding styles depending on what language you’re writing in, after all, you are going to be changing a lot more than just the assignment operator. So what other benefits does <code>=</code> have?</p>
+<ul>
+<li>There is a button for it on the keyboard.</li>
+<li>Consistency between function arguments and assignment.</li>
+<li>Increased readability and neatness since it has fewer character (admittedly, this is subjective).</li>
+<li>Similarity with equality operator (<code>==</code>).</li>
+<li>Consistency with <em>mathematics itself</em>.</li>
+</ul>
+<p>In general, I prefer to use the equals assigment operator over the arrow, because I like to code in more than just one language.</p>
+</div>
+<div id="the-neat-full-stop" class="section level3">
+<h3>The neat full stop</h3>
+<p>While I’m on the subject of the arrow, using a full stop in a variable name brings a lot of confusion. This one is a lot less controversial than disregarding the arrow in my opinion. We can name a variable in R as</p>
+<pre class="r"><code>some.variable = 1</code></pre>
+<p>This looks neat! But in other languages, this would throw an error. Why is that? Languages like Python use <code>.</code> as a class operator, and you use it to access elements of a class exclusively, so you cannot use it in variable names. But R doesn’t have this problem, right?</p>
+<p>When defining an S3 class in R, you can overwrite some default functions (such as <code>print</code> or <code>plot</code>) with a new function that handles these default operations in a different way for your specific S3 class. To do this for an S3 class called <code>mys3class</code>, you would write a new functions as follows:</p>
+<pre class="r"><code>print.mys3class = function(x, ...){
+  ...
+}
+plot.mys3class = function(x, ...){
+  ...
+}</code></pre>
+<p>Look familiar? So full stops <em>do</em> have a purpose in R apart from assigning neat variable names. For me, I don’t like using full stops for the main reason I don’t like using the <code>&lt;-</code> operator: <strong>consistency</strong>. If I’m using <code>&lt;-</code> or <code>.</code>, it will be for a specific purpose where I cant use <code>=</code> or <code>_</code> (however, these are rules that I’ve broken myself, and you can probably find instances of it in my portfolios).</p>
+<p>So whilst neither the arrow (<code>&lt;-</code>) for assignment nor the full stop (<code>.</code>) for variable naming are completely useless, better alternatives <em>do</em> exist. However, if you value your code looking neat above all else, and aren’t bothered by cross platform consistency; then you can use R’s exclusive <code>&lt;-</code>, or its inconsistent <code>.</code> without issue.</p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/r/">R</a>
+  
+  <a class="badge badge-light" href="/tag/programming/">programming</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=http://dannyjameswilliams.co.uk/post/hottakes/&amp;text=Hot%20Takes%20for%20R" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=http://dannyjameswilliams.co.uk/post/hottakes/&amp;t=Hot%20Takes%20for%20R" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Hot%20Takes%20for%20R&amp;body=http://dannyjameswilliams.co.uk/post/hottakes/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=http://dannyjameswilliams.co.uk/post/hottakes/&amp;title=Hot%20Takes%20for%20R" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Hot%20Takes%20for%20R%20http://dannyjameswilliams.co.uk/post/hottakes/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=http://dannyjameswilliams.co.uk/post/hottakes/&amp;title=Hot%20Takes%20for%20R" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/author/daniel-williams/avatar_hud775384d6e1de19a81664cb136eec910_257483_270x270_fill_q90_lanczos_center.jpg" alt="Daniel Williams">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="http://dannyjameswilliams.co.uk/">Daniel Williams</a></h5>
+        <h6 class="card-subtitle">CDT Student</h6>
+        <p class="card-text">I am a PhD student studying at the University of Bristol under the COMPASS CDT, and previously studied at the University of Exeter. My research is currently regarding statistical parameter estimation on manifolds, but am also interested in Deep Learning.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/DanielW966" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/dannyjameswilliams" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+  
+
+
+
+
+
+<section id="comments">
+  
+    <div id="commento"></div>
+
+<script src="https://cdn.commento.io/js/commento.js" defer></script>
+
+  
+</section>
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

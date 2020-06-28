@@ -1,0 +1,1065 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Numerical Integration Calculating a definite integral of the form \[ \int^b_a f(x) dx \] can be difficult when an analytical solution is not possible. We are primarily interested in integration in statistics because we want to be able to compute expectations, i.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc1/integration/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc1/integration/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc1/integration/">
+  <meta property="og:title" content="Numerical Integration | Danny James Williams">
+  <meta property="og:description" content="Numerical Integration Calculating a definite integral of the form \[ \int^b_a f(x) dx \] can be difficult when an analytical solution is not possible. We are primarily interested in integration in statistics because we want to be able to compute expectations, i."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Numerical Integration | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Numerical Integration</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="numerical-integration" class="section level2">
+<h2>Numerical Integration</h2>
+<p>Calculating a definite integral of the form
+<span class="math display">\[
+\int^b_a f(x) dx
+\]</span>
+can be difficult when an analytical solution is not possible.
+We are primarily interested in integration in statistics because we want to be able to compute expectations, i.e.
+<span class="math display">\[
+\mathbb{E}(X) = \int xf(x)dx.
+\]</span></p>
+<p>It is easier in one dimension, but as the number of dimensions increases then the methods required become more complex.</p>
+</div>
+<div id="one-dimensional-case" class="section level2">
+<h2>One-dimensional Case</h2>
+<p>In one dimension, we could use some method involving solving an ODE, of which many methods exist. Another way is <strong>quadrature</strong>; approximating the integral using multiple points across the curve and taking areas at each point.</p>
+<div id="quadrature" class="section level3">
+<h3>Quadrature</h3>
+<p>One of the most basic methods to approximate an integral involves collecting a series of shapes or ‘bins’ underneath the a curve, of which the area is known for each bin, and approximating the integral as the sum of the area of these shapes. To do this, we need to estimate the curve for which we are integrating, so we can get points at which to estimate these bins. This can be estimated with polynomial methods. The <strong>Weierstrass Approximation Theorem</strong> states that there exists a polynomial which can be used to approximate a given continuous function, within a tolerance. More formally, for <span class="math inline">\(f \in C^0([a,b])\)</span>, there exists a sequence of polynomials <span class="math inline">\(p_n\)</span> that converges uniformly to <span class="math inline">\(f\)</span> on the interval <span class="math inline">\([a,b]\)</span>, i.e.</p>
+<p><span class="math display">\[
+||f-p_n||_{\infty} = \max_{x \in [a,b]} |f(x)-p_n(x)| \to 0.
+\]</span></p>
+<p>There are many ways to approximate this polynomial, and the obvious way of doing this is by uniformly sampling across the curve, and estimating the polynomial based on these points, but we will show that this is not accurate in most cases. For example, the function
+<span class="math display">\[
+f(x) = \frac{1}{50+25\sin{[(5x)^3]}}, \qquad x \in [-1,1]
+\]</span>
+has a very complex integral to solve analytically. Wolfram Alpha gives this solution as
+<span class="math display">\[
+\int f(x) dx =  -\frac{2}{375}i \sum_{\omega:\: \omega^6 - 3\omega^4- 16i\omega^3 + 3\omega^2 - 1=0}\frac{2\omega \tan^{-1}\left( \frac{\sin 5x}{\cos 5x - \omega}\right) - i \omega \log(-2\omega \cos 5x + \omega^2 + 1)}{\omega^4 - 2\omega^2- 8 i \omega +1} ,
+\]</span>
+which would be an extreme effort to solve without a computer. With quadrature methods, the integral in this one-dimensional case can be approximated with small error due to the Weierstrass Approximation theorem.</p>
+<p>We first start by approximating the polynomial <span class="math inline">\(p_n\)</span> with a basic method of uniformly sampling across the range of <span class="math inline">\(x\)</span>. We can use Lagrange polynomials to approximate the polynomial across these uniform points. A Lagrange polynomial takes the form
+<span class="math display">\[
+p_{k-1}(x) := \sum^k_{i=1} \ell_i (x) f_i(x_i), \: \: \: \: \text{ where } \:\:\:\: \ell_i(x) = \prod^k_{j=1, j \neq i} \frac{x-x_j}{x_i-x_j},
+\]</span>
+where <span class="math inline">\(\ell_i\)</span> are the Lagrange basis polynomials. We start by setting up the function.</p>
+<pre class="r"><code>x = seq(-1, 1, len=100)
+f = function(x) 1/(50+25*sin(5*x)^3)</code></pre>
+<p>A Lagrange polynomial function can be set up in R. This function will return an approximating function, of which values of <span class="math inline">\(x\)</span> can be supplied, just like the original function <code>f</code> is set up.</p>
+<pre class="r"><code>get_lagrange_polynomial = function(f, x_points){
+  function(x){
+    basis_polynomials = array(1, c(length(x), length(x_points)))
+    for(j in 1:length(x_points)){
+      for(m in 1:length(x_points)){
+        if(m==j) next
+        basis_polynomials[,j] = basis_polynomials[,j] * ((x-x_points[m])/(x_points[j]-x_points[m]))
+      }
+    }
+    p = 0
+    for(i in 1:length(x_points)){
+      p = p + basis_polynomials[,i]*f(x_points[i])
+    }
+    return(p)
+  }
+}
+
+x_points = seq(range(x)[1], range(x)[2], length=30)
+lagrange_polynomial = get_lagrange_polynomial(f, x_points)
+plot(x, f(x), type=&quot;l&quot;)
+points(x_points, f(x_points), col=&quot;red&quot;, pch=20)
+lines(x, lagrange_polynomial(x), col=&quot;red&quot;)</code></pre>
+<p><img src="/portfolios/sc1/integration_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>We can see that the Lagrange polynomial approximation approximates the function reasonably well in the middle areas, but the approximation is completely off at the ends. This large deviation is known as <em>Runge’s phenomenon</em>, and this occurs when using polynomial interpolation and equally spaced interpolation points. This can be fixed by using <strong>Chebyshev points</strong>, which take the form
+<span class="math display">\[
+\cos \left(\frac{2i-1}{2k}\pi\right),
+\]</span>
+for <span class="math inline">\(i=1,\dots,k\)</span>. This can be simply implented in R.</p>
+<pre class="r"><code>chebyshev_points = function(k) cos(((2*seq(1,k,by=1)-1)*pi)/(2*k))
+c_points = sort(chebyshev_points(30))
+lagrange_polynomial = get_lagrange_polynomial(f, c_points)
+plot(x, f(x), type=&quot;l&quot;)
+points(c_points, f(c_points), col=&quot;red&quot;, pch=20)
+lines(x, lagrange_polynomial(x), col=&quot;red&quot;)</code></pre>
+<p><img src="/portfolios/sc1/integration_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+The function is approximated a lot better without any significant deviations from the function. Now that we have a more accurate approximation, we can estimate the area underneath the curve by using a ‘histogram’ approximation to the area. A basic method will simply sum over all small areas of the function evaluation at each point, and the distance between midpoints, i.e.
+<span class="math display">\[
+\sum^k_{i=1}w_k f(x_k),
+\]</span>
+where <span class="math inline">\(x_k\)</span> is the <span class="math inline">\(k\)</span>-th point (calculated with Chebyshev or uniform approximations), and <span class="math inline">\(w_k\)</span> is the distance between the midpoints above and below point <span class="math inline">\(x_k\)</span>.</p>
+<pre class="r"><code>hist_approximation = function(f_points, x_points, xrange=c(-1,1)){
+  midpoints = (x_points[2:(length(x_points))]+x_points[1:(length(x_points)-1)])/2
+  midpoints = c(xrange[1] ,midpoints, xrange[2])
+  diffs = diff(midpoints)
+  
+  sum(diffs*f_points)
+}
+x_points = seq(range(x)[1], range(x)[2], length=30)
+lagrange_polynomial = get_lagrange_polynomial(f, x_points)
+hist_approximation(lagrange_polynomial(x_points), x_points)</code></pre>
+<pre><code>## [1] 0.04426415</code></pre>
+<p>Which we can compare to the analytical solution to the integral.
+<span class="math display">\[
+\int^{1}_{-1} \frac{1}{50+25\sin{x}}dx \approx 0.0443078
+\]</span>
+So this isn’t too far off, but can be more approximately calculated with <strong>Simpson’s rule</strong>, given by
+<span class="math display">\[
+\int^b_a f(x) dx \approx \frac{b-a}{6} \left( f(a) + 4f\left(\frac{a+b}{2}\right) + f(b) \right).
+\]</span>
+This can be coded into R.</p>
+<pre class="r"><code>simpsons_approximation = function(f, x_points, xrange=c(-1,1)){
+  midpoints = c(xrange[1], x_points, xrange[2])
+  diffs = (midpoints[2:(length(midpoints))] - midpoints[1:(length(midpoints)-1)])/6 * (
+    f(midpoints[1:(length(midpoints)-1)]) + 4*f((midpoints[2:(length(midpoints))] +
+    midpoints[1:(length(midpoints)-1)])/2) + f(midpoints[2:(length(midpoints))])
+  )
+  
+  sum(diffs)
+}
+
+c_points = sort(chebyshev_points(30))
+simpsons_approximation(get_lagrange_polynomial(f, c_points), c_points)</code></pre>
+<pre><code>## [1] 0.044304</code></pre>
+<p>This is a closer estimate to the true value. Increasing the number of points increases the accuracy of the integral approximation.</p>
+<pre class="r"><code>n=1000
+ints = rep(NA, (n-10))
+for(b in 10:n) {
+  c_points = sort(chebyshev_points(b))
+  ints[b-10] = simpsons_approximation(f(c_points), c_points)
+}
+plot(11:n, ints, xlab=&quot;No. of Points&quot;, log=&quot;x&quot;, type=&quot;l&quot;, ylab=&quot;Approximated Area&quot;)
+abline(h=0.0443078, col=&quot;red&quot;)
+legend(&quot;topright&quot;, col=&quot;red&quot;, legend=&quot;True Integral&quot;, lwd=2, lty=1)</code></pre>
+<p><img src="/portfolios/sc1/integration_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+This plot shows that at around 35 points, the accuracy of the integral doesn’t increase significantly.</p>
+</div>
+</div>
+<div id="multi-dimensional-case" class="section level2">
+<h2>Multi-dimensional Case</h2>
+<p>Quadrature methods don’t work as well with more than one dimension. Since quadrature is based around using polynomial approximation to the real curve and calculating the area under there, this is less simple in higher dimensions, and comes with an extremely large computational complexity. <strong>Monte-Carlo</strong> algorithms provide more efficient convergence to the integral area in this case. This will not be covered in this portfolio.x</p>
+<!-- ### Monte-Carlo Methods -->
+<!-- Monte-Carlo methods are *non-deterministic*, as opposed to the deterministic approach of quadrature methods. This approach is based around computing areas on a non-regular grid, of which the sampling method is random. Due to the law of large numbers, enough random sampling will converge to the true value. This will be briefly explained in this portfolio. -->
+<!-- The multi-dimensional integral -->
+<!-- \[ -->
+<!-- I = \int_{{\Omega}}f(\overline{\mathbf{x}}) \; d \overline{\mathbf{x}}, -->
+<!-- \] -->
+<!-- where $\Omega \subseteq \mathbb{R}^n$, has volume  -->
+<!-- \[ -->
+<!-- V = \int_{\Omega}d\overline{\boldsymbol{x}}. -->
+<!-- \] -->
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc1/optimisation/" rel="next">Optimisation</a>
+  </div>
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

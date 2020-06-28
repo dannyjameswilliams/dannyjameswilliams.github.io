@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog | Danny James Williams</title>
+    <link>http://dannyjameswilliams.co.uk/post/</link>
+      <atom:link href="http://dannyjameswilliams.co.uk/post/index.xml" rel="self" type="application/rss+xml" />
+    <description>Blog</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 28 Jun 2020 15:39:00 +0000</lastBuildDate>
+    <image>
+      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <title>Blog</title>
+      <link>http://dannyjameswilliams.co.uk/post/</link>
+    </image>
+    
+    <item>
+      <title>Hot Takes for R</title>
+      <link>http://dannyjameswilliams.co.uk/post/hottakes/</link>
+      <pubDate>Sun, 28 Jun 2020 15:39:00 +0000</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/post/hottakes/</guid>
+      <description>
+
+
+&lt;p&gt;The arrow assigment operator &lt;code&gt;&amp;lt;-&lt;/code&gt; is useless. Before I’m crucified by the R community, hear me out and read this post.&lt;/p&gt;
+&lt;p&gt;Every time I read code written by an academic, lecturer or someone who uses R frequently, I come across the arrow symbol &lt;code&gt;&amp;lt;-&lt;/code&gt; used for assignment of variables. Never in my career have I seen someone systematically use the equals symbol &lt;code&gt;=&lt;/code&gt; across their code.&lt;/p&gt;
+&lt;div id=&#34;benefits-of-the-arrow&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Benefits of the arrow&lt;/h3&gt;
+&lt;p&gt;A frequent association with &lt;code&gt;&amp;lt;-&lt;/code&gt; is in how assignment works in R. The variable on the right hand side of the operator is assigned to the one on the left. Hence the arrow makes a lot of sense. We can also do it the other way around, for instance:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;3 -&amp;gt; x
+y &amp;lt;- 5
+cat(&amp;quot;x is&amp;quot;, x, &amp;quot;and y is&amp;quot;, y, &amp;quot;\n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## x is 3 and y is 5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So the arrow has a benefit when teaching programming, so if you’re a beginner it is obvious which way around variables are assigned. If you’re not a beginner, it might reinforce this knowledge so that you don’t make mistakes.&lt;/p&gt;
+&lt;p&gt;You can also use the arrow inside of functions to assign variables, for example:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;system.time(x &amp;lt;- solve(matrix(rnorm(100^2), 100, 100)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    user  system elapsed 
+##   0.018   0.033   0.009&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we can view &lt;code&gt;x&lt;/code&gt; separately, even though it was assigned inside the &lt;code&gt;system.time&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x[1:5, 1:5]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             [,1]       [,2]       [,3]       [,4]       [,5]
+## [1,] -0.07482568  0.6427499 -0.1947583  0.1690757 -0.2573277
+## [2,] -0.15561525  1.0841499 -0.4724514  0.3181951 -0.4211544
+## [3,] -0.32538675  1.3230322 -0.5908897  0.5176599 -0.4780499
+## [4,]  0.15819071 -0.5936676  0.2467117 -0.2535382  0.1871421
+## [5,] -0.13568061  0.5875340 -0.1513268  0.2604827 -0.1427210&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is perhaps its most useful application, which you cannot do with &lt;code&gt;=&lt;/code&gt;. The &lt;code&gt;=&lt;/code&gt; sign inside of a function argument is strictly used for matching the function argument with the variable you’re passing through.&lt;/p&gt;
+&lt;p&gt;The arrow also has historical significance, since R’s predecessor, S, used &lt;code&gt;&amp;lt;-&lt;/code&gt; exclusively. This &lt;a href=&#34;https://www.r-bloggers.com/why-do-we-use-arrow-as-an-assignment-operator/&#34;&gt;R-bloggers post&lt;/a&gt; explains that S was based on an older language called APL, which was designed on a keyboard that had an arrow key exactly like &lt;code&gt;&amp;lt;-&lt;/code&gt;. But our keyboards now only have a key for &lt;code&gt;=&lt;/code&gt;, right?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;why-you-should-accept-the-equals-sign&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Why you should accept the equals sign&lt;/h3&gt;
+&lt;p&gt;But I’m here today to tell you to not use &lt;code&gt;&amp;lt;-&lt;/code&gt; and to use &lt;code&gt;=&lt;/code&gt; instead. Start by asking yourself why you use the arrow? Maybe you have historical reasons and used R before 2001, or more likely, you’re following convention for coding in R that even &lt;a href=&#34;https://google.github.io/styleguide/Rguide.html&#34;&gt;styling guides&lt;/a&gt; &lt;a href=&#34;http://adv-r.had.co.nz/Style.html&#34;&gt;recommend&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Firstly, no other programming language uses the arrows, at least, none of the most frequently used ones such as Python, MATLAB, C++, Julia, Javascript, etc. So if you’re like me and use R alongside other programming languages, why would you bother using &lt;code&gt;&amp;lt;-&lt;/code&gt; instead of &lt;code&gt;=&lt;/code&gt;? Wouldn’t you like consistency across the languages you write in, at least so that your muscle memory doesn’t have to change depending on whether you’re fitting a Neural network in Python, or a GAM in R?&lt;/p&gt;
+&lt;p&gt;Okay fair enough, maybe you don’t mind switching coding styles depending on what language you’re writing in, after all, you are going to be changing a lot more than just the assignment operator. So what other benefits does &lt;code&gt;=&lt;/code&gt; have?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There is a button for it on the keyboard.&lt;/li&gt;
+&lt;li&gt;Consistency between function arguments and assignment.&lt;/li&gt;
+&lt;li&gt;Increased readability and neatness since it has fewer character (admittedly, this is subjective).&lt;/li&gt;
+&lt;li&gt;Similarity with equality operator (&lt;code&gt;==&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Consistency with &lt;em&gt;mathematics itself&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In general, I prefer to use the equals assigment operator over the arrow, because I like to code in more than just one language.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-neat-full-stop&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;The neat full stop&lt;/h3&gt;
+&lt;p&gt;While I’m on the subject of the arrow, using a full stop in a variable name brings a lot of confusion. This one is a lot less controversial than disregarding the arrow in my opinion. We can name a variable in R as&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;some.variable = 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This looks neat! But in other languages, this would throw an error. Why is that? Languages like Python use &lt;code&gt;.&lt;/code&gt; as a class operator, and you use it to access elements of a class exclusively, so you cannot use it in variable names. But R doesn’t have this problem, right?&lt;/p&gt;
+&lt;p&gt;When defining an S3 class in R, you can overwrite some default functions (such as &lt;code&gt;print&lt;/code&gt; or &lt;code&gt;plot&lt;/code&gt;) with a new function that handles these default operations in a different way for your specific S3 class. To do this for an S3 class called &lt;code&gt;mys3class&lt;/code&gt;, you would write a new functions as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print.mys3class = function(x, ...){
+  ...
+}
+plot.mys3class = function(x, ...){
+  ...
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Look familiar? So full stops &lt;em&gt;do&lt;/em&gt; have a purpose in R apart from assigning neat variable names. For me, I don’t like using full stops for the main reason I don’t like using the &lt;code&gt;&amp;lt;-&lt;/code&gt; operator: &lt;strong&gt;consistency&lt;/strong&gt;. If I’m using &lt;code&gt;&amp;lt;-&lt;/code&gt; or &lt;code&gt;.&lt;/code&gt;, it will be for a specific purpose where I cant use &lt;code&gt;=&lt;/code&gt; or &lt;code&gt;_&lt;/code&gt; (however, these are rules that I’ve broken myself, and you can probably find instances of it in my portfolios).&lt;/p&gt;
+&lt;p&gt;So whilst neither the arrow (&lt;code&gt;&amp;lt;-&lt;/code&gt;) for assignment nor the full stop (&lt;code&gt;.&lt;/code&gt;) for variable naming are completely useless, better alternatives &lt;em&gt;do&lt;/em&gt; exist. However, if you value your code looking neat above all else, and aren’t bothered by cross platform consistency; then you can use R’s exclusive &lt;code&gt;&amp;lt;-&lt;/code&gt;, or its inconsistent &lt;code&gt;.&lt;/code&gt; without issue.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Electricity Demand Forecasting Hackathon</title>
+      <link>http://dannyjameswilliams.co.uk/post/hackathon/</link>
+      <pubDate>Mon, 17 Feb 2020 15:39:00 +0000</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/post/hackathon/</guid>
+      <description>
+
+
+&lt;p&gt;In February I participated in a COMPASS hackathon, where me and my fellow students fit statistical models to try to improve predictions in forecasting electricity demand based on weather related variables.&lt;/p&gt;
+&lt;p&gt;We were fortunate to be visited by Dr Jethro Browell, a Research Fellow at the University of Strathclyde, who gave a brief lecture on how electricity demand was calculated, and how much it has changed over the last decade. After the lecture, Dr Mateo Fasiolo, a lecturer who works with us, explained a basic Generalised Additive Model (GAM) which can be used to forecast electricity demand for a particular dataset.&lt;/p&gt;
+&lt;p&gt;Our task was to output a set of predictions for a testing dataset and submit them to the group git repository. We only had access to the predictor variables of this dataset, so we wouldn’t know how well our model was doing until it was submit and checked by Dr Fasiolo, who then put all submitted scores on the projector at the front of the room. The team with the lowest root mean squared error at the end would be crowned the winner.&lt;/p&gt;
+&lt;p&gt;Me and my team “Jim” (named so because we went to the gym) performed well at the start, extending the basic GAM to include additional covariates and interactions, as well as including some feature engineering. The second team “AGang” (because all of their names began with “A”) took the edge over us by removing a single variable that we didn’t realise was actually making our model worse, and their GAM produced better predictions overall by a small margin. The third team “D &amp;amp; D” (because both their names began with a D) was having no luck at all, trying to implement a random forest model as opposed to a GAM, but their predictions were significantly off, and their code took much longer to run than ours, leaving them with little time to troubleshoot.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-1&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/hackaton.jpg&#34; alt=&#34;The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Try as we did, we were unable to do any better than our original model; but we limited our scope to a GAM, and did not try anything out-of-the-box compared to the other two teams.&lt;/p&gt;
+&lt;p&gt;The “AGang” were set to win it, until a surprise twist of fate sent “D&amp;amp;D” soaring into the lead, with predictions that had a far smaller error than anyone elses. The random forest model they were fitting before had an error, and they managed to fix the error, finish running the model and submit their predictions with only moments to spare. Thus, we came last.&lt;/p&gt;
+&lt;p&gt;This was a fun competition, even though we lost. I realise that our mistake now was that we did not include anything special in our model that accounted for different weather patterns in different regions. Our model would have done very well if it was more variable; so that certain predictors were included in some areas that had more solar power, for instance. The way which we fit the model was the same for all regions, even though they were all quite different.&lt;/p&gt;
+&lt;p&gt;You can read the article from the Bristol school of mathematics &lt;a href=&#34;http://www.bristol.ac.uk/maths/news/2020/compass-hackathon.html&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

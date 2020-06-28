@@ -1,0 +1,1579 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistical Computing 1 | Danny James Williams</title>
+    <link>http://dannyjameswilliams.co.uk/portfolios/sc1/</link>
+      <atom:link href="http://dannyjameswilliams.co.uk/portfolios/sc1/index.xml" rel="self" type="application/rss+xml" />
+    <description>Statistical Computing 1</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <title>Statistical Computing 1</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/</link>
+    </image>
+    
+    <item>
+      <title>Introduction to R</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/intro/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/intro/</guid>
+      <description>
+
+
+&lt;div id=&#34;command-console&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Command Console&lt;/h2&gt;
+&lt;p&gt;R provides a command console, which is where all code is processed. You can enter commands directly into the command console, or run them from a script. Both will result in whatever command being executed. For example, we can perform an operation such as&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;10*10&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 100&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and it will output the result. If we wanted to save the output, we assign this code to a &lt;em&gt;variable&lt;/em&gt;, which is saved into the environment.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;multiplication_variable &amp;lt;- 10*10
+multiplication_variable2 = 10*10&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So now we have two variables in our environment, &lt;code&gt;multiplication_variable&lt;/code&gt; and &lt;code&gt;multiplication_variable2&lt;/code&gt;. Both should be the same value, the only difference in how they were assigned. &lt;code&gt;multiplication_variable&lt;/code&gt; was assigned with the &lt;code&gt;&amp;lt;-&lt;/code&gt; operator, whereas &lt;code&gt;multiplication_variable2&lt;/code&gt; was assigned with the &lt;code&gt;=&lt;/code&gt; operator.&lt;/p&gt;
+&lt;p&gt;We can use the &lt;code&gt;==&lt;/code&gt; command to check whether two variables are equal. This is an equality sign, and will output either &lt;code&gt;TRUE&lt;/code&gt; or &lt;code&gt;FALSE&lt;/code&gt; (or a vector of &lt;code&gt;TRUE&lt;/code&gt; and &lt;code&gt;FALSE&lt;/code&gt; if working with vectors).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;multiplication_variable == multiplication_variable2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Confirming that the two variables are equal to each other!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;operators-and-functions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Operators and Functions&lt;/h2&gt;
+&lt;p&gt;R has many operators, too many to list here, but you can intuitively understand the basic operators such as divide (&lt;code&gt;/&lt;/code&gt;), multiply (&lt;code&gt;*&lt;/code&gt;), add (&lt;code&gt;+&lt;/code&gt;) and subtract (&lt;code&gt;-&lt;/code&gt;). Some other less common operators include the matrix multiply (&lt;code&gt;%*%&lt;/code&gt;), integer division (&lt;code&gt;%/%&lt;/code&gt;), integer modulus (&lt;code&gt;%%&lt;/code&gt;) and exponentiate (&lt;code&gt;^&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;By default, R loads in a certain number of basic packages, including &lt;code&gt;base&lt;/code&gt;, &lt;code&gt;stats&lt;/code&gt; and &lt;code&gt;utils&lt;/code&gt;. Through these packages, a large amount of functions are available, all useful. Other packages can be loaded by using the &lt;code&gt;library&lt;/code&gt; function. For example, suppose I wanted to simulate from a multivariate Normal distribution. There is no package in base R to do this, but there is a function to do this in the &lt;code&gt;MASS&lt;/code&gt; library. First, if this package is not installed then it needs to be done so by using &lt;code&gt;install.packages(&amp;quot;MASS&amp;quot;)&lt;/code&gt; (which only needs to be done once). To load the library, we run&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(MASS)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now the function should be available. To find out what arguments the function takes, and what to input to the function, we can look at its help file by running &lt;code&gt;?mvrnorm&lt;/code&gt;, this has a ‘Usage’ section detailing the following&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mvrnorm(n = 1, mu, Sigma, tol = 1e-6, empirical = FALSE, EISPACK = FALSE)
+
+n   - the number of samples required.
+mu - a vector giving the means of the variables.
+Sigma - a positive-definite symmetric matrix specifying the covariance matrix of the variables.
+tol - tolerance (relative to largest variance) for numerical lack of positive-definiteness in Sigma.
+empirical - logical. If true, mu and Sigma specify the empirical not population mean and covariance matrix.
+EISPACK - logical: values other than FALSE are an error.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So the variables in &lt;code&gt;mvrnorm&lt;/code&gt; we need to specify are &lt;code&gt;n&lt;/code&gt;, &lt;code&gt;mu&lt;/code&gt; and &lt;code&gt;Sigma&lt;/code&gt;. Let’s run the function now&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x = mvrnorm(5, mu = c(1,2), Sigma = matrix(c(1,1,1,1),2,2))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and we can look at this output by simply typing &lt;code&gt;x&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             [,1]      [,2]
+## [1,]  0.97765673 1.9776567
+## [2,]  0.49305126 1.4930513
+## [3,] -0.06323688 0.9367631
+## [4,]  0.77825704 1.7782570
+## [5,]  2.23512186 3.2351219&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice that in the specification to &lt;code&gt;mvrnorm&lt;/code&gt;, two other functions were used; &lt;code&gt;c&lt;/code&gt; and &lt;code&gt;matrix&lt;/code&gt;. If you are curious about these, look at the help files for them. Packages and functions are key to using R effectively and efficiently.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Common R</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/common/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/common/</guid>
+      <description>
+
+
+&lt;div id=&#34;performing-operations-on-vectors&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Performing operations on vectors&lt;/h2&gt;
+&lt;p&gt;In general, there are three methods that can be used to perform the same operation (such as a mathematical operation) on every element in a vector &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}\)&lt;/span&gt;. A simple way of doing this is with a &lt;strong&gt;loop&lt;/strong&gt;, which iterates once for each element in &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}\)&lt;/span&gt;, and performs the operation one at a time. &lt;strong&gt;Vectorisation&lt;/strong&gt; refers to the process of applying the same operation to every element in a vector at once, whereas the &lt;code&gt;apply&lt;/code&gt; function applies any function across a vector in a single line of code.&lt;/p&gt;
+&lt;div id=&#34;comparison-between-vectorisation-loops-and-apply&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Comparison between vectorisation, loops and &lt;code&gt;apply&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;We can test the efficiency of using vectorisation as opposed to using a loop or an &lt;code&gt;apply&lt;/code&gt; function. We will construct three pieces of code to do the same thing, that is, apply the function &lt;span class=&#34;math inline&#34;&gt;\(f(x) = \sin(x)\)&lt;/span&gt; to all elements in a vector, which is constructed of the natural numbers up to 100,000. We start by creating the vector:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x = seq(1,100000)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we can create three functions. One that uses a for loop, one that uses &lt;code&gt;apply&lt;/code&gt; and one that works by vectorising.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;loop_function = function(x){
+  y = numeric(length(x))
+  for(i in 1:length(x)){
+    y[i] = sin(x[i])
+  }
+  return(y)
+}
+
+apply_function = function(x){
+  y = apply(as.matrix(x), 1, sin)
+  return(y)
+}
+
+vector_function = function(x){
+  y = sin(x)
+  return(y)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now that the functions are constructed, we can use the inbuilt R function &lt;code&gt;system.time&lt;/code&gt; to calculate how long it takes each function to run.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;system.time(loop_function(x))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    user  system elapsed 
+##   0.058   0.000   0.080&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;system.time(apply_function(x))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    user  system elapsed 
+##   0.312   0.000   0.312&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;system.time(vector_function(x))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    user  system elapsed 
+##   0.006   0.000   0.005&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Naturally, none of these computations take very long to perform, as the process of taking the sine isn’t very complex. However, you can still see the order of which functions are the fastest. In general, vectorisation will always be more efficient than loops or &lt;code&gt;apply&lt;/code&gt; functions, and loops are faster than using &lt;code&gt;apply&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;There are cases where it will not be possible to use vectorisation to carry out a task on an array. In this case, it is necessary to construct a function to pass through &lt;code&gt;apply&lt;/code&gt;, or performing operations within a loop. In general, loops are faster and more flexible - as they allow you to do more in each iteration than a function could. Some situations where you might want to use &lt;code&gt;apply&lt;/code&gt; is to make a simple process neater in the code. If you were doing something relatively straightforward, you will save space and make the code more readable by using &lt;code&gt;apply&lt;/code&gt;, as opposed to a loop.&lt;/p&gt;
+&lt;p&gt;It is common practice to always vectorise your code when you can, as it comes with a significant speed increase, as loops and &lt;code&gt;apply&lt;/code&gt; functions are slower than vectorised code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;other-functions&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Other functions&lt;/h3&gt;
+&lt;p&gt;There are different variants of the &lt;code&gt;apply&lt;/code&gt; function depending on how your data are constructed, and how you would want your output.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apply(X, MARGIN, FUN, ...)&lt;/code&gt; is the basic apply function. &lt;code&gt;MARGIN&lt;/code&gt; refers to which dimension remains constant when performing the function. For example, &lt;code&gt;apply(sum,1,x)&lt;/code&gt; will sum across the columns, and the number of rows will remain constant.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lapply(X, FUN, ...)&lt;/code&gt; is an apply function that returns a list as its output, each element in the list corresponding to applying the given function to each value in &lt;code&gt;X&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sapply(X, FUN, ...)&lt;/code&gt; is a wrapper of &lt;code&gt;lapply&lt;/code&gt; that will simplify the output so that it is not in list form.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mapply(FUN, ...)&lt;/code&gt; is a multi-dimensional version of &lt;code&gt;sapply&lt;/code&gt;, with &lt;code&gt;mapply&lt;/code&gt; it is possible to add more than one input to the function, and it will return a vector of values for each set of inputs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;map-reduce-and-filter&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Map, Reduce and Filter&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;Map&lt;/code&gt; maps a function to a vector. This is similar to &lt;code&gt;lapply&lt;/code&gt;. For example:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x = seq(1, 3, by=1)
+f = function(a) a+5
+M = Map(f,x)
+M&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [[1]]
+## [1] 6
+## 
+## [[2]]
+## [1] 7
+## 
+## [[3]]
+## [1] 8&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This has added 5 to every element in &lt;code&gt;x&lt;/code&gt;, and returned a list of outputs for each element. In fact, &lt;code&gt;Map&lt;/code&gt; performs the same operation as &lt;code&gt;mapply&lt;/code&gt; does, which we can see in the function itself:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Map&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## function (f, ...) 
+## {
+##     f &amp;lt;- match.fun(f)
+##     mapply(FUN = f, ..., SIMPLIFY = FALSE)
+## }
+## &amp;lt;bytecode: 0x55bfca7455a8&amp;gt;
+## &amp;lt;environment: namespace:base&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;Reduce&lt;/code&gt; performs a given function on pairs of elements in a vector. The procedure is iterated from left to right, and a single value is returned. This can be done from right to left by adding the argument &lt;code&gt;right=TRUE&lt;/code&gt;. As an example, consider division:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f = function(x, y) x/y
+x = seq(1, 3, by=1)
+Reduce(f, x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.1666667&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Reduce(f, x, right=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the first case, &lt;code&gt;Reduce&lt;/code&gt; worked by dividing 1 by 2, then this result by 3. In the second case, this was in reverse, first dividing 3 by 2, then this result by 1.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Filter&lt;/code&gt; will ‘filter’ an array into values that satisfy the condition. For example&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x = seq(1,5)
+condition = function(x) x &amp;gt; 3
+Filter(condition,x)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 4 5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;Filter&lt;/code&gt; is similar to just indexing an array using &lt;code&gt;TRUE&lt;/code&gt;/&lt;code&gt;FALSE&lt;/code&gt; values, but instead of indexing using an array, it indexes using a function. However, we can inspect the interior of the function&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Filter&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## function (f, x) 
+## {
+##     ind &amp;lt;- as.logical(unlist(lapply(x, f)))
+##     x[which(ind)]
+## }
+## &amp;lt;bytecode: 0x55bfc77914d8&amp;gt;
+## &amp;lt;environment: namespace:base&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So infact, the function for &lt;code&gt;Filter&lt;/code&gt; simply uses &lt;code&gt;lapply&lt;/code&gt; to get the indices of the &lt;code&gt;TRUE&lt;/code&gt;/&lt;code&gt;FALSE&lt;/code&gt; values, and indexes the array for input &lt;code&gt;x&lt;/code&gt; with a simple subsetting.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;parallel-computing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Parallel Computing&lt;/h2&gt;
+&lt;p&gt;By using the &lt;code&gt;parallel&lt;/code&gt; package, you can make use of all processing cores on your computer. Naturally, if you only have a single core processor, this is irrelevant, but most computers in the modern day have 2, 4, 8 or more cores. Parallel computing will allow R to run up to this many proccesses at the same time. A lot of important tasks in R can be sped up with parallel computing, for example MCMC. In MCMC, using &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; cores can allow you to also run &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; chains at once, with (in theory) no slowdown.&lt;/p&gt;
+&lt;p&gt;Supercomputers generally have an extremely large number of cores, so being able to run code in parallel is important in computationally expensive programming jobs.&lt;/p&gt;
+&lt;p&gt;There are some disadvantages to this: namely that splitting a process to four different cores will also require four times as much memory. If your memory isn’t sufficient for the amount of cores that you are using, this will cause a significant slowdown.&lt;/p&gt;
+&lt;div id=&#34;using-mclapply-or-foreach&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Using &lt;code&gt;mclapply&lt;/code&gt; or &lt;code&gt;foreach&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;There are two main methods to parallelise a set of commands (or a function) in R. The first method is a parallel version of &lt;code&gt;apply&lt;/code&gt;, and the second method is a parallel version of &lt;code&gt;mclapply&lt;/code&gt;. To illustrate how these work, consider the example of an &lt;span class=&#34;math inline&#34;&gt;\(ARMA(1,1)\)&lt;/span&gt; model, which has an equation of the form
+&lt;span class=&#34;math display&#34;&gt;\[
+x_t = \epsilon_t + \alpha\epsilon_{t-1} +  \beta x_{t-1}
+\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[
+\epsilon_t \sim  N(0, 1)
+\]&lt;/span&gt;
+A function that generates an &lt;span class=&#34;math inline&#34;&gt;\(ARMA(1,1)\)&lt;/span&gt; process can be written as:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;arma11 = function(alpha=0.5, beta=1, initx, N=1000){
+  x = eps = numeric(N)
+  x[1] = initx
+  eps[1] = rnorm(1,0,1)
+  eps[2] = rnorm(1,0,1)
+  x[2] = eps[1] + alpha*eps[2] + beta*x[1]
+  
+  for(i in 3:N){
+    eps[i] = rnorm(1,0,1)
+    x[i] = eps[i] + alpha*eps[i-1] + beta*x[i-1]
+  }
+  return(x)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will generate a vector of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; values for each timestep from &lt;span class=&#34;math inline&#34;&gt;\(t=1,\dots,N\)&lt;/span&gt;. We can see a plot of this generated time series by running a simulated &lt;span class=&#34;math inline&#34;&gt;\(ARMA\)&lt;/span&gt; timeseries of length &lt;span class=&#34;math inline&#34;&gt;\(N=1000\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(1:1000, arma11(initx=0.5,N=1000),type=&amp;quot;l&amp;quot;, xlab=&amp;quot;Time (t)&amp;quot;, ylab=expression(x), main=&amp;quot;Time Series Example&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/common_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now that the functions are set up for testing, we can now set up the computer to work in parallel. This involves loading the required packages and detecting the number of cores we have available.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(parallel)
+library(MASS)
+no.cores = detectCores()
+no.cores&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 8&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So we have this many cores to work with (on my laptop, there are 8 cores). The &lt;code&gt;no.cores&lt;/code&gt; variable will be passed into the parallel computing functions. We can now use &lt;code&gt;mclapply&lt;/code&gt; to simulate this &lt;span class=&#34;math inline&#34;&gt;\(ARMA\)&lt;/span&gt; model a large amount of times, and calculate the difference from the first value and the last value as a statistic. By putting the &lt;code&gt;arma11&lt;/code&gt; function in a wrapper, we can pass it through to &lt;code&gt;mclapply&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;arma_wrapper = function(x) {
+  y = arma11(alpha=1, beta=1, initx=x, N=1000)
+  return(head(y,1) - tail(y,1))
+}
+xvals = rep(0.5,1000)
+MCLoutput = unlist(mclapply(xvals, arma_wrapper, mc.cores = no.cores))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So now, &lt;code&gt;MCLoutput&lt;/code&gt; is a vector, of length 1000, that contains the differences between the first and last value in a generated time series from an &lt;span class=&#34;math inline&#34;&gt;\(ARMA(1,1)\)&lt;/span&gt; model with &lt;span class=&#34;math inline&#34;&gt;\(\alpha=1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta=1\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(MCLoutput)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]  -5.373153  -3.740134 -88.112201  53.205845  -4.410669  21.850910&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(MCLoutput)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -0.2121396&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since this process is iterated at every time step, and ran 1000 times on top of that, it will be efficient for testing the efficiency of parallel computing. We can also construct a &lt;code&gt;foreach&lt;/code&gt; loop that will carry out the same task. The &lt;code&gt;foreach&lt;/code&gt; function is supplied by the &lt;code&gt;foreach&lt;/code&gt; library. It is similar to a &lt;code&gt;for&lt;/code&gt; loop but does not depend on each previous iteration of the loop. Instead, &lt;code&gt;foreach&lt;/code&gt; runs the contents of the loop in parallel a specified number of times.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(foreach)
+library(doParallel)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: iterators&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;registerDoParallel(no.cores)
+FEoutput = foreach(i=1:1000) %dopar% {
+  y = arma11(initx=0.5,N=1000)
+  head(y,1) - tail(y,1)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;foreach&lt;/code&gt; loop that has been set up performs the same process as the &lt;code&gt;arma_wrapper&lt;/code&gt; function earlier at each iteration, it simulates an &lt;span class=&#34;math inline&#34;&gt;\(ARMA(1,1)\)&lt;/span&gt; process with &lt;span class=&#34;math inline&#34;&gt;\(N=1000\)&lt;/span&gt; time steps 1000 times.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(unlist(FEoutput))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -22.303263  -7.588862  20.798046  41.559121  14.506028  29.758766&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(unlist(FEoutput))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -0.8435657&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now that all of the parallel methods are set up, we can time them and compare them to not using parallel at all.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;system.time(mclapply(xvals, arma_wrapper, mc.cores = no.cores))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    user  system elapsed 
+##   5.749   0.835   2.056&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;system.time(foreach(i=1:1000) %dopar% {
+  y = arma11(initx=0.5,N=1000)
+  head(y,1) - tail(y,1)
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    user  system elapsed 
+##   6.023   0.882   1.847&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;system.time(for(i in 1:1000){
+    arma11(initx=0.5,N=1000)
+  })&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    user  system elapsed 
+##   4.795   0.007   4.802&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This shows that the fastest method is &lt;code&gt;mclapply&lt;/code&gt;, which is different from the normal case of &lt;code&gt;apply&lt;/code&gt; being slower than a simple loop. Both methods significantly sped up computation time against the non-parallel version.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reproducibility</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility/</guid>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;The first aspect to being a good programmer is to ensure that your code is &lt;strong&gt;reproducible&lt;/strong&gt;. That is, if an academic unrelated to you, on the other side of the world, were to have access to your conclusions and your dataset, would they be able to reproduce your results? It is important that this is the case, otherwise it may take weeks or even months of effort for someone to catch up to the research that you have already carried out, which makes it difficult for that person to then build on the existing work.&lt;/p&gt;
+&lt;p&gt;If you have supplied your code with any publication you have created, it is also important you follow some basic &lt;strong&gt;literate programming&lt;/strong&gt; guidelines. In short, this ensures that whoever reads your code will be able to figure out what it does without too much effort. This can be done with documentation, proper commenting, or writing an Markdown document.&lt;/p&gt;
+&lt;p&gt;It is surprising nowadays how many scientific articles are released without some form of code alongside them. If code is released alongside a piece of research, every academic who reads that research should be able to reproduce the results in the article without a large amount of hassle. This would allow other scientists to build on the research, and advance the scientific community as a whole. If you don’t include your code however, your research may never be built on, as you would be making it more difficult for someone to enter your research field.&lt;/p&gt;
+&lt;p&gt;An example of literate programming and reproducibility is given below. A least square solver has been implemented on a Prostate Cancer dataset. Firstly, the example goes through the mathematics of least squares estimation, then an example is given on how to code this in R. Each step is explained, and through explaining these steps, it should be possible to reproduce the code through a greater understanding.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;reproducibility-example-implementing-a-least-square-solver-in-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Reproducibility Example: Implementing a least square solver in R&lt;/h1&gt;
+&lt;p&gt;A least squares estimator will provide coefficients that make up a function which can be used to predict some form of an output. Calling the output &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{y}\)&lt;/span&gt;, the series of inputs &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x} = (\boldsymbol{x}_1, \boldsymbol{x}_2, \dots, \boldsymbol{x}_n)^T\)&lt;/span&gt;, and the coefficients to be estimated as &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{w} = (w_0, \boldsymbol{w_1})\)&lt;/span&gt;. Here, &lt;span class=&#34;math inline&#34;&gt;\(w_0\)&lt;/span&gt; is the intercept, or the bias parameter and &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is the length of the input vector. The equation that we need to solve is:
+&lt;span class=&#34;math display&#34;&gt;\[
+\boldsymbol{w}_{LS} := \text{argmin}_{\boldsymbol{w}} \sum_{i \in D_0} \left\{y_i - f(\boldsymbol{x}_i; \boldsymbol{w})\right\}^2.
+\]&lt;/span&gt;
+This has a solution of
+&lt;span class=&#34;math display&#34;&gt;\[
+\boldsymbol{w}_{LS} = (\boldsymbol{XX}^T)^{-1}\boldsymbol{Xy}^T.
+\]&lt;/span&gt;
+Which will minimise the squared error between the actual output values &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{y}\)&lt;/span&gt; and the expected output values given by the input values &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;div id=&#34;prostate-cancer-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Prostate Cancer Data&lt;/h2&gt;
+&lt;p&gt;To give an example of using a least squares solver, we can use prostate cancer data given by the &lt;code&gt;lasso2&lt;/code&gt; package. If this package is not installed, we can use&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;install.packages(&amp;quot;lasso2&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to install it. Once this package is installed, we obtain the dataset by running the commands&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(lasso2)
+data(Prostate)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which gives us the dataset in our R environment. We start by inspecting the dataset, which can be done with&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(Prostate)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       lcavol  lweight age      lbph svi       lcp gleason pgg45       lpsa
+## 1 -0.5798185 2.769459  50 -1.386294   0 -1.386294       6     0 -0.4307829
+## 2 -0.9942523 3.319626  58 -1.386294   0 -1.386294       6     0 -0.1625189
+## 3 -0.5108256 2.691243  74 -1.386294   0 -1.386294       7    20 -0.1625189
+## 4 -1.2039728 3.282789  58 -1.386294   0 -1.386294       6     0 -0.1625189
+## 5  0.7514161 3.432373  62 -1.386294   0 -1.386294       6     0  0.3715636
+## 6 -1.0498221 3.228826  50 -1.386294   0 -1.386294       6     0  0.7654678&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here we can see all the different elements of the dataset, which are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;lcavol&lt;/code&gt;: The log of the cancer volume&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lweight&lt;/code&gt;: The log of the prostate weight&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;age&lt;/code&gt;: The individual’s age&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lbph&lt;/code&gt;: The log of the benign prostatic hyperplasia amount&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;svi&lt;/code&gt;: The seminal vesicle invasion&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lcp&lt;/code&gt;: The log of the capsular penetration&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gleason&lt;/code&gt;: The Gleason score&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pgg45&lt;/code&gt;: The percentage of the Gleason scores that are 4 or 5&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lpsa&lt;/code&gt;: The log of the prostate specific antigen&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We don’t need to understand what all of these are, but we need to define what the inputs and outputs are. We are interested in the cancer volume, so setting &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{y}\)&lt;/span&gt; as &lt;code&gt;lcavol&lt;/code&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}\)&lt;/span&gt; as the other variables would measure how these other variables affect cancer volume. We can set this by running&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y = as.vector(Prostate$lcavol)
+X = model.matrix(~., data=Prostate)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which gives us our inputs and outputs. We are selecting the &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; matrix going from 2 to &lt;code&gt;dim(Prostate)[2]&lt;/code&gt;, which means that we are selecting the Prostate dataset from the second column to the last one (not including the response as a predictor). If our output variable was in a different column, we would exclude a different column using similar methods.&lt;/p&gt;
+&lt;p&gt;Now that we have set up the inputs and outputs, we can use the solution
+&lt;span class=&#34;math display&#34;&gt;\[
+\boldsymbol{w}_{LS} = (\boldsymbol{XX}^T)^{-1}\boldsymbol{Xy}^T.
+\]&lt;/span&gt;
+to find the coefficients &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{w_{LS}}\)&lt;/span&gt;. Converting this equation into R is done with the command:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;wLS = solve(t(X) %*% X) %*% t(X) %*% y&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;t(X)&lt;/code&gt; function simply takes the transpose of the matrix. The &lt;code&gt;%*%&lt;/code&gt; function is just selecting matrix multiplication, as opposed to using &lt;code&gt;*&lt;/code&gt; which would be element-wise multiplication. The &lt;code&gt;solve&lt;/code&gt; function finds the inverse of a matrix, so &lt;code&gt;solve(X)&lt;/code&gt; would give &lt;span class=&#34;math inline&#34;&gt;\(X^{-1}\)&lt;/span&gt;. Now we have our coefficients&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;wLS&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                      [,1]
+## (Intercept) -2.997602e-14
+## lcavol       1.000000e+00
+## lweight     -1.214306e-14
+## age         -1.049508e-16
+## lbph         6.045511e-16
+## svi         -2.952673e-14
+## lcp          4.538037e-15
+## gleason      1.547373e-15
+## pgg45       -2.255141e-17
+## lpsa         1.706968e-15&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which can be used to get the predicting function &lt;span class=&#34;math inline&#34;&gt;\(f(\boldsymbol{x};\boldsymbol{w})\)&lt;/span&gt; for these given inputs.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f = X %*% wLS&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can see how close the predicted output is to the actual output with a plot. If our predictions are accurate, then they will be close to the actual output, and lie on a diagonal line. We can plot these two values against each other using the command:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(f,y,xlab = &amp;quot;Predicted Values&amp;quot;, ylab = &amp;quot;Actual Values&amp;quot;, main = &amp;quot;Log of Cancer Volume&amp;quot;)
+abline(0,1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;
+These match up almost perfectly, so our predictions are accurate.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cross-validation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Cross-validation&lt;/h2&gt;
+&lt;p&gt;Cross-validation is a general purpose method for evaluating the method of the predicting function &lt;span class=&#34;math inline&#34;&gt;\(f(\boldsymbol{x};\boldsymbol{w})\)&lt;/span&gt;. This is done by leaving &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; points out of the dataset, fitting the coefficients to the remaining dataset, then using the new coefficients to create a new predicting function which can predict the data point that was missed out. The difference between this predicted point and the actual observed point can be used as a metric to judge the accuracy of the predicting function.&lt;/p&gt;
+&lt;p&gt;In more technical terms, we split the dataset &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; into &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; distinct subsets &lt;span class=&#34;math inline&#34;&gt;\(D_1, \dots, D_k\)&lt;/span&gt;, and fit &lt;span class=&#34;math inline&#34;&gt;\(f_{-i}(\boldsymbol{x}_{-i};\boldsymbol{w})\)&lt;/span&gt; for each dataset and for &lt;span class=&#34;math inline&#34;&gt;\(i=0,\dots k\)&lt;/span&gt;. We then take the squared error between &lt;span class=&#34;math inline&#34;&gt;\(y_i\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(f(\boldsymbol{x}_{i};\boldsymbol{w})\)&lt;/span&gt;, and average across all subsets, i.e.
+&lt;span class=&#34;math display&#34;&gt;\[
+\frac{1}{k+1} \sum^k_{i=1} \left[ f(\boldsymbol{x}_{i};\boldsymbol{w}) - y_i \right]^2
+\]&lt;/span&gt;
+To do this in R, we can set up a loop that will create a new data subset on each iteration, carry out the same procedure as detailed before to obtain the coefficients and the predicting function, measure the error and repeat &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; times. This is done with:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;N = length(y)
+error = numeric(N)
+for(i in 1:N){
+  Xmini = X[-i,]
+  ymini = y[-i]
+  wLSmini = solve(t(Xmini) %*% Xmini) %*% t(Xmini) %*% ymini
+  fout = X[i,] %*% wLSmini
+  error[i] = (fout - y[i])^2
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using the indexing of &lt;code&gt;X[-i,]&lt;/code&gt; will subset &lt;code&gt;X&lt;/code&gt; to all rows except the &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;-th one. With this reduced data set, as well as only using the &lt;span class=&#34;math inline&#34;&gt;\(y_{-i}\)&lt;/span&gt; inputs, we estimate the coefficients at each iteration and then use that to calculate the squared error, which is saved in the &lt;code&gt;error&lt;/code&gt; array. To find the overall error, we just take the mean of this array.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(error)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 3.701126e-27&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;removing-features&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Removing Features&lt;/h2&gt;
+&lt;p&gt;We can use this overall squared error as a reference point, because it can be compared against the same score when removing certain inputs (columns of &lt;code&gt;X&lt;/code&gt;) to see if the prediction function is more accurate without some of these included. We can do this by setting up another loop that loops over the number of inputs, and performing the same methods as before to calculate the averages. This is done with:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;D = dim(X)[2]
+error_all = numeric(D-1)
+for(d in 2:D){
+  Xd = X[,-d] 
+  error_d = numeric(N)
+  for(i in 1:(dim(X)[1])){
+    Xmini = Xd[-i,]
+    ymini = y[-i]
+    wLSmini = solve(t(Xmini) %*% Xmini) %*% t(Xmini) %*% ymini
+    fout = Xd[i,] %*% wLSmini
+    error_d[i] = (fout - y[i])^2
+  }
+  error_all[d-1] = mean(error_d)
+} &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So this starts with setting the array &lt;code&gt;error_all&lt;/code&gt; to the length of the number of inputs. Then there is a loop which iterates over the number of inputs (excluding the first column, which corresponds to the intercept), and removes a column from &lt;code&gt;X&lt;/code&gt;, renaming it &lt;code&gt;Xd&lt;/code&gt;. Another array is set up, called &lt;code&gt;error_d&lt;/code&gt;, which is equivalent to the &lt;code&gt;error&lt;/code&gt; array from the previous section. The nested loop performs the same operation as the cross-validation before. We can inspect this array, and compare it against the previous cross-validation error:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;error_all&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 5.351267e-01 2.736666e-27 3.654340e-27 3.473490e-27 3.802165e-27
+## [6] 4.893871e-27 9.457742e-28 1.465294e-27 3.635496e-27&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mean(error)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 3.701126e-27&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So we can see that some of the cross-validation errors with a feature removed has a lower error than the original error. We can remove these variables if we want to, as it would reduce the cross-validation error. However, there is grounds for keeping the variables in the model, as the difference between errors is rather small, which we can see here.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rbind(colnames(X)[2:d],(error_all-mean(error)))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1]                [,2]                    [,3]                   
+## [1,] &amp;quot;lcavol&amp;quot;            &amp;quot;lweight&amp;quot;               &amp;quot;age&amp;quot;                  
+## [2,] &amp;quot;0.535126651390945&amp;quot; &amp;quot;-9.64460028673121e-28&amp;quot; &amp;quot;-4.67853198901128e-29&amp;quot;
+##      [,4]                    [,5]                   [,6]                 
+## [1,] &amp;quot;lbph&amp;quot;                  &amp;quot;svi&amp;quot;                  &amp;quot;lcp&amp;quot;                
+## [2,] &amp;quot;-2.27635884835842e-28&amp;quot; &amp;quot;1.01038873950454e-28&amp;quot; &amp;quot;1.1927448494611e-27&amp;quot;
+##      [,7]                    [,8]                    [,9]                  
+## [1,] &amp;quot;gleason&amp;quot;               &amp;quot;pgg45&amp;quot;                 &amp;quot;lpsa&amp;quot;                
+## [2,] &amp;quot;-2.75535156416629e-27&amp;quot; &amp;quot;-2.23583162435088e-27&amp;quot; &amp;quot;-6.5629761986902e-29&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This shows what the cross-validation error would be if we removed each of these predictors. We would generally prefer a smaller model, and the covariates with a low magnitude are likely not providing much information in the model, so we can exclude them. Overall, this would leave us with &lt;code&gt;lcp&lt;/code&gt; and &lt;code&gt;lpsa&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This is only accounting for removing &lt;em&gt;one&lt;/em&gt; predictor and leaving the others in. We could now want to consider what different combinations of input variables we could include that would result in the lowest overall error. Another thing to consider is to relax the condition of linear least squares, so that the output &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{y}\)&lt;/span&gt; could depend on some feature transform &lt;span class=&#34;math inline&#34;&gt;\(\phi(\boldsymbol{x})\)&lt;/span&gt;, which could improve the accuracy. In practice, this is an incredibly large amount of combinations, and would be nearly impossible to compare the different errors that would result in an overall ‘optimal’ model.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusions&lt;/h2&gt;
+&lt;p&gt;Using the least squares method, we have reduced the model down to having two inputs, the log of the capsular penetration and the log of the prostate specific antigen. These were the only covariates that provided sufficient information about the output, the log of the cancer volume. The parameter estimates for these covariates in a reduced model is&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;X.new = model.matrix(~lcp+lpsa,data=Prostate)
+wLS.new = solve(t(X.new) %*% X.new) %*% t(X.new) %*% y
+wLS.new&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                   [,1]
+## (Intercept) 0.09134598
+## lcp         0.32837479
+## lpsa        0.53162109&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These are reasonably large and positive values, meaning that if an individual has higher values of &lt;code&gt;lcp&lt;/code&gt; and &lt;code&gt;lpsa&lt;/code&gt;, they likely of having a higher cancer volume.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Git and GitHub</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/github/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/github/</guid>
+      <description>
+
+
+&lt;p&gt;RStudio can be used to efficiently make a package in R, and allows an accessible way of implementing version control and git integration. As an example of these processes, I have created an R package which implements a basic form of least squares regression. The following function obtains parameter estimates given a dataset and formula:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LS.model = function(formula, data){
+  ys = all.vars(formula)[1]
+  y = data[,ys]
+  X = model.matrix(formula, data)
+  wLS =  solve(t(X) %*% X) %*% t(X) %*% y
+  return(list(Parameters = wLS, df = X, y = y))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Other functions in the package include &lt;code&gt;LS.predict&lt;/code&gt; to get predictions and &lt;code&gt;LS.plot&lt;/code&gt; to plot the predicting function on top of the data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LS.predict = function(model, newdata=NULL){
+  if(is.null(newdata)) return(model$df %*% model$Parameters)
+  if(!is.null(newdata)) {
+    nd = cbind(1,newdata)
+    return((nd) %*% model$Parameters)
+    }
+}
+
+LS.plot = function(model, var = NULL, ...){
+  X = model$df
+  y = model$y
+  d = dim(X)
+  if(is.null(var)){
+    print(&amp;quot;var not specified, taking first input value&amp;quot;)
+    names = colnames(X)[colnames(X)!=&amp;quot;(Intercept)&amp;quot;]
+    var = names[1]
+  }
+  preds = LS.predict(model)
+  o = order(preds)
+  plot(X[,var], y, xlab = var, ...)
+  lines(X[o,var], preds[o], col=&amp;quot;red&amp;quot;, lwd=2)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;least-squares-example&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Least Squares Example&lt;/h3&gt;
+&lt;p&gt;To see the usage of this package, see the following example using the prostate cancer dataset from the &lt;code&gt;lasso2&lt;/code&gt; package. Firstly, starting by fitting the model:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lasso2)
+data(Prostate)
+fit = LS.model(lpsa ~ lcavol, data = Prostate)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The output &lt;code&gt;fit&lt;/code&gt; can be passed into &lt;code&gt;LS.plot&lt;/code&gt; and &lt;code&gt;LS.predict&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(LS.predict(fit))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##        [,1]
+## 1 1.0902222
+## 2 0.7921115
+## 3 1.1398502
+## 4 0.6412553
+## 5 2.0478064
+## 6 0.7521390&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LS.plot(fit, var=&amp;quot;lcavol&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/github_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;creating-the-package&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Creating the Package&lt;/h2&gt;
+&lt;p&gt;RStudio allows the creation of a package to be relatively straightforward, with an option to create a template for an R package. The package structure consists of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;DESCRIPTION&lt;/code&gt;: plain text file that contains information about the title of the package, the author, version etc.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LICENSE&lt;/code&gt;: description of copyright and licensing information for the package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;NAMESPACE&lt;/code&gt;: describes imports and exports, for example you can import another package if you are using it for your own package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;R&lt;/code&gt; folder: folder which contains all the code for the package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;man&lt;/code&gt; folder: contains documentation files to describe your functions&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;test&lt;/code&gt; folder: contains testing functions for testing the packages&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&#34;documentation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Documentation&lt;/h3&gt;
+&lt;p&gt;After installing the &lt;code&gt;devtools&lt;/code&gt; package, the &lt;code&gt;roxygen&lt;/code&gt; package can be used to automatically generate a documentation structure and populate the &lt;code&gt;NAMESPACE&lt;/code&gt; file. In RStudio, you can go to &lt;code&gt;Code -&amp;gt; Insert Roxygen skeleton&lt;/code&gt; when the cursor is inside a function to create the documentation skeleton for each function, and manually fill it in to describe the inputs, outputs, descriptions etc. of the function. Within this structure, fields are defined by the &lt;code&gt;@&lt;/code&gt; symbol, so for example &lt;code&gt;@param&lt;/code&gt; will define the input parameter of the model. As well as this, you can use &lt;code&gt;@import &amp;lt;package_name&amp;gt;&lt;/code&gt; to get Roxygen to add a particular package to the &lt;code&gt;NAMESPACE&lt;/code&gt; file. For example, the roxygen structure for &lt;code&gt;LS.model&lt;/code&gt; is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;#39; Least Squares Regression
+#&amp;#39;
+#&amp;#39; @param formula an object of class &amp;quot;formula&amp;quot;
+#&amp;#39; @param data data frame to which the formula relates
+#&amp;#39; @return list containing three elements: Parameters, df, y
+#&amp;#39; @import stats
+#&amp;#39; @examples
+#&amp;#39; df = data.frame(y = c(1,2,3,4), x = c(2,5,3,1))
+#&amp;#39; LS.model(y~x, data=df)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The documentation can be generated by running the command &lt;code&gt;devtools::document()&lt;/code&gt; (or pressing &lt;code&gt;Ctrl + Shift + D&lt;/code&gt; in RStudio).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;testing&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Testing&lt;/h3&gt;
+&lt;p&gt;In most cases, testing is done manually. After creating a function, you can put a certain amount of inputs in, and make sure that the outputs match up with what you were expecting. This can be automated with the &lt;code&gt;testthat&lt;/code&gt; package. This allows testing to be consistent throughout code changes, so if you change some code, you can run the test again to see if the outputs match with what you were expecting, without having to manually test again. The command &lt;code&gt;usethis::use_test(&amp;quot;&amp;lt;name&amp;gt;&amp;quot;)&lt;/code&gt; can be used to populate the &lt;code&gt;tests&lt;/code&gt; directory, where the testing functions are stored.&lt;/p&gt;
+&lt;p&gt;For the &lt;code&gt;LS.model&lt;/code&gt; function, some useful tests were to ensure that the output dimension &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; matched the input dimension. Using the &lt;code&gt;test_that&lt;/code&gt; and &lt;code&gt;expect_equal&lt;/code&gt; function achieved this functionality:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(testthat)
+test_that(&amp;quot;output dimension (n)&amp;quot;, {
+  df = data.frame(y=c(1,2,3,4),x=c(4,5,6,7))
+  m = LS.model(y~x,data=df)
+  expect_equal(dim(as.matrix(df))[1], 4)
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Other tests were also implemented for checking this function as well as the other functions. You can run all the tests by running &lt;code&gt;devtools:test()&lt;/code&gt; (or &lt;code&gt;Ctrl + Shift + T&lt;/code&gt; in RStudio):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; devtools::test()
+
+Loading simpleLS
+Testing simpleLS
+✔ |  OK F W S | Context
+✔ |   4       | LS.model
+✔ |   2       | LSr
+
+══ Results ═══════════════════════════════════════════════════════════
+Duration: 0.2 s
+
+OK:       6
+Failed:   0
+Warnings: 0
+Skipped:  0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This shows the tests that were passed, and can show the tests that were unsuccessful. If tests do not pass, then details will be given why, so that you know where something has gone wrong.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;coverage&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Coverage&lt;/h3&gt;
+&lt;p&gt;Another useful functionality is to test how much your tests actually test. The coverage of your tests (as a percentage) will tell you how much code is not being tested, so generally higher coverage is better. This can be implemented with the &lt;code&gt;covr&lt;/code&gt; package. Running &lt;code&gt;covr::report()&lt;/code&gt; will generate a report. For this package, this received&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;simpleLS coverage - 95.45%&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;git-integration&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Git Integration&lt;/h3&gt;
+&lt;p&gt;Git and Github allow easy access to version control, and online storage and supply of an R package. By initialising a repository for the package directory, and allowing access to it on Github, your code and package is freely available online. ‘Committing’ and then ‘pushing’ your changes and files to your repository will update your package to the latest version, and you are able to view older versions of code and previous changes you made in case something goes wrong. This is very useful in software development, for example if you want to revert to the last stable version.&lt;/p&gt;
+&lt;p&gt;The repository for this package can be found at:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://github.com/DanielWilliamsS/simpleLS&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;travis-ci-integration&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Travis CI integration&lt;/h3&gt;
+&lt;p&gt;A publicly available R package can be tested online using a tool known as Travis CI (CI - Continuous Integration). When a pull request is made, or new changes are pushed to the Github repository, Travis CI will automatically test the code using the testing functions described previously. This allows someone who downloads the package to be sure that the code works, and provides a way of automatically testing new versions of code. This is especially useful in collaborative coding projects.&lt;/p&gt;
+&lt;p&gt;Environmental variables can be included in the Travis CI settings, which allows Travis to do other things. For example, one environmental variable will test the coverage of the code testing, as described previously. Another environmental variable can enable Travis to build RMarkdown pages and deploy them to a Github pages website, allowing you to publish your html RMarkdown document online.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Performance and Debugging</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/performance/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/performance/</guid>
+      <description>
+&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/profvis/profvis.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/profvis/profvis.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/highlight/textmate.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/highlight/highlight.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/profvis-binding/profvis.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Debugging&lt;/strong&gt; is an important part of any programming process. It is unlikely that an individual will write their code correctly on the first write up, and it is generally accepted that the code will only become usable after a few debugging iterations. &lt;strong&gt;Perfomance&lt;/strong&gt; is the measure of how efficient your code is with respect to speed, so that you can do the same operation in as quick a time as possible.&lt;/p&gt;
+&lt;p&gt;In this section of the portfolio, the debugging process and the performance aspects will be explained by way of an example. This example will be a large function that is deliberately inefficiently and incorrectly written, and will be fixed and improved using different methods.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-least-squares-with-feature-transform&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Example: Least Squares with Feature Transform&lt;/h2&gt;
+&lt;p&gt;Take for example least squares regression with the choice of three basis functions; linear, quadratic, or trigonometric. This function can take one output vector &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;, and one input vector &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;, and estimate parameters &lt;span class=&#34;math inline&#34;&gt;\(w_{LS}\)&lt;/span&gt; from the solution
+&lt;span class=&#34;math display&#34;&gt;\[
+\boldsymbol{w}_{LS} = \left(\boldsymbol{\phi}(\boldsymbol{X})\boldsymbol{\phi}(\boldsymbol{X})^T +\lambda \boldsymbol{I}\right)^{-1}\boldsymbol{\phi}(\boldsymbol{X})\boldsymbol{y}^T,
+\]&lt;/span&gt;
+where &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{X}\)&lt;/span&gt; is the model matrix, and &lt;span class=&#34;math inline&#34;&gt;\(\phi\)&lt;/span&gt; is a feature transform function. The first version of this function looks like&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LS.feature.transform.fit &amp;lt;- function(y, x, ft, b){
+  
+  if(ft == &amp;quot;Polynomial&amp;quot;) basis_function = function(x) poly(x, b, raw=TRUE)
+  if(ft == &amp;quot;Linear&amp;quot;) basis_function = function(x) x 
+  if(ft == &amp;quot;Trigonometric&amp;quot;) {
+    basis_function = function(x){
+      basis = c()
+      for(i in 1:b){
+        basis = cbind(basis, sin(i*x), cos(i*x))
+      }
+      return(basis)
+    }
+  }
+  
+  Phi = matrix(NA, length(x), length(basis_function(x))+1)
+  for(i in 1:length(x)){
+    Phi[i,] = c(1, basis_function(x[i]))
+  }
+  
+  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y
+  return(wLS)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This function takes the argument &lt;code&gt;ft&lt;/code&gt;, meaning feature transform. The first thing that the function does is try to recognise which feature transform is being input, by a series of three &lt;code&gt;if&lt;/code&gt; functions. Then &lt;code&gt;basis_function&lt;/code&gt; is assigned to a function corresponding to the correct feature transform. After this, &lt;code&gt;Phi&lt;/code&gt; is set up as a matrix with the correct dimensions, that is the length of the data and the dimension of the feature space (including a column of 1’s).&lt;/p&gt;
+&lt;p&gt;Let’s test this function. Good practice is to create a series of testing functions or scripts that will test as many aspects of the function as possible. This code chunk below will test the function for each basis function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lasso2)
+data(Prostate)
+LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&amp;quot;Linear&amp;quot;,1)
+LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&amp;quot;Polynomial&amp;quot;,3)
+LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&amp;quot;Trigonometric&amp;quot;,1)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;debugging&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Debugging&lt;/h3&gt;
+&lt;p&gt;Let’s try the function for a linear (identity) feature transform. When this line is run, the following error is returned.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&amp;quot;Linear&amp;quot;,1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Error in t(Phi) %*% Phi : 
+##   requires numeric/complex matrix/vector arguments&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This error message is not informative enough to go back and fix our function immediately. We can use the &lt;code&gt;traceback&lt;/code&gt; function to get more information.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;traceback()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 2: solve(t(Phi) %*% Phi) at #20
+## 1: LS.feature.transform.fit(Prostate$lpsa, Prostate$lcavol, &amp;quot;Linear&amp;quot;, 
+       1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is not as useful here, because it does not say much more than the previous error message. We do now know that the error is on line &lt;code&gt;#20&lt;/code&gt;, but the actual problem could be before that, presumably in the definition of &lt;code&gt;Phi&lt;/code&gt;. We can also use another debugging function, called &lt;code&gt;browser()&lt;/code&gt;, which allows you to open an interactive debugging environment. From here we can interactively view all elements and find where the problem is. &lt;em&gt;Note that RStudio also allows an interactive debugging environment.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Let’s take a look at the elements in the function after the definition of &lt;code&gt;Phi&lt;/code&gt;. We can first look at the first few rows and columns of &lt;code&gt;Phi&lt;/code&gt;. The following code was run after running all other parts of the function up to the definition of &lt;code&gt;Phi&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Phi[1:5,1:5]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1]       [,2] [,3]       [,4] [,5]
+## [1,]    1 -0.5798185    1 -0.5798185    1
+## [2,]    1 -0.9942523    1 -0.9942523    1
+## [3,]    1 -0.5108256    1 -0.5108256    1
+## [4,]    1 -1.2039728    1 -1.2039728    1
+## [5,]    1  0.7514161    1  0.7514161    1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The dimension of &lt;code&gt;Phi&lt;/code&gt; is wrong, as the columns are being repeated! It should only have two columns, a column of 1’s regarding to the intercept, and a column of each &lt;span class=&#34;math inline&#34;&gt;\(\phi(x)\)&lt;/span&gt;. This error must come from where the dimension is defined, in the line &lt;code&gt;Phi = matrix(NA, length(x), length(basis_function(x))+1)&lt;/code&gt;. Looking at &lt;code&gt;Phi&lt;/code&gt; in this case, we see we do not want to use the length of the basis function, but instead the number of columns that it contains. So instead we can change &lt;code&gt;length(basis_function(x))+1&lt;/code&gt; to &lt;code&gt;dim(as.matrix(basis_function(x)))[2]+1&lt;/code&gt;. Now we run the test again.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&amp;quot;Linear&amp;quot;,1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           [,1]
+## [1,] 1.5072975
+## [2,] 0.7193204&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now the function works! We can see if the parameter estimates are correct by comparing to the output from a linear model with &lt;code&gt;lm&lt;/code&gt;, since we have the known result that &lt;span class=&#34;math inline&#34;&gt;\(w_{LS} = w_{MLE}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm(lpsa ~ lcavol, data = Prostate)$coef&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## (Intercept)      lcavol 
+##   1.5072975   0.7193204&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And ensuring that our function works for the other two feature transforms.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol, &amp;quot;Polynomial&amp;quot;, 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             [,1]
+## [1,]  1.66387139
+## [2,]  0.69613468
+## [3,] -0.18630511
+## [4,]  0.06164228&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm(lpsa ~ poly(lcavol, 3, raw=TRUE), data = Prostate)$coef&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                  (Intercept) poly(lcavol, 3, raw = TRUE)1 
+##                   1.66387139                   0.69613468 
+## poly(lcavol, 3, raw = TRUE)2 poly(lcavol, 3, raw = TRUE)3 
+##                  -0.18630511                   0.06164228&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol, &amp;quot;Trigonometric&amp;quot;, 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##            [,1]
+## [1,]  2.4198088
+## [2,]  0.3801217
+## [3,] -1.2342905
+## [4,]  0.4748111
+## [5,]  0.3759252&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;lm(lpsa ~ sin(lcavol) + cos(lcavol) + sin(2*lcavol) + cos(2*lcavol), data = Prostate)$coef&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     (Intercept)     sin(lcavol)     cos(lcavol) sin(2 * lcavol) cos(2 * lcavol) 
+##       2.4198088       0.3801217      -1.2342905       0.4748111       0.3759252&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are no errors, and our parameter estimates match those from &lt;code&gt;lm&lt;/code&gt;, so this debugging has been a success.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;performance&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Performance&lt;/h3&gt;
+&lt;p&gt;So far we have only tested this for a length &lt;span class=&#34;math inline&#34;&gt;\(n=97\)&lt;/span&gt; dataset, so performance has been relatively fast. We can use the function &lt;code&gt;microbenchmark&lt;/code&gt; from the &lt;code&gt;microbenchmark&lt;/code&gt; package to test how quickly our function runs, and gives a summary of statistics on how quickly the function runs. Before we do that, we want to have a larger data set to see more obvious difference in how our computation times are. We can do this with some simulated data.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x.test = runif(10000, 1, 5)
+y.test = rexp(10000,rate=1.5*x.test-1)
+library(microbenchmark)
+# microbenchmark(LS.feature.transform.fit(y.test,x.test,&amp;quot;Polynomial&amp;quot;,5))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This range of speeds is not bad, but could be improved. To see where we can improve the performance of our code, we can do something called &lt;em&gt;profiling&lt;/em&gt;. A statistical profiler can determine where the code is spending most of its time being run, by using operating system interrupts. An implementation of profiling in R is provided by the &lt;code&gt;profvis&lt;/code&gt; package, and the &lt;code&gt;profvis&lt;/code&gt; function. We start by running this on our function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(profvis)
+x = x.test; y = y.test; ft = &amp;quot;Polynomial&amp;quot;; b = 5
+profvis({
+  if(ft == &amp;quot;Polynomial&amp;quot;) basis_function = function(x) poly(x, b, raw=TRUE)
+  if(ft == &amp;quot;Linear&amp;quot;) basis_function = function(x) x 
+  if(ft == &amp;quot;Trigonometric&amp;quot;) {
+    basis_function = function(x){
+      basis = c()
+      for(i in 1:b){
+        basis = cbind(basis, sin(i*x), cos(i*x))
+      }
+      return(basis)
+    }
+  }
+  
+  Phi = matrix(NA, length(x), dim(as.matrix(basis_function(x)))[2]+1)
+  for(i in 1:length(x)){
+    Phi[i,] = c(1, basis_function(x[i]))
+  }
+  
+  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:100%;height:600px;&#34; class=&#34;profvis html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;message&#34;:{&#34;prof&#34;:{&#34;time&#34;:[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,3,3,3,4,4,4,4,5,5,5,6,6,7,7,7,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,13,13,13,14,14,14,15,15,15,16,16,16,16,17,17,17,18,18,19,19,19,20,20,20,21,21,21,21,22,22,22,23,23,24,24,24,25,25,25,25,26,26,26,26,27,27,27,27,28,28,29,29,29,30,30,30,31,31,31,32,32,32,33,33,33,34,34,34,34,35,35,35,36,36,36,37,37,38,38,38,39,39,40,40,40,41,41,42,42,42,43,43,43,44,44,45,45,45,46,46,46,47,47,47,47,47,47,48,48,48,49,49,49,50,51,51,51,52,52,52,52,53],&#34;depth&#34;:[18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,5,4,3,2,1,3,2,1,4,3,2,1,3,2,1,2,1,3,2,1,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,4,3,2,1,3,2,1,2,1,3,2,1,3,2,1,4,3,2,1,3,2,1,2,1,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,4,3,2,1,3,2,1,3,2,1,2,1,3,2,1,2,1,3,2,1,2,1,3,2,1,3,2,1,2,1,3,2,1,3,2,1,6,5,4,3,2,1,3,2,1,3,2,1,1,3,2,1,4,3,2,1,1],&#34;label&#34;:[&#34;delayedAssign&#34;,&#34;findCenvVar&#34;,&#34;getInlineInfo&#34;,&#34;isBaseVar&#34;,&#34;FUN&#34;,&#34;lapply&#34;,&#34;unlist&#34;,&#34;Filter&#34;,&#34;findLocalsList&#34;,&#34;funEnv&#34;,&#34;make.functionContext&#34;,&#34;cmpfun&#34;,&#34;doTryCatch&#34;,&#34;tryCatchOne&#34;,&#34;tryCatchList&#34;,&#34;tryCatch&#34;,&#34;compiler:::tryCmpfun&#34;,&#34;basis_function&#34;,&#34;get&#34;,&#34;match.fun&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;is.array&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;colnames&lt;-&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;%in%&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;match.fun&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;attributes&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;&lt;GC&gt;&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;colnames&lt;-&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;attributes&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;colnames&lt;-&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;rep.int&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;rep.int&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;is.data.frame&#34;,&#34;colnames&lt;-&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;match.fun&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;if(ft == \&#34;Polynomial\&#34;) basis_function = function(x) poly(x, b, raw=TRUE)&#34;,&#34;basis_function&#34;,&#34;length&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;colnames&lt;-&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;colnames&lt;-&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;match.fun&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;colnames&lt;-&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;colnames&lt;-&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;colnames&lt;-&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;if(ft == \&#34;Polynomial\&#34;) basis_function = function(x) poly(x, b, raw=TRUE)&#34;,&#34;basis_function&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;as.character&#34;,&#34;get&#34;,&#34;match.fun&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;outer&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;Phi[i,] = c(1, basis_function(x[i]))&#34;,&#34;if(ft == \&#34;Polynomial\&#34;) basis_function = function(x) poly(x, b, raw=TRUE)&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;%in%&#34;,&#34;structure&#34;,&#34;poly&#34;,&#34;basis_function&#34;,&#34;%*%&#34;],&#34;filenum&#34;:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,1,null,null,null,1,1,null,1,1,null,null,1,1,null,1,1,1,1,null,1,1,null,1,1,null,null,1,1,null,null,1,1,null,null,1,1,null,1,1,null,1,1,null,1,1,null,1,1,null,null,1,1,null,1,1,1,1,null,1,1,null,1,1,null,null,1,1,null,1,1,1,1,null,1,1,null,null,1,1,null,null,1,1,null,null,1,1,1,1,null,1,1,null,1,1,null,1,1,null,1,1,null,1,1,null,null,1,1,null,1,1,null,1,1,1,1,null,1,1,1,1,null,1,1,1,1,null,1,1,null,1,1,1,1,null,1,1,null,1,1,null,null,null,null,1,1,null,1,1,null,1,1,1,1,1,1,null,null,1,1,1],&#34;linenum&#34;:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,18,18,null,null,null,4,18,null,4,18,null,null,4,18,null,4,18,4,18,null,4,18,null,4,18,null,null,4,18,null,null,4,18,null,null,4,18,null,4,18,null,4,18,null,4,18,null,4,18,null,null,4,18,null,4,18,4,18,null,4,18,null,4,18,null,null,4,18,null,4,18,4,18,null,4,18,null,null,4,18,null,null,4,18,null,null,4,18,4,18,null,4,18,null,4,18,null,4,18,null,4,18,null,4,18,null,null,4,18,null,4,18,null,4,18,4,18,null,4,18,4,18,null,4,18,4,18,null,4,18,null,4,18,4,18,null,4,18,null,4,18,null,null,null,null,4,18,null,4,18,null,4,18,18,4,4,18,null,null,4,18,21],&#34;memalloc&#34;:[9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,10.3573379516602,10.3573379516602,10.3573379516602,10.3573379516602,10.3573379516602,10.6617584228516,10.6617584228516,10.6617584228516,10.7928085327148,10.7928085327148,10.7928085327148,10.7928085327148,10.9356842041016,10.9356842041016,10.9356842041016,11.1370620727539,11.1370620727539,11.4857635498047,11.4857635498047,11.4857635498047,11.7755355834961,11.7755355834961,11.7755355834961,12.1318359375,12.1318359375,12.1318359375,12.1318359375,12.2556838989258,12.2556838989258,12.2556838989258,12.2556838989258,12.6467514038086,12.6467514038086,12.6467514038086,12.6467514038086,12.9204025268555,12.9204025268555,12.9204025268555,12.9824066162109,12.9824066162109,12.9824066162109,9.10933685302734,9.10933685302734,9.10933685302734,9.28131866455078,9.28131866455078,9.28131866455078,9.45974731445312,9.45974731445312,9.45974731445312,9.45974731445312,9.83200073242188,9.83200073242188,9.83200073242188,10.0734939575195,10.0734939575195,10.2781219482422,10.2781219482422,10.2781219482422,10.3605041503906,10.3605041503906,10.3605041503906,10.6409683227539,10.6409683227539,10.6409683227539,10.6409683227539,10.8977584838867,10.8977584838867,10.8977584838867,11.0669555664062,11.0669555664062,11.2500152587891,11.2500152587891,11.2500152587891,11.6833038330078,11.6833038330078,11.6833038330078,11.6833038330078,11.8435363769531,11.8435363769531,11.8435363769531,11.8435363769531,9.03913879394531,9.03913879394531,9.03913879394531,9.03913879394531,9.24923706054688,9.24923706054688,9.57025909423828,9.57025909423828,9.57025909423828,9.84332275390625,9.84332275390625,9.84332275390625,10.0794372558594,10.0794372558594,10.0794372558594,10.3390197753906,10.3390197753906,10.3390197753906,10.5665054321289,10.5665054321289,10.5665054321289,10.6869735717773,10.6869735717773,10.6869735717773,10.6869735717773,11.0885314941406,11.0885314941406,11.0885314941406,11.1933975219727,11.1933975219727,11.1933975219727,11.4212493896484,11.4212493896484,11.6744003295898,11.6744003295898,11.6744003295898,9.05852508544922,9.05852508544922,9.35573577880859,9.35573577880859,9.35573577880859,9.75798797607422,9.75798797607422,10.0541076660156,10.0541076660156,10.0541076660156,10.4486618041992,10.4486618041992,10.4486618041992,10.6064147949219,10.6064147949219,11.0232009887695,11.0232009887695,11.0232009887695,11.1743316650391,11.1743316650391,11.1743316650391,11.5469055175781,11.5469055175781,11.5469055175781,11.5469055175781,11.5469055175781,11.5469055175781,11.7929534912109,11.7929534912109,11.7929534912109,9.10997772216797,9.10997772216797,9.10997772216797,9.43967437744141,9.74562835693359,9.74562835693359,9.74562835693359,10.0864334106445,10.0864334106445,10.0864334106445,10.0864334106445,11.6077194213867],&#34;meminc&#34;:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.574699401855469,0,0,0,0,0.304420471191406,0,0,0.131050109863281,0,0,0,0.142875671386719,0,0,0.201377868652344,0,0.348701477050781,0,0,0.289772033691406,0,0,0.356300354003906,0,0,0,0.123847961425781,0,0,0,0.391067504882812,0,0,0,0.273651123046875,0,0,0.0620040893554688,0,0,-3.87306976318359,0,0,0.171981811523438,0,0,0.178428649902344,0,0,0,0.37225341796875,0,0,0.241493225097656,0,0.204627990722656,0,0,0.0823822021484375,0,0,0.280464172363281,0,0,0,0.256790161132812,0,0,0.169197082519531,0,0.183059692382812,0,0,0.43328857421875,0,0,0,0.160232543945312,0,0,0,-2.80439758300781,0,0,0,0.210098266601562,0,0.321022033691406,0,0,0.273063659667969,0,0,0.236114501953125,0,0,0.25958251953125,0,0,0.227485656738281,0,0,0.120468139648438,0,0,0,0.401557922363281,0,0,0.104866027832031,0,0,0.227851867675781,0,0.253150939941406,0,0,-2.61587524414062,0,0.297210693359375,0,0,0.402252197265625,0,0.296119689941406,0,0,0.394554138183594,0,0,0.157752990722656,0,0.416786193847656,0,0,0.151130676269531,0,0,0.372573852539062,0,0,0,0,0,0.246047973632812,0,0,-2.68297576904297,0,0,0.329696655273438,0.305953979492188,0,0,0.340805053710938,0,0,0,1.52128601074219],&#34;filename&#34;:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,null,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;]},&#34;interval&#34;:10,&#34;files&#34;:[{&#34;filename&#34;:&#34;&lt;expr&gt;&#34;,&#34;content&#34;:&#34;library(profvis)\nx = x.test; y = y.test; ft = \&#34;Polynomial\&#34;; b = 5\nprofvis({\n  if(ft == \&#34;Polynomial\&#34;) basis_function = function(x) poly(x, b, raw=TRUE)\n  if(ft == \&#34;Linear\&#34;) basis_function = function(x) x \n  if(ft == \&#34;Trigonometric\&#34;) {\n    basis_function = function(x){\n      basis = c()\n      for(i in 1:b){\n        basis = cbind(basis, sin(i*x), cos(i*x))\n      }\n      return(basis)\n    }\n  }\n  \n  Phi = matrix(NA, length(x), dim(as.matrix(basis_function(x)))[2]+1)\n  for(i in 1:length(x)){\n    Phi[i,] = c(1, basis_function(x[i]))\n  }\n  \n  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y\n})&#34;,&#34;normpath&#34;:&#34;&lt;expr&gt;&#34;}],&#34;prof_output&#34;:&#34;/tmp/RtmpEOHPfa/file294e688a56c6.prof&#34;,&#34;highlight&#34;:{&#34;output&#34;:[&#34;^output\\$&#34;],&#34;gc&#34;:[&#34;^&lt;GC&gt;$&#34;],&#34;stacktrace&#34;:[&#34;^\\.\\.stacktraceo(n|ff)\\.\\.$&#34;]},&#34;split&#34;:&#34;h&#34;}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p&gt;Looking at this graph, we can see that most of the time and memory is spent in the &lt;code&gt;basis_function&lt;/code&gt;. This is likely due to the basis function being run at every iteration in the loop. One way of improving this would be to assign elements of &lt;code&gt;Phi&lt;/code&gt; in terms of columns instead of rows. This is because R uses &lt;em&gt;column-major storage&lt;/em&gt;, meaning that when a matrix is stored in memory, it is being assigned in chunks that correspond to columns, not rows. Therefore defining a matrix column-wise needs fewer operations than defining a matrix row-wise.&lt;/p&gt;
+&lt;p&gt;The performance can be greatly increased by &lt;em&gt;vectorising&lt;/em&gt; so that the basis function need only be applied once instead of many times (as this is where the slowdown was). This eliminates the loop as well, another source of inefficiency. We make the following changes when defining the matrix &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\phi}(\boldsymbol{x})\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Phi = as.matrix(cbind(1, basis_function(x)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here we can see that the dimensions do not need to be set up in advance. Now if we benchmark and profile the function again, we get&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Unit: milliseconds
+##                                                       expr      min       lq
+##  LS.feature.transform.fit(y.test, x.test, &amp;quot;Polynomial&amp;quot;, 5) 7.071979 15.42255
+##      mean   median       uq      max neval
+##  23.93168 20.15049 25.85308 171.5225   100&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:100%;height:600px;&#34; class=&#34;profvis html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;message&#34;:{&#34;prof&#34;:{&#34;time&#34;:[1,1,2,2,3,4,5],&#34;depth&#34;:[2,1,2,1,1,1,1],&#34;label&#34;:[&#34;solve.default&#34;,&#34;solve&#34;,&#34;solve.default&#34;,&#34;solve&#34;,&#34;%*%&#34;,&#34;%*%&#34;,&#34;%*%&#34;],&#34;filenum&#34;:[null,1,null,1,1,1,1],&#34;linenum&#34;:[null,32,null,32,32,32,32],&#34;memalloc&#34;:[11.9669342041016,11.9669342041016,11.9669342041016,11.9669342041016,12.8827972412109,12.8827972412109,12.8827972412109],&#34;meminc&#34;:[0,0,0,0,0.915863037109375,0,0],&#34;filename&#34;:[null,&#34;&lt;expr&gt;&#34;,null,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;,&#34;&lt;expr&gt;&#34;]},&#34;interval&#34;:10,&#34;files&#34;:[{&#34;filename&#34;:&#34;&lt;expr&gt;&#34;,&#34;content&#34;:&#34;LS.feature.transform.fit &lt;- function(y, x, ft, b){\n  if(ft == \&#34;Polynomial\&#34;) basis_function = function(x) poly(x, b, raw=TRUE)\n  if(ft == \&#34;Linear\&#34;) basis_function = function(x) x \n  if(ft == \&#34;Trigonometric\&#34;) {\n    basis_function = function(x){\n      basis = c()\n      for(i in 1:b){\n        basis = cbind(basis, sin(i*x), cos(i*x))\n      }\n      return(basis)\n    }\n  }\n  Phi = as.matrix(cbind(1, basis_function(x)))\n  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y\n}\nlibrary(microbenchmark)\nmicrobenchmark(LS.feature.transform.fit(y.test,x.test,\&#34;Polynomial\&#34;,5))\nprofvis({\n  if(ft == \&#34;Polynomial\&#34;) basis_function = function(x) poly(x, b, raw=TRUE)\n  if(ft == \&#34;Linear\&#34;) basis_function = function(x) x \n  if(ft == \&#34;Trigonometric\&#34;) {\n    basis_function = function(x){\n      basis = c()\n      for(i in 1:b){\n        basis = cbind(basis, sin(i*x), cos(i*x))\n      }\n      return(basis)\n    }\n  }\n  \n  Phi = as.matrix(cbind(1, basis_function(x)))\n  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y\n})&#34;,&#34;normpath&#34;:&#34;&lt;expr&gt;&#34;}],&#34;prof_output&#34;:&#34;/tmp/RtmpEOHPfa/file294e22c0c55d.prof&#34;,&#34;highlight&#34;:{&#34;output&#34;:[&#34;^output\\$&#34;],&#34;gc&#34;:[&#34;^&lt;GC&gt;$&#34;],&#34;stacktrace&#34;:[&#34;^\\.\\.stacktraceo(n|ff)\\.\\.$&#34;]},&#34;split&#34;:&#34;h&#34;}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p&gt;Here the benchmarks are significantly faster, and whilst the function seems to get stuck in the same place, the times that it gets stuck there is order of magnitudes smaller than it was previously.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;closing-thoughts&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Closing Thoughts&lt;/h2&gt;
+&lt;p&gt;In this portfolio section, we explained and showed an extended example of &lt;em&gt;debugging&lt;/em&gt;, &lt;em&gt;profiling&lt;/em&gt; and &lt;em&gt;optimising performance&lt;/em&gt;. There are better ways of implementing all of these things than what was demonstrated here.&lt;/p&gt;
+&lt;p&gt;For &lt;em&gt;debugging&lt;/em&gt;, we simply printed out the code where we thought the errors were, but a more rigorous debugging process would have involved an interactive debugger, which was discussed but not implemented. Using the &lt;code&gt;debug&lt;/code&gt; function in R would allow RStudio to go through each line of the function and show results at each point. RStudio also allows breakpoints in functions, so that when the function is run, it will stop at a breakpoint instead of having to go through every line.&lt;/p&gt;
+&lt;p&gt;For &lt;em&gt;optimising performance&lt;/em&gt;, R is generally inefficient for user written functions and scripts. Code written would be a lot more efficient and faster if it was written in a language such as C. Many core R routines and packages are written in C, greatly improving their efficiency. This can be achieved with the &lt;code&gt;RCpp&lt;/code&gt; package, which provides an accessible way of writing efficient R code in C++.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tidyverse</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse/</guid>
+      <description>
+
+
+&lt;div id=&#34;tidyverse&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tidyverse&lt;/h2&gt;
+&lt;p&gt;The &lt;em&gt;tidyverse&lt;/em&gt; is a set of packages in R that share the same programming philosophy. These packages are&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;readr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tidyr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dplyr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggplot2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;magrittr&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All these packages provide different functionalities. They can all be loaded at once by loading &lt;code&gt;library(tidyverse)&lt;/code&gt;. The combination of these packages provide an easier ‘front end’ to R. The tidyverse packages streamline the process of data manipulation compared to base R, as well as providing additional functions to simplify plotting and visualisation. This portfolio will go through an example demonstrating the usage of functions from these packages.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-energy-output-from-buildings&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Example: Energy Output from Buildings&lt;/h2&gt;
+&lt;p&gt;This dataset was obtained from the &lt;em&gt;ASHRAE - Great Energy Predictor III&lt;/em&gt;. It is a large dataset that contains information about energy meter readings from 1448 buildings, which are classified by their primary use (e.g. education), their square footage, the year they were built and the number of floors they have. Meter readings are taken at all hours of the day, and these are available for a long time period for each building separately.&lt;/p&gt;
+&lt;p&gt;This dataset is very large, the &lt;code&gt;train.csv&lt;/code&gt; training dataset file is around 386Mb, and so some processes can be very slow and cumbersome using base R functions. This is a good example of using functions from &lt;code&gt;dplyr&lt;/code&gt; and &lt;code&gt;magrittr&lt;/code&gt; to manipulate the dataset.&lt;/p&gt;
+&lt;div id=&#34;joining-and-structuring-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Joining and Structuring Data&lt;/h3&gt;
+&lt;p&gt;We have two datasets to start with - &lt;code&gt;train&lt;/code&gt; and &lt;code&gt;metadata&lt;/code&gt;, which are the training set data and the building metadata respectively. We can inspect what kind of variables are in these datasets initially by using base R functions.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(train)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   building_id meter           timestamp meter_reading
+## 1           0     0 2016-01-01 00:00:00             0
+## 2           1     0 2016-01-01 00:00:00             0
+## 3           2     0 2016-01-01 00:00:00             0
+## 4           3     0 2016-01-01 00:00:00             0
+## 5           4     0 2016-01-01 00:00:00             0
+## 6           5     0 2016-01-01 00:00:00             0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(metadata)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   site_id building_id primary_use square_feet year_built floor_count
+## 1       0           0   Education        7432       2008          NA
+## 2       0           1   Education        2720       2004          NA
+## 3       0           2   Education        5376       1991          NA
+## 4       0           3   Education       23685       2002          NA
+## 5       0           4   Education      116607       1975          NA
+## 6       0           5   Education        8000       2000          NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first goal is to combine these data sets together, and we can see that both data sets share the &lt;code&gt;building_id&lt;/code&gt; column, so these data sets need to be joined together by this. In base R, some combination of the &lt;code&gt;match&lt;/code&gt; function and subsetting would be required to do this, involving multiple lines of code and maybe some confusion. With the &lt;code&gt;right_join&lt;/code&gt; (or &lt;code&gt;left_join&lt;/code&gt;) function from &lt;code&gt;dplyr&lt;/code&gt;, the process is much simpler.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;new.train &amp;lt;- train %&amp;gt;% right_join(metadata, by = &amp;quot;building_id&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The training data set has been updated in one line with the function &lt;code&gt;right_join&lt;/code&gt;, and it now includes the columns from both &lt;code&gt;train&lt;/code&gt; and &lt;code&gt;metadata&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colnames(train)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;building_id&amp;quot;   &amp;quot;meter&amp;quot;         &amp;quot;timestamp&amp;quot;     &amp;quot;meter_reading&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;colnames(new.train)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;building_id&amp;quot;   &amp;quot;meter&amp;quot;         &amp;quot;timestamp&amp;quot;     &amp;quot;meter_reading&amp;quot;
+## [5] &amp;quot;site_id&amp;quot;       &amp;quot;primary_use&amp;quot;   &amp;quot;square_feet&amp;quot;   &amp;quot;year_built&amp;quot;   
+## [9] &amp;quot;floor_count&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When joining the data sets, the command &lt;code&gt;%&amp;gt;%&lt;/code&gt; was used. This is referred to as a ‘pipe’, and is a part of the &lt;code&gt;magrittr&lt;/code&gt; package. It iteratively performs operations such as the ones demonstrated above. In this case, it took the first input &lt;code&gt;train&lt;/code&gt;, a dataset, then performed the function &lt;code&gt;right_join&lt;/code&gt;, of which the first argument of the function was automatically defined as &lt;code&gt;train&lt;/code&gt;. Pipes are very useful in organising and structuring code, and allow you to neatly run a lot of commands in one line.&lt;/p&gt;
+&lt;p&gt;Now, imagine that we wanted to look at the average meter reading for each type of building, grouped by respective primary use, at each hour of the day. We first need to restructure our data slightly to achieve this. Since our &lt;code&gt;timestamp&lt;/code&gt; column is a string containing the date and the time of the meter reading, we can subset this to just the first two characters of the time, which are in positions 12 and 13.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;new.train$time = as.numeric(substr(new.train$timestamp, 12, 13))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This has created a new column in the &lt;code&gt;new.train&lt;/code&gt; dataframe which corresponds to which hour the meter reading was taken. Now we can pipe the &lt;code&gt;group_by&lt;/code&gt; and &lt;code&gt;summarise&lt;/code&gt; functions through &lt;code&gt;new.train&lt;/code&gt; to average over the different type of building and the time of day.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;meanreadings = new.train %&amp;gt;% group_by(time, primary_use) %&amp;gt;% 
+                    summarise(mean=mean(meter_reading))
+meanreadings&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 384 x 3
+## # Groups:   time [24]
+##     time primary_use                    mean
+##    &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;                         &amp;lt;dbl&amp;gt;
+##  1     0 Education                     4488.
+##  2     0 Entertainment/public assembly  448.
+##  3     0 Food sales and service         335.
+##  4     0 Healthcare                     757.
+##  5     0 Lodging/residential            271.
+##  6     0 Manufacturing/industrial       273.
+##  7     0 Office                         484.
+##  8     0 Other                          127.
+##  9     0 Parking                        183.
+## 10     0 Public services                264.
+## # … with 374 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that this has resulted in a &lt;em&gt;tibble&lt;/em&gt;, which is a form of a data frame. The same goals can be achieved with a tibble that would otherwise be achieved with the normal dataframe type.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plotting-and-visualising-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Plotting and Visualising Data&lt;/h3&gt;
+&lt;p&gt;To visualise the average meter readings over the course of the day, we can use the &lt;code&gt;ggplot&lt;/code&gt; function, from the &lt;code&gt;ggplot2&lt;/code&gt; package. This is a plotting package that provides easy access to different types of graphics. It also allows structure within plots, as you can save a plot object as a variable. Additions to the plot can done by simply adding other layers to the existing object. This can be seen in action here.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pl &amp;lt;- ggplot(meanreadings) + geom_line(mapping = aes(time, mean, col=primary_use), size=1.5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Initially, the &lt;code&gt;ggplot&lt;/code&gt; function was called on the data frame &lt;code&gt;meanreadings&lt;/code&gt;, initialising the plotting sequence, then the &lt;code&gt;geom_line&lt;/code&gt; layer was added. The &lt;code&gt;mapping&lt;/code&gt; argument defines what goes into the plot, so that &lt;code&gt;time&lt;/code&gt; is on the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-axis, and &lt;code&gt;mean&lt;/code&gt; is on the &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;-axis. The specification of &lt;code&gt;col=primary_use&lt;/code&gt; in &lt;code&gt;mapping&lt;/code&gt; separated the different categories and plotted their lines separately on the same plot. We can see the plot by inspecting the &lt;code&gt;pl&lt;/code&gt; object.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pl&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+This is an interesting plot, but doesn’t tell us much about the variation in meter readings on average during the day, for each building type. It does show that the ‘Education’ and ‘Services’ types of buildings on average require a lot more energy (or just have higher meter readings). To look at the variation between building types more closely, we can normalise each building type to be centred on zero by subtracting the mean across the average day and dividing by the standard deviation. This can be achieved by first creating a new data frame which includes both the mean and standard deviation.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;meanreadings2 &amp;lt;- meanreadings %&amp;gt;% group_by(primary_use) %&amp;gt;% summarise(mean2 = mean(mean), sd = sd(mean)) %&amp;gt;% right_join(meanreadings, by = &amp;quot;primary_use&amp;quot;)
+meanreadings2$norm.mean &amp;lt;- (meanreadings2$mean - meanreadings2$mean2)/meanreadings2$sd
+ggplot(meanreadings2) + geom_line(aes(time, norm.mean, col=primary_use),size=1.5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;On inspection of this plot, we can make some interpretations about the mean daily temperature based on the primary use of the building. Most of these buildings seem to follow a sine curve, where the meter readings increase at midday at a time of around 0600 to 1900. The meter readings also seem to be periodic, as at the end of the day they finish at around the value they started at. Most building types follow the same periodic structure, but we can see that the Manufacturing/industrial category has a higher peak in the morning, and the parking category has a lower peak in the evening.&lt;/p&gt;
+&lt;p&gt;We can also split this analysis by season, and inspect how the season affects the mean meter readings per day. This can be achieved by first creating a new ‘season’ column in the original data frame.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;new.train$month = substr(new.train$timestamp, 6, 7)
+new.train$season = new.train$month
+new.train$season[new.train$season==&amp;quot;02&amp;quot; | new.train$season==&amp;quot;03&amp;quot; | new.train$season==&amp;quot;04&amp;quot;] = &amp;quot;Spring&amp;quot;
+new.train$season[new.train$season==&amp;quot;05&amp;quot; | new.train$season==&amp;quot;06&amp;quot; | new.train$season==&amp;quot;07&amp;quot;] = &amp;quot;Summer&amp;quot;
+new.train$season[new.train$season==&amp;quot;08&amp;quot; | new.train$season==&amp;quot;09&amp;quot; | new.train$season==&amp;quot;10&amp;quot;] = &amp;quot;Autumn&amp;quot;
+new.train$season[new.train$season==&amp;quot;01&amp;quot; | new.train$season==&amp;quot;11&amp;quot; | new.train$season==&amp;quot;12&amp;quot;] = &amp;quot;Winter&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then by using the &lt;code&gt;group_by&lt;/code&gt;, &lt;code&gt;summarise&lt;/code&gt; and &lt;code&gt;right_join&lt;/code&gt; functions, we will make a data set that is grouped by season, time and primary use, to go into a plot.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;seasonal_readings &amp;lt;- new.train %&amp;gt;% group_by(season, time, primary_use) %&amp;gt;% 
+  summarise(mean_reading=mean(meter_reading)) 
+seasonal_readings &amp;lt;- seasonal_readings %&amp;gt;% group_by(primary_use) %&amp;gt;% 
+      summarise(mean_mean_reading = mean(mean_reading), sd = sd(mean_reading)) %&amp;gt;% right_join(seasonal_readings, by = &amp;quot;primary_use&amp;quot;)
+
+seasonal_readings$norm.mean &amp;lt;- (seasonal_readings$mean_reading - seasonal_readings$mean_mean_reading)/seasonal_readings$sd
+ggplot(seasonal_readings, aes(time, norm.mean, group=1,col=primary_use)) + 
+  geom_line(aes(group=primary_use), size=1.2)+
+  facet_wrap(~season) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The first thing to note here is that the normalisation was done &lt;em&gt;before&lt;/em&gt; the seasonal split, which is why some building types have higher normalised mean in some seasons. For example, we can see that the education category uses on average more energy in the summer than in other seasons. There is also a general shift upwards for meter readings in winter, and downwards for summer, which could be due to requiring more energy for central heating.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>(Sparse) Matrices</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/matrices/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/matrices/</guid>
+      <description>
+
+
+&lt;div id=&#34;matrices&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Matrices&lt;/h2&gt;
+&lt;p&gt;A matrix is a two-dimensional data structure. The &lt;code&gt;matrix&lt;/code&gt; function is used to create matrices, and can have multiple arguments. You can specify the names of the columns and rows by supplying a list to the &lt;code&gt;dimnames&lt;/code&gt; argument, and can choose to populate the matrix by column (default) or by row with &lt;code&gt;byrow=TRUE&lt;/code&gt;. The function &lt;code&gt;as.matrix&lt;/code&gt; will convert a relevant argument to a matrix, and &lt;code&gt;is.matrix&lt;/code&gt; results a &lt;code&gt;TRUE&lt;/code&gt; or &lt;code&gt;FALSE&lt;/code&gt; if the argument is or isn’t a matrix. We can see these here:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;A = matrix(1:12, nrow=3, ncol=4)
+A&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;A = matrix(1:12, nrow=3, ncol=4, byrow=TRUE)
+A&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;A = matrix(1:12, nrow=3, ncol=4, 
+           dimnames = list(c(&amp;quot;Row1&amp;quot;, &amp;quot;Row2&amp;quot;, &amp;quot;Row3&amp;quot;), 
+                           c(&amp;quot;Column1&amp;quot;, &amp;quot;Column2&amp;quot;, &amp;quot;Column3&amp;quot;, &amp;quot;Column4&amp;quot;)))
+A&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      Column1 Column2 Column3 Column4
+## Row1       1       4       7      10
+## Row2       2       5       8      11
+## Row3       3       6       9      12&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Accessing elements in a matrix can be done by indexing over either the column or the row. &lt;code&gt;A[,i]&lt;/code&gt; will access the &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;-th column, and &lt;code&gt;A[i,]&lt;/code&gt; will access the &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;-th row. These arguments will return a vector, and will lose the structure of the matrix. For example, if we take the 1st column of &lt;code&gt;A&lt;/code&gt; we get&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;A[,1]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Row1 Row2 Row3 
+##    1    2    3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which is not a column any more! This is important to consider when working with matrices. To keep the structure of the matrix intact, we can specify &lt;code&gt;drop=FALSE&lt;/code&gt; when indexing, e.g.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;A[,1,drop=FALSE]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      Column1
+## Row1       1
+## Row2       2
+## Row3       3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;array&lt;/code&gt; function in R works like a ‘stack of matrices’, and any number of dimensions can be specified. Instead of the &lt;code&gt;matrix&lt;/code&gt; function, &lt;code&gt;array&lt;/code&gt; takes one argument corresponding to the dimension, which is a vector; each element being the length of the corresponding dimension, i.e.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;array(1:27,c(3,3,3))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]   10   13   16
+## [2,]   11   14   17
+## [3,]   12   15   18
+## 
+## , , 3
+## 
+##      [,1] [,2] [,3]
+## [1,]   19   22   25
+## [2,]   20   23   26
+## [3,]   21   24   27&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Matrix multiplication between more than 2 matrices can also be sped up by precisely choosing the location of your brackets. Since matrix multiplication works right-to-left, the brackets need to be on the right side. For a large matrix, if we test the speeds of two forms of multiplication, we get&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;N = 1000
+M1 = matrix(rnorm(N^2),N,N)
+M2 = matrix(rnorm(N^2),N,N)
+M3 = matrix(rnorm(N^2),N,N)
+
+system.time(M1 %*% M2 %*% M3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    user  system elapsed 
+##   0.462   0.172   0.194&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;system.time(M1 %*% (M2 %*% M3))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    user  system elapsed 
+##   0.431   0.159   0.195&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;all.equal(M1 %*% M2 %*% M3, M1 %*% (M2 %*% M3))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] TRUE&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So specification of brackets is quite a bit faster, and can speed up computation times for larger problems. Note that the function &lt;code&gt;all.equal&lt;/code&gt; checks whether the two arguments are the same within some tolerance, as they are not exactly the same (see later section on Numerical types in R).&lt;/p&gt;
+&lt;div id=&#34;solving-linear-systems&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Solving linear systems&lt;/h3&gt;
+&lt;p&gt;Often a linear algebra problem we are interested in is solving &lt;span class=&#34;math inline&#34;&gt;\(A\boldsymbol{x} =\boldsymbol{b}\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x},\boldsymbol{b} \in \mathbb{R}^n\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(A \in \mathbb{R}^{n\times n}\)&lt;/span&gt;. One solution to this is simply &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x} = A^{-1}\boldsymbol{b}\)&lt;/span&gt;, but the problem here is that &lt;em&gt;getting&lt;/em&gt; the matrix inverse, as it will take of order &lt;span class=&#34;math inline&#34;&gt;\(n^3\)&lt;/span&gt; operations. For example, a 1000x1000 matrix (which is not uncommon) will take around 1000&lt;span class=&#34;math inline&#34;&gt;\(^3\)&lt;/span&gt; = 1,000,000,000 operations, which is inefficient. If you did want to solve the system this way, the function for inverting a matrix in R is &lt;code&gt;solve&lt;/code&gt;, e.g.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;A = matrix(rnorm(9),3,3)
+solve(A)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##            [,1]       [,2]      [,3]
+## [1,]  -8.888322   2.915525 -1.461660
+## [2,]  30.044457 -10.021586  3.193355
+## [3,] -11.184011   3.327956 -1.104080&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This function can also take a second argument, being the right hand side of the system, which in our case is &lt;span class=&#34;math inline&#34;&gt;\(b\)&lt;/span&gt;. This will roughly be the same as &lt;code&gt;solve(A) %*% b&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;b = c(1,2,3)
+solve(A) %*% b&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           [,1]
+## [1,] -7.442254
+## [2,] 19.581350
+## [3,] -7.840339&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;solve(A, b)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] -7.442254 19.581350 -7.840339&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Although you can see the dimension of the output is different, &lt;code&gt;solve(A) %*% b&lt;/code&gt; maintains the column structure. However, the method &lt;code&gt;solve(A,b)&lt;/code&gt; is faster than &lt;code&gt;solve(A) %*% b&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;numerical-types-in-r&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Numerical types in R&lt;/h3&gt;
+&lt;p&gt;If we were to find the ‘type’ of a normal integer in R, we get&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;typeof(2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;double&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What does it mean by a ‘double’? This means that it is a &lt;code&gt;binary64&lt;/code&gt; floating point number, i.e. the information stored in the computer for this value is stored in 64 bits; 1 bit for the &lt;em&gt;sign&lt;/em&gt; of the number, 11 bits for the &lt;em&gt;exponent&lt;/em&gt; and 52 bits for the &lt;em&gt;significant precision&lt;/em&gt;. So the largest number we can store is &lt;code&gt;2^1023&lt;/code&gt;, since&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;2^1024&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] Inf&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;simply returns &lt;code&gt;Inf&lt;/code&gt;. We know this number isn’t &lt;strong&gt;actually&lt;/strong&gt; infinity, but R recognises that it is too large, and anything over the largest number is stored as the highest possible value. This also means that really &lt;em&gt;small&lt;/em&gt; numbers aren’t stored correctly either. There is always some form of &lt;strong&gt;floating point error&lt;/strong&gt; in R, of order 2&lt;span class=&#34;math inline&#34;&gt;\(^{-52}\)&lt;/span&gt;. Showing this in practice:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(1 + 2^(-52), digits=22)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1.000000000000000222045&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(1 + 2^(-53), digits=22)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Another format R can store numbers in is in the format ‘Long’, specified by a &lt;code&gt;L&lt;/code&gt; after the number.&lt;/p&gt;
+&lt;div id=&#34;effect-on-matrices&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Effect on Matrices&lt;/h4&gt;
+&lt;p&gt;Any form of arithmetic in R is going to be affected by floating point error. Most of the time it does not cause any problems though, as it will only affect things at &lt;em&gt;really small&lt;/em&gt; or &lt;em&gt;really large&lt;/em&gt; magnitudes. Matrices are specifically succeptible to floating point errors however, as matrix multiplication contains many operations.&lt;/p&gt;
+&lt;p&gt;Let’s look at some simple matrix multiplication on large matrices and inspect whether there are floating point errors.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;N = 100  # Square Number
+A = matrix(rnorm(N),sqrt(N),sqrt(N))
+B = matrix(rnorm(N),sqrt(N),sqrt(N))
+C = matrix(rnorm(N),sqrt(N),sqrt(N))
+
+test = c(solve(A %*% (B %*% C)) - solve(A %*% B %*% C))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Since these two operations are the same, all entries in the matrix &lt;code&gt;test&lt;/code&gt; should be zero. However, this is not the case, as seen below.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(test)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+## -1.774e-11 -1.969e-12  2.685e-13  3.719e-14  2.575e-12  1.345e-11&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is due to floating point error. Not all entries in &lt;code&gt;test&lt;/code&gt; are zero, but they are very small. Most of the time, this might not make much of a difference, but when performing calculations involving small numbers this is important to consider.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sparse-matrices&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Sparse Matrices&lt;/h2&gt;
+&lt;p&gt;A sparse matrix is one where most of the entries are zero. The problem with sparse matrices in programming is that a very large matrix (for example a &lt;span class=&#34;math inline&#34;&gt;\(10000 \times 10000\)&lt;/span&gt; matrix), the computer would store &lt;em&gt;every&lt;/em&gt; element in the matrix, even though most are zero. There are various package for dealing with sparse matrices in a better way in R, but the most popular is the &lt;code&gt;Matrix&lt;/code&gt; package. This package extends the base R functionality with both sparse and dense matrices, allolwing more operations and more efficient calculations. In this package, we can use the function &lt;code&gt;rankMatrix&lt;/code&gt; to return the rank of a input matrix. For example:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;A = matrix(rnorm(25),5,5)
+c(rankMatrix(A))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 5&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A sparse matrix can be stored as a &lt;code&gt;dgCMatrix&lt;/code&gt; (where the &lt;code&gt;C&lt;/code&gt; stands for storing by column, other options are row or triplet). Let’s look at the difference between storing a sparse matrix in this way against the default way.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;A = matrix(0, 1000, 1000)
+for(i in 1:1000) A[sample(1:1000,50,1),i] = sample(1:10,50,replace=TRUE)
+B = Matrix(A, sparse=TRUE)
+A[1:4,1:15]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]
+## [1,]    0    0    0    0    0    0    0    0    0     0     0     0     0     0
+## [2,]    0    0    0    0    0    0    0    0    0     3     0     0     0     0
+## [3,]    0    0    0    7    0    0    0    0    0     0     6     0     0     0
+## [4,]    4    0    0    0    0    0   10    0    0     0     0     0     0     0
+##      [,15]
+## [1,]     0
+## [2,]     0
+## [3,]     0
+## [4,]     0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;B[1:4,1:15]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 4 x 15 sparse Matrix of class &amp;quot;dgCMatrix&amp;quot;
+##                                    
+## [1,] . . . . . .  . . . . . . . . .
+## [2,] . . . . . .  . . . 3 . . . . .
+## [3,] . . . 7 . .  . . . . 6 . . . .
+## [4,] 4 . . . . . 10 . . . . . . . .&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;c(object.size(A),object.size(B))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 8000216  590616&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So the sparse matrix is stored at a much smaller object size than a normal matrix. Note that the &lt;code&gt;Matrix&lt;/code&gt; function is part of the &lt;code&gt;Matrix&lt;/code&gt; package, not to be confused with &lt;code&gt;matrix&lt;/code&gt; from base R. The conversion to being stored as a sparse &lt;code&gt;dgCMatrix&lt;/code&gt; was done after construction of the matrix, but it could be constructed as a sparse matrix from the start. We can inspect the &lt;code&gt;dgCMatrix&lt;/code&gt; object.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;str(B)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Formal class &amp;#39;dgCMatrix&amp;#39; [package &amp;quot;Matrix&amp;quot;] with 6 slots
+##   ..@ i       : int [1:48759] 3 15 46 61 70 72 87 116 144 170 ...
+##   ..@ p       : int [1:1001] 0 50 100 148 197 245 294 344 394 444 ...
+##   ..@ Dim     : int [1:2] 1000 1000
+##   ..@ Dimnames:List of 2
+##   .. ..$ : NULL
+##   .. ..$ : NULL
+##   ..@ x       : num [1:48759] 4 10 5 6 6 8 6 9 8 4 ...
+##   ..@ factors : list()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This has a few pieces of information relating to the non-zero elements of the matrix &lt;code&gt;B&lt;/code&gt;. The often most interesting ones being the &lt;code&gt;i&lt;/code&gt; attribute: the locations of the non-zero entries, and the &lt;code&gt;x&lt;/code&gt; attribute: the non-zero entries in these corresponding spots.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;Sparse matrices can have relevant application in many scenarios. For example, in a modelling problem where you want to model the effects of different categorical predictors, you can use ‘one-hot encoding’. This replaces a multi-class input &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x} \in \{0, 1, \dots, K \}^n\)&lt;/span&gt; with a vector of 1’s and 0’s, where the location of the 1’s correspond to which class is being represented. For example, if we set up a vector of factors in R, we have&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x.factor = factor(sample(c(&amp;quot;Class1&amp;quot;, &amp;quot;Class2&amp;quot;, &amp;quot;Class3&amp;quot;, &amp;quot;Class4&amp;quot;), 20, replace=TRUE))
+x.factor&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] Class1 Class4 Class3 Class1 Class2 Class1 Class3 Class3 Class2 Class2
+## [11] Class3 Class3 Class1 Class1 Class1 Class2 Class2 Class2 Class2 Class3
+## Levels: Class1 Class2 Class3 Class4&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When fitting a model, we typically will add these entries to a model matrix, and work with that. The &lt;code&gt;model.matrix&lt;/code&gt; function in R will automatically set up one-hot encoding in this scenario.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;M = model.matrix(~x.factor)
+M&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    (Intercept) x.factorClass2 x.factorClass3 x.factorClass4
+## 1            1              0              0              0
+## 2            1              0              0              1
+## 3            1              0              1              0
+## 4            1              0              0              0
+## 5            1              1              0              0
+## 6            1              0              0              0
+## 7            1              0              1              0
+## 8            1              0              1              0
+## 9            1              1              0              0
+## 10           1              1              0              0
+## 11           1              0              1              0
+## 12           1              0              1              0
+## 13           1              0              0              0
+## 14           1              0              0              0
+## 15           1              0              0              0
+## 16           1              1              0              0
+## 17           1              1              0              0
+## 18           1              1              0              0
+## 19           1              1              0              0
+## 20           1              0              1              0
+## attr(,&amp;quot;assign&amp;quot;)
+## [1] 0 1 1 1
+## attr(,&amp;quot;contrasts&amp;quot;)
+## attr(,&amp;quot;contrasts&amp;quot;)$x.factor
+## [1] &amp;quot;contr.treatment&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This matrix is primarily made up of 1’s and 0’s, and so would be better suited to being stored as a sparse matrix.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Matrix(M, sparse=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 20 x 4 sparse Matrix of class &amp;quot;dgCMatrix&amp;quot;
+##    (Intercept) x.factorClass2 x.factorClass3 x.factorClass4
+## 1            1              .              .              .
+## 2            1              .              .              1
+## 3            1              .              1              .
+## 4            1              .              .              .
+## 5            1              1              .              .
+## 6            1              .              .              .
+## 7            1              .              1              .
+## 8            1              .              1              .
+## 9            1              1              .              .
+## 10           1              1              .              .
+## 11           1              .              1              .
+## 12           1              .              1              .
+## 13           1              .              .              .
+## 14           1              .              .              .
+## 15           1              .              .              .
+## 16           1              1              .              .
+## 17           1              1              .              .
+## 18           1              1              .              .
+## 19           1              1              .              .
+## 20           1              .              1              .&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the case of a large data set, when using categorical variables, this will speed up computation time quite significantly.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Object Oriented and Functional Programming</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/oop/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/oop/</guid>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Object oriented programming (OOP) is a programming language model that defines &lt;em&gt;objects&lt;/em&gt;; which are elements in R that contain &lt;em&gt;attributes&lt;/em&gt;, or &lt;em&gt;fields&lt;/em&gt;, which have some specification in the definition of the object itself. Objects are defined in advance, and are very useful in conceptualising coding goals, and allowing the end-user a better experience when using your functions and/or code.&lt;/p&gt;
+&lt;p&gt;Base R has three different ways of defining objects, which are the three different models:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;S3&lt;/li&gt;
+&lt;li&gt;S4&lt;/li&gt;
+&lt;li&gt;Reference Class&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All of which have their merits and disadvantages. S3 is the simplest model, and is useful for defining a basic object. S4 is more complex, as classes have to be defined explicitly, but adds more clarity and allows inclusion of integrity checks. Reference Class is more complex again, but further improves on teh structure of the class definition, through incorporation of a higher degree of encapsulation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;examples-dealing-cards-in-reference-class&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Examples: Dealing Cards in Reference Class&lt;/h2&gt;
+&lt;p&gt;For this example, I will be using the Reference Class model. This example is concerned with being able to deal a card from a standard card deck. To start with, we make a class called &lt;code&gt;Card&lt;/code&gt; which will contain two properties; the suit and the value. This is set up as follows.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Card &amp;lt;- setRefClass(&amp;quot;Card&amp;quot;,
+                    fields = c(
+                      suit = &amp;quot;character&amp;quot;,
+                      value = &amp;quot;numeric&amp;quot;,
+                      pairs = &amp;quot;numeric&amp;quot;
+                    ))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;setRefClass&lt;/code&gt; function is used to create this class, and it has the two attributes that are required of a standard card. We can set up a function to deal a random card from a deck by now specifying two more commands.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dealHand = function(n){
+  y &amp;lt;- Card$new(n)
+  return(y)
+}
+
+Card$methods(
+  initialize = function(n){
+    suits &amp;lt;- c(&amp;quot;Diamonds&amp;quot;,&amp;quot;Hearts&amp;quot;,&amp;quot;Clubs&amp;quot;,&amp;quot;Spades&amp;quot;)
+    s &amp;lt;- sample(0:51, n)
+    
+    .self$suit &amp;lt;- suits[(s %/% 13) + 1]
+    .self$value &amp;lt;-  (s %% 13)+1
+  }
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function &lt;code&gt;dealHand&lt;/code&gt; has its only input as &lt;code&gt;n&lt;/code&gt;, which is the size of the hand. The assignment here is given by the &lt;code&gt;initialize&lt;/code&gt; method in the &lt;code&gt;$methods&lt;/code&gt; substructure of &lt;code&gt;Card&lt;/code&gt;. By setting the method of &lt;code&gt;initialize&lt;/code&gt; to randomly sample both value and suit, this will deal a random card every time that &lt;code&gt;dealCard(n)&lt;/code&gt; is run. For example:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dealHand(5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Reference class object of class &amp;quot;Card&amp;quot;
+## Field &amp;quot;suit&amp;quot;:
+## [1] &amp;quot;Diamonds&amp;quot; &amp;quot;Spades&amp;quot;   &amp;quot;Clubs&amp;quot;    &amp;quot;Hearts&amp;quot;   &amp;quot;Spades&amp;quot;  
+## Field &amp;quot;value&amp;quot;:
+## [1]  9  7  5  4 11
+## Field &amp;quot;pairs&amp;quot;:
+## numeric(0)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can also add another method that will recognise if there are any pairs in the hand that has been dealt. This is done by adding an additional method to &lt;code&gt;Card$methods&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;Card$methods(
+  initialize = function(n){
+    suits &amp;lt;- c(&amp;quot;Diamonds&amp;quot;,&amp;quot;Hearts&amp;quot;,&amp;quot;Clubs&amp;quot;,&amp;quot;Spades&amp;quot;)
+    s &amp;lt;- sample(0:51, n)
+    
+    .self$suit &amp;lt;- suits[(s %/% 13) + 1]
+    .self$value &amp;lt;-  (s %% 13) + 1
+  },
+  getPairs = function(){
+    .self$pairs &amp;lt;- as.numeric(names(table(.self$value))[table(.self$value)&amp;gt;=2])
+  }
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So that now, if we are dealt a hand , we can see how many pairs there are in the hand, and what the value of the pair is:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(2)
+hand = dealHand(5)
+hand$getPairs()
+hand&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Reference class object of class &amp;quot;Card&amp;quot;
+## Field &amp;quot;suit&amp;quot;:
+## [1] &amp;quot;Hearts&amp;quot;   &amp;quot;Hearts&amp;quot;   &amp;quot;Diamonds&amp;quot; &amp;quot;Spades&amp;quot;   &amp;quot;Clubs&amp;quot;   
+## Field &amp;quot;value&amp;quot;:
+## [1]  8  2  6 11  6
+## Field &amp;quot;pairs&amp;quot;:
+## [1] 6&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Our hand here contains the 8 of Hearts, the 2 of Hearts, the 6 of Diamonds, the Jack (11) of Spades, and the 6 of Clubs. So we have two sixes, and one pair. The class &lt;code&gt;hand&lt;/code&gt; now has a new entry, a field named &lt;code&gt;pairs&lt;/code&gt;, which contains the number 6, showing 6 is our only pair.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;functional-programming&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Functional Programming&lt;/h2&gt;
+&lt;p&gt;Functional programmings is (obviously) focused on using functions. We call functions ‘first class’, because they&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Can be embedded into lists/dataframes&lt;/li&gt;
+&lt;li&gt;Can be an argument to another function&lt;/li&gt;
+&lt;li&gt;Can be returned by other functions&lt;/li&gt;
+&lt;li&gt;And more&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can consider functions as another type of variable, as you would store and use them in similar ways. For example, consider the list of functions&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mylist = list(add_function = function(x,y) x+y, subtract_function = function(x,y) x-y)
+mylist$add_function(1,2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mylist$subtract_function(2,1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can see how this could be useful, in setting a list of different functions. Applications could include including a list of link functions in some form of regression, or basis functions. Functions can also return other functions, consider&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;make_link_function = function(which_f){
+  if(which_f == &amp;quot;exponential&amp;quot;) f = function(x) exp(x)
+  if(which_f == &amp;quot;identity&amp;quot;) f = function(x) x
+  return(f)
+}
+link_function = make_link_function(&amp;quot;exponential&amp;quot;)
+link_function(1:5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1]   2.718282   7.389056  20.085537  54.598150 148.413159&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a style of function output that could be used in making a general linear model, for example, to link the parameter to the predictor.&lt;/p&gt;
+&lt;p&gt;In regards to functional programming, there are some important definitions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Pure functions&lt;/strong&gt;: A function which always gives the same output for the same inputs, and does not have any side effects. An impure function will be one that, for example, generates (pseudo) random numbers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Closures&lt;/strong&gt;: A function that outputs another function, but contains a closed variable that is defined only within the main function itself and not in global variables.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lazy evaluation&lt;/strong&gt;: The inputs to a function come from the global variables, instead of what was previously defined. For example the function &lt;code&gt;function(exp) function(x) x^exp&lt;/code&gt; returns a function that will raise &lt;code&gt;x&lt;/code&gt; to the power of &lt;code&gt;exp&lt;/code&gt;. If you change the value of &lt;code&gt;exp&lt;/code&gt; after defining the first function, it will change what power &lt;code&gt;x&lt;/code&gt; is raised to later on, even though the function was defined before &lt;code&gt;exp&lt;/code&gt; was changed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Optimisation</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/</guid>
+      <description>
+
+
+&lt;div id=&#34;numerical-optimisation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Numerical Optimisation&lt;/h2&gt;
+&lt;p&gt;The general idea in optimisation is to find a &lt;em&gt;minimum&lt;/em&gt; (or &lt;em&gt;maximum&lt;/em&gt;) of some function. Generally, our problem has the form
+&lt;span class=&#34;math display&#34;&gt;\[
+\min_{\bm{x}} f(\bm{x}).
+\]&lt;/span&gt;
+Sometimes our problem can be &lt;em&gt;constrained&lt;/em&gt;, which would take the general form
+&lt;span class=&#34;math display&#34;&gt;\[
+\min_{\boldsymbol{x}} f(\boldsymbol{x}) 
+\]&lt;/span&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\text{subject to } g_i(x) \leq 0
+\]&lt;/span&gt;
+for &lt;span class=&#34;math inline&#34;&gt;\(i=1,\dots,m\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(f:\mathbb{R}^n \to \mathbb{R}\)&lt;/span&gt;. These are important problems to solve, and it is often that there is no analytical solution to the problem, or the analytical solution is unavailable. This portfolio will explain the most popular numerical optimisation methods, and those readily available in R.&lt;/p&gt;
+&lt;div id=&#34;optimising-a-complicated-function&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Optimising a complicated function&lt;/h3&gt;
+&lt;p&gt;To demonstrate the different optimisation methods, the speeds and abilities of each, consider optimising the Rastrigin function. This is a non-convex function that takes the form
+&lt;span class=&#34;math display&#34;&gt;\[
+f(\bm{x}) = An + \sum^n_{i=1} [x_i^2-A\cos(2\pi x_i)],
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is the length of the vector &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}\)&lt;/span&gt;. We can plot this function in 3D using the &lt;code&gt;plotly&lt;/code&gt; package to inspect it.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f = function(x) A*n + sum(x^2 - A*cos(2*pi*x))
+A = 5
+n = 2
+x1 = seq(-10,10,length=100)
+x2 = seq(-10,10,length=100)
+xy = expand.grid(x1,x2)
+z = apply(xy,1,f)
+dim(z) = c(length(x1),length(x2))
+z.plot = list(x=x1, y=x2, z=z)
+image(z.plot, xlab = &amp;quot;x&amp;quot;, ylab = &amp;quot;y&amp;quot;, main = &amp;quot;Rastrigin Function&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/optimisation_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;
+
+So we are interested in optimising the function &lt;code&gt;f&lt;/code&gt;. We can see from inspection of the plot that there is a global minimum at &lt;span class=&#34;math inline&#34;&gt;\(\bm{x} = \bm{0}\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(f(\bm{0}) = 0\)&lt;/span&gt;, and likewise:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f(c(0,0))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So we will be evaluating optimisation methods based on how close they get to this true solution. We continue this portfolio by explaining the different optimisation methods, and evaluating their performance in finding the global minimum of the Rastrigin function.&lt;/p&gt;
+&lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(n=2\)&lt;/span&gt;, the gradient and hessian for this function can be calculated analytically:
+&lt;span class=&#34;math display&#34;&gt;\[
+\nabla f(\bm{x}) = \begin{pmatrix}
+2 x_1 + 2\pi A \sin(2\pi x_1) \\
+2 x_2 + 2\pi A \sin(2\pi x_2)
+\end{pmatrix}
+\]&lt;/span&gt;
+&lt;span class=&#34;math display&#34;&gt;\[
+\nabla^2 f(\bm{x}) = \begin{pmatrix}
+2 + 4\pi^2 A \cos (2\pi x_1) &amp;amp; 0 \\
+0 &amp;amp; 2 + 4\pi^2 A \cos (2\pi x_2)
+\end{pmatrix}
+\]&lt;/span&gt;
+We can construct these functions in R.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;grad_f = function(x) {
+  c(2*x[1] + 2*pi*A*sin(2*pi*x[1]),
+    2*x[2] + 2*pi*A*sin(2*pi*x[2]) )
+}
+hess_f = function(x){
+  H11 = 2 + 4*pi^2*A*sin(2*pi*x[1])
+  H22 = 2 + 4*pi^2*A*sin(2*pi*x[2])
+  return(matrix(c(H11,0,0,H22),2,2))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These analytical forms of the gradient and hessian can be supplied to various optimisation algorithms to speed up convergence.&lt;/p&gt;
+&lt;p&gt;Optimisation problems can be one or multi dimensional, where the dimension refers to the size of the parameter vector, in our case &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;. Generally, one-dimensional problems are easier to solve, as there is only one parameter value to optimise over. In statistics, we are often interested in multi-dimensional optimisation. For example, in maximum likelihood estimation we are trying to find parameter values that maximise a likelihood function, for any number of parameters. For the Rastrigin function in our example, we have taken the dimension &lt;span class=&#34;math inline&#34;&gt;\(n=2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;optimisation-methods&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Optimisation Methods&lt;/h2&gt;
+&lt;div id=&#34;gradient-descent-methods&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Gradient Descent Methods&lt;/h3&gt;
+&lt;p&gt;Iterative algorithms take the form
+&lt;span class=&#34;math display&#34;&gt;\[
+\bm{x}_{k+1} = \bm{x}_k + t \bm{d}_k, \: \: \text{ for iterations } k=0,1,\dots, 
+\]&lt;/span&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(\bm{d}_k \in \R^n\)&lt;/span&gt; is the descent direction, &lt;span class=&#34;math inline&#34;&gt;\(t_k\)&lt;/span&gt; is the stepsize.
+&lt;span class=&#34;math display&#34;&gt;\[
+f&amp;#39;(\bm{x}; \bm{d})=\nabla f(\bm{x})^T \bm{d} &amp;lt; 0.
+\]&lt;/span&gt;
+So moving &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}\)&lt;/span&gt; in the descent direction for timestep &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; decreases the function, so we move towards a minimum.
+The  is the negative gradient of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, i.e. &lt;span class=&#34;math inline&#34;&gt;\(\bm{d}_k = -\nabla f(\bm{x}_k)\)&lt;/span&gt;, or normalised &lt;span class=&#34;math inline&#34;&gt;\(\bm{d}_k = {-\nabla f(\bm{x}_k)}/{\norm{\nabla f(\bm{x})}}\)&lt;/span&gt;. We can construct a general gradient descent method in R and evaluate performance on optimising the Rastrigin function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gradient_method = function(f, x, gradient, eps=1e-4, t=0.1, maxiter=1000){
+  converged = TRUE
+  iterations = 0
+  while((!all(abs(gradient(x)) &amp;lt; eps))){
+    if(iterations &amp;gt; maxiter){
+      cat(&amp;quot;Not converged, stopping after&amp;quot;, iterations, &amp;quot;iterations \n&amp;quot;)
+      converged = FALSE
+      break
+    }
+    gradf = gradient(x)
+    d = -gradf/abs(gradf)
+    x = x - t*gradf
+    iterations = iterations + 1
+  } 
+  if(converged) {cat(&amp;quot;Number of iterations:&amp;quot;, iterations, &amp;quot;\n&amp;quot;)
+                 cat(&amp;quot;Converged!&amp;quot;)}
+  return(list(f=f(x),x=x))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This code essentially will continue running the while loop until the tolerance condition is satisfied, where the change in &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}\)&lt;/span&gt; from one iteration to another is negligible. Now we can see in which cases this will provide a solution to the problem of the Rastrigin function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gradient_method(f, x = c(1, 1), grad_f)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Not converged, stopping after 1001 iterations&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $f
+## [1] 20.44268
+## 
+## $x
+## [1] -3.085353 -3.085353&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gradient_method(f, x = c(.01, .01), grad_f)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Not converged, stopping after 1001 iterations&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $f
+## [1] 17.82949
+## 
+## $x
+## [1] -2.962366 -2.962366&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Even when the initial guess of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; was very close to zero, the true solution, this function did not converge. This shows that under a complex and highly varying function such as the Rastrigin function, the gradient method has problems. This can be improved by including a backtracking line search to dynamically change the value of the stepsize &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(t_k\)&lt;/span&gt; for each iteration &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;. This method reduces the stepsize &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; for each iteration &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; via &lt;span class=&#34;math inline&#34;&gt;\(t_k = \beta t_k\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(\beta \in (0,1)\)&lt;/span&gt; while
+&lt;span class=&#34;math display&#34;&gt;\[
+f(\bm{x}_k) - f(\bm{x}_k + t_k \bm{d}_k) &amp;lt; -\alpha\nabla f(\bm{x}_k)^T \bm{d}_k.
+\]&lt;/span&gt;
+and for &lt;span class=&#34;math inline&#34;&gt;\(\alpha \in (0,1)\)&lt;/span&gt;. We can add this to the gradient method function with the line &lt;code&gt;while( (f(x) - f(x + t*d) ) &amp;lt; (-alpha*t * t(gradf)%*%d)) t = beta*t&lt;/code&gt;. Meaning we need to specify &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt;. After this is added to the function, we have&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gradient_method(f, c(0.01,0.01), grad_f, maxiter = 10000)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Number of iterations: 1255 
+## Converged!&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $f
+## [1] 5.002503e-09
+## 
+## $x
+## [1] 5.008871e-06 5.008871e-06&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we finally have convergence! However, this is for when the initial guess was very close to the actual solution, and so in more realistic cases where we don’t know this true solution, this method is likely inefficient and inaccurate. The Newton method is an advanced form of the basic gradient descent method.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;newton-methods&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Newton Methods&lt;/h3&gt;
+&lt;p&gt;The Newton method seeks to solve the optimisation problem using evaluations of Hessians and a quadratic approximation of a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; around &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}_k\)&lt;/span&gt;. This is under the assumption is that the Hessian &lt;span class=&#34;math inline&#34;&gt;\(\nabla^2 f(\bm{x}_k)\)&lt;/span&gt; is . The unique minimiser of the quadratic approximation is
+&lt;span class=&#34;math display&#34;&gt;\[
+\bm{x}_{k+1} = \bm{x}_k - (\nabla^2 f(\bm{x}_k))^{-1} \nabla f(\bm{x}_k),
+\]&lt;/span&gt;
+which is known as . Here you can consider &lt;span class=&#34;math inline&#34;&gt;\((\nabla^2 f(\bm{x}_k))^{-1} \nabla f(\bm{x}_k)\)&lt;/span&gt; as the descent direction in a scaled gradient method. The &lt;code&gt;nlm&lt;/code&gt; function from base R uses the Newton method. It is an expensive algorithm to run, because it involves inverting a matrix, the hessian matrix of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;. Newton methods work a lot better if you can supply an algebraic expression for the hessian matrix, so that you do not need to numerically calculate the gradient on each iteration. We can use &lt;code&gt;nlm&lt;/code&gt; to test the Newton method on the Rastrigin function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f_fornlm = function(x){
+  out = f(x)
+  attr(out, &amp;#39;gradient&amp;#39;) &amp;lt;- grad_f(x)
+  attr(out, &amp;#39;hessian&amp;#39;) &amp;lt;-  hess_f(x)
+  return(out)
+}
+nlm(f, c(-4, 4), check.analyticals = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $minimum
+## [1] 3.406342e-11
+## 
+## $estimate
+## [1] -4.135221e-07 -4.131223e-07
+## 
+## $gradient
+## [1] 1.724132e-05 1.732303e-05
+## 
+## $code
+## [1] 2
+## 
+## $iterations
+## [1] 3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So this converged to the true solution in a surprisingly small number of iterations. The likely reason for this is due to Newton’s method using a quadratic approximation, and the Rastrigin function taking a quadratic form.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;bfgs&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;BFGS&lt;/h3&gt;
+&lt;p&gt;In complex cases, the hessian cannot be supplied analytically. Even if it can be supplied analytically, in high dimensions the hessian is a very large matrix, which makes it computationally expensive to invert for each iteration. The BFGS method approximates the hessian matrix, increasing computability and efficiency. The BFGS method is the most common quasi-Newton method, and it is one of the methods that can be suppled to the &lt;code&gt;optim&lt;/code&gt; function. It approximates the hessian matrix with &lt;span class=&#34;math inline&#34;&gt;\(B_k\)&lt;/span&gt;, and for iterations &lt;span class=&#34;math inline&#34;&gt;\(k=0,1,\dots\)&lt;/span&gt;, it has the following basic algorithm:&lt;/p&gt;
+&lt;p&gt;Initialise &lt;span class=&#34;math inline&#34;&gt;\(B_0 = I\)&lt;/span&gt; and initial guess &lt;span class=&#34;math inline&#34;&gt;\(x_0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Obtain a direction &lt;span class=&#34;math inline&#34;&gt;\(\bm{d}_k\)&lt;/span&gt; through the solution of &lt;span class=&#34;math inline&#34;&gt;\(B_k \bm{d}_k = - \nabla f(\bm{x}_k)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Obtain a stepsize &lt;span class=&#34;math inline&#34;&gt;\(t_k\)&lt;/span&gt; by line search &lt;span class=&#34;math inline&#34;&gt;\(t_k = \text{argmin} f(\bm{x}_k + t\bm{d}_k)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Set &lt;span class=&#34;math inline&#34;&gt;\(s_k = t_k \bm{d}_k\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Update &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}_{k+1} = \bm{x}_k + \bm{s}_k\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Set &lt;span class=&#34;math inline&#34;&gt;\(\bm{y}_k = \nabla f(\bm{x}_{k+1}) - \nabla f(\bm{x}_k)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Update the hessian approximation &lt;span class=&#34;math inline&#34;&gt;\(B_{k+1} = B_k + \frac{\bm{y}_k\bm{y}_k^T}{\bm{y}_k^T \bm{s}_k} - \frac{B_k \bm{s}_k \bm{s}_k^T B_k}{\bm{s}_k^T B_k \bm{s}_k}\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;BFGS is the fastest method that is guaranteed convergence, but has its downsides. BFGS stores the matrices &lt;span class=&#34;math inline&#34;&gt;\(B_k\)&lt;/span&gt; in memory, so if your dimension is high (i.e. a large amount of parameters), these matrices are going to be large and storing them is inefficient. Another version of BFGS is the low memory version of BFGS, named ‘L-BGFS’, which only stores some of the vectors that &lt;em&gt;represent&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(B_k\)&lt;/span&gt;. This method is almost as fast. In general, you should use BFGS if you can, but if your dimension is too high, reduce down to L-BFGS.&lt;/p&gt;
+&lt;p&gt;This is a very good but complicated method. Luckily, the function &lt;code&gt;optim&lt;/code&gt; from the &lt;code&gt;stats&lt;/code&gt; package in R has the ability to optimise with the BFGS method. Testing this on the Rastrigin function gives&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;optim(c(1,1), f, method=&amp;quot;BFGS&amp;quot;, gr = grad_f)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $par
+## [1] 0.9899629 0.9899629
+## 
+## $value
+## [1] 1.979932
+## 
+## $counts
+## function gradient 
+##       19        3 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;optim(c(.1,.1), f, method=&amp;quot;BFGS&amp;quot;, gr = grad_f)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## $par
+## [1] 4.61081e-10 4.61081e-10
+## 
+## $value
+## [1] 0
+## 
+## $counts
+## function gradient 
+##       31        5 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So the BFGS method actually didn’t find the true solution for an initial value of &lt;span class=&#34;math inline&#34;&gt;\(\bm{x} = (1,1)\)&lt;/span&gt;, but did for when the initial value was &lt;span class=&#34;math inline&#34;&gt;\(\bm{x} = (0.1,0.1)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;non-linear-least-squares-optimisation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Non-Linear Least Squares Optimisation&lt;/h2&gt;
+&lt;p&gt;The motivating example we have used throughout this section was concerned with optimising a two-dimensional function, of which we were only interested in two variables that controlled the value of the function &lt;span class=&#34;math inline&#34;&gt;\(f(\bm{x})\)&lt;/span&gt;. In many cases, we have a dataset &lt;span class=&#34;math inline&#34;&gt;\(D = \{\bm{y},\bm{x}_i\}\)&lt;/span&gt;, where we decomopose the ‘observations’ as &lt;span class=&#34;math inline&#34;&gt;\(\bm{y} = g(\bm{x}) + \epsilon\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt; is a random noise parameter. In this case we are interested in finding an approximation to the data generating function &lt;span class=&#34;math inline&#34;&gt;\(g(\bm{x})\)&lt;/span&gt;, which we call &lt;span class=&#34;math inline&#34;&gt;\(f(\bm{x},\bm{\beta})\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(\bm{\beta}\)&lt;/span&gt; are some parameters of whose relationship with &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}\)&lt;/span&gt; we model to make this approximation, so we are interested in optimising over these parameters. The objective function we are minimising over is
+&lt;span class=&#34;math display&#34;&gt;\[
+\min_{\bm{\beta}} \sum^n_{i=1} r_i^2 = \min_{\bm{\beta}} \sum^n_{i=1} (y_i - f(x_i,\bm{\beta}))^2, 
+\]&lt;/span&gt;
+i.e. the squared difference between the observed dataset and the approximation to the data generating function that defines that dataset. Here, &lt;span class=&#34;math inline&#34;&gt;\(r_i = y_i - f(x_i,\bm{\beta})\)&lt;/span&gt; is known as the &lt;em&gt;residuals&lt;/em&gt;, and it is of the most interest in a least squares setting. Many optimisation methods are specifically designed to optimise the least squares problem, but all optimisation methods can be used (provided they find a minimum). Some of the most popular algorithms for least squares are the Gauss-Newton algorithm and the Levenberg-Marquardt algorithm. Both of these algorithms are extensions of Newton’s method for general optimisation. The general form of the Gauss-Newton method is
+&lt;span class=&#34;math display&#34;&gt;\[
+\bm{\beta} \leftarrow \bm{\beta} - (J_r^TJ_r)^{-1}J_r^Tr_i,
+\]&lt;/span&gt;
+where &lt;span class=&#34;math inline&#34;&gt;\(J_r\)&lt;/span&gt; is the Jacobian matrix of the residue &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt;, defined as
+&lt;span class=&#34;math display&#34;&gt;\[
+J_r = \frac{\partial r}{\partial \bm{\beta}}.
+\]&lt;/span&gt;
+So this is defined as the matrix of partial derivatives with respect to each coefficient &lt;span class=&#34;math inline&#34;&gt;\(\beta_i\)&lt;/span&gt;. The Levenberg-Marquardt algorithm extends this approach by including a diagonal matrix of small entries to the &lt;span class=&#34;math inline&#34;&gt;\(J_r^TJ_r\)&lt;/span&gt; term, to eliminate the possibility of this being a singular matrix. This has the update process of
+&lt;span class=&#34;math display&#34;&gt;\[
+\bm{\beta} \leftarrow \bm{\beta} - (J_r^TJ_r+\lambda I)^{-1}J_r^Tr_i,
+\]&lt;/span&gt;
+where &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is some small value. In the simple case where &lt;span class=&#34;math inline&#34;&gt;\(\lambda = 0\)&lt;/span&gt;, this reduces to the Gauss-Newton algorithm. This is a highly efficient method, but in the case where our dataset is large, we may want to use stochastic gradient descent.&lt;/p&gt;
+&lt;div id=&#34;stochastic-gradient-descent&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Stochastic Gradient Descent&lt;/h3&gt;
+&lt;p&gt;Stochastic Gradient Descent (SGD) is a stochastic approximation to the standard gradient descent method. Instead of calculating the gradient for an entire dataset (which can be extremely large) it calculates the gradient for a lower-dimensional subset of the dataset; picked randomly or deterministically. The form of this method is
+&lt;span class=&#34;math display&#34;&gt;\[
+\bm{x}_{k+1} = \bm{x}_k - t \nabla f_i(\bm{x}_k)
+\]&lt;/span&gt;
+where &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is an index that refers to cycling through all points &lt;span class=&#34;math inline&#34;&gt;\(i \in D\)&lt;/span&gt;, the points in the dataset. This can be in different sizes of groups, so depending on the problem, &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; can be large or small (relative to the size of the dataset). Stochastic gradient methods are useful in the setting where your dataset is very large, otherwise it could be unnecessary.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Numerical Integration</title>
+      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/integration/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/integration/</guid>
+      <description>
+
+
+&lt;div id=&#34;numerical-integration&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Numerical Integration&lt;/h2&gt;
+&lt;p&gt;Calculating a definite integral of the form
+&lt;span class=&#34;math display&#34;&gt;\[
+\int^b_a f(x) dx
+\]&lt;/span&gt;
+can be difficult when an analytical solution is not possible.
+We are primarily interested in integration in statistics because we want to be able to compute expectations, i.e.
+&lt;span class=&#34;math display&#34;&gt;\[
+\mathbb{E}(X) = \int xf(x)dx.
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;It is easier in one dimension, but as the number of dimensions increases then the methods required become more complex.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;one-dimensional-case&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;One-dimensional Case&lt;/h2&gt;
+&lt;p&gt;In one dimension, we could use some method involving solving an ODE, of which many methods exist. Another way is &lt;strong&gt;quadrature&lt;/strong&gt;; approximating the integral using multiple points across the curve and taking areas at each point.&lt;/p&gt;
+&lt;div id=&#34;quadrature&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Quadrature&lt;/h3&gt;
+&lt;p&gt;One of the most basic methods to approximate an integral involves collecting a series of shapes or ‘bins’ underneath the a curve, of which the area is known for each bin, and approximating the integral as the sum of the area of these shapes. To do this, we need to estimate the curve for which we are integrating, so we can get points at which to estimate these bins. This can be estimated with polynomial methods. The &lt;strong&gt;Weierstrass Approximation Theorem&lt;/strong&gt; states that there exists a polynomial which can be used to approximate a given continuous function, within a tolerance. More formally, for &lt;span class=&#34;math inline&#34;&gt;\(f \in C^0([a,b])\)&lt;/span&gt;, there exists a sequence of polynomials &lt;span class=&#34;math inline&#34;&gt;\(p_n\)&lt;/span&gt; that converges uniformly to &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; on the interval &lt;span class=&#34;math inline&#34;&gt;\([a,b]\)&lt;/span&gt;, i.e.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+||f-p_n||_{\infty} = \max_{x \in [a,b]} |f(x)-p_n(x)| \to 0.
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;There are many ways to approximate this polynomial, and the obvious way of doing this is by uniformly sampling across the curve, and estimating the polynomial based on these points, but we will show that this is not accurate in most cases. For example, the function
+&lt;span class=&#34;math display&#34;&gt;\[
+f(x) = \frac{1}{50+25\sin{[(5x)^3]}}, \qquad x \in [-1,1]
+\]&lt;/span&gt;
+has a very complex integral to solve analytically. Wolfram Alpha gives this solution as
+&lt;span class=&#34;math display&#34;&gt;\[
+\int f(x) dx =  -\frac{2}{375}i \sum_{\omega:\: \omega^6 - 3\omega^4- 16i\omega^3 + 3\omega^2 - 1=0}\frac{2\omega \tan^{-1}\left( \frac{\sin 5x}{\cos 5x - \omega}\right) - i \omega \log(-2\omega \cos 5x + \omega^2 + 1)}{\omega^4 - 2\omega^2- 8 i \omega +1} ,
+\]&lt;/span&gt;
+which would be an extreme effort to solve without a computer. With quadrature methods, the integral in this one-dimensional case can be approximated with small error due to the Weierstrass Approximation theorem.&lt;/p&gt;
+&lt;p&gt;We first start by approximating the polynomial &lt;span class=&#34;math inline&#34;&gt;\(p_n\)&lt;/span&gt; with a basic method of uniformly sampling across the range of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;. We can use Lagrange polynomials to approximate the polynomial across these uniform points. A Lagrange polynomial takes the form
+&lt;span class=&#34;math display&#34;&gt;\[
+p_{k-1}(x) := \sum^k_{i=1} \ell_i (x) f_i(x_i), \: \: \: \: \text{ where } \:\:\:\: \ell_i(x) = \prod^k_{j=1, j \neq i} \frac{x-x_j}{x_i-x_j},
+\]&lt;/span&gt;
+where &lt;span class=&#34;math inline&#34;&gt;\(\ell_i\)&lt;/span&gt; are the Lagrange basis polynomials. We start by setting up the function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x = seq(-1, 1, len=100)
+f = function(x) 1/(50+25*sin(5*x)^3)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A Lagrange polynomial function can be set up in R. This function will return an approximating function, of which values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; can be supplied, just like the original function &lt;code&gt;f&lt;/code&gt; is set up.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;get_lagrange_polynomial = function(f, x_points){
+  function(x){
+    basis_polynomials = array(1, c(length(x), length(x_points)))
+    for(j in 1:length(x_points)){
+      for(m in 1:length(x_points)){
+        if(m==j) next
+        basis_polynomials[,j] = basis_polynomials[,j] * ((x-x_points[m])/(x_points[j]-x_points[m]))
+      }
+    }
+    p = 0
+    for(i in 1:length(x_points)){
+      p = p + basis_polynomials[,i]*f(x_points[i])
+    }
+    return(p)
+  }
+}
+
+x_points = seq(range(x)[1], range(x)[2], length=30)
+lagrange_polynomial = get_lagrange_polynomial(f, x_points)
+plot(x, f(x), type=&amp;quot;l&amp;quot;)
+points(x_points, f(x_points), col=&amp;quot;red&amp;quot;, pch=20)
+lines(x, lagrange_polynomial(x), col=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/integration_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We can see that the Lagrange polynomial approximation approximates the function reasonably well in the middle areas, but the approximation is completely off at the ends. This large deviation is known as &lt;em&gt;Runge’s phenomenon&lt;/em&gt;, and this occurs when using polynomial interpolation and equally spaced interpolation points. This can be fixed by using &lt;strong&gt;Chebyshev points&lt;/strong&gt;, which take the form
+&lt;span class=&#34;math display&#34;&gt;\[
+\cos \left(\frac{2i-1}{2k}\pi\right),
+\]&lt;/span&gt;
+for &lt;span class=&#34;math inline&#34;&gt;\(i=1,\dots,k\)&lt;/span&gt;. This can be simply implented in R.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;chebyshev_points = function(k) cos(((2*seq(1,k,by=1)-1)*pi)/(2*k))
+c_points = sort(chebyshev_points(30))
+lagrange_polynomial = get_lagrange_polynomial(f, c_points)
+plot(x, f(x), type=&amp;quot;l&amp;quot;)
+points(c_points, f(c_points), col=&amp;quot;red&amp;quot;, pch=20)
+lines(x, lagrange_polynomial(x), col=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/integration_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;
+The function is approximated a lot better without any significant deviations from the function. Now that we have a more accurate approximation, we can estimate the area underneath the curve by using a ‘histogram’ approximation to the area. A basic method will simply sum over all small areas of the function evaluation at each point, and the distance between midpoints, i.e.
+&lt;span class=&#34;math display&#34;&gt;\[
+\sum^k_{i=1}w_k f(x_k),
+\]&lt;/span&gt;
+where &lt;span class=&#34;math inline&#34;&gt;\(x_k\)&lt;/span&gt; is the &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;-th point (calculated with Chebyshev or uniform approximations), and &lt;span class=&#34;math inline&#34;&gt;\(w_k\)&lt;/span&gt; is the distance between the midpoints above and below point &lt;span class=&#34;math inline&#34;&gt;\(x_k\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist_approximation = function(f_points, x_points, xrange=c(-1,1)){
+  midpoints = (x_points[2:(length(x_points))]+x_points[1:(length(x_points)-1)])/2
+  midpoints = c(xrange[1] ,midpoints, xrange[2])
+  diffs = diff(midpoints)
+  
+  sum(diffs*f_points)
+}
+x_points = seq(range(x)[1], range(x)[2], length=30)
+lagrange_polynomial = get_lagrange_polynomial(f, x_points)
+hist_approximation(lagrange_polynomial(x_points), x_points)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.04426415&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which we can compare to the analytical solution to the integral.
+&lt;span class=&#34;math display&#34;&gt;\[
+\int^{1}_{-1} \frac{1}{50+25\sin{x}}dx \approx 0.0443078
+\]&lt;/span&gt;
+So this isn’t too far off, but can be more approximately calculated with &lt;strong&gt;Simpson’s rule&lt;/strong&gt;, given by
+&lt;span class=&#34;math display&#34;&gt;\[
+\int^b_a f(x) dx \approx \frac{b-a}{6} \left( f(a) + 4f\left(\frac{a+b}{2}\right) + f(b) \right).
+\]&lt;/span&gt;
+This can be coded into R.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;simpsons_approximation = function(f, x_points, xrange=c(-1,1)){
+  midpoints = c(xrange[1], x_points, xrange[2])
+  diffs = (midpoints[2:(length(midpoints))] - midpoints[1:(length(midpoints)-1)])/6 * (
+    f(midpoints[1:(length(midpoints)-1)]) + 4*f((midpoints[2:(length(midpoints))] +
+    midpoints[1:(length(midpoints)-1)])/2) + f(midpoints[2:(length(midpoints))])
+  )
+  
+  sum(diffs)
+}
+
+c_points = sort(chebyshev_points(30))
+simpsons_approximation(get_lagrange_polynomial(f, c_points), c_points)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.044304&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a closer estimate to the true value. Increasing the number of points increases the accuracy of the integral approximation.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n=1000
+ints = rep(NA, (n-10))
+for(b in 10:n) {
+  c_points = sort(chebyshev_points(b))
+  ints[b-10] = simpsons_approximation(f(c_points), c_points)
+}
+plot(11:n, ints, xlab=&amp;quot;No. of Points&amp;quot;, log=&amp;quot;x&amp;quot;, type=&amp;quot;l&amp;quot;, ylab=&amp;quot;Approximated Area&amp;quot;)
+abline(h=0.0443078, col=&amp;quot;red&amp;quot;)
+legend(&amp;quot;topright&amp;quot;, col=&amp;quot;red&amp;quot;, legend=&amp;quot;True Integral&amp;quot;, lwd=2, lty=1)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/integration_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;
+This plot shows that at around 35 points, the accuracy of the integral doesn’t increase significantly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;multi-dimensional-case&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Multi-dimensional Case&lt;/h2&gt;
+&lt;p&gt;Quadrature methods don’t work as well with more than one dimension. Since quadrature is based around using polynomial approximation to the real curve and calculating the area under there, this is less simple in higher dimensions, and comes with an extremely large computational complexity. &lt;strong&gt;Monte-Carlo&lt;/strong&gt; algorithms provide more efficient convergence to the integral area in this case. This will not be covered in this portfolio.x&lt;/p&gt;
+&lt;!-- ### Monte-Carlo Methods --&gt;
+&lt;!-- Monte-Carlo methods are *non-deterministic*, as opposed to the deterministic approach of quadrature methods. This approach is based around computing areas on a non-regular grid, of which the sampling method is random. Due to the law of large numbers, enough random sampling will converge to the true value. This will be briefly explained in this portfolio. --&gt;
+&lt;!-- The multi-dimensional integral --&gt;
+&lt;!-- \[ --&gt;
+&lt;!-- I = \int_{{\Omega}}f(\overline{\mathbf{x}}) \; d \overline{\mathbf{x}}, --&gt;
+&lt;!-- \] --&gt;
+&lt;!-- where $\Omega \subseteq \mathbb{R}^n$, has volume  --&gt;
+&lt;!-- \[ --&gt;
+&lt;!-- V = \int_{\Omega}d\overline{\boldsymbol{x}}. --&gt;
+&lt;!-- \] --&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

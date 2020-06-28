@@ -1,0 +1,1165 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction We fit a neural network to a dataset of cat and dog images, in an attempt to distinguish features that can correctly identify whether the image is of a cat or of a dog.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/">
+  <meta property="og:title" content="Neural Network for Identifying Cats and Dogs | Danny James Williams">
+  <meta property="og:description" content="Introduction We fit a neural network to a dataset of cat and dog images, in an attempt to distinguish features that can correctly identify whether the image is of a cat or of a dog."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Neural Network for Identifying Cats and Dogs | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Neural Network for Identifying Cats and Dogs</h1>
+
+          <div class="article-style">
+            <h2 id="introduction">Introduction</h2>
+<p>We fit a neural network to a dataset of cat and dog images, in an attempt to distinguish features that can correctly identify whether the image is of a cat or of a dog.</p>
+<p>This work uses the <code>keras</code> library from <code>tensorflow</code>. This portfolio will go over the following processes:</p>
+<ul>
+<li>Loading the data and formatting it be fit by a neural network in <code>tensorflow</code></li>
+<li>Fitting a neural network to the images in a training set</li>
+<li>Identifying and evaluating predictive performance on a testing set</li>
+</ul>
+<pre><code class="language-python">import tensorflow as tf
+import numpy as np
+import IPython.display as display
+import matplotlib.pyplot as plt
+
+import os
+import pathlib
+
+from tensorflow import keras
+from PIL import Image
+
+tf.__version__
+</code></pre>
+<pre><code>'2.1.0'
+</code></pre>
+<h2 id="loading-and-formatting-the-dataset">Loading and Formatting the Dataset</h2>
+<p>The data are from the Kaggle competition &ldquo;Dogs vs Cats&rdquo;. These images are loaded into the working directory and defined below. These are pre-separated into a training set, validation set and a testing set.</p>
+<pre><code class="language-python">data_dir = &quot;/home/fs19144/Documents/SC2/Section10/data/train/&quot;
+data_dir = pathlib.Path(data_dir)
+class_names = np.array([item.name for item in data_dir.glob('*')])
+image_count = len(list(data_dir.glob('*/*.jpg')))
+</code></pre>
+<p>The data are pre-downloaded and saved separately. This code aboves load the data, retrieves the class names and the total number of images in the training set. The class names are retrieved from the folder names, being <code>cat</code> and <code>dog</code>.</p>
+<pre><code class="language-python">class_names
+</code></pre>
+<pre><code>array(['cat', 'dog'], dtype='&lt;U3')
+</code></pre>
+<p>The image count is calculated by reading the length of the list containing all elements in the data directory.</p>
+<pre><code class="language-python">image_count
+</code></pre>
+<pre><code>6002
+</code></pre>
+<p>To format the data for a neural network, a few things must be accomplished. Firstly, the images need to have a lower resolution that normal, to avoid large file sizes and to maintain consistency across the dataset. Secondly, the images need to be loaded in batches, to avoid storing all pixel values for all images in a large array. Consider doing this, we have 6002 images, each having a corresponding pixel value for red, green and blue. If the image height and width is 60 pixels, then in total the number of elements in the training set would be</p>
+<pre><code class="language-python">60 * 60 * 3 * 6002
+</code></pre>
+<pre><code>64821600
+</code></pre>
+<p>which is extremely large. This size increases greatly with a higher image resolution, or a larger dataset, highlighting the need to load images in batches. We define these variables to go into the model fitting below.</p>
+<pre><code class="language-python">batch_size = 32
+image_height = 60
+image_width = 60
+</code></pre>
+<p>We can use functionality from tensorflow to list the data objects in a <code>tf.Dataset</code>:</p>
+<pre><code class="language-python">train_ds = tf.data.Dataset.list_files(str(data_dir/'*/*'))
+</code></pre>
+<p>This training set contains the path to all files in the <code>train</code> directory, which can be iterated over every time we want to create a batch. Below are some functions that we will be applying to this data.</p>
+<pre><code class="language-python">def get_label(file_path):
+  parts = tf.strings.split(file_path, os.path.sep)
+  return parts[-2] == class_names
+
+def decode_img(img):
+  img = tf.image.decode_jpeg(img, channels=3)
+  img = tf.image.convert_image_dtype(img, tf.float32)
+  return tf.image.resize(img, [image_width, image_height])
+
+def process_path(file_path):
+  label = get_label(file_path)
+  img = tf.io.read_file(file_path)
+  img = decode_img(img)
+  return img, label
+</code></pre>
+<p>The <code>process_path</code> function takes the <code>file_path</code> (given when we map across <code>train_ds</code>), retrieves the label from <code>get_label</code> and decodes the image into pixel values in <code>decode_img</code>. <code>get_label</code> simply reads the folder name which the file being iterated over is stored in, whilst <code>decode_img</code> uses <code>tensorflow</code> functionality to read the image in the required format. The <code>tf.data.Dataset</code> structure which <code>train_ds</code> is saved as has inbuilt mapping functionality, so we apply <code>process_path</code> to get a labelled training set.</p>
+<pre><code class="language-python">labelled_ds = train_ds.map(process_path, num_parallel_calls=2)
+</code></pre>
+<p>Now we create a function that prepares the dataset for training iterations. This shuffles the dataset, and takes a batch of the specified size we defined earlier.</p>
+<pre><code class="language-python">def prepare_for_training(ds, shuffle_buffer_size=1000):
+
+  ds = ds.shuffle(buffer_size=shuffle_buffer_size)
+  ds = ds.repeat()
+  ds = ds.batch(batch_size)
+  ds = ds.prefetch(buffer_size=2)
+
+  return ds
+</code></pre>
+<pre><code class="language-python">train_ds_2 = prepare_for_training(labelled_ds)
+</code></pre>
+<h4 id="validation-set">Validation Set</h4>
+<p>A neural network model can be improved by using a validation set to reduce overfitting. The neural network model will be fit using the validation set to check the loss on data that it is not training on. The process for formatting the data above can be repeated for different images in a <code>validation</code> folder.</p>
+<pre><code class="language-python">data_dir_val = &quot;/home/fs19144/Documents/SC2/Section10/data/validation/&quot;
+data_dir_val = pathlib.Path(data_dir_val)
+class_names_val = np.array([item.name for item in data_dir_val.glob('*')])
+image_count_val = len(list(data_dir_val.glob('*/*.jpg')))
+val_ds = tf.data.Dataset.list_files(str(data_dir_val/'*/*'))
+labelled_ds_val = val_ds.map(process_path, num_parallel_calls=2)
+val_ds_2 = prepare_for_training(labelled_ds_val)
+</code></pre>
+<h4 id="example-batch">Example Batch</h4>
+<p>We can iterate once over <code>train_ds_2</code> to view an example image batch, along with their labels:</p>
+<pre><code class="language-python">image_batch, label_batch = next(iter(train_ds_2))
+plt.figure(figsize=(10,12))
+for i in range(25):
+    plt.subplot(5,5,i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.grid(False)
+    plt.imshow(image_batch[i], cmap=plt.cm.binary)
+    ind = [bool(i) for i in (label_batch[i])]
+    plt.xlabel(class_names[ind])
+plt.show()
+</code></pre>
+<p><img src="/img/portfolios/neuralnet_24_0.png" alt="png"></p>
+<h2 id="fitting-the-neural-network">Fitting the Neural Network</h2>
+<p>We use the <code>keras</code> library, a part of <code>tensorflow</code>, to fit a neural network to classify these images. Most importantly, the <code>Sequential</code> function to build the model and different layer functions to create the neural network layers within the <code>Sequential</code> model build.</p>
+<pre><code class="language-python">from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
+</code></pre>
+<p>Below is the code used to specify the model using <code>Sequential</code>.</p>
+<pre><code class="language-python">model = Sequential([
+    Conv2D(16, 3, padding='same', activation='relu', 
+           input_shape=(image_height, image_width ,3)),
+    MaxPooling2D(),
+    Dropout(0.2),
+    Conv2D(32, 3, padding='same', activation='relu'),
+    MaxPooling2D(),
+    Conv2D(64, 3, padding='same', activation='relu'),
+    MaxPooling2D(),
+    Dropout(0.2),
+    Flatten(),
+    Dense(512, activation='relu'),
+    Dense(2)
+])
+
+</code></pre>
+<p>This convolutional neural network contains 8 layers, with a final layer to output a classification.  The convolutional layers, given by <code>Conv2D</code>, apply convolutional operations to the image and output a single value based on the operations. The pooling layers, given by <code>MaxPooling2D</code>, extract key features of the image and reduce the dimensionality to reduce computational time. In this case, the max pooling approach extracts the maximum value over subregions of the image. <code>Dropout</code> is another method that helps to reduce overfitting, dropping out a proportion of the dataset, and makes the distribution of weight values in the neural network more regular.</p>
+<p>Finally, the <code>Flatten</code> function reformats the data, so that it is vector form and not in a high dimensional format. The <code>Dense</code> layer provides most of the information to the model. These fully connected layers perform the classification on the output to all the other layers. The final <code>Dense(2)</code> will output two nodes, giving probabilities for each one. This will be classifying either a cat or a dog.</p>
+<p>This model needs to be compiled. We use the <code>adam</code> optimiser, which is a variation on gradient descent.</p>
+<pre><code class="language-python">model.compile(optimizer='adam',
+              loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+
+</code></pre>
+<p>Now we fit the model.</p>
+<pre><code class="language-python">history = model.fit(
+    train_ds_2,
+    steps_per_epoch = image_count // batch_size,
+    epochs = 10,
+    validation_data = val_ds_2,
+    validation_steps = image_count_val // batch_size
+)
+</code></pre>
+<pre><code>Train for 187 steps, validate for 62 steps
+Epoch 1/10
+187/187 [==============================] - 22s 119ms/step - loss: 0.6936 - accuracy: 0.5044 - val_loss: 0.6906 - val_accuracy: 0.5514
+Epoch 2/10
+187/187 [==============================] - 22s 119ms/step - loss: 0.6578 - accuracy: 0.5639 - val_loss: 0.6227 - val_accuracy: 0.6127
+Epoch 3/10
+187/187 [==============================] - 21s 112ms/step - loss: 0.6024 - accuracy: 0.6527 - val_loss: 0.6277 - val_accuracy: 0.6235
+Epoch 4/10
+187/187 [==============================] - 21s 113ms/step - loss: 0.5647 - accuracy: 0.6868 - val_loss: 0.5571 - val_accuracy: 0.6920
+Epoch 5/10
+187/187 [==============================] - 21s 114ms/step - loss: 0.5284 - accuracy: 0.7214 - val_loss: 0.5474 - val_accuracy: 0.7054
+Epoch 6/10
+187/187 [==============================] - 22s 116ms/step - loss: 0.4949 - accuracy: 0.7411 - val_loss: 0.5419 - val_accuracy: 0.7114
+Epoch 7/10
+187/187 [==============================] - 21s 114ms/step - loss: 0.4685 - accuracy: 0.7585 - val_loss: 0.5114 - val_accuracy: 0.7384
+Epoch 8/10
+187/187 [==============================] - 21s 114ms/step - loss: 0.4392 - accuracy: 0.7807 - val_loss: 0.4992 - val_accuracy: 0.7523
+Epoch 9/10
+187/187 [==============================] - 22s 117ms/step - loss: 0.4091 - accuracy: 0.7996 - val_loss: 0.5721 - val_accuracy: 0.7256
+Epoch 10/10
+187/187 [==============================] - 21s 113ms/step - loss: 0.3819 - accuracy: 0.8182 - val_loss: 0.4976 - val_accuracy: 0.7573
+</code></pre>
+<h2 id="evaluating-the-model">Evaluating the Model</h2>
+<p>Now that the model is fit, how do we know that it&rsquo;s doing a good job? Firstly, by the final lines in the model fitting, we can see that the prediction accuracy ended at around 0.82, so 82% of training set predictions were correct, and around 75% of validation set predicctions were.</p>
+<p>We can also plot the loss on the training set and the validation set below. We want this to decrease in both cases, as a smaller loss means a better fit. We also want the predictiona accuracy to increase, so that predictions are more correct. If the validation set loss has also decreased to a low value, and the accuracy has increased, then the model has avoided overfitting.</p>
+<pre><code class="language-python">acc  = history.history['accuracy']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+val_acc  = history.history['val_accuracy']
+
+epochs_range = range(10)
+
+plt.figure(figsize=(10, 4))
+plt.subplot(1, 2, 1)
+plt.plot(epochs_range, acc, label='Training Accuracy')
+plt.plot(epochs_range, val_acc, label='Validation Accuracy')
+plt.legend(loc='lower right')
+plt.title('Training and Validation Accuracy')
+
+plt.subplot(1, 2, 2)
+plt.plot(epochs_range, loss, label='Training Loss')
+plt.plot(epochs_range, val_loss, label='Validation Loss')
+plt.legend(loc='upper right')
+plt.title('Training and Validation Loss')
+plt.show()
+</code></pre>
+<p><img src="/img/portfolios/neuralnet_34_0.png" alt="png"></p>
+<p>These plots show that the loss steadily decreases, and the accuracy increases in both cases. Now we can evaluate some predictions on the test set. The test set do not have specific class labels, and we are treating these as unknown.</p>
+<h4 id="test-set-predictions">Test Set Predictions</h4>
+<p>To further test the performance of the model, and inspect it ourselves, we can see how well the model predicts on a test set (which the model has never seen). This is a separate dataset to the validation set which was part of the model fitting process.</p>
+<p>Firstly, we load the image using the <code>PIL.Image</code> module, and load the images into a list.</p>
+<pre><code class="language-python">import numpy as np
+import PIL.Image as Image
+import glob
+
+
+pred_list = []
+for filename in glob.glob('/home/fs19144/Documents/SC2/Section10/data/test/*.jpg'): 
+    x = Image.open(filename).resize((image_height, image_width))
+    pred_list.append(x)
+</code></pre>
+<p>Next, we loop over the 20 elements in this small test set to inspect the model predictions. Each image is loaded as a <code>numpy</code> array, which automatically converts it into pixel format. These pixel values need to be divided by 255, to get RGB values in $[0,1]$. We obtain model predictions using the simple <code>predict</code> function as part of the <code>model</code> object. These predictions come in terms of fitted values (not strictly probabilities). The predicted classes are then given by taking the largest fitted values output by the model. We can plot the images and their predictions below.</p>
+<pre><code class="language-python">pred_class = np.empty([len(pred_list)], dtype=&quot;S3&quot;)
+
+plt.figure(figsize=(10,12))
+for i in np.arange(len(pred_list)):
+    x = np.array(pred_list[i])/255.0
+    pred = model.predict(x[np.newaxis, ...])     
+    pred_class[i] = class_names[np.argmax(pred[0])]
+    
+    # Plot
+    plt.subplot(4,5,i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.grid(False)
+    plt.imshow(x)
+    plt.xlabel(pred_class[i])
+
+</code></pre>
+<p><img src="/img/portfolios/neuralnet_38_0.png" alt="png"></p>
+<p>There are some funny looking dogs in this sample, and some funny looking cats. Clearly we can see that oftentimes the model calls a cat a dog, and a dog a cat (I imagine the dogs are more offended by that), but for the most part the predictions look accurate.</p>
+<p>There is a lot more that can go into improving this model, such as</p>
+<ul>
+<li>Pre-processing the image data</li>
+<li>Increasing the dataset size</li>
+<li>Increasing the image resolution</li>
+<li>Adding more layers to the neural network</li>
+<li>Adding &lsquo;null&rsquo; images, that show neither a cat nor dog, so that the model does not always predict a cat or dog, it can be neither</li>
+</ul>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc2/pythonstats/" rel="next">Introduction to Python for Statistics</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc2/hpc/" rel="prev">Section 5: High Performance Computing with Bluecrystal</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

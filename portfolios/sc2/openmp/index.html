@@ -1,0 +1,1111 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction ‘Normal’ programming can deal with performing operations one at a time, i.e. writing code in such a way that it can be seen as a set of instructions to be performed sequentially.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc2/openmp/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc2/openmp/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc2/openmp/">
+  <meta property="og:title" content="Intro to OpenMP in C&#43;&#43; | Danny James Williams">
+  <meta property="og:description" content="Introduction ‘Normal’ programming can deal with performing operations one at a time, i.e. writing code in such a way that it can be seen as a set of instructions to be performed sequentially."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Intro to OpenMP in C&#43;&#43; | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Intro to OpenMP in C&#43;&#43;</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>‘Normal’ programming can deal with performing operations one at a time, i.e. writing code in such a way that it can be seen as a set of instructions to be performed sequentially. A more efficient process will be maximising the use of the cores in your processor so that multiple operations are performed at once, with different processes happening on different cores.</p>
+<p>OpenMP is a way of performing parallel computation for C, C++ and Fortran, but this portfolio will go over the use of OpenMP in C++.</p>
+</div>
+<div id="basics" class="section level2">
+<h2>Basics</h2>
+<p>A simple C++ script which uses OpenMP for parallel computing will look like this</p>
+<pre class="cpp"><code>#include &lt;iostream&gt;
+
+#ifdef _OPENMP
+    #include &lt;omp.h&gt;
+#else
+    #define omp_get_num_threads() 0
+    #define omp_get_thread_num() 0
+#endif
+
+int main(int argc, const char **argv)
+{
+    std::cout &lt;&lt; &quot;Hello I am here safe and sound home in the main thread.\n&quot;;
+
+    #pragma omp parallel
+    {
+        int nthreads = omp_get_num_threads();
+        int thread_id = omp_get_thread_num();
+
+        std::cout &lt;&lt; &quot;Help I am trapped in thread number &quot; &lt;&lt; thread_id
+                  &lt;&lt; &quot; out of a total &quot; &lt;&lt; nthreads 
+                  &lt;&lt; std::endl;
+    }
+
+    std::cout &lt;&lt; &quot;Thank god I&#39;m safe back home now.\n&quot;;
+
+    return 0;
+}</code></pre>
+<p>The important parts here are the <code>ifdef _OPENMP</code> section at the start, and the <code>#pragma omp parallel</code> line before the process of the script. The comments succeeding the hash symbol can be seen as a ‘hint’ to the compiler of what to do. The compiler is free to ignore this if need be.</p>
+<p>The <code>if_def _OPENMP</code> line checks if we are using OpenMP or not, and if so, includes the <code>omp.h</code> header file. The <code>pragma omp parallel</code> line tells the compiler to run the section enclosed in braces <code>{}</code> a certain amount of times, depending on the input number of threads.</p>
+<p>We can compile this code (which is saved in <code>basic_openmp.cpp</code>) to see what happens.</p>
+<pre class="bash"><code>g++ -fopenmp basic_openmp.cpp -o basic_openmp
+export OMP_NUM_THREADS=1
+./basic_openmp</code></pre>
+<pre><code>## Hello I am here safe and sound home in the main thread.
+## Help I am trapped in thread number 0 out of a total 1
+## Thank god I&#39;m safe back home now.</code></pre>
+<pre class="bash"><code>g++ -fopenmp basic_openmp.cpp -o basic_openmp
+export OMP_NUM_THREADS=8
+./basic_openmp</code></pre>
+<pre><code>## Hello I am here safe and sound home in the main thread.
+## Help I am trapped in thread number Help I am trapped in thread number Help I am trapped in thread number Help I am trapped in thread number Help I am trapped in thread number 462 out of a total 8 out of a total  out of a total 8
+## 
+## 8
+## 3 out of a total 8
+## Help I am trapped in thread number 0 out of a total 8
+## Help I am trapped in thread number 5 out of a total 8
+## 7 out of a total 8
+## Help I am trapped in thread number 1 out of a total 8
+## Thank god I&#39;m safe back home now.</code></pre>
+<p>This person really got trapped in a time loop. This is because the threads do not run sequentially, so each thread is printing out what it is asked as soon as it can, and these commands are being run at the same time.</p>
+</div>
+<div id="sections-and-loops" class="section level2">
+<h2>Sections and Loops</h2>
+<p>OpenMP sections are ways of telling the compiler that each section can be operated on different threads. This is done by adding the line <code>#pragma omp section</code> and braces <code>{}</code> to each section that can be operated on individually, but only once. This is a way of breaking your code into parallel ‘chunks’ without executing the same code a lot of times by each thread.</p>
+<p>A loop can be run in parallel by writing the line <code>#pragma omp for</code> above the loop. This specifies that each iteration in the loop is independent and can be run separately. Then each thread runs on a different iteration of the loop at the same time. Below is an example of a loop running in parallel.</p>
+<pre class="cpp"><code>#include &lt;iostream&gt;
+
+#ifdef _OPENMP
+    #include &lt;omp.h&gt;
+#else
+    #define omp_get_thread_num() 0
+#endif
+
+int main(int argc, const char **argv)
+{
+    #pragma omp parallel
+    {
+        int nloops = 0;
+        
+        #pragma omp for
+        for (int i=0; i&lt;1000; ++i)
+        {
+            ++nloops;
+        }
+
+        int thread_id = omp_get_thread_num();
+        #pragma omp critical
+        {
+          std::cout &lt;&lt; &quot;Thread &quot; &lt;&lt; thread_id &lt;&lt; &quot; performed &quot;
+                    &lt;&lt; nloops &lt;&lt; &quot; iterations of the loop.\n&quot;;
+        }
+    }
+
+    return 0;
+}</code></pre>
+<p>This code will display how many iterations of the loop each thread is performing. Note that the <code>#pragma omp critical</code> line is specifying that only one thread can enter the code in braces <code>{}</code> at a time, just so that the printed output does not get jumbled up like it has done previously. In most code, this line will not be added as it will come with a significant slow down, I have only included it here for illustration purposes. We can compile and then run this code.</p>
+<pre class="bash"><code>g++ -fopenmp loop_openmp.cpp -o loop_openmp
+export OMP_NUM_THREADS=4
+./loop_openmp</code></pre>
+<pre><code>## Thread 0 performed 250 iterations of the loop.
+## Thread 1 performed 250 iterations of the loop.
+## Thread 2 performed 250 iterations of the loop.
+## Thread 3 performed 250 iterations of the loop.</code></pre>
+<p>So these threads have split the job evenly, but in some cases (maybe for a large amount of threads) the job would not be split evenly.</p>
+</div>
+<div id="monte-carlo-exercise" class="section level2">
+<h2>Monte Carlo Exercise</h2>
+<p>For an exercise, consider using an OpenMP parallel program to calculate <span class="math inline">\(\pi\)</span> using a Monte Carlo algorithm. We can do this by simulating a unit circle and a unit square, since <span class="math inline">\(\pi\)</span> is the ratio of the area of a circle to the area of a square. By simulating random points for a circle and for a square, provided we have a large enough number of simulations we can estimate this proportion and hence <span class="math inline">\(\pi\)</span>.</p>
+<pre class="cpp"><code>#include &lt;cmath&gt;
+#include &lt;cstdlib&gt;
+#include &lt;iostream&gt;
+
+#ifdef _OPENMP
+    #include &lt;omp.h&gt;
+#else
+    #define omp_get_thread_num() 0
+#endif
+
+double rand_one()
+{
+    return std::rand() / (RAND_MAX + 1.0);
+}
+
+int main()
+{
+    
+    // declare variables
+    int circle_points = 0;
+    int square_points = 0;
+    
+    int circle_points_loop = 0;
+    int square_points_loop = 0;
+
+    // set up parallel OpenMP
+    #pragma omp parallel
+    {   
+
+        // run for loop in parallel
+        #pragma omp for
+        for(int ii=0; ii &lt; 100000; ii++)
+        {
+
+            // get random x and y coordinates
+            double x_coord = (2*rand_one() - 1);
+            double y_coord = (2*rand_one() - 1);
+
+            // calculate radius
+            double r = std::sqrt(pow(x_coord,2) + pow(y_coord,2));
+
+            // if r is less than or equal to 1 then it is within the circle
+            if(r &lt; 1.0)
+            {
+                ++circle_points_loop;
+            } else 
+            {
+                ++square_points_loop;
+            }
+        
+        }
+
+        // use critical when counting the final number of counts for each thread
+        #pragma omp critical
+        {
+            circle_points += circle_points_loop;
+            square_points += square_points_loop;
+        }
+    }
+
+    // calculate final value of pi using ratios
+    double pi = (4.0*circle_points)/(square_points+circle_points);
+    
+    // print pi
+    std::cout &lt;&lt; pi &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+<p>The comments in the code above will explain why each section of code is run at each point in time. To check this result is valid, we can compile and run it.</p>
+<pre class="bash"><code>g++ -fopenmp pi.cpp -o pi
+export OMP_NUM_THREADS=8
+./pi</code></pre>
+<pre><code>## 3.13372</code></pre>
+<p>Which is not a bad approximation!</p>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc2/rcpp/" rel="next">Local Polynomial Regression with Rcpp</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc2/parallelrcpp/" rel="prev">ParallelRcpp</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

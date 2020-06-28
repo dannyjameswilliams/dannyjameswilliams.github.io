@@ -1,0 +1,1248 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="R can be interfaced with both C and C&#43;&#43;, coming with a significant speed up in computation time and efficiency. R has an inbuilt system for calling C with the .">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc2/rnc/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc2/rnc/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc2/rnc/">
+  <meta property="og:title" content="Integrating R and C | Danny James Williams">
+  <meta property="og:description" content="R can be interfaced with both C and C&#43;&#43;, coming with a significant speed up in computation time and efficiency. R has an inbuilt system for calling C with the ."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Integrating R and C | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Integrating R and C</h1>
+
+          <div class="article-style">
+            
+
+
+<p>R can be interfaced with both C and C++, coming with a significant speed up in computation time and efficiency. R has an inbuilt system for calling C with the <code>.Call</code> function, and RCpp can be used to integrate more easily with C++, enabling the use of pre-existing functions similar to those in base R. This portfolio will detail how this integration between R and C is possible effectively through the use of examples in a statistical sense.</p>
+<div id="adaptive-kernel-regression-smoothing" class="section level2">
+<h2>Adaptive Kernel Regression Smoothing</h2>
+<p>In the situation where we have some data which can not fit into a conventional linear model, we can employ the use of kernel smoothing to fit a more flexible model. More specifically, suppose the data has been generated from the following model
+<span class="math display">\[
+y_i = \sin(\alpha \pi x^3) + \epsilon_i, \qquad \text{ with } \qquad \epsilon_i \sim N(0, \sigma^2),
+\]</span>
+where <span class="math inline">\(x\)</span> is a uniformly random sample, and <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\sigma\)</span> are fixed parameters. This simulated data can be generated in R with parameter values <span class="math inline">\(\alpha = 4\)</span> and <span class="math inline">\(\sigma=0.2\)</span>, for <span class="math inline">\(i=1,\dots, n\)</span>:</p>
+<pre class="r"><code>set.seed(998)
+n = 200
+x = runif(n)
+y = sin(4*pi*x^3) + rnorm(n, 0, 0.2)
+plot(x, y, pch = 20)</code></pre>
+<p><img src="/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-2-1.png" width="480" style="display: block; margin: auto;" />
+From the plot it is clear that the data are non-linear, so a simple linear model would not be suitable. A kernel regression smoother can be used to estimate the conditional expectation <span class="math inline">\(\mu(x) = \mathbb{E}(y|x)\)</span> more flexibly using
+<span class="math display">\[
+\hat{\mu}(x) = \frac{\sum^n_{i=1}\kappa_\lambda (x, x_i)y_i}{\sum^n_{i=1}\kappa_\lambda(x, x_i)},
+\]</span>
+where <span class="math inline">\(\kappa\)</span> is a kernel with bandwidth <span class="math inline">\(\lambda &gt; 0\)</span>. This kernel regression can be written in R as well as C, so it provides opportunity for comparison between the two languages.</p>
+<div id="writing-a-function-in-c" class="section level3">
+<h3>Writing a function in C</h3>
+<p>We can write a C function to implement a Gaussian kernel with variance <span class="math inline">\(\lambda^2\)</span>, shown below.</p>
+<pre class="c"><code>#include &lt;R.h&gt;
+#include &lt;Rinternals.h&gt;
+#include &lt;Rmath.h&gt;
+
+SEXP meanKRS(SEXP y, SEXP x, SEXP x0, SEXP lambda)
+{
+  
+  int n, n0;
+  double lambda0;
+  double *outy, *x00, *xy, *y0;
+  
+  n0 = length(x0);
+  
+  x = PROTECT(coerceVector(x, REALSXP));
+  y = PROTECT(coerceVector(y, REALSXP));
+  SEXP out = PROTECT(allocVector(REALSXP, n0));
+  
+  n = length(x);
+  
+  outy = REAL(out);
+  lambda0 = REAL(lambda)[0];
+  x00 = REAL(x0);
+  xy = REAL(x);
+  y0 = REAL(y);
+  
+  for(int i=0; i&lt;n0; i++)
+  {
+    double num = 0, den = 0;
+    for(int j=0; j&lt;n; j++)
+    {
+      num += dnorm(xy[j], x00[i], lambda0, 0)*y0[j];
+      den += dnorm(xy[j], x00[i], lambda0, 0);
+    }
+    outy[i] = num/den;
+  }
+  
+  UNPROTECT(3);
+  
+  return out;
+}
+</code></pre>
+<p>This is a large, and quite complicated function to what would normally be implemented in R. The main reason for the length of the function is due to the amount of declarations that have to be made in C. At the start, all integers and doubles are declared, with a <code>*</code> signifying that these are pointers, which instead point to a location in memory rather than being a variable themselves. <code>x</code>, <code>y</code> and <code>out</code> are all defined as vectors; either defining the inputs or allocating a new vector, with <code>PROTECT</code> signifying that these locations in memory are protected. Then the pointers are set up with the <code>REAL</code> function deciding where to point, and the <code>[0]</code> index meaning to take the value of where is being pointed to instead of setting up a pointer.</p>
+<p>After this, the actual kernel smoothing is calculated within two <code>for</code> loops, as there is no global definition for <code>sum</code> in C. The numerator <code>num</code> and denominator <code>den</code> are defined on each iteration of the outer loop, and they are added to themselves in the inner loop. Once the inner loop iterations are complete, the value of <code>out</code> is assigned as the division of these two (which is pointed to by <code>outy</code>). Finally, the protected vectors are unprotected, to free up memory.</p>
+<p>The headers at the beginning of the file, written as <code>#include &lt;header.h&gt;</code> allow the inclusion of certain pre-written functions that make writing C code simpler. Using the <code>R</code>, <code>Rinternals</code> and <code>Rmath</code> were not all necessary, however <code>Rmath</code> provided the <code>dnorm</code> function that was necessary for the Gaussian kernel.</p>
+<p>Also note that the use of a double <code>for</code> loop is not inefficient in C as it would be in R, so there is no significant slowdown coming from nested loops. Now the function is written, it can be saved into the current working directory and loaded into R.</p>
+<pre class="r"><code>system(&quot;R CMD SHLIB meanKRS.c&quot;)
+dyn.load(&quot;meanKRS.so&quot;)</code></pre>
+<p>A wrapper function can be set up to clean up code, i.e. an R function can be made which explicitly calls the C function with the same arguments. After this, we can plot the results to see how the smoothing looks with an arbitrary value of <span class="math inline">\(\lambda^2 = 0.02\)</span>.</p>
+<pre class="r"><code>meanKRS = function(y, x, x0, lambda) .Call(&quot;meanKRS&quot;, y, x, x0, lambda)
+plot(x, y, pch = 20)
+lines(seq(0, 1, len=1000), meanKRS(y, x, seq(0,1,len=1000), lambda = 0.02), col=&quot;blue&quot;, lwd=2)</code></pre>
+<p><img src="/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-5-1.png" width="528" /></p>
+<p>So this kernel smoothing approach has provided a nice fit to the simulated data, and appears to be going through the centre of the points across the plot.</p>
+<p>To compare the computational efficiency, we can compare this C function with a simpler function written in R, called <code>meanKRS_R</code> (function not shown here for brevity, the R function performs the same operation whilst making use of R’s <code>sum</code> function instead of having a loop).</p>
+<pre class="r"><code>all.equal(meanKRS_R(y,x,seq(0,1,len=1000),0.06), meanKRS(y,x,seq(0,1,len=1000),0.06))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>So the values are exactly the same, and the function is accurate. How much quicker is it? We can use <code>microbenchmark</code> to display summary statistics of timing both functions 100 times.</p>
+<pre class="r"><code>library(microbenchmark)
+microbenchmark(C_KRS = meanKRS(y,x,seq(0,1,len=1000),0.06),
+               R_KRS = meanKRS_R(y,x,seq(0,1,len=1000),0.06), times = 100)</code></pre>
+<pre><code>## Unit: milliseconds
+##   expr      min       lq     mean   median       uq      max neval
+##  C_KRS 14.32545 16.17882 16.36242 16.27690 16.42271 20.37999   100
+##  R_KRS 30.25504 32.08685 33.45924 32.42864 34.38512 43.47946   100</code></pre>
+<p>So the C code is significantly faster, as expected, by about a factor of two.</p>
+</div>
+<div id="implementing-cross-validation" class="section level3">
+<h3>Implementing cross-validation</h3>
+<p>The value of <span class="math inline">\(\lambda\)</span> used here was chosen arbitrarily, but in practice it is common to use <span class="math inline">\(k\)</span>-fold cross-validation to choose a more optimal value of <span class="math inline">\(\lambda\)</span>. We can implement a cross-validation routine in C. Implementing a function within a function is difficult in C, but it is relatively straightforward in Rcpp. This example goes through the use of Rcpp to implement cross-validation.</p>
+<p>Rcpp is a package in R which provides tools to implement C++ code in R. It works in a similar way to how the <code>.Call</code> interface works for C code, but with a more accessible interface. Firstly, we create a file in the working directory called <code>KRS_cv.cpp</code>, where the Rcpp functions will be stored. This file contains a few functions, the first of which being the <code>meanKRS</code> function re-written for Rcpp.</p>
+<pre class="c"><code>// [[Rcpp::export(name = &quot;meanKRS&quot;)]]
+NumericVector meanKRS_I(const NumericVector y, const NumericVector x, 
+                        const NumericVector x0, const double lambda)
+{
+  int n, n0;
+  n0 = x0.size();
+  n = x.size();
+  NumericVector out(n0);
+  for(int i=0; i&lt;n0; i++)
+  {
+    double num = 0, den = 0;
+    NumericVector dval = dnorm(x, x0[i], lambda, 1);
+    double max_dval = max(dval);
+    for(int j=0; j&lt;n; j++)
+    {
+      num = num + exp(dval[j]-max_dval)*y[j];
+      den = den + exp(dval[j]-max_dval);
+    }
+    out[i] = num/den;
+  }
+  return out;
+}</code></pre>
+<p>The cross-validation function <code>cvKRS</code> is written as:</p>
+<pre class="c"><code>// [[Rcpp::export(name = &quot;cvKRS&quot;)]]
+NumericVector cvKRS_I(const NumericVector y, const NumericVector x, 
+                      const int k, const NumericVector lambdas)
+{
+  // declare variables and vectors
+  int n = y.size();
+  NumericVector mse_lambda(lambdas.size());
+  NumericVector out(1);
+  NumericVector sorted_x(n);
+  NumericVector sorted_y(n);
+  
+  // sort x and y according to the order of x
+  IntegerVector order_x = stl_order(x);
+  for(int kk=0; kk &lt; n; kk++)
+  {
+    int ind = order_x[kk]-1;
+    sorted_y[kk] = y[ind];  
+    sorted_x[kk] = x[ind];
+  }
+  
+  // set up indices to cross-validate for
+  IntegerVector idxs = seq_len(k);
+  IntegerVector all_idxs = rep_each(idxs, n/k);
+
+  // different lambdas
+  for(int jj = 0; jj &lt; lambdas.size(); jj++)
+  {
+    double lambda = lambdas[jj];
+    NumericVector mse(k);
+    
+    // cross-validation loop
+    for(int ii=1; ii &lt;= k; ii++)
+    {
+      const LogicalVector kvals = all_idxs != ii;
+      
+      NumericVector y_t = clone(sorted_y);
+      NumericVector x_t = clone(sorted_x);
+      NumericVector y_cross = y_t[kvals];
+      NumericVector x_cross = x_t[kvals];
+      NumericVector fit = meanKRS_I(y_cross, x_cross, sorted_x, lambda);
+      
+      // calculate mean squared error
+      NumericVector error = pow((fit[!kvals] - sorted_y[!kvals]), 2);
+      mse[ii-1] = mean(error);
+    }
+    
+    // average mean squared error for each value of lambda
+    mse_lambda[jj] = mean(mse);
+  }
+  
+  // output lambda which gave the smallest mean squared error
+  int best_pos = which_min(mse_lambda);
+  out[0] = lambdas[best_pos];
+  
+  return out;
+}</code></pre>
+<p>Comments within the function (succeeding a <code>//</code>) give explanation of each section of the function. This function also calls the other function <code>meanKRS</code> by using <code>meanKRS_I</code>. The function was defined as <code>meanKRS_I</code> in the <code>.cpp</code> file, but when exported into R it is defined as <code>meanKRS</code>, based on the comment preceeding the function definition. Both functions were defined within the same file, and so can call one another, provided the function being called is defined first. There is a function used within <code>cvKRS</code> that is not part of base Rcpp functionality: <code>stl_order</code>. This does the same thing as <code>order</code> in base R, but needed to be defined separately.</p>
+<p>Now that the function is defined, we can call it within R by first loading the <code>Rcpp</code> library and then using the <code>sourceCpp</code> function to source the C++ file, located in the same working directory.</p>
+<pre class="r"><code>library(Rcpp)
+sourceCpp(&quot;KRS_cv.cpp&quot;)</code></pre>
+<p>This is the stage where we would get compilation errors, if there were any. Now we can run the function over a series of <span class="math inline">\(\lambda\)</span> values and plot the kernel regression over the simulated data for the optimal <span class="math inline">\(\lambda\)</span> selected by cross-validation.</p>
+<pre class="r"><code>lambda_seq = exp(seq(log(1e-6),log(100),len=50))
+best_lambda = cvKRS(y, x, k = 20, lambdas = lambda_seq)
+plot(x, y, pch = 20)
+lines(seq(0, 1, len=1000), meanKRS(y, x, seq(0,1,len=1000), best_lambda), 
+      col=&quot;deeppink&quot;, lwd=2)</code></pre>
+<p><img src="/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-12-1.png" width="528" style="display: block; margin: auto;" />
+To compare computational efficiency, we can benchmark speeds against a function written in R (not shown here).</p>
+<pre class="r"><code>microbenchmark(cvKRS(y, x, k = 20, lambdas = lambda_seq),
+               cvKRS_R(y, x, k = 20, lambdas = lambda_seq), 
+               times = 5)</code></pre>
+<pre><code>## Unit: seconds
+##                                         expr      min       lq     mean
+##    cvKRS(y, x, k = 20, lambdas = lambda_seq) 2.289333 2.293236 2.660317
+##  cvKRS_R(y, x, k = 20, lambdas = lambda_seq) 6.390262 6.629278 7.100683
+##    median       uq      max neval
+##  2.380029 3.141275 3.197711     5
+##  7.481269 7.486666 7.515939     5</code></pre>
+<p>So this further exemplifies the significant speed increase that comes with writing in C, or Rcpp. In fact, this function had an average of three times the speed of that of the R function, against the two times speed up the previous function had. This is likely due to using two functions written in C++ (as cross validation calls the original kernel regression function).</p>
+<p>This has improved the fit, but no single value of <span class="math inline">\(\lambda\)</span> leads to a satisfactory fit, due to the first half of the function (for <span class="math inline">\(x &lt; 0.5\)</span>) wanting a smooth <span class="math inline">\(\mu(x)\)</span> as it is quite linear, and the second half wanting a less smooth one, as it is more ‘wiggly’. We can let the smoothness depend on <span class="math inline">\(x\)</span> by constructing <span class="math inline">\(\lambda(x)\)</span>, which will improve the fit. This method is based around modelling the residuals and varying <span class="math inline">\(\lambda\)</span> more when the residuals are larger. Thus in practice <span class="math inline">\(\lambda(x)\)</span> is a sequence of values instead of a single value. Below are the contents of the file that contains the functions to implement this written in Rcpp.</p>
+<pre class="c"><code>#include &lt;Rcpp.h&gt;
+using namespace Rcpp;
+
+NumericVector fitKRS(const NumericVector x, const NumericVector x0, 
+                     const double lambda, const NumericVector y, 
+                     const NumericVector lambda_vec)
+{
+  NumericVector copy_y = clone(y);
+  int n = x.size();
+  int n0 = x0.size();
+  NumericVector out(n0);
+  for(int ii=0; ii&lt;n0; ii++)
+  {
+    NumericVector dval = dnorm(x, x0[ii], lambda*lambda_vec[ii], 1);
+    double max_dval = max(dval);
+    double num=0, den=0;
+    for(int jj=0; jj&lt;n; jj++)
+    {
+      num = num + exp(dval[jj] - max_dval)*copy_y[jj];
+      den = den + exp(dval[jj] - max_dval);
+    }
+    out[ii] = num/den;
+  }
+  return out;
+}
+
+// [[Rcpp::export(name = &quot;mean_var_KRS&quot;)]]
+NumericVector mean_var_KRS_I(const NumericVector y, const NumericVector x, 
+                             const NumericVector x0, const double lambda)
+{
+  int n = x.size();
+  int n0 = x0.size();
+  NumericVector res(n);
+  NumericVector lambda_1sn(n, 1.0);
+  NumericVector lambda_1sn0(n0, 1.0);
+  NumericVector mu = fitKRS(x, x, lambda, y, lambda_1sn);
+  NumericVector resAbs = abs(y - mu);
+  NumericVector madHat = fitKRS(x, x0, lambda, resAbs, lambda_1sn0);
+  NumericVector w = 1 / madHat;
+  w = w / mean(w);
+  NumericVector out = fitKRS(x, x0, lambda, y, w);
+
+  return out;
+}</code></pre>
+<p>The first function, <code>fitKRS</code> was used to save space, since the same operation is performed multiple times with different parameters. Different weightings <code>w</code> get added to the vector of <span class="math inline">\(\lambda\)</span> values in the final stage, resulting in the varied <span class="math inline">\(\lambda(x)\)</span> parameter. We can plot this to show this change, using the initial value of <span class="math inline">\(\lambda\)</span> selected by cross-validation earlier.</p>
+<pre class="r"><code>sourceCpp(&quot;meanvarKRS.cpp&quot;)
+varied_mu = mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), lambda = best_lambda)
+plot(x, y, pch=20)
+lines(seq(0, 1, len=1000), varied_mu, col = &quot;darkgoldenrod&quot;, lwd=2)</code></pre>
+<p><img src="/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-15-1.png" width="528" style="display: block; margin: auto;" />
+This looks like a good fit, and the function is working as intended. How well does the speed of the function written in Rcpp compare to one written in R?</p>
+<pre class="r"><code>microbenchmark(C = mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), 
+                                lambda = best_lambda),
+               R = mean_var_KRS_R(y = y, x = x, x0 = seq(0,1,len=1000), 
+                                  lam = best_lambda), times = 500)</code></pre>
+<pre><code>## Unit: milliseconds
+##  expr      min       lq     mean   median       uq       max neval
+##     C 25.56793 35.80579 41.67632 39.84551 45.09670  84.63745   500
+##     R 35.03011 54.59121 64.87276 61.94020 70.77707 122.68250   500</code></pre>
+<p>This has an expected speed up again. And to make sure both functions are outputting the same thing, we can use <code>all.equal</code> again:</p>
+<pre class="r"><code>all.equal(mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), 
+                              lambda = best_lambda), 
+          mean_var_KRS_R(y = y, x = x, x0 = seq(0,1,len=1000), 
+                             lam = best_lambda))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="cross-validation-again" class="section level3">
+<h3>Cross Validation Again</h3>
+<p>The value of <span class="math inline">\(\lambda\)</span> used for fitting this local regression is that picked from cross-validation where <span class="math inline">\(\lambda\)</span> does not vary with <span class="math inline">\(x\)</span>, in the previous section. To improve this fit further, we can use cross-validation again, but fitting the model with the new <code>mean_var_KRS</code> function on each iteration instead of the basic kernel regression. The function is written in Rcpp below.</p>
+<pre class="c"><code>// [[Rcpp::export(name = &quot;mean_var_cv_KRS&quot;)]]
+NumericVector mean_var_cv_KRS_I(const NumericVector y, const NumericVector x, 
+                      const int k, const NumericVector lambdas)
+{
+  int n = y.size();
+  NumericVector mse_lambda(lambdas.size());
+  NumericVector out(1);
+  NumericVector sorted_x(n);
+  IntegerVector order_x = stl_order(x);
+  NumericVector test;
+  NumericVector sorted_y(n);
+  for(int kk=0; kk &lt; n; kk++)
+  {
+    int ind = order_x[kk]-1;
+    sorted_y[kk] = y[ind];  
+    sorted_x[kk] = x[ind];
+  }
+  IntegerVector idxs = seq_len(k);
+  IntegerVector all_idxs = rep_each(idxs, n/k);
+  
+  for(int jj = 0; jj &lt; lambdas.size(); jj++)
+  {
+    double lambda = lambdas[jj];
+    NumericVector mse(k);
+    for(int ii=1; ii &lt;= k; ii++)
+    {
+      const LogicalVector kvals = all_idxs != ii;
+      NumericVector y_t = clone(sorted_y);
+      NumericVector x_t = clone(sorted_x);
+      NumericVector y_cross = y_t[kvals];
+      NumericVector x_cross = x_t[kvals];
+      NumericVector fit = mean_var_KRS_I(y_cross, x_cross, sorted_x, lambda);
+      NumericVector error = pow((fit[!kvals] - sorted_y[!kvals]), 2);
+      mse[ii-1] = mean(error);
+    }
+    mse_lambda[jj] = mean(mse);
+  }
+  int best_pos = which_min(mse_lambda);
+  out[0] = lambdas[best_pos];
+  
+  return out;
+}</code></pre>
+<p>This functions is very similar to the cross-validation function implemented earlier. It loops over different values of <span class="math inline">\(\lambda\)</span>, but instead uses these as a starting point to fit a series of points using <span class="math inline">\(\lambda(x)\)</span>. The error is calculated against the cross-validated points and the starting <span class="math inline">\(\lambda\)</span> that results in the smallest error is returned. Now we can call this in R, and re-run the <code>mean_var_KRS</code> function with the newly selected <span class="math inline">\(\lambda\)</span> and see how it compares.</p>
+<pre class="r"><code>sourceCpp(&quot;meanvarcvKRS.cpp&quot;)
+cv_best_lambda = mean_var_cv_KRS(y, x, k=20, exp(seq(log(0.01), log(1), len=50)))
+cv_varied_mu = mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), lambda = cv_best_lambda)
+plot(x, y, pch=20)
+lines(seq(0, 1, len=1000), cv_varied_mu, col = &quot;darkorchid&quot;, lwd=2)</code></pre>
+<p><img src="/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-20-1.png" width="528" style="display: block; margin: auto;" />
+This looks a lot smoother for lower values of <span class="math inline">\(x\)</span> than before, which looks like a better fit overall!</p>
+<p>A way to improve this model might involve a <em>local</em> regression approach, which would be fitting parameter values at different (possibly uniform) intervals across the data set. Local regression will be covered in the next section.</p>
+</div>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc2/intro/" rel="next">Intro to C&#43;&#43;</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc2/rcpp/" rel="prev">Local Polynomial Regression with Rcpp</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

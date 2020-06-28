@@ -1,0 +1,1087 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction The first aspect to being a good programmer is to ensure that your code is reproducible. That is, if an academic unrelated to you, on the other side of the world, were to have access to your conclusions and your dataset, would they be able to reproduce your results?">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility/">
+  <meta property="og:title" content="Reproducibility | Danny James Williams">
+  <meta property="og:description" content="Introduction The first aspect to being a good programmer is to ensure that your code is reproducible. That is, if an academic unrelated to you, on the other side of the world, were to have access to your conclusions and your dataset, would they be able to reproduce your results?"><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Reproducibility | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Reproducibility</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>The first aspect to being a good programmer is to ensure that your code is <strong>reproducible</strong>. That is, if an academic unrelated to you, on the other side of the world, were to have access to your conclusions and your dataset, would they be able to reproduce your results? It is important that this is the case, otherwise it may take weeks or even months of effort for someone to catch up to the research that you have already carried out, which makes it difficult for that person to then build on the existing work.</p>
+<p>If you have supplied your code with any publication you have created, it is also important you follow some basic <strong>literate programming</strong> guidelines. In short, this ensures that whoever reads your code will be able to figure out what it does without too much effort. This can be done with documentation, proper commenting, or writing an Markdown document.</p>
+<p>It is surprising nowadays how many scientific articles are released without some form of code alongside them. If code is released alongside a piece of research, every academic who reads that research should be able to reproduce the results in the article without a large amount of hassle. This would allow other scientists to build on the research, and advance the scientific community as a whole. If you don’t include your code however, your research may never be built on, as you would be making it more difficult for someone to enter your research field.</p>
+<p>An example of literate programming and reproducibility is given below. A least square solver has been implemented on a Prostate Cancer dataset. Firstly, the example goes through the mathematics of least squares estimation, then an example is given on how to code this in R. Each step is explained, and through explaining these steps, it should be possible to reproduce the code through a greater understanding.</p>
+</div>
+<div id="reproducibility-example-implementing-a-least-square-solver-in-r" class="section level1">
+<h1>Reproducibility Example: Implementing a least square solver in R</h1>
+<p>A least squares estimator will provide coefficients that make up a function which can be used to predict some form of an output. Calling the output <span class="math inline">\(\boldsymbol{y}\)</span>, the series of inputs <span class="math inline">\(\boldsymbol{x} = (\boldsymbol{x}_1, \boldsymbol{x}_2, \dots, \boldsymbol{x}_n)^T\)</span>, and the coefficients to be estimated as <span class="math inline">\(\boldsymbol{w} = (w_0, \boldsymbol{w_1})\)</span>. Here, <span class="math inline">\(w_0\)</span> is the intercept, or the bias parameter and <span class="math inline">\(n\)</span> is the length of the input vector. The equation that we need to solve is:
+<span class="math display">\[
+\boldsymbol{w}_{LS} := \text{argmin}_{\boldsymbol{w}} \sum_{i \in D_0} \left\{y_i - f(\boldsymbol{x}_i; \boldsymbol{w})\right\}^2.
+\]</span>
+This has a solution of
+<span class="math display">\[
+\boldsymbol{w}_{LS} = (\boldsymbol{XX}^T)^{-1}\boldsymbol{Xy}^T.
+\]</span>
+Which will minimise the squared error between the actual output values <span class="math inline">\(\boldsymbol{y}\)</span> and the expected output values given by the input values <span class="math inline">\(\boldsymbol{x}\)</span>.</p>
+<div id="prostate-cancer-data" class="section level2">
+<h2>Prostate Cancer Data</h2>
+<p>To give an example of using a least squares solver, we can use prostate cancer data given by the <code>lasso2</code> package. If this package is not installed, we can use</p>
+<pre><code>install.packages(&quot;lasso2&quot;)</code></pre>
+<p>to install it. Once this package is installed, we obtain the dataset by running the commands</p>
+<pre><code>library(lasso2)
+data(Prostate)</code></pre>
+<p>which gives us the dataset in our R environment. We start by inspecting the dataset, which can be done with</p>
+<pre class="r"><code>head(Prostate)</code></pre>
+<pre><code>##       lcavol  lweight age      lbph svi       lcp gleason pgg45       lpsa
+## 1 -0.5798185 2.769459  50 -1.386294   0 -1.386294       6     0 -0.4307829
+## 2 -0.9942523 3.319626  58 -1.386294   0 -1.386294       6     0 -0.1625189
+## 3 -0.5108256 2.691243  74 -1.386294   0 -1.386294       7    20 -0.1625189
+## 4 -1.2039728 3.282789  58 -1.386294   0 -1.386294       6     0 -0.1625189
+## 5  0.7514161 3.432373  62 -1.386294   0 -1.386294       6     0  0.3715636
+## 6 -1.0498221 3.228826  50 -1.386294   0 -1.386294       6     0  0.7654678</code></pre>
+<p>Here we can see all the different elements of the dataset, which are:</p>
+<ul>
+<li><code>lcavol</code>: The log of the cancer volume<br />
+</li>
+<li><code>lweight</code>: The log of the prostate weight<br />
+</li>
+<li><code>age</code>: The individual’s age<br />
+</li>
+<li><code>lbph</code>: The log of the benign prostatic hyperplasia amount<br />
+</li>
+<li><code>svi</code>: The seminal vesicle invasion<br />
+</li>
+<li><code>lcp</code>: The log of the capsular penetration<br />
+</li>
+<li><code>gleason</code>: The Gleason score<br />
+</li>
+<li><code>pgg45</code>: The percentage of the Gleason scores that are 4 or 5<br />
+</li>
+<li><code>lpsa</code>: The log of the prostate specific antigen</li>
+</ul>
+<p>We don’t need to understand what all of these are, but we need to define what the inputs and outputs are. We are interested in the cancer volume, so setting <span class="math inline">\(\boldsymbol{y}\)</span> as <code>lcavol</code> and <span class="math inline">\(\boldsymbol{x}\)</span> as the other variables would measure how these other variables affect cancer volume. We can set this by running</p>
+<pre class="r"><code>y = as.vector(Prostate$lcavol)
+X = model.matrix(~., data=Prostate)</code></pre>
+<p>which gives us our inputs and outputs. We are selecting the <span class="math inline">\(X\)</span> matrix going from 2 to <code>dim(Prostate)[2]</code>, which means that we are selecting the Prostate dataset from the second column to the last one (not including the response as a predictor). If our output variable was in a different column, we would exclude a different column using similar methods.</p>
+<p>Now that we have set up the inputs and outputs, we can use the solution
+<span class="math display">\[
+\boldsymbol{w}_{LS} = (\boldsymbol{XX}^T)^{-1}\boldsymbol{Xy}^T.
+\]</span>
+to find the coefficients <span class="math inline">\(\boldsymbol{w_{LS}}\)</span>. Converting this equation into R is done with the command:</p>
+<pre class="r"><code>wLS = solve(t(X) %*% X) %*% t(X) %*% y</code></pre>
+<p>The <code>t(X)</code> function simply takes the transpose of the matrix. The <code>%*%</code> function is just selecting matrix multiplication, as opposed to using <code>*</code> which would be element-wise multiplication. The <code>solve</code> function finds the inverse of a matrix, so <code>solve(X)</code> would give <span class="math inline">\(X^{-1}\)</span>. Now we have our coefficients</p>
+<pre class="r"><code>wLS</code></pre>
+<pre><code>##                      [,1]
+## (Intercept) -2.997602e-14
+## lcavol       1.000000e+00
+## lweight     -1.214306e-14
+## age         -1.049508e-16
+## lbph         6.045511e-16
+## svi         -2.952673e-14
+## lcp          4.538037e-15
+## gleason      1.547373e-15
+## pgg45       -2.255141e-17
+## lpsa         1.706968e-15</code></pre>
+<p>which can be used to get the predicting function <span class="math inline">\(f(\boldsymbol{x};\boldsymbol{w})\)</span> for these given inputs.</p>
+<pre class="r"><code>f = X %*% wLS</code></pre>
+<p>We can see how close the predicted output is to the actual output with a plot. If our predictions are accurate, then they will be close to the actual output, and lie on a diagonal line. We can plot these two values against each other using the command:</p>
+<pre class="r"><code>plot(f,y,xlab = &quot;Predicted Values&quot;, ylab = &quot;Actual Values&quot;, main = &quot;Log of Cancer Volume&quot;)
+abline(0,1)</code></pre>
+<p><img src="/portfolios/sc1/reproducibility_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+These match up almost perfectly, so our predictions are accurate.</p>
+</div>
+<div id="cross-validation" class="section level2">
+<h2>Cross-validation</h2>
+<p>Cross-validation is a general purpose method for evaluating the method of the predicting function <span class="math inline">\(f(\boldsymbol{x};\boldsymbol{w})\)</span>. This is done by leaving <span class="math inline">\(n\)</span> points out of the dataset, fitting the coefficients to the remaining dataset, then using the new coefficients to create a new predicting function which can predict the data point that was missed out. The difference between this predicted point and the actual observed point can be used as a metric to judge the accuracy of the predicting function.</p>
+<p>In more technical terms, we split the dataset <span class="math inline">\(D\)</span> into <span class="math inline">\(k\)</span> distinct subsets <span class="math inline">\(D_1, \dots, D_k\)</span>, and fit <span class="math inline">\(f_{-i}(\boldsymbol{x}_{-i};\boldsymbol{w})\)</span> for each dataset and for <span class="math inline">\(i=0,\dots k\)</span>. We then take the squared error between <span class="math inline">\(y_i\)</span> and <span class="math inline">\(f(\boldsymbol{x}_{i};\boldsymbol{w})\)</span>, and average across all subsets, i.e.
+<span class="math display">\[
+\frac{1}{k+1} \sum^k_{i=1} \left[ f(\boldsymbol{x}_{i};\boldsymbol{w}) - y_i \right]^2
+\]</span>
+To do this in R, we can set up a loop that will create a new data subset on each iteration, carry out the same procedure as detailed before to obtain the coefficients and the predicting function, measure the error and repeat <span class="math inline">\(k\)</span> times. This is done with:</p>
+<pre class="r"><code>N = length(y)
+error = numeric(N)
+for(i in 1:N){
+  Xmini = X[-i,]
+  ymini = y[-i]
+  wLSmini = solve(t(Xmini) %*% Xmini) %*% t(Xmini) %*% ymini
+  fout = X[i,] %*% wLSmini
+  error[i] = (fout - y[i])^2
+}</code></pre>
+<p>Using the indexing of <code>X[-i,]</code> will subset <code>X</code> to all rows except the <span class="math inline">\(i\)</span>-th one. With this reduced data set, as well as only using the <span class="math inline">\(y_{-i}\)</span> inputs, we estimate the coefficients at each iteration and then use that to calculate the squared error, which is saved in the <code>error</code> array. To find the overall error, we just take the mean of this array.</p>
+<pre class="r"><code>mean(error)</code></pre>
+<pre><code>## [1] 3.701126e-27</code></pre>
+</div>
+<div id="removing-features" class="section level2">
+<h2>Removing Features</h2>
+<p>We can use this overall squared error as a reference point, because it can be compared against the same score when removing certain inputs (columns of <code>X</code>) to see if the prediction function is more accurate without some of these included. We can do this by setting up another loop that loops over the number of inputs, and performing the same methods as before to calculate the averages. This is done with:</p>
+<pre class="r"><code>D = dim(X)[2]
+error_all = numeric(D-1)
+for(d in 2:D){
+  Xd = X[,-d] 
+  error_d = numeric(N)
+  for(i in 1:(dim(X)[1])){
+    Xmini = Xd[-i,]
+    ymini = y[-i]
+    wLSmini = solve(t(Xmini) %*% Xmini) %*% t(Xmini) %*% ymini
+    fout = Xd[i,] %*% wLSmini
+    error_d[i] = (fout - y[i])^2
+  }
+  error_all[d-1] = mean(error_d)
+} </code></pre>
+<p>So this starts with setting the array <code>error_all</code> to the length of the number of inputs. Then there is a loop which iterates over the number of inputs (excluding the first column, which corresponds to the intercept), and removes a column from <code>X</code>, renaming it <code>Xd</code>. Another array is set up, called <code>error_d</code>, which is equivalent to the <code>error</code> array from the previous section. The nested loop performs the same operation as the cross-validation before. We can inspect this array, and compare it against the previous cross-validation error:</p>
+<pre class="r"><code>error_all</code></pre>
+<pre><code>## [1] 5.351267e-01 2.736666e-27 3.654340e-27 3.473490e-27 3.802165e-27
+## [6] 4.893871e-27 9.457742e-28 1.465294e-27 3.635496e-27</code></pre>
+<pre class="r"><code>mean(error)</code></pre>
+<pre><code>## [1] 3.701126e-27</code></pre>
+<p>So we can see that some of the cross-validation errors with a feature removed has a lower error than the original error. We can remove these variables if we want to, as it would reduce the cross-validation error. However, there is grounds for keeping the variables in the model, as the difference between errors is rather small, which we can see here.</p>
+<pre class="r"><code>rbind(colnames(X)[2:d],(error_all-mean(error)))</code></pre>
+<pre><code>##      [,1]                [,2]                    [,3]                   
+## [1,] &quot;lcavol&quot;            &quot;lweight&quot;               &quot;age&quot;                  
+## [2,] &quot;0.535126651390945&quot; &quot;-9.64460028673121e-28&quot; &quot;-4.67853198901128e-29&quot;
+##      [,4]                    [,5]                   [,6]                 
+## [1,] &quot;lbph&quot;                  &quot;svi&quot;                  &quot;lcp&quot;                
+## [2,] &quot;-2.27635884835842e-28&quot; &quot;1.01038873950454e-28&quot; &quot;1.1927448494611e-27&quot;
+##      [,7]                    [,8]                    [,9]                  
+## [1,] &quot;gleason&quot;               &quot;pgg45&quot;                 &quot;lpsa&quot;                
+## [2,] &quot;-2.75535156416629e-27&quot; &quot;-2.23583162435088e-27&quot; &quot;-6.5629761986902e-29&quot;</code></pre>
+<p>This shows what the cross-validation error would be if we removed each of these predictors. We would generally prefer a smaller model, and the covariates with a low magnitude are likely not providing much information in the model, so we can exclude them. Overall, this would leave us with <code>lcp</code> and <code>lpsa</code>.</p>
+<p>This is only accounting for removing <em>one</em> predictor and leaving the others in. We could now want to consider what different combinations of input variables we could include that would result in the lowest overall error. Another thing to consider is to relax the condition of linear least squares, so that the output <span class="math inline">\(\boldsymbol{y}\)</span> could depend on some feature transform <span class="math inline">\(\phi(\boldsymbol{x})\)</span>, which could improve the accuracy. In practice, this is an incredibly large amount of combinations, and would be nearly impossible to compare the different errors that would result in an overall ‘optimal’ model.</p>
+</div>
+<div id="conclusions" class="section level2">
+<h2>Conclusions</h2>
+<p>Using the least squares method, we have reduced the model down to having two inputs, the log of the capsular penetration and the log of the prostate specific antigen. These were the only covariates that provided sufficient information about the output, the log of the cancer volume. The parameter estimates for these covariates in a reduced model is</p>
+<pre class="r"><code>X.new = model.matrix(~lcp+lpsa,data=Prostate)
+wLS.new = solve(t(X.new) %*% X.new) %*% t(X.new) %*% y
+wLS.new</code></pre>
+<pre><code>##                   [,1]
+## (Intercept) 0.09134598
+## lcp         0.32837479
+## lpsa        0.53162109</code></pre>
+<p>These are reasonably large and positive values, meaning that if an individual has higher values of <code>lcp</code> and <code>lpsa</code>, they likely of having a higher cancer volume.</p>
+</div>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc1/common/" rel="next">Common R</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc1/github/" rel="prev">Git and GitHub</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

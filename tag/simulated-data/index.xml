@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simulated Data | Danny James Williams</title>
+    <link>http://dannyjameswilliams.co.uk/tag/simulated-data/</link>
+      <atom:link href="http://dannyjameswilliams.co.uk/tag/simulated-data/index.xml" rel="self" type="application/rss+xml" />
+    <description>Simulated Data</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 27 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <title>Simulated Data</title>
+      <link>http://dannyjameswilliams.co.uk/tag/simulated-data/</link>
+    </image>
+    
+    <item>
+      <title>Gaussian Process Classification</title>
+      <link>http://dannyjameswilliams.co.uk/projects/gpc/</link>
+      <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/projects/gpc/</guid>
+      <description>&lt;p&gt;The second group project I worked on at COMPASS mainly involved learning how Gaussian process classification worked, as it is a complicated procedure, and not as straight forward as Gaussian process classification.&lt;/p&gt;
+&lt;p&gt;Our work involved a number of aspects that have improved on Gaussian process classification in recent literatures:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Pseudo-Marginal Likelihood:&lt;/strong&gt; An importance sampling procedure to approximate the marginal likelihood in MCMC sampling.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Subset Selection&lt;/strong&gt;: An entropy based measure that chooses a subset of a full dataset that maximises information across the dataset, referred to as the &lt;em&gt;Information Vector Machine (IVM)&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Laplace Approximation:&lt;/strong&gt; An approximation of the posterior of the latent variables.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Together, these approximations makes Gaussian process classification feasibile. Without approximations such as these, the procedure would have an incredible runtime.&lt;/p&gt;
+&lt;p&gt;Finally, we compared the results on an e-mail spam dataset, and had a higher prediction accuracy than a JAGS implementation of logistic regression. We combined our code, written in Rcpp, into an R package, available 
+&lt;a href=&#34;https://github.com/dannyjameswilliams/gpc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

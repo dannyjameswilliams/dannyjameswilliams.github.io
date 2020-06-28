@@ -1,0 +1,1035 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Tidyverse The tidyverse is a set of packages in R that share the same programming philosophy. These packages are
+ readr tidyr dplyr ggplot2 magrittr  All these packages provide different functionalities.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse/">
+  <meta property="og:title" content="Tidyverse | Danny James Williams">
+  <meta property="og:description" content="Tidyverse The tidyverse is a set of packages in R that share the same programming philosophy. These packages are
+ readr tidyr dplyr ggplot2 magrittr  All these packages provide different functionalities."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Tidyverse | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Tidyverse</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="tidyverse" class="section level2">
+<h2>Tidyverse</h2>
+<p>The <em>tidyverse</em> is a set of packages in R that share the same programming philosophy. These packages are</p>
+<ul>
+<li><code>readr</code></li>
+<li><code>tidyr</code></li>
+<li><code>dplyr</code></li>
+<li><code>ggplot2</code></li>
+<li><code>magrittr</code></li>
+</ul>
+<p>All these packages provide different functionalities. They can all be loaded at once by loading <code>library(tidyverse)</code>. The combination of these packages provide an easier ‘front end’ to R. The tidyverse packages streamline the process of data manipulation compared to base R, as well as providing additional functions to simplify plotting and visualisation. This portfolio will go through an example demonstrating the usage of functions from these packages.</p>
+</div>
+<div id="example-energy-output-from-buildings" class="section level2">
+<h2>Example: Energy Output from Buildings</h2>
+<p>This dataset was obtained from the <em>ASHRAE - Great Energy Predictor III</em>. It is a large dataset that contains information about energy meter readings from 1448 buildings, which are classified by their primary use (e.g. education), their square footage, the year they were built and the number of floors they have. Meter readings are taken at all hours of the day, and these are available for a long time period for each building separately.</p>
+<p>This dataset is very large, the <code>train.csv</code> training dataset file is around 386Mb, and so some processes can be very slow and cumbersome using base R functions. This is a good example of using functions from <code>dplyr</code> and <code>magrittr</code> to manipulate the dataset.</p>
+<div id="joining-and-structuring-data" class="section level3">
+<h3>Joining and Structuring Data</h3>
+<p>We have two datasets to start with - <code>train</code> and <code>metadata</code>, which are the training set data and the building metadata respectively. We can inspect what kind of variables are in these datasets initially by using base R functions.</p>
+<pre class="r"><code>head(train)</code></pre>
+<pre><code>##   building_id meter           timestamp meter_reading
+## 1           0     0 2016-01-01 00:00:00             0
+## 2           1     0 2016-01-01 00:00:00             0
+## 3           2     0 2016-01-01 00:00:00             0
+## 4           3     0 2016-01-01 00:00:00             0
+## 5           4     0 2016-01-01 00:00:00             0
+## 6           5     0 2016-01-01 00:00:00             0</code></pre>
+<pre class="r"><code>head(metadata)</code></pre>
+<pre><code>##   site_id building_id primary_use square_feet year_built floor_count
+## 1       0           0   Education        7432       2008          NA
+## 2       0           1   Education        2720       2004          NA
+## 3       0           2   Education        5376       1991          NA
+## 4       0           3   Education       23685       2002          NA
+## 5       0           4   Education      116607       1975          NA
+## 6       0           5   Education        8000       2000          NA</code></pre>
+<p>The first goal is to combine these data sets together, and we can see that both data sets share the <code>building_id</code> column, so these data sets need to be joined together by this. In base R, some combination of the <code>match</code> function and subsetting would be required to do this, involving multiple lines of code and maybe some confusion. With the <code>right_join</code> (or <code>left_join</code>) function from <code>dplyr</code>, the process is much simpler.</p>
+<pre class="r"><code>new.train &lt;- train %&gt;% right_join(metadata, by = &quot;building_id&quot;)</code></pre>
+<p>The training data set has been updated in one line with the function <code>right_join</code>, and it now includes the columns from both <code>train</code> and <code>metadata</code>.</p>
+<pre class="r"><code>colnames(train)</code></pre>
+<pre><code>## [1] &quot;building_id&quot;   &quot;meter&quot;         &quot;timestamp&quot;     &quot;meter_reading&quot;</code></pre>
+<pre class="r"><code>colnames(new.train)</code></pre>
+<pre><code>## [1] &quot;building_id&quot;   &quot;meter&quot;         &quot;timestamp&quot;     &quot;meter_reading&quot;
+## [5] &quot;site_id&quot;       &quot;primary_use&quot;   &quot;square_feet&quot;   &quot;year_built&quot;   
+## [9] &quot;floor_count&quot;</code></pre>
+<p>When joining the data sets, the command <code>%&gt;%</code> was used. This is referred to as a ‘pipe’, and is a part of the <code>magrittr</code> package. It iteratively performs operations such as the ones demonstrated above. In this case, it took the first input <code>train</code>, a dataset, then performed the function <code>right_join</code>, of which the first argument of the function was automatically defined as <code>train</code>. Pipes are very useful in organising and structuring code, and allow you to neatly run a lot of commands in one line.</p>
+<p>Now, imagine that we wanted to look at the average meter reading for each type of building, grouped by respective primary use, at each hour of the day. We first need to restructure our data slightly to achieve this. Since our <code>timestamp</code> column is a string containing the date and the time of the meter reading, we can subset this to just the first two characters of the time, which are in positions 12 and 13.</p>
+<pre class="r"><code>new.train$time = as.numeric(substr(new.train$timestamp, 12, 13))</code></pre>
+<p>This has created a new column in the <code>new.train</code> dataframe which corresponds to which hour the meter reading was taken. Now we can pipe the <code>group_by</code> and <code>summarise</code> functions through <code>new.train</code> to average over the different type of building and the time of day.</p>
+<pre class="r"><code>meanreadings = new.train %&gt;% group_by(time, primary_use) %&gt;% 
+                    summarise(mean=mean(meter_reading))
+meanreadings</code></pre>
+<pre><code>## # A tibble: 384 x 3
+## # Groups:   time [24]
+##     time primary_use                    mean
+##    &lt;dbl&gt; &lt;fct&gt;                         &lt;dbl&gt;
+##  1     0 Education                     4488.
+##  2     0 Entertainment/public assembly  448.
+##  3     0 Food sales and service         335.
+##  4     0 Healthcare                     757.
+##  5     0 Lodging/residential            271.
+##  6     0 Manufacturing/industrial       273.
+##  7     0 Office                         484.
+##  8     0 Other                          127.
+##  9     0 Parking                        183.
+## 10     0 Public services                264.
+## # … with 374 more rows</code></pre>
+<p>Note that this has resulted in a <em>tibble</em>, which is a form of a data frame. The same goals can be achieved with a tibble that would otherwise be achieved with the normal dataframe type.</p>
+</div>
+<div id="plotting-and-visualising-data" class="section level3">
+<h3>Plotting and Visualising Data</h3>
+<p>To visualise the average meter readings over the course of the day, we can use the <code>ggplot</code> function, from the <code>ggplot2</code> package. This is a plotting package that provides easy access to different types of graphics. It also allows structure within plots, as you can save a plot object as a variable. Additions to the plot can done by simply adding other layers to the existing object. This can be seen in action here.</p>
+<pre class="r"><code>pl &lt;- ggplot(meanreadings) + geom_line(mapping = aes(time, mean, col=primary_use), size=1.5)</code></pre>
+<p>Initially, the <code>ggplot</code> function was called on the data frame <code>meanreadings</code>, initialising the plotting sequence, then the <code>geom_line</code> layer was added. The <code>mapping</code> argument defines what goes into the plot, so that <code>time</code> is on the <span class="math inline">\(x\)</span>-axis, and <code>mean</code> is on the <span class="math inline">\(y\)</span>-axis. The specification of <code>col=primary_use</code> in <code>mapping</code> separated the different categories and plotted their lines separately on the same plot. We can see the plot by inspecting the <code>pl</code> object.</p>
+<pre class="r"><code>pl</code></pre>
+<p><img src="/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
+This is an interesting plot, but doesn’t tell us much about the variation in meter readings on average during the day, for each building type. It does show that the ‘Education’ and ‘Services’ types of buildings on average require a lot more energy (or just have higher meter readings). To look at the variation between building types more closely, we can normalise each building type to be centred on zero by subtracting the mean across the average day and dividing by the standard deviation. This can be achieved by first creating a new data frame which includes both the mean and standard deviation.</p>
+<pre class="r"><code>meanreadings2 &lt;- meanreadings %&gt;% group_by(primary_use) %&gt;% summarise(mean2 = mean(mean), sd = sd(mean)) %&gt;% right_join(meanreadings, by = &quot;primary_use&quot;)
+meanreadings2$norm.mean &lt;- (meanreadings2$mean - meanreadings2$mean2)/meanreadings2$sd
+ggplot(meanreadings2) + geom_line(aes(time, norm.mean, col=primary_use),size=1.5)</code></pre>
+<p><img src="/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>On inspection of this plot, we can make some interpretations about the mean daily temperature based on the primary use of the building. Most of these buildings seem to follow a sine curve, where the meter readings increase at midday at a time of around 0600 to 1900. The meter readings also seem to be periodic, as at the end of the day they finish at around the value they started at. Most building types follow the same periodic structure, but we can see that the Manufacturing/industrial category has a higher peak in the morning, and the parking category has a lower peak in the evening.</p>
+<p>We can also split this analysis by season, and inspect how the season affects the mean meter readings per day. This can be achieved by first creating a new ‘season’ column in the original data frame.</p>
+<pre class="r"><code>new.train$month = substr(new.train$timestamp, 6, 7)
+new.train$season = new.train$month
+new.train$season[new.train$season==&quot;02&quot; | new.train$season==&quot;03&quot; | new.train$season==&quot;04&quot;] = &quot;Spring&quot;
+new.train$season[new.train$season==&quot;05&quot; | new.train$season==&quot;06&quot; | new.train$season==&quot;07&quot;] = &quot;Summer&quot;
+new.train$season[new.train$season==&quot;08&quot; | new.train$season==&quot;09&quot; | new.train$season==&quot;10&quot;] = &quot;Autumn&quot;
+new.train$season[new.train$season==&quot;01&quot; | new.train$season==&quot;11&quot; | new.train$season==&quot;12&quot;] = &quot;Winter&quot;</code></pre>
+<p>Then by using the <code>group_by</code>, <code>summarise</code> and <code>right_join</code> functions, we will make a data set that is grouped by season, time and primary use, to go into a plot.</p>
+<pre class="r"><code>seasonal_readings &lt;- new.train %&gt;% group_by(season, time, primary_use) %&gt;% 
+  summarise(mean_reading=mean(meter_reading)) 
+seasonal_readings &lt;- seasonal_readings %&gt;% group_by(primary_use) %&gt;% 
+      summarise(mean_mean_reading = mean(mean_reading), sd = sd(mean_reading)) %&gt;% right_join(seasonal_readings, by = &quot;primary_use&quot;)
+
+seasonal_readings$norm.mean &lt;- (seasonal_readings$mean_reading - seasonal_readings$mean_mean_reading)/seasonal_readings$sd
+ggplot(seasonal_readings, aes(time, norm.mean, group=1,col=primary_use)) + 
+  geom_line(aes(group=primary_use), size=1.2)+
+  facet_wrap(~season) </code></pre>
+<p><img src="/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The first thing to note here is that the normalisation was done <em>before</em> the seasonal split, which is why some building types have higher normalised mean in some seasons. For example, we can see that the education category uses on average more energy in the summer than in other seasons. There is also a general shift upwards for meter readings in winter, and downwards for summer, which could be due to requiring more energy for central heating.</p>
+</div>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc1/performance/" rel="next">Performance and Debugging</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc1/matrices/" rel="prev">(Sparse) Matrices</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

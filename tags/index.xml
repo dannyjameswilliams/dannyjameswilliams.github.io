@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags | Danny James Williams</title>
+    <link>http://dannyjameswilliams.co.uk/tags/</link>
+      <atom:link href="http://dannyjameswilliams.co.uk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 28 Jun 2020 15:39:00 +0000</lastBuildDate>
+    <image>
+      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <title>Tags</title>
+      <link>http://dannyjameswilliams.co.uk/tags/</link>
+    </image>
+    
+  </channel>
+</rss>

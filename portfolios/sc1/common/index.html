@@ -1,0 +1,1110 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Performing operations on vectors In general, there are three methods that can be used to perform the same operation (such as a mathematical operation) on every element in a vector \(\boldsymbol{x}\).">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc1/common/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc1/common/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc1/common/">
+  <meta property="og:title" content="Common R | Danny James Williams">
+  <meta property="og:description" content="Performing operations on vectors In general, there are three methods that can be used to perform the same operation (such as a mathematical operation) on every element in a vector \(\boldsymbol{x}\)."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Common R | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Common R</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="performing-operations-on-vectors" class="section level2">
+<h2>Performing operations on vectors</h2>
+<p>In general, there are three methods that can be used to perform the same operation (such as a mathematical operation) on every element in a vector <span class="math inline">\(\boldsymbol{x}\)</span>. A simple way of doing this is with a <strong>loop</strong>, which iterates once for each element in <span class="math inline">\(\boldsymbol{x}\)</span>, and performs the operation one at a time. <strong>Vectorisation</strong> refers to the process of applying the same operation to every element in a vector at once, whereas the <code>apply</code> function applies any function across a vector in a single line of code.</p>
+<div id="comparison-between-vectorisation-loops-and-apply" class="section level3">
+<h3>Comparison between vectorisation, loops and <code>apply</code></h3>
+<p>We can test the efficiency of using vectorisation as opposed to using a loop or an <code>apply</code> function. We will construct three pieces of code to do the same thing, that is, apply the function <span class="math inline">\(f(x) = \sin(x)\)</span> to all elements in a vector, which is constructed of the natural numbers up to 100,000. We start by creating the vector:</p>
+<pre class="r"><code>x = seq(1,100000)</code></pre>
+<p>Now we can create three functions. One that uses a for loop, one that uses <code>apply</code> and one that works by vectorising.</p>
+<pre class="r"><code>loop_function = function(x){
+  y = numeric(length(x))
+  for(i in 1:length(x)){
+    y[i] = sin(x[i])
+  }
+  return(y)
+}
+
+apply_function = function(x){
+  y = apply(as.matrix(x), 1, sin)
+  return(y)
+}
+
+vector_function = function(x){
+  y = sin(x)
+  return(y)
+}</code></pre>
+<p>Now that the functions are constructed, we can use the inbuilt R function <code>system.time</code> to calculate how long it takes each function to run.</p>
+<pre class="r"><code>system.time(loop_function(x))</code></pre>
+<pre><code>##    user  system elapsed 
+##   0.058   0.000   0.080</code></pre>
+<pre class="r"><code>system.time(apply_function(x))</code></pre>
+<pre><code>##    user  system elapsed 
+##   0.312   0.000   0.312</code></pre>
+<pre class="r"><code>system.time(vector_function(x))</code></pre>
+<pre><code>##    user  system elapsed 
+##   0.006   0.000   0.005</code></pre>
+<p>Naturally, none of these computations take very long to perform, as the process of taking the sine isn’t very complex. However, you can still see the order of which functions are the fastest. In general, vectorisation will always be more efficient than loops or <code>apply</code> functions, and loops are faster than using <code>apply</code>.</p>
+<p>There are cases where it will not be possible to use vectorisation to carry out a task on an array. In this case, it is necessary to construct a function to pass through <code>apply</code>, or performing operations within a loop. In general, loops are faster and more flexible - as they allow you to do more in each iteration than a function could. Some situations where you might want to use <code>apply</code> is to make a simple process neater in the code. If you were doing something relatively straightforward, you will save space and make the code more readable by using <code>apply</code>, as opposed to a loop.</p>
+<p>It is common practice to always vectorise your code when you can, as it comes with a significant speed increase, as loops and <code>apply</code> functions are slower than vectorised code.</p>
+</div>
+<div id="other-functions" class="section level3">
+<h3>Other functions</h3>
+<p>There are different variants of the <code>apply</code> function depending on how your data are constructed, and how you would want your output.</p>
+<ul>
+<li><code>apply(X, MARGIN, FUN, ...)</code> is the basic apply function. <code>MARGIN</code> refers to which dimension remains constant when performing the function. For example, <code>apply(sum,1,x)</code> will sum across the columns, and the number of rows will remain constant.</li>
+<li><code>lapply(X, FUN, ...)</code> is an apply function that returns a list as its output, each element in the list corresponding to applying the given function to each value in <code>X</code>.</li>
+<li><code>sapply(X, FUN, ...)</code> is a wrapper of <code>lapply</code> that will simplify the output so that it is not in list form.</li>
+<li><code>mapply(FUN, ...)</code> is a multi-dimensional version of <code>sapply</code>, with <code>mapply</code> it is possible to add more than one input to the function, and it will return a vector of values for each set of inputs.</li>
+</ul>
+<div id="map-reduce-and-filter" class="section level4">
+<h4>Map, Reduce and Filter</h4>
+<p><code>Map</code> maps a function to a vector. This is similar to <code>lapply</code>. For example:</p>
+<pre class="r"><code>x = seq(1, 3, by=1)
+f = function(a) a+5
+M = Map(f,x)
+M</code></pre>
+<pre><code>## [[1]]
+## [1] 6
+## 
+## [[2]]
+## [1] 7
+## 
+## [[3]]
+## [1] 8</code></pre>
+<p>This has added 5 to every element in <code>x</code>, and returned a list of outputs for each element. In fact, <code>Map</code> performs the same operation as <code>mapply</code> does, which we can see in the function itself:</p>
+<pre class="r"><code>Map</code></pre>
+<pre><code>## function (f, ...) 
+## {
+##     f &lt;- match.fun(f)
+##     mapply(FUN = f, ..., SIMPLIFY = FALSE)
+## }
+## &lt;bytecode: 0x55bfca7455a8&gt;
+## &lt;environment: namespace:base&gt;</code></pre>
+<p><code>Reduce</code> performs a given function on pairs of elements in a vector. The procedure is iterated from left to right, and a single value is returned. This can be done from right to left by adding the argument <code>right=TRUE</code>. As an example, consider division:</p>
+<pre class="r"><code>f = function(x, y) x/y
+x = seq(1, 3, by=1)
+Reduce(f, x)</code></pre>
+<pre><code>## [1] 0.1666667</code></pre>
+<pre class="r"><code>Reduce(f, x, right=TRUE)</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+<p>In the first case, <code>Reduce</code> worked by dividing 1 by 2, then this result by 3. In the second case, this was in reverse, first dividing 3 by 2, then this result by 1.</p>
+<p><code>Filter</code> will ‘filter’ an array into values that satisfy the condition. For example</p>
+<pre class="r"><code>x = seq(1,5)
+condition = function(x) x &gt; 3
+Filter(condition,x)</code></pre>
+<pre><code>## [1] 4 5</code></pre>
+<p><code>Filter</code> is similar to just indexing an array using <code>TRUE</code>/<code>FALSE</code> values, but instead of indexing using an array, it indexes using a function. However, we can inspect the interior of the function</p>
+<pre class="r"><code>Filter</code></pre>
+<pre><code>## function (f, x) 
+## {
+##     ind &lt;- as.logical(unlist(lapply(x, f)))
+##     x[which(ind)]
+## }
+## &lt;bytecode: 0x55bfc77914d8&gt;
+## &lt;environment: namespace:base&gt;</code></pre>
+<p>So infact, the function for <code>Filter</code> simply uses <code>lapply</code> to get the indices of the <code>TRUE</code>/<code>FALSE</code> values, and indexes the array for input <code>x</code> with a simple subsetting.</p>
+</div>
+</div>
+</div>
+<div id="parallel-computing" class="section level2">
+<h2>Parallel Computing</h2>
+<p>By using the <code>parallel</code> package, you can make use of all processing cores on your computer. Naturally, if you only have a single core processor, this is irrelevant, but most computers in the modern day have 2, 4, 8 or more cores. Parallel computing will allow R to run up to this many proccesses at the same time. A lot of important tasks in R can be sped up with parallel computing, for example MCMC. In MCMC, using <span class="math inline">\(n\)</span> cores can allow you to also run <span class="math inline">\(n\)</span> chains at once, with (in theory) no slowdown.</p>
+<p>Supercomputers generally have an extremely large number of cores, so being able to run code in parallel is important in computationally expensive programming jobs.</p>
+<p>There are some disadvantages to this: namely that splitting a process to four different cores will also require four times as much memory. If your memory isn’t sufficient for the amount of cores that you are using, this will cause a significant slowdown.</p>
+<div id="using-mclapply-or-foreach" class="section level3">
+<h3>Using <code>mclapply</code> or <code>foreach</code></h3>
+<p>There are two main methods to parallelise a set of commands (or a function) in R. The first method is a parallel version of <code>apply</code>, and the second method is a parallel version of <code>mclapply</code>. To illustrate how these work, consider the example of an <span class="math inline">\(ARMA(1,1)\)</span> model, which has an equation of the form
+<span class="math display">\[
+x_t = \epsilon_t + \alpha\epsilon_{t-1} +  \beta x_{t-1}
+\]</span>
+<span class="math display">\[
+\epsilon_t \sim  N(0, 1)
+\]</span>
+A function that generates an <span class="math inline">\(ARMA(1,1)\)</span> process can be written as:</p>
+<pre class="r"><code>arma11 = function(alpha=0.5, beta=1, initx, N=1000){
+  x = eps = numeric(N)
+  x[1] = initx
+  eps[1] = rnorm(1,0,1)
+  eps[2] = rnorm(1,0,1)
+  x[2] = eps[1] + alpha*eps[2] + beta*x[1]
+  
+  for(i in 3:N){
+    eps[i] = rnorm(1,0,1)
+    x[i] = eps[i] + alpha*eps[i-1] + beta*x[i-1]
+  }
+  return(x)
+}</code></pre>
+<p>This will generate a vector of <span class="math inline">\(x\)</span> values for each timestep from <span class="math inline">\(t=1,\dots,N\)</span>. We can see a plot of this generated time series by running a simulated <span class="math inline">\(ARMA\)</span> timeseries of length <span class="math inline">\(N=1000\)</span>.</p>
+<pre class="r"><code>plot(1:1000, arma11(initx=0.5,N=1000),type=&quot;l&quot;, xlab=&quot;Time (t)&quot;, ylab=expression(x), main=&quot;Time Series Example&quot;)</code></pre>
+<p><img src="/portfolios/sc1/common_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Now that the functions are set up for testing, we can now set up the computer to work in parallel. This involves loading the required packages and detecting the number of cores we have available.</p>
+<pre class="r"><code>library(parallel)
+library(MASS)
+no.cores = detectCores()
+no.cores</code></pre>
+<pre><code>## [1] 8</code></pre>
+<p>So we have this many cores to work with (on my laptop, there are 8 cores). The <code>no.cores</code> variable will be passed into the parallel computing functions. We can now use <code>mclapply</code> to simulate this <span class="math inline">\(ARMA\)</span> model a large amount of times, and calculate the difference from the first value and the last value as a statistic. By putting the <code>arma11</code> function in a wrapper, we can pass it through to <code>mclapply</code>.</p>
+<pre class="r"><code>arma_wrapper = function(x) {
+  y = arma11(alpha=1, beta=1, initx=x, N=1000)
+  return(head(y,1) - tail(y,1))
+}
+xvals = rep(0.5,1000)
+MCLoutput = unlist(mclapply(xvals, arma_wrapper, mc.cores = no.cores))</code></pre>
+<p>So now, <code>MCLoutput</code> is a vector, of length 1000, that contains the differences between the first and last value in a generated time series from an <span class="math inline">\(ARMA(1,1)\)</span> model with <span class="math inline">\(\alpha=1\)</span> and <span class="math inline">\(\beta=1\)</span>.</p>
+<pre class="r"><code>head(MCLoutput)</code></pre>
+<pre><code>## [1]  -5.373153  -3.740134 -88.112201  53.205845  -4.410669  21.850910</code></pre>
+<pre class="r"><code>mean(MCLoutput)</code></pre>
+<pre><code>## [1] -0.2121396</code></pre>
+<p>Since this process is iterated at every time step, and ran 1000 times on top of that, it will be efficient for testing the efficiency of parallel computing. We can also construct a <code>foreach</code> loop that will carry out the same task. The <code>foreach</code> function is supplied by the <code>foreach</code> library. It is similar to a <code>for</code> loop but does not depend on each previous iteration of the loop. Instead, <code>foreach</code> runs the contents of the loop in parallel a specified number of times.</p>
+<pre class="r"><code>library(foreach)
+library(doParallel)</code></pre>
+<pre><code>## Loading required package: iterators</code></pre>
+<pre class="r"><code>registerDoParallel(no.cores)
+FEoutput = foreach(i=1:1000) %dopar% {
+  y = arma11(initx=0.5,N=1000)
+  head(y,1) - tail(y,1)
+}</code></pre>
+<p>The <code>foreach</code> loop that has been set up performs the same process as the <code>arma_wrapper</code> function earlier at each iteration, it simulates an <span class="math inline">\(ARMA(1,1)\)</span> process with <span class="math inline">\(N=1000\)</span> time steps 1000 times.</p>
+<pre class="r"><code>head(unlist(FEoutput))</code></pre>
+<pre><code>## [1] -22.303263  -7.588862  20.798046  41.559121  14.506028  29.758766</code></pre>
+<pre class="r"><code>mean(unlist(FEoutput))</code></pre>
+<pre><code>## [1] -0.8435657</code></pre>
+<p>Now that all of the parallel methods are set up, we can time them and compare them to not using parallel at all.</p>
+<pre class="r"><code>system.time(mclapply(xvals, arma_wrapper, mc.cores = no.cores))</code></pre>
+<pre><code>##    user  system elapsed 
+##   5.749   0.835   2.056</code></pre>
+<pre class="r"><code>system.time(foreach(i=1:1000) %dopar% {
+  y = arma11(initx=0.5,N=1000)
+  head(y,1) - tail(y,1)
+})</code></pre>
+<pre><code>##    user  system elapsed 
+##   6.023   0.882   1.847</code></pre>
+<pre class="r"><code>system.time(for(i in 1:1000){
+    arma11(initx=0.5,N=1000)
+  })</code></pre>
+<pre><code>##    user  system elapsed 
+##   4.795   0.007   4.802</code></pre>
+<p>This shows that the fastest method is <code>mclapply</code>, which is different from the normal case of <code>apply</code> being slower than a simple loop. Both methods significantly sped up computation time against the non-parallel version.</p>
+</div>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc1/intro/" rel="next">Introduction to R</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc1/reproducibility/" rel="prev">Reproducibility</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

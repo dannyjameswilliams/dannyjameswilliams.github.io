@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spatial Statistics | Danny James Williams</title>
+    <link>http://dannyjameswilliams.co.uk/tag/spatial-statistics/</link>
+      <atom:link href="http://dannyjameswilliams.co.uk/tag/spatial-statistics/index.xml" rel="self" type="application/rss+xml" />
+    <description>Spatial Statistics</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <title>Spatial Statistics</title>
+      <link>http://dannyjameswilliams.co.uk/tag/spatial-statistics/</link>
+    </image>
+    
+    <item>
+      <title>Chicago Crime Classification</title>
+      <link>http://dannyjameswilliams.co.uk/projects/chicago/</link>
+      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>http://dannyjameswilliams.co.uk/projects/chicago/</guid>
+      <description>&lt;p&gt;My most recent project was a group project as part of the first term of the COMPASS CDT. It involved modelling different aspects of a large data set detailing crimes in Chicago. Pictured is a kernel density estimate of both the location of crimes in the city as well as the population.&lt;/p&gt;
+&lt;p&gt;My input to this project was to use logistic regression methods to classify whether an arrest would be successful or not, given other covariates in the crime set; detailing the location, the area, the type of crime type, amongst others. This involved feature engineering and using LASSO coefficient paths to judge the most &amp;lsquo;important&amp;rsquo; covariates.&lt;/p&gt;
+&lt;p&gt;The package that was created for this project can be found as a Github repository 
+&lt;a href=&#34;https://github.com/jakespiteri/chicagocrime&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

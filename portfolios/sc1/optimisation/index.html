@@ -1,0 +1,1163 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Numerical Optimisation The general idea in optimisation is to find a minimum (or maximum) of some function. Generally, our problem has the form \[ \min_{\bm{x}} f(\bm{x}). \] Sometimes our problem can be constrained, which would take the general form \[ \min_{\boldsymbol{x}} f(\boldsymbol{x}) \]\[ \text{subject to } g_i(x) \leq 0 \] for \(i=1,\dots,m\), \(f:\mathbb{R}^n \to \mathbb{R}\).">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/">
+  <meta property="og:title" content="Optimisation | Danny James Williams">
+  <meta property="og:description" content="Numerical Optimisation The general idea in optimisation is to find a minimum (or maximum) of some function. Generally, our problem has the form \[ \min_{\bm{x}} f(\bm{x}). \] Sometimes our problem can be constrained, which would take the general form \[ \min_{\boldsymbol{x}} f(\boldsymbol{x}) \]\[ \text{subject to } g_i(x) \leq 0 \] for \(i=1,\dots,m\), \(f:\mathbb{R}^n \to \mathbb{R}\)."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Optimisation | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Optimisation</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="numerical-optimisation" class="section level2">
+<h2>Numerical Optimisation</h2>
+<p>The general idea in optimisation is to find a <em>minimum</em> (or <em>maximum</em>) of some function. Generally, our problem has the form
+<span class="math display">\[
+\min_{\bm{x}} f(\bm{x}).
+\]</span>
+Sometimes our problem can be <em>constrained</em>, which would take the general form
+<span class="math display">\[
+\min_{\boldsymbol{x}} f(\boldsymbol{x}) 
+\]</span><span class="math display">\[
+\text{subject to } g_i(x) \leq 0
+\]</span>
+for <span class="math inline">\(i=1,\dots,m\)</span>, <span class="math inline">\(f:\mathbb{R}^n \to \mathbb{R}\)</span>. These are important problems to solve, and it is often that there is no analytical solution to the problem, or the analytical solution is unavailable. This portfolio will explain the most popular numerical optimisation methods, and those readily available in R.</p>
+<div id="optimising-a-complicated-function" class="section level3">
+<h3>Optimising a complicated function</h3>
+<p>To demonstrate the different optimisation methods, the speeds and abilities of each, consider optimising the Rastrigin function. This is a non-convex function that takes the form
+<span class="math display">\[
+f(\bm{x}) = An + \sum^n_{i=1} [x_i^2-A\cos(2\pi x_i)],
+\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the length of the vector <span class="math inline">\(\bm{x}\)</span>. We can plot this function in 3D using the <code>plotly</code> package to inspect it.</p>
+<pre class="r"><code>f = function(x) A*n + sum(x^2 - A*cos(2*pi*x))
+A = 5
+n = 2
+x1 = seq(-10,10,length=100)
+x2 = seq(-10,10,length=100)
+xy = expand.grid(x1,x2)
+z = apply(xy,1,f)
+dim(z) = c(length(x1),length(x2))
+z.plot = list(x=x1, y=x2, z=z)
+image(z.plot, xlab = &quot;x&quot;, ylab = &quot;y&quot;, main = &quot;Rastrigin Function&quot;)</code></pre>
+<p><img src="/portfolios/sc1/optimisation_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+
+So we are interested in optimising the function <code>f</code>. We can see from inspection of the plot that there is a global minimum at <span class="math inline">\(\bm{x} = \bm{0}\)</span>, where <span class="math inline">\(f(\bm{0}) = 0\)</span>, and likewise:</p>
+<pre class="r"><code>f(c(0,0))</code></pre>
+<pre><code>## [1] 0</code></pre>
+<p>So we will be evaluating optimisation methods based on how close they get to this true solution. We continue this portfolio by explaining the different optimisation methods, and evaluating their performance in finding the global minimum of the Rastrigin function.</p>
+<p>When <span class="math inline">\(n=2\)</span>, the gradient and hessian for this function can be calculated analytically:
+<span class="math display">\[
+\nabla f(\bm{x}) = \begin{pmatrix}
+2 x_1 + 2\pi A \sin(2\pi x_1) \\
+2 x_2 + 2\pi A \sin(2\pi x_2)
+\end{pmatrix}
+\]</span>
+<span class="math display">\[
+\nabla^2 f(\bm{x}) = \begin{pmatrix}
+2 + 4\pi^2 A \cos (2\pi x_1) &amp; 0 \\
+0 &amp; 2 + 4\pi^2 A \cos (2\pi x_2)
+\end{pmatrix}
+\]</span>
+We can construct these functions in R.</p>
+<pre class="r"><code>grad_f = function(x) {
+  c(2*x[1] + 2*pi*A*sin(2*pi*x[1]),
+    2*x[2] + 2*pi*A*sin(2*pi*x[2]) )
+}
+hess_f = function(x){
+  H11 = 2 + 4*pi^2*A*sin(2*pi*x[1])
+  H22 = 2 + 4*pi^2*A*sin(2*pi*x[2])
+  return(matrix(c(H11,0,0,H22),2,2))
+}</code></pre>
+<p>These analytical forms of the gradient and hessian can be supplied to various optimisation algorithms to speed up convergence.</p>
+<p>Optimisation problems can be one or multi dimensional, where the dimension refers to the size of the parameter vector, in our case <span class="math inline">\(n\)</span>. Generally, one-dimensional problems are easier to solve, as there is only one parameter value to optimise over. In statistics, we are often interested in multi-dimensional optimisation. For example, in maximum likelihood estimation we are trying to find parameter values that maximise a likelihood function, for any number of parameters. For the Rastrigin function in our example, we have taken the dimension <span class="math inline">\(n=2\)</span>.</p>
+</div>
+</div>
+<div id="optimisation-methods" class="section level2">
+<h2>Optimisation Methods</h2>
+<div id="gradient-descent-methods" class="section level3">
+<h3>Gradient Descent Methods</h3>
+<p>Iterative algorithms take the form
+<span class="math display">\[
+\bm{x}_{k+1} = \bm{x}_k + t \bm{d}_k, \: \: \text{ for iterations } k=0,1,\dots, 
+\]</span>
+<span class="math inline">\(\bm{d}_k \in \R^n\)</span> is the descent direction, <span class="math inline">\(t_k\)</span> is the stepsize.
+<span class="math display">\[
+f&#39;(\bm{x}; \bm{d})=\nabla f(\bm{x})^T \bm{d} &lt; 0.
+\]</span>
+So moving <span class="math inline">\(\bm{x}\)</span> in the descent direction for timestep <span class="math inline">\(t\)</span> decreases the function, so we move towards a minimum.
+The  is the negative gradient of <span class="math inline">\(f\)</span>, i.e. <span class="math inline">\(\bm{d}_k = -\nabla f(\bm{x}_k)\)</span>, or normalised <span class="math inline">\(\bm{d}_k = {-\nabla f(\bm{x}_k)}/{\norm{\nabla f(\bm{x})}}\)</span>. We can construct a general gradient descent method in R and evaluate performance on optimising the Rastrigin function.</p>
+<pre class="r"><code>gradient_method = function(f, x, gradient, eps=1e-4, t=0.1, maxiter=1000){
+  converged = TRUE
+  iterations = 0
+  while((!all(abs(gradient(x)) &lt; eps))){
+    if(iterations &gt; maxiter){
+      cat(&quot;Not converged, stopping after&quot;, iterations, &quot;iterations \n&quot;)
+      converged = FALSE
+      break
+    }
+    gradf = gradient(x)
+    d = -gradf/abs(gradf)
+    x = x - t*gradf
+    iterations = iterations + 1
+  } 
+  if(converged) {cat(&quot;Number of iterations:&quot;, iterations, &quot;\n&quot;)
+                 cat(&quot;Converged!&quot;)}
+  return(list(f=f(x),x=x))
+}</code></pre>
+<p>This code essentially will continue running the while loop until the tolerance condition is satisfied, where the change in <span class="math inline">\(\bm{x}\)</span> from one iteration to another is negligible. Now we can see in which cases this will provide a solution to the problem of the Rastrigin function.</p>
+<pre class="r"><code>gradient_method(f, x = c(1, 1), grad_f)</code></pre>
+<pre><code>## Not converged, stopping after 1001 iterations</code></pre>
+<pre><code>## $f
+## [1] 20.44268
+## 
+## $x
+## [1] -3.085353 -3.085353</code></pre>
+<pre class="r"><code>gradient_method(f, x = c(.01, .01), grad_f)</code></pre>
+<pre><code>## Not converged, stopping after 1001 iterations</code></pre>
+<pre><code>## $f
+## [1] 17.82949
+## 
+## $x
+## [1] -2.962366 -2.962366</code></pre>
+<p>Even when the initial guess of <span class="math inline">\(x\)</span> was very close to zero, the true solution, this function did not converge. This shows that under a complex and highly varying function such as the Rastrigin function, the gradient method has problems. This can be improved by including a backtracking line search to dynamically change the value of the stepsize <span class="math inline">\(t\)</span> to <span class="math inline">\(t_k\)</span> for each iteration <span class="math inline">\(k\)</span>. This method reduces the stepsize <span class="math inline">\(t\)</span> for each iteration <span class="math inline">\(k\)</span> via <span class="math inline">\(t_k = \beta t_k\)</span> for <span class="math inline">\(\beta \in (0,1)\)</span> while
+<span class="math display">\[
+f(\bm{x}_k) - f(\bm{x}_k + t_k \bm{d}_k) &lt; -\alpha\nabla f(\bm{x}_k)^T \bm{d}_k.
+\]</span>
+and for <span class="math inline">\(\alpha \in (0,1)\)</span>. We can add this to the gradient method function with the line <code>while( (f(x) - f(x + t*d) ) &lt; (-alpha*t * t(gradf)%*%d)) t = beta*t</code>. Meaning we need to specify <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. After this is added to the function, we have</p>
+<pre class="r"><code>gradient_method(f, c(0.01,0.01), grad_f, maxiter = 10000)</code></pre>
+<pre><code>## Number of iterations: 1255 
+## Converged!</code></pre>
+<pre><code>## $f
+## [1] 5.002503e-09
+## 
+## $x
+## [1] 5.008871e-06 5.008871e-06</code></pre>
+<p>Now we finally have convergence! However, this is for when the initial guess was very close to the actual solution, and so in more realistic cases where we don’t know this true solution, this method is likely inefficient and inaccurate. The Newton method is an advanced form of the basic gradient descent method.</p>
+</div>
+<div id="newton-methods" class="section level3">
+<h3>Newton Methods</h3>
+<p>The Newton method seeks to solve the optimisation problem using evaluations of Hessians and a quadratic approximation of a function <span class="math inline">\(f\)</span> around <span class="math inline">\(\bm{x}_k\)</span>. This is under the assumption is that the Hessian <span class="math inline">\(\nabla^2 f(\bm{x}_k)\)</span> is . The unique minimiser of the quadratic approximation is
+<span class="math display">\[
+\bm{x}_{k+1} = \bm{x}_k - (\nabla^2 f(\bm{x}_k))^{-1} \nabla f(\bm{x}_k),
+\]</span>
+which is known as . Here you can consider <span class="math inline">\((\nabla^2 f(\bm{x}_k))^{-1} \nabla f(\bm{x}_k)\)</span> as the descent direction in a scaled gradient method. The <code>nlm</code> function from base R uses the Newton method. It is an expensive algorithm to run, because it involves inverting a matrix, the hessian matrix of <span class="math inline">\(f\)</span>. Newton methods work a lot better if you can supply an algebraic expression for the hessian matrix, so that you do not need to numerically calculate the gradient on each iteration. We can use <code>nlm</code> to test the Newton method on the Rastrigin function.</p>
+<pre class="r"><code>f_fornlm = function(x){
+  out = f(x)
+  attr(out, &#39;gradient&#39;) &lt;- grad_f(x)
+  attr(out, &#39;hessian&#39;) &lt;-  hess_f(x)
+  return(out)
+}
+nlm(f, c(-4, 4), check.analyticals = TRUE)</code></pre>
+<pre><code>## $minimum
+## [1] 3.406342e-11
+## 
+## $estimate
+## [1] -4.135221e-07 -4.131223e-07
+## 
+## $gradient
+## [1] 1.724132e-05 1.732303e-05
+## 
+## $code
+## [1] 2
+## 
+## $iterations
+## [1] 3</code></pre>
+<p>So this converged to the true solution in a surprisingly small number of iterations. The likely reason for this is due to Newton’s method using a quadratic approximation, and the Rastrigin function taking a quadratic form.</p>
+</div>
+<div id="bfgs" class="section level3">
+<h3>BFGS</h3>
+<p>In complex cases, the hessian cannot be supplied analytically. Even if it can be supplied analytically, in high dimensions the hessian is a very large matrix, which makes it computationally expensive to invert for each iteration. The BFGS method approximates the hessian matrix, increasing computability and efficiency. The BFGS method is the most common quasi-Newton method, and it is one of the methods that can be suppled to the <code>optim</code> function. It approximates the hessian matrix with <span class="math inline">\(B_k\)</span>, and for iterations <span class="math inline">\(k=0,1,\dots\)</span>, it has the following basic algorithm:</p>
+<p>Initialise <span class="math inline">\(B_0 = I\)</span> and initial guess <span class="math inline">\(x_0\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>Obtain a direction <span class="math inline">\(\bm{d}_k\)</span> through the solution of <span class="math inline">\(B_k \bm{d}_k = - \nabla f(\bm{x}_k)\)</span></li>
+<li>Obtain a stepsize <span class="math inline">\(t_k\)</span> by line search <span class="math inline">\(t_k = \text{argmin} f(\bm{x}_k + t\bm{d}_k)\)</span></li>
+<li>Set <span class="math inline">\(s_k = t_k \bm{d}_k\)</span></li>
+<li>Update <span class="math inline">\(\bm{x}_{k+1} = \bm{x}_k + \bm{s}_k\)</span></li>
+<li>Set <span class="math inline">\(\bm{y}_k = \nabla f(\bm{x}_{k+1}) - \nabla f(\bm{x}_k)\)</span></li>
+<li>Update the hessian approximation <span class="math inline">\(B_{k+1} = B_k + \frac{\bm{y}_k\bm{y}_k^T}{\bm{y}_k^T \bm{s}_k} - \frac{B_k \bm{s}_k \bm{s}_k^T B_k}{\bm{s}_k^T B_k \bm{s}_k}\)</span></li>
+</ol>
+<p>BFGS is the fastest method that is guaranteed convergence, but has its downsides. BFGS stores the matrices <span class="math inline">\(B_k\)</span> in memory, so if your dimension is high (i.e. a large amount of parameters), these matrices are going to be large and storing them is inefficient. Another version of BFGS is the low memory version of BFGS, named ‘L-BGFS’, which only stores some of the vectors that <em>represent</em> <span class="math inline">\(B_k\)</span>. This method is almost as fast. In general, you should use BFGS if you can, but if your dimension is too high, reduce down to L-BFGS.</p>
+<p>This is a very good but complicated method. Luckily, the function <code>optim</code> from the <code>stats</code> package in R has the ability to optimise with the BFGS method. Testing this on the Rastrigin function gives</p>
+<pre class="r"><code>optim(c(1,1), f, method=&quot;BFGS&quot;, gr = grad_f)</code></pre>
+<pre><code>## $par
+## [1] 0.9899629 0.9899629
+## 
+## $value
+## [1] 1.979932
+## 
+## $counts
+## function gradient 
+##       19        3 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL</code></pre>
+<pre class="r"><code>optim(c(.1,.1), f, method=&quot;BFGS&quot;, gr = grad_f)</code></pre>
+<pre><code>## $par
+## [1] 4.61081e-10 4.61081e-10
+## 
+## $value
+## [1] 0
+## 
+## $counts
+## function gradient 
+##       31        5 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL</code></pre>
+<p>So the BFGS method actually didn’t find the true solution for an initial value of <span class="math inline">\(\bm{x} = (1,1)\)</span>, but did for when the initial value was <span class="math inline">\(\bm{x} = (0.1,0.1)\)</span>.</p>
+</div>
+</div>
+<div id="non-linear-least-squares-optimisation" class="section level2">
+<h2>Non-Linear Least Squares Optimisation</h2>
+<p>The motivating example we have used throughout this section was concerned with optimising a two-dimensional function, of which we were only interested in two variables that controlled the value of the function <span class="math inline">\(f(\bm{x})\)</span>. In many cases, we have a dataset <span class="math inline">\(D = \{\bm{y},\bm{x}_i\}\)</span>, where we decomopose the ‘observations’ as <span class="math inline">\(\bm{y} = g(\bm{x}) + \epsilon\)</span>, where <span class="math inline">\(\epsilon\)</span> is a random noise parameter. In this case we are interested in finding an approximation to the data generating function <span class="math inline">\(g(\bm{x})\)</span>, which we call <span class="math inline">\(f(\bm{x},\bm{\beta})\)</span>, and <span class="math inline">\(\bm{\beta}\)</span> are some parameters of whose relationship with <span class="math inline">\(\bm{x}\)</span> we model to make this approximation, so we are interested in optimising over these parameters. The objective function we are minimising over is
+<span class="math display">\[
+\min_{\bm{\beta}} \sum^n_{i=1} r_i^2 = \min_{\bm{\beta}} \sum^n_{i=1} (y_i - f(x_i,\bm{\beta}))^2, 
+\]</span>
+i.e. the squared difference between the observed dataset and the approximation to the data generating function that defines that dataset. Here, <span class="math inline">\(r_i = y_i - f(x_i,\bm{\beta})\)</span> is known as the <em>residuals</em>, and it is of the most interest in a least squares setting. Many optimisation methods are specifically designed to optimise the least squares problem, but all optimisation methods can be used (provided they find a minimum). Some of the most popular algorithms for least squares are the Gauss-Newton algorithm and the Levenberg-Marquardt algorithm. Both of these algorithms are extensions of Newton’s method for general optimisation. The general form of the Gauss-Newton method is
+<span class="math display">\[
+\bm{\beta} \leftarrow \bm{\beta} - (J_r^TJ_r)^{-1}J_r^Tr_i,
+\]</span>
+where <span class="math inline">\(J_r\)</span> is the Jacobian matrix of the residue <span class="math inline">\(r\)</span>, defined as
+<span class="math display">\[
+J_r = \frac{\partial r}{\partial \bm{\beta}}.
+\]</span>
+So this is defined as the matrix of partial derivatives with respect to each coefficient <span class="math inline">\(\beta_i\)</span>. The Levenberg-Marquardt algorithm extends this approach by including a diagonal matrix of small entries to the <span class="math inline">\(J_r^TJ_r\)</span> term, to eliminate the possibility of this being a singular matrix. This has the update process of
+<span class="math display">\[
+\bm{\beta} \leftarrow \bm{\beta} - (J_r^TJ_r+\lambda I)^{-1}J_r^Tr_i,
+\]</span>
+where <span class="math inline">\(\lambda\)</span> is some small value. In the simple case where <span class="math inline">\(\lambda = 0\)</span>, this reduces to the Gauss-Newton algorithm. This is a highly efficient method, but in the case where our dataset is large, we may want to use stochastic gradient descent.</p>
+<div id="stochastic-gradient-descent" class="section level3">
+<h3>Stochastic Gradient Descent</h3>
+<p>Stochastic Gradient Descent (SGD) is a stochastic approximation to the standard gradient descent method. Instead of calculating the gradient for an entire dataset (which can be extremely large) it calculates the gradient for a lower-dimensional subset of the dataset; picked randomly or deterministically. The form of this method is
+<span class="math display">\[
+\bm{x}_{k+1} = \bm{x}_k - t \nabla f_i(\bm{x}_k)
+\]</span>
+where <span class="math inline">\(i\)</span> is an index that refers to cycling through all points <span class="math inline">\(i \in D\)</span>, the points in the dataset. This can be in different sizes of groups, so depending on the problem, <span class="math inline">\(i\)</span> can be large or small (relative to the size of the dataset). Stochastic gradient methods are useful in the setting where your dataset is very large, otherwise it could be unnecessary.</p>
+</div>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc1/oop/" rel="next">Object Oriented and Functional Programming</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc1/integration/" rel="prev">Numerical Integration</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

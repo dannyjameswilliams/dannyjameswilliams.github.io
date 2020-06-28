@@ -1,0 +1,1103 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction We’ve all been in the situation where we want to perform some extremely complicated computing process, such as MCMC or manipulating an extremely large data frame a lot of times, but our laptops just aren’t good enough.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/">
+  <meta property="og:title" content="Section 5: High Performance Computing with Bluecrystal | Danny James Williams">
+  <meta property="og:description" content="Introduction We’ve all been in the situation where we want to perform some extremely complicated computing process, such as MCMC or manipulating an extremely large data frame a lot of times, but our laptops just aren’t good enough."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+    
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Section 5: High Performance Computing with Bluecrystal | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Section 5: High Performance Computing with Bluecrystal</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 1, 0001
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>We’ve all been in the situation where we want to perform some extremely complicated computing process, such as MCMC or manipulating an extremely large data frame a lot of times, but our laptops just aren’t good enough. They don’t have enough cores, no dedicated GPU and only a small amount of memory. Luckily for academics and PhD students, universities in general sympathise with us. A high performance computing (HPC) cluster is a collection of highly powerful computers located somewhere that can be accessed remotely, and used to run terminal scripts for coding.</p>
+<p>This portfolio will detail the use of <strong>Bluecrystal</strong>, the super computers available at the University of Bristol. To access these computers, one needs to do so through the terminal, and so a basic knowledge of manipulating and using file structures in <code>bash</code> is required. Section 4 details the fundamentals of <code>bash</code> if the reader is not already familiar.</p>
+</div>
+<div id="bluecrystal-phase-3" class="section level2">
+<h2>Bluecrystal Phase 3</h2>
+<p>This tutorial will focus on <em>Bluecrystal Phase 3</em>, that is the third generation of Bluecrystal machines. The cluster is made up of 312 compute <em>nodes</em>, which are where the processes are run. The basic nodes have specifications:</p>
+<ul>
+<li>64GB RAM</li>
+<li>300TB storage</li>
+<li>16 Cores</li>
+<li>Infiniband High Speed Network</li>
+</ul>
+<p>As well as the large memory nodes, which have 256GB of RAM, and the GPU nodes which each have an NVIDIA Tesla K20 - an extremely powerful GPU.</p>
+</div>
+<div id="connecting-to-the-hpc-cluster" class="section level2">
+<h2>Connecting to the HPC Cluster</h2>
+<p>To access the HPC cluster, you would need to log in via SSH (secure shell) from a University of Bristol connection (or a VPN). The <code>ssh</code> command in bash is your friend here. To log in (assuming you have an account), you perform the following command:</p>
+<pre class="bash"><code>ssh your_username@bluecrystalp3.bris.ac.uk</code></pre>
+<p>It will then ask for your password, which you supply immediately after writing this command. From here you will be in the <em>log-in node</em>, note that you should <strong>not</strong> run any code on the log-in node, as this node is only purposed for connecting to the compute nodes. If you run any large code on the log-in node you will slow down the HPC cluster for everyone else.</p>
+</div>
+<div id="file-system" class="section level2">
+<h2>File System</h2>
+<p>Within the log-in node, you will have your own personal file directory where you can store your files and your code. By default, after logging in you will be in this directory, so if you use the <code>ls</code> command you will see the contents of your personal directory immediately. You can write code here, through the terminal, or copy it into your directory from your own personal computer. You are free to make directories and files here, as the contents of your directory will be read by the compute nodes when you want to run a job.</p>
+<p>To copy a file from your own computer to your file system in the HPC cluster, you can use the <code>scp</code> command in <code>bash</code>, a command that is run from your <em>own</em> computer only and looks like</p>
+<pre class="bash"><code>scp path_to_my_file/file.txt your_username@bluecrystalp3.bris.ac.uk::path_inside_hpc/</code></pre>
+<p>Performing this operation would copy <code>file.txt</code> in folder <code>path_to_my_file</code> into the <code>path_inside_hpc</code> folder on your directory in the HPC cluster. If you want to do this the other way around, and copy something from your HPC cluster file system to your personal computer, just switch the order of the arguments to <code>scp</code>, but always do it from your own machine.</p>
+</div>
+<div id="running-jobs" class="section level2">
+<h2>Running Jobs</h2>
+<p>To run a job, you must write a <code>bash</code> script that tells the compute node what to do. This <code>bash</code> script will be interpreted at the HPC node and run accordingly. Below is a general template for what this <code>bash</code> script would look like to be passed across:</p>
+<pre class="bash"><code>#!/bin/bash
+#
+#PBS -l nodes=2:ppn=1,walltime=24:00:00
+
+# working directory
+export WORK_DIR=$HOME
+cd $WORK_DIR
+
+# print to output
+echo JOB ID: $PBS_JOBID
+echo Working Directory `pwd`
+
+# run something
+/bin/hostname</code></pre>
+<p>The first line <code>#!/bin/bash</code> tells the compiler to read this as <code>bash</code>, and the third line <code>#PBS -l nodes=2:ppn=1,walltime=24:00:00</code> gives information to the HPC cluster as to what you want for the job. You can change these arguments to your suiting, e.g. increase the <code>walltime</code> if you think your code will run for more than 24 hours.</p>
+<p>You must save this <code>bash</code> script as something like <code>run_R.sh</code>, and then when logged into Bluecrystal, use the command <code>qsub</code> - meaning to submit this job to the queue, i.e.</p>
+<pre class="bash"><code>qsub run_R.sh</code></pre>
+<p>which would add this job to the queue. Since there are many people that use the HPC cluster, your job may not start immediately, and you might have to wait. You may have to wait longer if your <code>walltime</code> is particularly high, as you will be waiting for enough nodes to become available.</p>
+<div id="other-functions" class="section level3">
+<h3>Other Functions</h3>
+<p>As well as <code>qsub</code>, there are other commands that you can use to play with the HPC cluster. Some notable ones are</p>
+<ul>
+<li><code>qstat</code> gives a list of current jobs being run and those in the queue</li>
+<li><code>qstat -u user_name</code> gives a list of current jobs queued and running by <code>user_name</code></li>
+<li><code>qstat job_id</code> gives information about the job <code>job_id</code> being run</li>
+<li><code>qdel job_id</code> deletes a job with a given <code>job_id</code></li>
+</ul>
+</div>
+</div>
+<div id="running-different-code" class="section level2">
+<h2>Running Different Code</h2>
+<p>To run other programming languages on the HPC cluster, it can be a bit of faff. To run code such as Python or R on the cluster, you must first load the <em>module</em> associated with the particular language. On the log-in node, you can run</p>
+<pre class="bash"><code>module avail</code></pre>
+<p>to get a list of all available modules. There will be a lot. Choose one that you like, for example, I am a personal fan of <code>languages/R-3.6.2-gcc9.1.0</code>, and you can load this with <code>module load module_name</code>, for example</p>
+<pre class="bash"><code>module load languages/R-3.6.2-gcc9.1.0</code></pre>
+<p>which will allow you to run R and R scripts. To submit a job that runs an R script, you must add this line to the job script before you run the code. To run an R script from <code>bash</code>, you use</p>
+<pre class="bash"><code>Rscript script_name.R</code></pre>
+<div id="using-r-packages" class="section level3">
+<h3>Using R Packages</h3>
+<p>Since packages cannot be installed globally on the log-in node, you can install them locally instead. You first type the command <code>R</code> into bash, and then <code>install.packages(&quot;package_name&quot;)</code>. It will ask you if you want the package to be installed locally, which you say yes to.</p>
+<p>After this, all packages installed on your local file system on the log-in node will be accessible as normal when running job scripts.</p>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/&amp;text=Section%205:%20High%20Performance%20Computing%20with%20Bluecrystal" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/&amp;t=Section%205:%20High%20Performance%20Computing%20with%20Bluecrystal" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Section%205:%20High%20Performance%20Computing%20with%20Bluecrystal&amp;body=http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/&amp;title=Section%205:%20High%20Performance%20Computing%20with%20Bluecrystal" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Section%205:%20High%20Performance%20Computing%20with%20Bluecrystal%20http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/&amp;title=Section%205:%20High%20Performance%20Computing%20with%20Bluecrystal" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/author/daniel-williams/avatar_hud775384d6e1de19a81664cb136eec910_257483_270x270_fill_q90_lanczos_center.jpg" alt="Daniel Williams">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="http://dannyjameswilliams.co.uk/">Daniel Williams</a></h5>
+        <h6 class="card-subtitle">CDT Student</h6>
+        <p class="card-text">I am a PhD student studying at the University of Bristol under the COMPASS CDT, and previously studied at the University of Exeter. My research is currently regarding statistical parameter estimation on manifolds, but am also interested in Deep Learning.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/DanielW966" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/dannyjameswilliams" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+hello 
+im trapped in a text file
+

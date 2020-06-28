@@ -1,0 +1,1159 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Matrices A matrix is a two-dimensional data structure. The matrix function is used to create matrices, and can have multiple arguments. You can specify the names of the columns and rows by supplying a list to the dimnames argument, and can choose to populate the matrix by column (default) or by row with byrow=TRUE.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc1/matrices/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc1/matrices/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc1/matrices/">
+  <meta property="og:title" content="(Sparse) Matrices | Danny James Williams">
+  <meta property="og:description" content="Matrices A matrix is a two-dimensional data structure. The matrix function is used to create matrices, and can have multiple arguments. You can specify the names of the columns and rows by supplying a list to the dimnames argument, and can choose to populate the matrix by column (default) or by row with byrow=TRUE."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>(Sparse) Matrices | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>(Sparse) Matrices</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="matrices" class="section level2">
+<h2>Matrices</h2>
+<p>A matrix is a two-dimensional data structure. The <code>matrix</code> function is used to create matrices, and can have multiple arguments. You can specify the names of the columns and rows by supplying a list to the <code>dimnames</code> argument, and can choose to populate the matrix by column (default) or by row with <code>byrow=TRUE</code>. The function <code>as.matrix</code> will convert a relevant argument to a matrix, and <code>is.matrix</code> results a <code>TRUE</code> or <code>FALSE</code> if the argument is or isn’t a matrix. We can see these here:</p>
+<pre class="r"><code>A = matrix(1:12, nrow=3, ncol=4)
+A</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<pre class="r"><code>A = matrix(1:12, nrow=3, ncol=4, byrow=TRUE)
+A</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12</code></pre>
+<pre class="r"><code>A = matrix(1:12, nrow=3, ncol=4, 
+           dimnames = list(c(&quot;Row1&quot;, &quot;Row2&quot;, &quot;Row3&quot;), 
+                           c(&quot;Column1&quot;, &quot;Column2&quot;, &quot;Column3&quot;, &quot;Column4&quot;)))
+A</code></pre>
+<pre><code>##      Column1 Column2 Column3 Column4
+## Row1       1       4       7      10
+## Row2       2       5       8      11
+## Row3       3       6       9      12</code></pre>
+<p>Accessing elements in a matrix can be done by indexing over either the column or the row. <code>A[,i]</code> will access the <span class="math inline">\(i\)</span>-th column, and <code>A[i,]</code> will access the <span class="math inline">\(i\)</span>-th row. These arguments will return a vector, and will lose the structure of the matrix. For example, if we take the 1st column of <code>A</code> we get</p>
+<pre class="r"><code>A[,1]</code></pre>
+<pre><code>## Row1 Row2 Row3 
+##    1    2    3</code></pre>
+<p>which is not a column any more! This is important to consider when working with matrices. To keep the structure of the matrix intact, we can specify <code>drop=FALSE</code> when indexing, e.g.</p>
+<pre class="r"><code>A[,1,drop=FALSE]</code></pre>
+<pre><code>##      Column1
+## Row1       1
+## Row2       2
+## Row3       3</code></pre>
+<p>The <code>array</code> function in R works like a ‘stack of matrices’, and any number of dimensions can be specified. Instead of the <code>matrix</code> function, <code>array</code> takes one argument corresponding to the dimension, which is a vector; each element being the length of the corresponding dimension, i.e.</p>
+<pre class="r"><code>array(1:27,c(3,3,3))</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]   10   13   16
+## [2,]   11   14   17
+## [3,]   12   15   18
+## 
+## , , 3
+## 
+##      [,1] [,2] [,3]
+## [1,]   19   22   25
+## [2,]   20   23   26
+## [3,]   21   24   27</code></pre>
+<p>Matrix multiplication between more than 2 matrices can also be sped up by precisely choosing the location of your brackets. Since matrix multiplication works right-to-left, the brackets need to be on the right side. For a large matrix, if we test the speeds of two forms of multiplication, we get</p>
+<pre class="r"><code>N = 1000
+M1 = matrix(rnorm(N^2),N,N)
+M2 = matrix(rnorm(N^2),N,N)
+M3 = matrix(rnorm(N^2),N,N)
+
+system.time(M1 %*% M2 %*% M3)</code></pre>
+<pre><code>##    user  system elapsed 
+##   0.462   0.172   0.194</code></pre>
+<pre class="r"><code>system.time(M1 %*% (M2 %*% M3))</code></pre>
+<pre><code>##    user  system elapsed 
+##   0.431   0.159   0.195</code></pre>
+<pre class="r"><code>all.equal(M1 %*% M2 %*% M3, M1 %*% (M2 %*% M3))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>So specification of brackets is quite a bit faster, and can speed up computation times for larger problems. Note that the function <code>all.equal</code> checks whether the two arguments are the same within some tolerance, as they are not exactly the same (see later section on Numerical types in R).</p>
+<div id="solving-linear-systems" class="section level3">
+<h3>Solving linear systems</h3>
+<p>Often a linear algebra problem we are interested in is solving <span class="math inline">\(A\boldsymbol{x} =\boldsymbol{b}\)</span> for <span class="math inline">\(\boldsymbol{x},\boldsymbol{b} \in \mathbb{R}^n\)</span> and <span class="math inline">\(A \in \mathbb{R}^{n\times n}\)</span>. One solution to this is simply <span class="math inline">\(\boldsymbol{x} = A^{-1}\boldsymbol{b}\)</span>, but the problem here is that <em>getting</em> the matrix inverse, as it will take of order <span class="math inline">\(n^3\)</span> operations. For example, a 1000x1000 matrix (which is not uncommon) will take around 1000<span class="math inline">\(^3\)</span> = 1,000,000,000 operations, which is inefficient. If you did want to solve the system this way, the function for inverting a matrix in R is <code>solve</code>, e.g.</p>
+<pre class="r"><code>A = matrix(rnorm(9),3,3)
+solve(A)</code></pre>
+<pre><code>##            [,1]       [,2]      [,3]
+## [1,]  -8.888322   2.915525 -1.461660
+## [2,]  30.044457 -10.021586  3.193355
+## [3,] -11.184011   3.327956 -1.104080</code></pre>
+<p>This function can also take a second argument, being the right hand side of the system, which in our case is <span class="math inline">\(b\)</span>. This will roughly be the same as <code>solve(A) %*% b</code>.</p>
+<pre class="r"><code>b = c(1,2,3)
+solve(A) %*% b</code></pre>
+<pre><code>##           [,1]
+## [1,] -7.442254
+## [2,] 19.581350
+## [3,] -7.840339</code></pre>
+<pre class="r"><code>solve(A, b)</code></pre>
+<pre><code>## [1] -7.442254 19.581350 -7.840339</code></pre>
+<p>Although you can see the dimension of the output is different, <code>solve(A) %*% b</code> maintains the column structure. However, the method <code>solve(A,b)</code> is faster than <code>solve(A) %*% b</code>.</p>
+</div>
+<div id="numerical-types-in-r" class="section level3">
+<h3>Numerical types in R</h3>
+<p>If we were to find the ‘type’ of a normal integer in R, we get</p>
+<pre class="r"><code>typeof(2)</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<p>What does it mean by a ‘double’? This means that it is a <code>binary64</code> floating point number, i.e. the information stored in the computer for this value is stored in 64 bits; 1 bit for the <em>sign</em> of the number, 11 bits for the <em>exponent</em> and 52 bits for the <em>significant precision</em>. So the largest number we can store is <code>2^1023</code>, since</p>
+<pre class="r"><code>2^1024</code></pre>
+<pre><code>## [1] Inf</code></pre>
+<p>simply returns <code>Inf</code>. We know this number isn’t <strong>actually</strong> infinity, but R recognises that it is too large, and anything over the largest number is stored as the highest possible value. This also means that really <em>small</em> numbers aren’t stored correctly either. There is always some form of <strong>floating point error</strong> in R, of order 2<span class="math inline">\(^{-52}\)</span>. Showing this in practice:</p>
+<pre class="r"><code>print(1 + 2^(-52), digits=22)</code></pre>
+<pre><code>## [1] 1.000000000000000222045</code></pre>
+<pre class="r"><code>print(1 + 2^(-53), digits=22)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>Another format R can store numbers in is in the format ‘Long’, specified by a <code>L</code> after the number.</p>
+<div id="effect-on-matrices" class="section level4">
+<h4>Effect on Matrices</h4>
+<p>Any form of arithmetic in R is going to be affected by floating point error. Most of the time it does not cause any problems though, as it will only affect things at <em>really small</em> or <em>really large</em> magnitudes. Matrices are specifically succeptible to floating point errors however, as matrix multiplication contains many operations.</p>
+<p>Let’s look at some simple matrix multiplication on large matrices and inspect whether there are floating point errors.</p>
+<pre class="r"><code>N = 100  # Square Number
+A = matrix(rnorm(N),sqrt(N),sqrt(N))
+B = matrix(rnorm(N),sqrt(N),sqrt(N))
+C = matrix(rnorm(N),sqrt(N),sqrt(N))
+
+test = c(solve(A %*% (B %*% C)) - solve(A %*% B %*% C))</code></pre>
+<p>Since these two operations are the same, all entries in the matrix <code>test</code> should be zero. However, this is not the case, as seen below.</p>
+<pre class="r"><code>summary(test)</code></pre>
+<pre><code>##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+## -1.774e-11 -1.969e-12  2.685e-13  3.719e-14  2.575e-12  1.345e-11</code></pre>
+<p>This is due to floating point error. Not all entries in <code>test</code> are zero, but they are very small. Most of the time, this might not make much of a difference, but when performing calculations involving small numbers this is important to consider.</p>
+</div>
+</div>
+</div>
+<div id="sparse-matrices" class="section level2">
+<h2>Sparse Matrices</h2>
+<p>A sparse matrix is one where most of the entries are zero. The problem with sparse matrices in programming is that a very large matrix (for example a <span class="math inline">\(10000 \times 10000\)</span> matrix), the computer would store <em>every</em> element in the matrix, even though most are zero. There are various package for dealing with sparse matrices in a better way in R, but the most popular is the <code>Matrix</code> package. This package extends the base R functionality with both sparse and dense matrices, allolwing more operations and more efficient calculations. In this package, we can use the function <code>rankMatrix</code> to return the rank of a input matrix. For example:</p>
+<pre class="r"><code>A = matrix(rnorm(25),5,5)
+c(rankMatrix(A))</code></pre>
+<pre><code>## [1] 5</code></pre>
+<p>A sparse matrix can be stored as a <code>dgCMatrix</code> (where the <code>C</code> stands for storing by column, other options are row or triplet). Let’s look at the difference between storing a sparse matrix in this way against the default way.</p>
+<pre class="r"><code>A = matrix(0, 1000, 1000)
+for(i in 1:1000) A[sample(1:1000,50,1),i] = sample(1:10,50,replace=TRUE)
+B = Matrix(A, sparse=TRUE)
+A[1:4,1:15]</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]
+## [1,]    0    0    0    0    0    0    0    0    0     0     0     0     0     0
+## [2,]    0    0    0    0    0    0    0    0    0     3     0     0     0     0
+## [3,]    0    0    0    7    0    0    0    0    0     0     6     0     0     0
+## [4,]    4    0    0    0    0    0   10    0    0     0     0     0     0     0
+##      [,15]
+## [1,]     0
+## [2,]     0
+## [3,]     0
+## [4,]     0</code></pre>
+<pre class="r"><code>B[1:4,1:15]</code></pre>
+<pre><code>## 4 x 15 sparse Matrix of class &quot;dgCMatrix&quot;
+##                                    
+## [1,] . . . . . .  . . . . . . . . .
+## [2,] . . . . . .  . . . 3 . . . . .
+## [3,] . . . 7 . .  . . . . 6 . . . .
+## [4,] 4 . . . . . 10 . . . . . . . .</code></pre>
+<pre class="r"><code>c(object.size(A),object.size(B))</code></pre>
+<pre><code>## [1] 8000216  590616</code></pre>
+<p>So the sparse matrix is stored at a much smaller object size than a normal matrix. Note that the <code>Matrix</code> function is part of the <code>Matrix</code> package, not to be confused with <code>matrix</code> from base R. The conversion to being stored as a sparse <code>dgCMatrix</code> was done after construction of the matrix, but it could be constructed as a sparse matrix from the start. We can inspect the <code>dgCMatrix</code> object.</p>
+<pre class="r"><code>str(B)</code></pre>
+<pre><code>## Formal class &#39;dgCMatrix&#39; [package &quot;Matrix&quot;] with 6 slots
+##   ..@ i       : int [1:48759] 3 15 46 61 70 72 87 116 144 170 ...
+##   ..@ p       : int [1:1001] 0 50 100 148 197 245 294 344 394 444 ...
+##   ..@ Dim     : int [1:2] 1000 1000
+##   ..@ Dimnames:List of 2
+##   .. ..$ : NULL
+##   .. ..$ : NULL
+##   ..@ x       : num [1:48759] 4 10 5 6 6 8 6 9 8 4 ...
+##   ..@ factors : list()</code></pre>
+<p>This has a few pieces of information relating to the non-zero elements of the matrix <code>B</code>. The often most interesting ones being the <code>i</code> attribute: the locations of the non-zero entries, and the <code>x</code> attribute: the non-zero entries in these corresponding spots.</p>
+</div>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<p>Sparse matrices can have relevant application in many scenarios. For example, in a modelling problem where you want to model the effects of different categorical predictors, you can use ‘one-hot encoding’. This replaces a multi-class input <span class="math inline">\(\boldsymbol{x} \in \{0, 1, \dots, K \}^n\)</span> with a vector of 1’s and 0’s, where the location of the 1’s correspond to which class is being represented. For example, if we set up a vector of factors in R, we have</p>
+<pre class="r"><code>x.factor = factor(sample(c(&quot;Class1&quot;, &quot;Class2&quot;, &quot;Class3&quot;, &quot;Class4&quot;), 20, replace=TRUE))
+x.factor</code></pre>
+<pre><code>##  [1] Class1 Class4 Class3 Class1 Class2 Class1 Class3 Class3 Class2 Class2
+## [11] Class3 Class3 Class1 Class1 Class1 Class2 Class2 Class2 Class2 Class3
+## Levels: Class1 Class2 Class3 Class4</code></pre>
+<p>When fitting a model, we typically will add these entries to a model matrix, and work with that. The <code>model.matrix</code> function in R will automatically set up one-hot encoding in this scenario.</p>
+<pre class="r"><code>M = model.matrix(~x.factor)
+M</code></pre>
+<pre><code>##    (Intercept) x.factorClass2 x.factorClass3 x.factorClass4
+## 1            1              0              0              0
+## 2            1              0              0              1
+## 3            1              0              1              0
+## 4            1              0              0              0
+## 5            1              1              0              0
+## 6            1              0              0              0
+## 7            1              0              1              0
+## 8            1              0              1              0
+## 9            1              1              0              0
+## 10           1              1              0              0
+## 11           1              0              1              0
+## 12           1              0              1              0
+## 13           1              0              0              0
+## 14           1              0              0              0
+## 15           1              0              0              0
+## 16           1              1              0              0
+## 17           1              1              0              0
+## 18           1              1              0              0
+## 19           1              1              0              0
+## 20           1              0              1              0
+## attr(,&quot;assign&quot;)
+## [1] 0 1 1 1
+## attr(,&quot;contrasts&quot;)
+## attr(,&quot;contrasts&quot;)$x.factor
+## [1] &quot;contr.treatment&quot;</code></pre>
+<p>This matrix is primarily made up of 1’s and 0’s, and so would be better suited to being stored as a sparse matrix.</p>
+<pre class="r"><code>Matrix(M, sparse=TRUE)</code></pre>
+<pre><code>## 20 x 4 sparse Matrix of class &quot;dgCMatrix&quot;
+##    (Intercept) x.factorClass2 x.factorClass3 x.factorClass4
+## 1            1              .              .              .
+## 2            1              .              .              1
+## 3            1              .              1              .
+## 4            1              .              .              .
+## 5            1              1              .              .
+## 6            1              .              .              .
+## 7            1              .              1              .
+## 8            1              .              1              .
+## 9            1              1              .              .
+## 10           1              1              .              .
+## 11           1              .              1              .
+## 12           1              .              1              .
+## 13           1              .              .              .
+## 14           1              .              .              .
+## 15           1              .              .              .
+## 16           1              1              .              .
+## 17           1              1              .              .
+## 18           1              1              .              .
+## 19           1              1              .              .
+## 20           1              .              1              .</code></pre>
+<p>In the case of a large data set, when using categorical variables, this will speed up computation time quite significantly.</p>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc1/tidyverse/" rel="next">Tidyverse</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc1/oop/" rel="prev">Object Oriented and Functional Programming</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

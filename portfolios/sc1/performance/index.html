@@ -1,0 +1,1085 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction Debugging is an important part of any programming process. It is unlikely that an individual will write their code correctly on the first write up, and it is generally accepted that the code will only become usable after a few debugging iterations.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://dannyjameswilliams.co.uk/portfolios/sc1/performance/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgb(251, 191, 183)">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono%7CLora:400,700%7CRoboto:400,700&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="http://dannyjameswilliams.co.uk/portfolios/sc1/performance/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="http://dannyjameswilliams.co.uk/portfolios/sc1/performance/">
+  <meta property="og:title" content="Performance and Debugging | Danny James Williams">
+  <meta property="og:description" content="Introduction Debugging is an important part of any programming process. It is unlikely that an individual will write their code correctly on the first write up, and it is generally accepted that the code will only become usable after a few debugging iterations."><meta property="og:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Performance and Debugging | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Performance and Debugging</h1>
+
+          <div class="article-style">
+            
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<script src="/rmarkdown-libs/d3/d3.min.js"></script>
+<link href="/rmarkdown-libs/profvis/profvis.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/profvis/profvis.js"></script>
+<link href="/rmarkdown-libs/highlight/textmate.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/highlight/highlight.js"></script>
+<script src="/rmarkdown-libs/profvis-binding/profvis.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p><strong>Debugging</strong> is an important part of any programming process. It is unlikely that an individual will write their code correctly on the first write up, and it is generally accepted that the code will only become usable after a few debugging iterations. <strong>Perfomance</strong> is the measure of how efficient your code is with respect to speed, so that you can do the same operation in as quick a time as possible.</p>
+<p>In this section of the portfolio, the debugging process and the performance aspects will be explained by way of an example. This example will be a large function that is deliberately inefficiently and incorrectly written, and will be fixed and improved using different methods.</p>
+</div>
+<div id="example-least-squares-with-feature-transform" class="section level2">
+<h2>Example: Least Squares with Feature Transform</h2>
+<p>Take for example least squares regression with the choice of three basis functions; linear, quadratic, or trigonometric. This function can take one output vector <span class="math inline">\(y\)</span>, and one input vector <span class="math inline">\(x\)</span>, and estimate parameters <span class="math inline">\(w_{LS}\)</span> from the solution
+<span class="math display">\[
+\boldsymbol{w}_{LS} = \left(\boldsymbol{\phi}(\boldsymbol{X})\boldsymbol{\phi}(\boldsymbol{X})^T +\lambda \boldsymbol{I}\right)^{-1}\boldsymbol{\phi}(\boldsymbol{X})\boldsymbol{y}^T,
+\]</span>
+where <span class="math inline">\(\boldsymbol{X}\)</span> is the model matrix, and <span class="math inline">\(\phi\)</span> is a feature transform function. The first version of this function looks like</p>
+<pre class="r"><code>LS.feature.transform.fit &lt;- function(y, x, ft, b){
+  
+  if(ft == &quot;Polynomial&quot;) basis_function = function(x) poly(x, b, raw=TRUE)
+  if(ft == &quot;Linear&quot;) basis_function = function(x) x 
+  if(ft == &quot;Trigonometric&quot;) {
+    basis_function = function(x){
+      basis = c()
+      for(i in 1:b){
+        basis = cbind(basis, sin(i*x), cos(i*x))
+      }
+      return(basis)
+    }
+  }
+  
+  Phi = matrix(NA, length(x), length(basis_function(x))+1)
+  for(i in 1:length(x)){
+    Phi[i,] = c(1, basis_function(x[i]))
+  }
+  
+  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y
+  return(wLS)
+}</code></pre>
+<p>This function takes the argument <code>ft</code>, meaning feature transform. The first thing that the function does is try to recognise which feature transform is being input, by a series of three <code>if</code> functions. Then <code>basis_function</code> is assigned to a function corresponding to the correct feature transform. After this, <code>Phi</code> is set up as a matrix with the correct dimensions, that is the length of the data and the dimension of the feature space (including a column of 1’s).</p>
+<p>Let’s test this function. Good practice is to create a series of testing functions or scripts that will test as many aspects of the function as possible. This code chunk below will test the function for each basis function.</p>
+<pre class="r"><code>library(lasso2)
+data(Prostate)
+LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&quot;Linear&quot;,1)
+LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&quot;Polynomial&quot;,3)
+LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&quot;Trigonometric&quot;,1)</code></pre>
+<div id="debugging" class="section level3">
+<h3>Debugging</h3>
+<p>Let’s try the function for a linear (identity) feature transform. When this line is run, the following error is returned.</p>
+<pre class="r"><code>LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&quot;Linear&quot;,1)</code></pre>
+<pre><code>## Error in t(Phi) %*% Phi : 
+##   requires numeric/complex matrix/vector arguments</code></pre>
+<p>This error message is not informative enough to go back and fix our function immediately. We can use the <code>traceback</code> function to get more information.</p>
+<pre class="r"><code>traceback()</code></pre>
+<pre><code>## 2: solve(t(Phi) %*% Phi) at #20
+## 1: LS.feature.transform.fit(Prostate$lpsa, Prostate$lcavol, &quot;Linear&quot;, 
+       1)</code></pre>
+<p>This is not as useful here, because it does not say much more than the previous error message. We do now know that the error is on line <code>#20</code>, but the actual problem could be before that, presumably in the definition of <code>Phi</code>. We can also use another debugging function, called <code>browser()</code>, which allows you to open an interactive debugging environment. From here we can interactively view all elements and find where the problem is. <em>Note that RStudio also allows an interactive debugging environment.</em></p>
+<p>Let’s take a look at the elements in the function after the definition of <code>Phi</code>. We can first look at the first few rows and columns of <code>Phi</code>. The following code was run after running all other parts of the function up to the definition of <code>Phi</code>:</p>
+<pre class="r"><code>Phi[1:5,1:5]</code></pre>
+<pre><code>##      [,1]       [,2] [,3]       [,4] [,5]
+## [1,]    1 -0.5798185    1 -0.5798185    1
+## [2,]    1 -0.9942523    1 -0.9942523    1
+## [3,]    1 -0.5108256    1 -0.5108256    1
+## [4,]    1 -1.2039728    1 -1.2039728    1
+## [5,]    1  0.7514161    1  0.7514161    1</code></pre>
+<p>The dimension of <code>Phi</code> is wrong, as the columns are being repeated! It should only have two columns, a column of 1’s regarding to the intercept, and a column of each <span class="math inline">\(\phi(x)\)</span>. This error must come from where the dimension is defined, in the line <code>Phi = matrix(NA, length(x), length(basis_function(x))+1)</code>. Looking at <code>Phi</code> in this case, we see we do not want to use the length of the basis function, but instead the number of columns that it contains. So instead we can change <code>length(basis_function(x))+1</code> to <code>dim(as.matrix(basis_function(x)))[2]+1</code>. Now we run the test again.</p>
+<pre class="r"><code>LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol,&quot;Linear&quot;,1)</code></pre>
+<pre><code>##           [,1]
+## [1,] 1.5072975
+## [2,] 0.7193204</code></pre>
+<p>Now the function works! We can see if the parameter estimates are correct by comparing to the output from a linear model with <code>lm</code>, since we have the known result that <span class="math inline">\(w_{LS} = w_{MLE}\)</span>.</p>
+<pre class="r"><code>lm(lpsa ~ lcavol, data = Prostate)$coef</code></pre>
+<pre><code>## (Intercept)      lcavol 
+##   1.5072975   0.7193204</code></pre>
+<p>And ensuring that our function works for the other two feature transforms.</p>
+<pre class="r"><code>LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol, &quot;Polynomial&quot;, 3)</code></pre>
+<pre><code>##             [,1]
+## [1,]  1.66387139
+## [2,]  0.69613468
+## [3,] -0.18630511
+## [4,]  0.06164228</code></pre>
+<pre class="r"><code>lm(lpsa ~ poly(lcavol, 3, raw=TRUE), data = Prostate)$coef</code></pre>
+<pre><code>##                  (Intercept) poly(lcavol, 3, raw = TRUE)1 
+##                   1.66387139                   0.69613468 
+## poly(lcavol, 3, raw = TRUE)2 poly(lcavol, 3, raw = TRUE)3 
+##                  -0.18630511                   0.06164228</code></pre>
+<pre class="r"><code>LS.feature.transform.fit(Prostate$lpsa,Prostate$lcavol, &quot;Trigonometric&quot;, 2)</code></pre>
+<pre><code>##            [,1]
+## [1,]  2.4198088
+## [2,]  0.3801217
+## [3,] -1.2342905
+## [4,]  0.4748111
+## [5,]  0.3759252</code></pre>
+<pre class="r"><code>lm(lpsa ~ sin(lcavol) + cos(lcavol) + sin(2*lcavol) + cos(2*lcavol), data = Prostate)$coef</code></pre>
+<pre><code>##     (Intercept)     sin(lcavol)     cos(lcavol) sin(2 * lcavol) cos(2 * lcavol) 
+##       2.4198088       0.3801217      -1.2342905       0.4748111       0.3759252</code></pre>
+<p>There are no errors, and our parameter estimates match those from <code>lm</code>, so this debugging has been a success.</p>
+</div>
+<div id="performance" class="section level3">
+<h3>Performance</h3>
+<p>So far we have only tested this for a length <span class="math inline">\(n=97\)</span> dataset, so performance has been relatively fast. We can use the function <code>microbenchmark</code> from the <code>microbenchmark</code> package to test how quickly our function runs, and gives a summary of statistics on how quickly the function runs. Before we do that, we want to have a larger data set to see more obvious difference in how our computation times are. We can do this with some simulated data.</p>
+<pre class="r"><code>x.test = runif(10000, 1, 5)
+y.test = rexp(10000,rate=1.5*x.test-1)
+library(microbenchmark)
+# microbenchmark(LS.feature.transform.fit(y.test,x.test,&quot;Polynomial&quot;,5))</code></pre>
+<p>This range of speeds is not bad, but could be improved. To see where we can improve the performance of our code, we can do something called <em>profiling</em>. A statistical profiler can determine where the code is spending most of its time being run, by using operating system interrupts. An implementation of profiling in R is provided by the <code>profvis</code> package, and the <code>profvis</code> function. We start by running this on our function.</p>
+<pre class="r"><code>library(profvis)
+x = x.test; y = y.test; ft = &quot;Polynomial&quot;; b = 5
+profvis({
+  if(ft == &quot;Polynomial&quot;) basis_function = function(x) poly(x, b, raw=TRUE)
+  if(ft == &quot;Linear&quot;) basis_function = function(x) x 
+  if(ft == &quot;Trigonometric&quot;) {
+    basis_function = function(x){
+      basis = c()
+      for(i in 1:b){
+        basis = cbind(basis, sin(i*x), cos(i*x))
+      }
+      return(basis)
+    }
+  }
+  
+  Phi = matrix(NA, length(x), dim(as.matrix(basis_function(x)))[2]+1)
+  for(i in 1:length(x)){
+    Phi[i,] = c(1, basis_function(x[i]))
+  }
+  
+  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y
+})</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:600px;" class="profvis html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"message":{"prof":{"time":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,3,3,3,4,4,4,4,5,5,5,6,6,7,7,7,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,13,13,13,14,14,14,15,15,15,16,16,16,16,17,17,17,18,18,19,19,19,20,20,20,21,21,21,21,22,22,22,23,23,24,24,24,25,25,25,25,26,26,26,26,27,27,27,27,28,28,29,29,29,30,30,30,31,31,31,32,32,32,33,33,33,34,34,34,34,35,35,35,36,36,36,37,37,38,38,38,39,39,40,40,40,41,41,42,42,42,43,43,43,44,44,45,45,45,46,46,46,47,47,47,47,47,47,48,48,48,49,49,49,50,51,51,51,52,52,52,52,53],"depth":[18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,5,4,3,2,1,3,2,1,4,3,2,1,3,2,1,2,1,3,2,1,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,4,3,2,1,3,2,1,2,1,3,2,1,3,2,1,4,3,2,1,3,2,1,2,1,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,4,3,2,1,3,2,1,3,2,1,2,1,3,2,1,2,1,3,2,1,2,1,3,2,1,3,2,1,2,1,3,2,1,3,2,1,6,5,4,3,2,1,3,2,1,3,2,1,1,3,2,1,4,3,2,1,1],"label":["delayedAssign","findCenvVar","getInlineInfo","isBaseVar","FUN","lapply","unlist","Filter","findLocalsList","funEnv","make.functionContext","cmpfun","doTryCatch","tryCatchOne","tryCatchList","tryCatch","compiler:::tryCmpfun","basis_function","get","match.fun","outer","poly","basis_function","structure","poly","basis_function","is.array","outer","poly","basis_function","structure","poly","basis_function","poly","basis_function","colnames<-","poly","basis_function","structure","poly","basis_function","%in%","structure","poly","basis_function","match.fun","outer","poly","basis_function","attributes","structure","poly","basis_function","outer","poly","basis_function","<GC>","poly","basis_function","colnames<-","poly","basis_function","outer","poly","basis_function","attributes","structure","poly","basis_function","colnames<-","poly","basis_function","poly","basis_function","structure","poly","basis_function","outer","poly","basis_function","rep.int","outer","poly","basis_function","outer","poly","basis_function","poly","basis_function","structure","poly","basis_function","rep.int","outer","poly","basis_function","is.data.frame","colnames<-","poly","basis_function","match.fun","outer","poly","basis_function","if(ft == \"Polynomial\") basis_function = function(x) poly(x, b, raw=TRUE)","basis_function","length","poly","basis_function","structure","poly","basis_function","colnames<-","poly","basis_function","structure","poly","basis_function","colnames<-","poly","basis_function","match.fun","outer","poly","basis_function","outer","poly","basis_function","colnames<-","poly","basis_function","poly","basis_function","colnames<-","poly","basis_function","poly","basis_function","colnames<-","poly","basis_function","poly","basis_function","outer","poly","basis_function","structure","poly","basis_function","if(ft == \"Polynomial\") basis_function = function(x) poly(x, b, raw=TRUE)","basis_function","outer","poly","basis_function","outer","poly","basis_function","as.character","get","match.fun","outer","poly","basis_function","structure","poly","basis_function","outer","poly","basis_function","Phi[i,] = c(1, basis_function(x[i]))","if(ft == \"Polynomial\") basis_function = function(x) poly(x, b, raw=TRUE)","poly","basis_function","%in%","structure","poly","basis_function","%*%"],"filenum":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,1,null,null,null,1,1,null,1,1,null,null,1,1,null,1,1,1,1,null,1,1,null,1,1,null,null,1,1,null,null,1,1,null,null,1,1,null,1,1,null,1,1,null,1,1,null,1,1,null,null,1,1,null,1,1,1,1,null,1,1,null,1,1,null,null,1,1,null,1,1,1,1,null,1,1,null,null,1,1,null,null,1,1,null,null,1,1,1,1,null,1,1,null,1,1,null,1,1,null,1,1,null,1,1,null,null,1,1,null,1,1,null,1,1,1,1,null,1,1,1,1,null,1,1,1,1,null,1,1,null,1,1,1,1,null,1,1,null,1,1,null,null,null,null,1,1,null,1,1,null,1,1,1,1,1,1,null,null,1,1,1],"linenum":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,18,18,null,null,null,4,18,null,4,18,null,null,4,18,null,4,18,4,18,null,4,18,null,4,18,null,null,4,18,null,null,4,18,null,null,4,18,null,4,18,null,4,18,null,4,18,null,4,18,null,null,4,18,null,4,18,4,18,null,4,18,null,4,18,null,null,4,18,null,4,18,4,18,null,4,18,null,null,4,18,null,null,4,18,null,null,4,18,4,18,null,4,18,null,4,18,null,4,18,null,4,18,null,4,18,null,null,4,18,null,4,18,null,4,18,4,18,null,4,18,4,18,null,4,18,4,18,null,4,18,null,4,18,4,18,null,4,18,null,4,18,null,null,null,null,4,18,null,4,18,null,4,18,18,4,4,18,null,null,4,18,21],"memalloc":[9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,9.78263854980469,10.3573379516602,10.3573379516602,10.3573379516602,10.3573379516602,10.3573379516602,10.6617584228516,10.6617584228516,10.6617584228516,10.7928085327148,10.7928085327148,10.7928085327148,10.7928085327148,10.9356842041016,10.9356842041016,10.9356842041016,11.1370620727539,11.1370620727539,11.4857635498047,11.4857635498047,11.4857635498047,11.7755355834961,11.7755355834961,11.7755355834961,12.1318359375,12.1318359375,12.1318359375,12.1318359375,12.2556838989258,12.2556838989258,12.2556838989258,12.2556838989258,12.6467514038086,12.6467514038086,12.6467514038086,12.6467514038086,12.9204025268555,12.9204025268555,12.9204025268555,12.9824066162109,12.9824066162109,12.9824066162109,9.10933685302734,9.10933685302734,9.10933685302734,9.28131866455078,9.28131866455078,9.28131866455078,9.45974731445312,9.45974731445312,9.45974731445312,9.45974731445312,9.83200073242188,9.83200073242188,9.83200073242188,10.0734939575195,10.0734939575195,10.2781219482422,10.2781219482422,10.2781219482422,10.3605041503906,10.3605041503906,10.3605041503906,10.6409683227539,10.6409683227539,10.6409683227539,10.6409683227539,10.8977584838867,10.8977584838867,10.8977584838867,11.0669555664062,11.0669555664062,11.2500152587891,11.2500152587891,11.2500152587891,11.6833038330078,11.6833038330078,11.6833038330078,11.6833038330078,11.8435363769531,11.8435363769531,11.8435363769531,11.8435363769531,9.03913879394531,9.03913879394531,9.03913879394531,9.03913879394531,9.24923706054688,9.24923706054688,9.57025909423828,9.57025909423828,9.57025909423828,9.84332275390625,9.84332275390625,9.84332275390625,10.0794372558594,10.0794372558594,10.0794372558594,10.3390197753906,10.3390197753906,10.3390197753906,10.5665054321289,10.5665054321289,10.5665054321289,10.6869735717773,10.6869735717773,10.6869735717773,10.6869735717773,11.0885314941406,11.0885314941406,11.0885314941406,11.1933975219727,11.1933975219727,11.1933975219727,11.4212493896484,11.4212493896484,11.6744003295898,11.6744003295898,11.6744003295898,9.05852508544922,9.05852508544922,9.35573577880859,9.35573577880859,9.35573577880859,9.75798797607422,9.75798797607422,10.0541076660156,10.0541076660156,10.0541076660156,10.4486618041992,10.4486618041992,10.4486618041992,10.6064147949219,10.6064147949219,11.0232009887695,11.0232009887695,11.0232009887695,11.1743316650391,11.1743316650391,11.1743316650391,11.5469055175781,11.5469055175781,11.5469055175781,11.5469055175781,11.5469055175781,11.5469055175781,11.7929534912109,11.7929534912109,11.7929534912109,9.10997772216797,9.10997772216797,9.10997772216797,9.43967437744141,9.74562835693359,9.74562835693359,9.74562835693359,10.0864334106445,10.0864334106445,10.0864334106445,10.0864334106445,11.6077194213867],"meminc":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.574699401855469,0,0,0,0,0.304420471191406,0,0,0.131050109863281,0,0,0,0.142875671386719,0,0,0.201377868652344,0,0.348701477050781,0,0,0.289772033691406,0,0,0.356300354003906,0,0,0,0.123847961425781,0,0,0,0.391067504882812,0,0,0,0.273651123046875,0,0,0.0620040893554688,0,0,-3.87306976318359,0,0,0.171981811523438,0,0,0.178428649902344,0,0,0,0.37225341796875,0,0,0.241493225097656,0,0.204627990722656,0,0,0.0823822021484375,0,0,0.280464172363281,0,0,0,0.256790161132812,0,0,0.169197082519531,0,0.183059692382812,0,0,0.43328857421875,0,0,0,0.160232543945312,0,0,0,-2.80439758300781,0,0,0,0.210098266601562,0,0.321022033691406,0,0,0.273063659667969,0,0,0.236114501953125,0,0,0.25958251953125,0,0,0.227485656738281,0,0,0.120468139648438,0,0,0,0.401557922363281,0,0,0.104866027832031,0,0,0.227851867675781,0,0.253150939941406,0,0,-2.61587524414062,0,0.297210693359375,0,0,0.402252197265625,0,0.296119689941406,0,0,0.394554138183594,0,0,0.157752990722656,0,0.416786193847656,0,0,0.151130676269531,0,0,0.372573852539062,0,0,0,0,0,0.246047973632812,0,0,-2.68297576904297,0,0,0.329696655273438,0.305953979492188,0,0,0.340805053710938,0,0,0,1.52128601074219],"filename":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"<expr>","<expr>",null,null,null,"<expr>","<expr>",null,"<expr>","<expr>",null,null,"<expr>","<expr>",null,"<expr>","<expr>","<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,null,"<expr>","<expr>",null,null,"<expr>","<expr>",null,null,"<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,null,"<expr>","<expr>",null,"<expr>","<expr>","<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,null,"<expr>","<expr>",null,"<expr>","<expr>","<expr>","<expr>",null,"<expr>","<expr>",null,null,"<expr>","<expr>",null,null,"<expr>","<expr>",null,null,"<expr>","<expr>","<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,null,"<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>","<expr>","<expr>",null,"<expr>","<expr>","<expr>","<expr>",null,"<expr>","<expr>","<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>","<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>",null,null,null,null,"<expr>","<expr>",null,"<expr>","<expr>",null,"<expr>","<expr>","<expr>","<expr>","<expr>","<expr>",null,null,"<expr>","<expr>","<expr>"]},"interval":10,"files":[{"filename":"<expr>","content":"library(profvis)\nx = x.test; y = y.test; ft = \"Polynomial\"; b = 5\nprofvis({\n  if(ft == \"Polynomial\") basis_function = function(x) poly(x, b, raw=TRUE)\n  if(ft == \"Linear\") basis_function = function(x) x \n  if(ft == \"Trigonometric\") {\n    basis_function = function(x){\n      basis = c()\n      for(i in 1:b){\n        basis = cbind(basis, sin(i*x), cos(i*x))\n      }\n      return(basis)\n    }\n  }\n  \n  Phi = matrix(NA, length(x), dim(as.matrix(basis_function(x)))[2]+1)\n  for(i in 1:length(x)){\n    Phi[i,] = c(1, basis_function(x[i]))\n  }\n  \n  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y\n})","normpath":"<expr>"}],"prof_output":"/tmp/RtmpEOHPfa/file294e688a56c6.prof","highlight":{"output":["^output\\$"],"gc":["^<GC>$"],"stacktrace":["^\\.\\.stacktraceo(n|ff)\\.\\.$"]},"split":"h"}},"evals":[],"jsHooks":[]}</script>
+<p>Looking at this graph, we can see that most of the time and memory is spent in the <code>basis_function</code>. This is likely due to the basis function being run at every iteration in the loop. One way of improving this would be to assign elements of <code>Phi</code> in terms of columns instead of rows. This is because R uses <em>column-major storage</em>, meaning that when a matrix is stored in memory, it is being assigned in chunks that correspond to columns, not rows. Therefore defining a matrix column-wise needs fewer operations than defining a matrix row-wise.</p>
+<p>The performance can be greatly increased by <em>vectorising</em> so that the basis function need only be applied once instead of many times (as this is where the slowdown was). This eliminates the loop as well, another source of inefficiency. We make the following changes when defining the matrix <span class="math inline">\(\boldsymbol{\phi}(\boldsymbol{x})\)</span>.</p>
+<pre><code>Phi = as.matrix(cbind(1, basis_function(x)))</code></pre>
+<p>Here we can see that the dimensions do not need to be set up in advance. Now if we benchmark and profile the function again, we get</p>
+<pre><code>## Unit: milliseconds
+##                                                       expr      min       lq
+##  LS.feature.transform.fit(y.test, x.test, &quot;Polynomial&quot;, 5) 7.071979 15.42255
+##      mean   median       uq      max neval
+##  23.93168 20.15049 25.85308 171.5225   100</code></pre>
+<div id="htmlwidget-2" style="width:100%;height:600px;" class="profvis html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"message":{"prof":{"time":[1,1,2,2,3,4,5],"depth":[2,1,2,1,1,1,1],"label":["solve.default","solve","solve.default","solve","%*%","%*%","%*%"],"filenum":[null,1,null,1,1,1,1],"linenum":[null,32,null,32,32,32,32],"memalloc":[11.9669342041016,11.9669342041016,11.9669342041016,11.9669342041016,12.8827972412109,12.8827972412109,12.8827972412109],"meminc":[0,0,0,0,0.915863037109375,0,0],"filename":[null,"<expr>",null,"<expr>","<expr>","<expr>","<expr>"]},"interval":10,"files":[{"filename":"<expr>","content":"LS.feature.transform.fit <- function(y, x, ft, b){\n  if(ft == \"Polynomial\") basis_function = function(x) poly(x, b, raw=TRUE)\n  if(ft == \"Linear\") basis_function = function(x) x \n  if(ft == \"Trigonometric\") {\n    basis_function = function(x){\n      basis = c()\n      for(i in 1:b){\n        basis = cbind(basis, sin(i*x), cos(i*x))\n      }\n      return(basis)\n    }\n  }\n  Phi = as.matrix(cbind(1, basis_function(x)))\n  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y\n}\nlibrary(microbenchmark)\nmicrobenchmark(LS.feature.transform.fit(y.test,x.test,\"Polynomial\",5))\nprofvis({\n  if(ft == \"Polynomial\") basis_function = function(x) poly(x, b, raw=TRUE)\n  if(ft == \"Linear\") basis_function = function(x) x \n  if(ft == \"Trigonometric\") {\n    basis_function = function(x){\n      basis = c()\n      for(i in 1:b){\n        basis = cbind(basis, sin(i*x), cos(i*x))\n      }\n      return(basis)\n    }\n  }\n  \n  Phi = as.matrix(cbind(1, basis_function(x)))\n  wLS =  solve(t(Phi) %*% Phi) %*% t(Phi) %*% y\n})","normpath":"<expr>"}],"prof_output":"/tmp/RtmpEOHPfa/file294e22c0c55d.prof","highlight":{"output":["^output\\$"],"gc":["^<GC>$"],"stacktrace":["^\\.\\.stacktraceo(n|ff)\\.\\.$"]},"split":"h"}},"evals":[],"jsHooks":[]}</script>
+<p>Here the benchmarks are significantly faster, and whilst the function seems to get stuck in the same place, the times that it gets stuck there is order of magnitudes smaller than it was previously.</p>
+</div>
+</div>
+<div id="closing-thoughts" class="section level2">
+<h2>Closing Thoughts</h2>
+<p>In this portfolio section, we explained and showed an extended example of <em>debugging</em>, <em>profiling</em> and <em>optimising performance</em>. There are better ways of implementing all of these things than what was demonstrated here.</p>
+<p>For <em>debugging</em>, we simply printed out the code where we thought the errors were, but a more rigorous debugging process would have involved an interactive debugger, which was discussed but not implemented. Using the <code>debug</code> function in R would allow RStudio to go through each line of the function and show results at each point. RStudio also allows breakpoints in functions, so that when the function is run, it will stop at a breakpoint instead of having to go through every line.</p>
+<p>For <em>optimising performance</em>, R is generally inefficient for user written functions and scripts. Code written would be a lot more efficient and faster if it was written in a language such as C. Many core R routines and packages are written in C, greatly improving their efficiency. This can be achieved with the <code>RCpp</code> package, which provides an accessible way of writing efficient R code in C++.</p>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc1/github/" rel="next">Git and GitHub</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc1/tidyverse/" rel="prev">Tidyverse</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
