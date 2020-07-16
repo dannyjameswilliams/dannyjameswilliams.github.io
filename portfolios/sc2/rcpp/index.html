@@ -669,7 +669,7 @@
       </li>
       
       <li >
-        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs</a>
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs in Python</a>
       </li>
       
       <li >
@@ -718,20 +718,20 @@
 ## 8837 0.012 2.854044e-04   5 -3.816713</code></pre>
 <p>The column <code>prod</code> is a production measure, and <code>logprod</code> is the log of the production measure, which will be the response variable. The covariates are <code>toy</code> - the time of year, within 0 and 1 as a percentage, and <code>tod</code> - the time of day, from 0 to 47, measured in half an hour intervals. A simple polynomial regression model is of the form
 <span class="math display">\[
-\mathbb{E}(y|\bm{x}) = \beta_0 + \beta_1\text{tod} + \beta_2\text{tod}^2 + \beta_3\text{toy} + \beta_4 \text{toy}^2 = \tilde{\bm{x}}\bm{\beta}.
+\mathbb{E}(y|\boldsymbol{x}) = \beta_0 + \beta_1\text{tod} + \beta_2\text{tod}^2 + \beta_3\text{toy} + \beta_4 \text{toy}^2 = \tilde{\boldsymbol{x}}\boldsymbol{\beta}.
 \]</span></p>
 </div>
 <div id="fitting-a-linear-regression-model" class="section level1">
 <h1>Fitting a linear regression model</h1>
 <p>We can use <em>Armadillo</em> to fit a linear regression model, and to solve the least squares optimisation problem
 <span class="math display">\[
-\hat{\bm{\beta}} := \argmin_{\bm{\beta}}\norm{\bm{y}-\bm{X}\bm{\beta}}^2,
+\hat{\boldsymbol{\beta}} := \operatorname{argmin}_{\boldsymbol{\beta}}\|{\boldsymbol{y}-\boldsymbol{X}\boldsymbol{\beta}\|}^2,
 \]</span>
 which has solution
 <span class="math display">\[
-\bm{\hat{\beta}} = (\bm{X}^T\bm{X})^{-1}\bm{X}^T\bm{y}.
+\boldsymbol{\hat{\beta}} = (\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{y}.
 \]</span>
-This can be implemented in C using QR decomposition of <span class="math inline">\(\bm{X}\)</span>.</p>
+This can be implemented in C using QR decomposition of <span class="math inline">\(\boldsymbol{X}\)</span>.</p>
 <pre class="r"><code>library(Rcpp)
 sourceCpp(code=&#39;
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -786,9 +786,9 @@ microbenchmark(R_solve = R_ls_solve(y,X),
                C_solve = lm_cpp(y, X), 
                times = 500)</code></pre>
 <pre><code>## Unit: microseconds
-##     expr      min       lq      mean   median       uq       max neval
-##  R_solve 1942.200 2176.820 4659.2470 2511.320 4010.905 64206.810   500
-##  C_solve  440.409  510.482  688.3188  573.852  689.738  3547.974   500</code></pre>
+##     expr      min        lq      mean   median        uq       max neval
+##  R_solve 1910.686 2189.3570 5022.8070 2464.270 3779.8105 79083.490   500
+##  C_solve  449.401  518.7625  690.3906  584.342  687.4495  8261.433   500</code></pre>
 <p>So this has come with an approximate speed up of ten times, exemplifying how much more computationally efficient code written in C++ is over R. However, there is a (non-computational) problem with the model. A plot of the residuals from the linear model shows this.</p>
 <pre class="r"><code>beta = ls(logprod ~ tod + I(tod^2) + toy + I(toy^2), data = solarAU)
 res = y - X %*% beta
@@ -804,11 +804,11 @@ There is a pattern in the residuals! This means that there is a feature not incl
 </div>
 <div id="local-regression" class="section level1">
 <h1>Local Regression</h1>
-<p>We can improve the model fit by adopting a local regression approach, that is, making the parameter estimates depend on the covariates <span class="math inline">\(\bm{x}\)</span>, i.e. <span class="math inline">\(\hat{\bm{\beta}} = \hat{\bm{\beta}}(\bm{x})\)</span>. This is achieved by minimising <span class="math inline">\(\hat{\bm{\beta}}(\bm{x}_0)\)</span> for a fixed <span class="math inline">\(\bm{x}_0\)</span>:
+<p>We can improve the model fit by adopting a local regression approach, that is, making the parameter estimates depend on the covariates <span class="math inline">\(\boldsymbol{x}\)</span>, i.e. <span class="math inline">\(\hat{\boldsymbol{\beta}} = \hat{\boldsymbol{\beta}}(\boldsymbol{x})\)</span>. This is achieved by minimising <span class="math inline">\(\hat{\boldsymbol{\beta}}(\boldsymbol{x}_0)\)</span> for a fixed <span class="math inline">\(\boldsymbol{x}_0\)</span>:
 <span class="math display">\[
-\hat{\bm{\beta}}(\bm{x}_0) = \argmin_{\bm{\beta}} \sum^n_{i=1}\kappa_{\bm{H}}(\bm{x}_0 - \bm{x}_i)(y_i-\tilde{\bm{x}}_i^T\bm{\beta})^2,
+\hat{\boldsymbol{\beta}}(\boldsymbol{x}_0) = \operatorname{argmin}_{\boldsymbol{\beta}} \sum^n_{i=1}\kappa_{\boldsymbol{H}}(\boldsymbol{x}_0 - \boldsymbol{x}_i)(y_i-\tilde{\boldsymbol{x}}_i^T\boldsymbol{\beta})^2,
 \]</span>
-for a density kernel <span class="math inline">\(\kappa_{\bm{H}}\)</span> with positive definite bandwidth matrix <span class="math inline">\(\bm{H}\)</span>. Fitting this model involves re-fitting the linear model once for each row in the data set, which for large data sets is not viable, but shows the need of computationally efficient code in C++. Now we can write the local regression function in RCpp.</p>
+for a density kernel <span class="math inline">\(\kappa_{\boldsymbol{H}}\)</span> with positive definite bandwidth matrix <span class="math inline">\(\boldsymbol{H}\)</span>. Fitting this model involves re-fitting the linear model once for each row in the data set, which for large data sets is not viable, but shows the need of computationally efficient code in C++. Now we can write the local regression function in RCpp.</p>
 <pre class="c"><code>vec local_lm_I(vec&amp; y, rowvec x0, rowvec X0, mat&amp; x, mat&amp; X, mat&amp; H)
 {
   mat Hstar = chol(H, &quot;lower&quot;); 
@@ -831,7 +831,7 @@ vec local_lm_fit_I(vec&amp; y, mat x0, mat X0, mat&amp; x, mat&amp; X, mat&amp; 
   }
   return out;
 }</code></pre>
-<p>These two functions, as well as <code>lm_cpp</code> from earlier all combine to implement local regression. <code>local_lm_fit_I</code> loops over all rows in <code>x0</code> and <code>X0</code> and fits linear regression for a constant <span class="math inline">\(\bm{x}_0\)</span>, using weights from a Gaussian kernel, imeplemented by a multivariate normal density (given by <code>dmvnInt</code>, defined separately). <code>local_lm_I</code> simply calculates the weights and pre-multiplies them by <span class="math inline">\(\bm{y}\)</span> and <span class="math inline">\(\bm{X}\)</span> to go into the fitting function. We can source these functions and run these for a subsetted data set.</p>
+<p>These two functions, as well as <code>lm_cpp</code> from earlier all combine to implement local regression. <code>local_lm_fit_I</code> loops over all rows in <code>x0</code> and <code>X0</code> and fits linear regression for a constant <span class="math inline">\(\boldsymbol{x}_0\)</span>, using weights from a Gaussian kernel, imeplemented by a multivariate normal density (given by <code>dmvnInt</code>, defined separately). <code>local_lm_I</code> simply calculates the weights and pre-multiplies them by <span class="math inline">\(\boldsymbol{y}\)</span> and <span class="math inline">\(\boldsymbol{X}\)</span> to go into the fitting function. We can source these functions and run these for a subsetted data set.</p>
 <pre class="r"><code>sourceCpp(&#39;lm_cpp.cpp&#39;)
 nsub = 2000
 
@@ -875,7 +875,7 @@ all.equal(R_pred_local, as.vector(cpp_pred_local))</code></pre>
 )</code></pre>
 <pre><code>##    user  system elapsed 
 ## 872.113   0.309 145.901</code></pre>
-<p>So the Rcpp code has come with an approximate ten times speed up again. However, this model could still be improved. We have chosen the bandwidth matrix <span class="math inline">\(\bm{H}\)</span> arbitrarily, but this could be improved with cross-validation. Whilst this is not shown here, a similar approach to that given in section 2 could be implemented.</p>
+<p>So the Rcpp code has come with an approximate ten times speed up again. However, this model could still be improved. We have chosen the bandwidth matrix <span class="math inline">\(\boldsymbol{H}\)</span> arbitrarily, but this could be improved with cross-validation. Whilst this is not shown here, a similar approach to that given in section 2 could be implemented.</p>
 </div>
 
           </div>
