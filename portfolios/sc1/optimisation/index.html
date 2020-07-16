@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="Numerical Optimisation The general idea in optimisation is to find a minimum (or maximum) of some function. Generally, our problem has the form \[ \min_{\bm{x}} f(\bm{x}). \] Sometimes our problem can be constrained, which would take the general form \[ \min_{\boldsymbol{x}} f(\boldsymbol{x}) \]\[ \text{subject to } g_i(x) \leq 0 \] for \(i=1,\dots,m\), \(f:\mathbb{R}^n \to \mathbb{R}\).">
+  <meta name="description" content="Numerical Optimisation The general idea in optimisation is to find a minimum (or maximum) of some function. Generally, our problem has the form \[ \min_{\boldsymbol{x}} f(\boldsymbol{x}). \] Sometimes our problem can be constrained, which would take the general form \[ \min_{\boldsymbol{x}} f(\boldsymbol{x}) \]\[ \text{subject to } g_i(x) \leq 0 \] for \(i=1,\dots,m\), \(f:\mathbb{R}^n \to \mathbb{R}\).">
 
   
   <link rel="alternate" hreflang="en-gb" href="https://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/">
@@ -241,7 +241,7 @@
   <meta property="og:site_name" content="Danny James Williams">
   <meta property="og:url" content="https://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/">
   <meta property="og:title" content="Optimisation | Danny James Williams">
-  <meta property="og:description" content="Numerical Optimisation The general idea in optimisation is to find a minimum (or maximum) of some function. Generally, our problem has the form \[ \min_{\bm{x}} f(\bm{x}). \] Sometimes our problem can be constrained, which would take the general form \[ \min_{\boldsymbol{x}} f(\boldsymbol{x}) \]\[ \text{subject to } g_i(x) \leq 0 \] for \(i=1,\dots,m\), \(f:\mathbb{R}^n \to \mathbb{R}\)."><meta property="og:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="og:description" content="Numerical Optimisation The general idea in optimisation is to find a minimum (or maximum) of some function. Generally, our problem has the form \[ \min_{\boldsymbol{x}} f(\boldsymbol{x}). \] Sometimes our problem can be constrained, which would take the general form \[ \min_{\boldsymbol{x}} f(\boldsymbol{x}) \]\[ \text{subject to } g_i(x) \leq 0 \] for \(i=1,\dots,m\), \(f:\mathbb{R}^n \to \mathbb{R}\)."><meta property="og:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-gb">
   
     
@@ -701,7 +701,7 @@
 <h2>Numerical Optimisation</h2>
 <p>The general idea in optimisation is to find a <em>minimum</em> (or <em>maximum</em>) of some function. Generally, our problem has the form
 <span class="math display">\[
-\min_{\bm{x}} f(\bm{x}).
+\min_{\boldsymbol{x}} f(\boldsymbol{x}).
 \]</span>
 Sometimes our problem can be <em>constrained</em>, which would take the general form
 <span class="math display">\[
@@ -714,9 +714,9 @@ for <span class="math inline">\(i=1,\dots,m\)</span>, <span class="math inline">
 <h3>Optimising a complicated function</h3>
 <p>To demonstrate the different optimisation methods, the speeds and abilities of each, consider optimising the Rastrigin function. This is a non-convex function that takes the form
 <span class="math display">\[
-f(\bm{x}) = An + \sum^n_{i=1} [x_i^2-A\cos(2\pi x_i)],
+f(\boldsymbol{x}) = An + \sum^n_{i=1} [x_i^2-A\cos(2\pi x_i)],
 \]</span></p>
-<p>where <span class="math inline">\(n\)</span> is the length of the vector <span class="math inline">\(\bm{x}\)</span>. We can plot this function in 3D using the <code>plotly</code> package to inspect it.</p>
+<p>where <span class="math inline">\(n\)</span> is the length of the vector <span class="math inline">\(\boldsymbol{x}\)</span>. We can plot this function in 3D using the <code>plotly</code> package to inspect it.</p>
 <pre class="r"><code>f = function(x) A*n + sum(x^2 - A*cos(2*pi*x))
 A = 5
 n = 2
@@ -729,19 +729,19 @@ z.plot = list(x=x1, y=x2, z=z)
 image(z.plot, xlab = &quot;x&quot;, ylab = &quot;y&quot;, main = &quot;Rastrigin Function&quot;)</code></pre>
 <p><img src="/portfolios/sc1/optimisation_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
-So we are interested in optimising the function <code>f</code>. We can see from inspection of the plot that there is a global minimum at <span class="math inline">\(\bm{x} = \bm{0}\)</span>, where <span class="math inline">\(f(\bm{0}) = 0\)</span>, and likewise:</p>
+So we are interested in optimising the function <code>f</code>. We can see from inspection of the plot that there is a global minimum at <span class="math inline">\(\boldsymbol{x} = \boldsymbol{0}\)</span>, where <span class="math inline">\(f(\boldsymbol{0}) = 0\)</span>, and likewise:</p>
 <pre class="r"><code>f(c(0,0))</code></pre>
 <pre><code>## [1] 0</code></pre>
 <p>So we will be evaluating optimisation methods based on how close they get to this true solution. We continue this portfolio by explaining the different optimisation methods, and evaluating their performance in finding the global minimum of the Rastrigin function.</p>
 <p>When <span class="math inline">\(n=2\)</span>, the gradient and hessian for this function can be calculated analytically:
 <span class="math display">\[
-\nabla f(\bm{x}) = \begin{pmatrix}
+\nabla f(\boldsymbol{x}) = \begin{pmatrix}
 2 x_1 + 2\pi A \sin(2\pi x_1) \\
 2 x_2 + 2\pi A \sin(2\pi x_2)
 \end{pmatrix}
 \]</span>
 <span class="math display">\[
-\nabla^2 f(\bm{x}) = \begin{pmatrix}
+\nabla^2 f(\boldsymbol{x}) = \begin{pmatrix}
 2 + 4\pi^2 A \cos (2\pi x_1) &amp; 0 \\
 0 &amp; 2 + 4\pi^2 A \cos (2\pi x_2)
 \end{pmatrix}
@@ -766,14 +766,14 @@ hess_f = function(x){
 <h3>Gradient Descent Methods</h3>
 <p>Iterative algorithms take the form
 <span class="math display">\[
-\bm{x}_{k+1} = \bm{x}_k + t \bm{d}_k, \: \: \text{ for iterations } k=0,1,\dots, 
+\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + t \boldsymbol{d}_k, \: \: \text{ for iterations } k=0,1,\dots, 
 \]</span>
-<span class="math inline">\(\bm{d}_k \in \R^n\)</span> is the descent direction, <span class="math inline">\(t_k\)</span> is the stepsize.
+<span class="math inline">\(\boldsymbol{d}_k \in \R^n\)</span> is the descent direction, <span class="math inline">\(t_k\)</span> is the stepsize.
 <span class="math display">\[
-f&#39;(\bm{x}; \bm{d})=\nabla f(\bm{x})^T \bm{d} &lt; 0.
+f&#39;(\boldsymbol{x}; \boldsymbol{d})=\nabla f(\boldsymbol{x})^T \boldsymbol{d} &lt; 0.
 \]</span>
-So moving <span class="math inline">\(\bm{x}\)</span> in the descent direction for timestep <span class="math inline">\(t\)</span> decreases the function, so we move towards a minimum.
-The  is the negative gradient of <span class="math inline">\(f\)</span>, i.e. <span class="math inline">\(\bm{d}_k = -\nabla f(\bm{x}_k)\)</span>, or normalised <span class="math inline">\(\bm{d}_k = {-\nabla f(\bm{x}_k)}/{\norm{\nabla f(\bm{x})}}\)</span>. We can construct a general gradient descent method in R and evaluate performance on optimising the Rastrigin function.</p>
+So moving <span class="math inline">\(\boldsymbol{x}\)</span> in the descent direction for timestep <span class="math inline">\(t\)</span> decreases the function, so we move towards a minimum.
+The  is the negative gradient of <span class="math inline">\(f\)</span>, i.e. <span class="math inline">\(\boldsymbol{d}_k = -\nabla f(\boldsymbol{x}_k)\)</span>, or normalised <span class="math inline">\(\boldsymbol{d}_k = {-\nabla f(\boldsymbol{x}_k)}/{\norm{\nabla f(\boldsymbol{x})}}\)</span>. We can construct a general gradient descent method in R and evaluate performance on optimising the Rastrigin function.</p>
 <pre class="r"><code>gradient_method = function(f, x, gradient, eps=1e-4, t=0.1, maxiter=1000){
   converged = TRUE
   iterations = 0
@@ -792,7 +792,7 @@ The  is the negative gradient of <span class="math inline">\(f\)</span>, i.e. <s
                  cat(&quot;Converged!&quot;)}
   return(list(f=f(x),x=x))
 }</code></pre>
-<p>This code essentially will continue running the while loop until the tolerance condition is satisfied, where the change in <span class="math inline">\(\bm{x}\)</span> from one iteration to another is negligible. Now we can see in which cases this will provide a solution to the problem of the Rastrigin function.</p>
+<p>This code essentially will continue running the while loop until the tolerance condition is satisfied, where the change in <span class="math inline">\(\boldsymbol{x}\)</span> from one iteration to another is negligible. Now we can see in which cases this will provide a solution to the problem of the Rastrigin function.</p>
 <pre class="r"><code>gradient_method(f, x = c(1, 1), grad_f)</code></pre>
 <pre><code>## Not converged, stopping after 1001 iterations</code></pre>
 <pre><code>## $f
@@ -809,7 +809,7 @@ The  is the negative gradient of <span class="math inline">\(f\)</span>, i.e. <s
 ## [1] -2.962366 -2.962366</code></pre>
 <p>Even when the initial guess of <span class="math inline">\(x\)</span> was very close to zero, the true solution, this function did not converge. This shows that under a complex and highly varying function such as the Rastrigin function, the gradient method has problems. This can be improved by including a backtracking line search to dynamically change the value of the stepsize <span class="math inline">\(t\)</span> to <span class="math inline">\(t_k\)</span> for each iteration <span class="math inline">\(k\)</span>. This method reduces the stepsize <span class="math inline">\(t\)</span> for each iteration <span class="math inline">\(k\)</span> via <span class="math inline">\(t_k = \beta t_k\)</span> for <span class="math inline">\(\beta \in (0,1)\)</span> while
 <span class="math display">\[
-f(\bm{x}_k) - f(\bm{x}_k + t_k \bm{d}_k) &lt; -\alpha\nabla f(\bm{x}_k)^T \bm{d}_k.
+f(\boldsymbol{x}_k) - f(\boldsymbol{x}_k + t_k \boldsymbol{d}_k) &lt; -\alpha\nabla f(\boldsymbol{x}_k)^T \boldsymbol{d}_k.
 \]</span>
 and for <span class="math inline">\(\alpha \in (0,1)\)</span>. We can add this to the gradient method function with the line <code>while( (f(x) - f(x + t*d) ) &lt; (-alpha*t * t(gradf)%*%d)) t = beta*t</code>. Meaning we need to specify <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>. After this is added to the function, we have</p>
 <pre class="r"><code>gradient_method(f, c(0.01,0.01), grad_f, maxiter = 10000)</code></pre>
@@ -824,11 +824,11 @@ and for <span class="math inline">\(\alpha \in (0,1)\)</span>. We can add this t
 </div>
 <div id="newton-methods" class="section level3">
 <h3>Newton Methods</h3>
-<p>The Newton method seeks to solve the optimisation problem using evaluations of Hessians and a quadratic approximation of a function <span class="math inline">\(f\)</span> around <span class="math inline">\(\bm{x}_k\)</span>. This is under the assumption is that the Hessian <span class="math inline">\(\nabla^2 f(\bm{x}_k)\)</span> is . The unique minimiser of the quadratic approximation is
+<p>The Newton method seeks to solve the optimisation problem using evaluations of Hessians and a quadratic approximation of a function <span class="math inline">\(f\)</span> around <span class="math inline">\(\boldsymbol{x}_k\)</span>. This is under the assumption is that the Hessian <span class="math inline">\(\nabla^2 f(\boldsymbol{x}_k)\)</span> is . The unique minimiser of the quadratic approximation is
 <span class="math display">\[
-\bm{x}_{k+1} = \bm{x}_k - (\nabla^2 f(\bm{x}_k))^{-1} \nabla f(\bm{x}_k),
+\boldsymbol{x}_{k+1} = \boldsymbol{x}_k - (\nabla^2 f(\boldsymbol{x}_k))^{-1} \nabla f(\boldsymbol{x}_k),
 \]</span>
-which is known as . Here you can consider <span class="math inline">\((\nabla^2 f(\bm{x}_k))^{-1} \nabla f(\bm{x}_k)\)</span> as the descent direction in a scaled gradient method. The <code>nlm</code> function from base R uses the Newton method. It is an expensive algorithm to run, because it involves inverting a matrix, the hessian matrix of <span class="math inline">\(f\)</span>. Newton methods work a lot better if you can supply an algebraic expression for the hessian matrix, so that you do not need to numerically calculate the gradient on each iteration. We can use <code>nlm</code> to test the Newton method on the Rastrigin function.</p>
+which is known as . Here you can consider <span class="math inline">\((\nabla^2 f(\boldsymbol{x}_k))^{-1} \nabla f(\boldsymbol{x}_k)\)</span> as the descent direction in a scaled gradient method. The <code>nlm</code> function from base R uses the Newton method. It is an expensive algorithm to run, because it involves inverting a matrix, the hessian matrix of <span class="math inline">\(f\)</span>. Newton methods work a lot better if you can supply an algebraic expression for the hessian matrix, so that you do not need to numerically calculate the gradient on each iteration. We can use <code>nlm</code> to test the Newton method on the Rastrigin function.</p>
 <pre class="r"><code>f_fornlm = function(x){
   out = f(x)
   attr(out, &#39;gradient&#39;) &lt;- grad_f(x)
@@ -857,12 +857,12 @@ nlm(f, c(-4, 4), check.analyticals = TRUE)</code></pre>
 <p>In complex cases, the hessian cannot be supplied analytically. Even if it can be supplied analytically, in high dimensions the hessian is a very large matrix, which makes it computationally expensive to invert for each iteration. The BFGS method approximates the hessian matrix, increasing computability and efficiency. The BFGS method is the most common quasi-Newton method, and it is one of the methods that can be suppled to the <code>optim</code> function. It approximates the hessian matrix with <span class="math inline">\(B_k\)</span>, and for iterations <span class="math inline">\(k=0,1,\dots\)</span>, it has the following basic algorithm:</p>
 <p>Initialise <span class="math inline">\(B_0 = I\)</span> and initial guess <span class="math inline">\(x_0\)</span>.</p>
 <ol style="list-style-type: decimal">
-<li>Obtain a direction <span class="math inline">\(\bm{d}_k\)</span> through the solution of <span class="math inline">\(B_k \bm{d}_k = - \nabla f(\bm{x}_k)\)</span></li>
-<li>Obtain a stepsize <span class="math inline">\(t_k\)</span> by line search <span class="math inline">\(t_k = \text{argmin} f(\bm{x}_k + t\bm{d}_k)\)</span></li>
-<li>Set <span class="math inline">\(s_k = t_k \bm{d}_k\)</span></li>
-<li>Update <span class="math inline">\(\bm{x}_{k+1} = \bm{x}_k + \bm{s}_k\)</span></li>
-<li>Set <span class="math inline">\(\bm{y}_k = \nabla f(\bm{x}_{k+1}) - \nabla f(\bm{x}_k)\)</span></li>
-<li>Update the hessian approximation <span class="math inline">\(B_{k+1} = B_k + \frac{\bm{y}_k\bm{y}_k^T}{\bm{y}_k^T \bm{s}_k} - \frac{B_k \bm{s}_k \bm{s}_k^T B_k}{\bm{s}_k^T B_k \bm{s}_k}\)</span></li>
+<li>Obtain a direction <span class="math inline">\(\boldsymbol{d}_k\)</span> through the solution of <span class="math inline">\(B_k \boldsymbol{d}_k = - \nabla f(\boldsymbol{x}_k)\)</span></li>
+<li>Obtain a stepsize <span class="math inline">\(t_k\)</span> by line search <span class="math inline">\(t_k = \text{argmin} f(\boldsymbol{x}_k + t\boldsymbol{d}_k)\)</span></li>
+<li>Set <span class="math inline">\(s_k = t_k \boldsymbol{d}_k\)</span></li>
+<li>Update <span class="math inline">\(\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + \boldsymbol{s}_k\)</span></li>
+<li>Set <span class="math inline">\(\boldsymbol{y}_k = \nabla f(\boldsymbol{x}_{k+1}) - \nabla f(\boldsymbol{x}_k)\)</span></li>
+<li>Update the hessian approximation <span class="math inline">\(B_{k+1} = B_k + \frac{\boldsymbol{y}_k\boldsymbol{y}_k^T}{\boldsymbol{y}_k^T \boldsymbol{s}_k} - \frac{B_k \boldsymbol{s}_k \boldsymbol{s}_k^T B_k}{\boldsymbol{s}_k^T B_k \boldsymbol{s}_k}\)</span></li>
 </ol>
 <p>BFGS is the fastest method that is guaranteed convergence, but has its downsides. BFGS stores the matrices <span class="math inline">\(B_k\)</span> in memory, so if your dimension is high (i.e. a large amount of parameters), these matrices are going to be large and storing them is inefficient. Another version of BFGS is the low memory version of BFGS, named ‘L-BGFS’, which only stores some of the vectors that <em>represent</em> <span class="math inline">\(B_k\)</span>. This method is almost as fast. In general, you should use BFGS if you can, but if your dimension is too high, reduce down to L-BFGS.</p>
 <p>This is a very good but complicated method. Luckily, the function <code>optim</code> from the <code>stats</code> package in R has the ability to optimise with the BFGS method. Testing this on the Rastrigin function gives</p>
@@ -898,33 +898,33 @@ nlm(f, c(-4, 4), check.analyticals = TRUE)</code></pre>
 ## 
 ## $message
 ## NULL</code></pre>
-<p>So the BFGS method actually didn’t find the true solution for an initial value of <span class="math inline">\(\bm{x} = (1,1)\)</span>, but did for when the initial value was <span class="math inline">\(\bm{x} = (0.1,0.1)\)</span>.</p>
+<p>So the BFGS method actually didn’t find the true solution for an initial value of <span class="math inline">\(\boldsymbol{x} = (1,1)\)</span>, but did for when the initial value was <span class="math inline">\(\boldsymbol{x} = (0.1,0.1)\)</span>.</p>
 </div>
 </div>
 <div id="non-linear-least-squares-optimisation" class="section level2">
 <h2>Non-Linear Least Squares Optimisation</h2>
-<p>The motivating example we have used throughout this section was concerned with optimising a two-dimensional function, of which we were only interested in two variables that controlled the value of the function <span class="math inline">\(f(\bm{x})\)</span>. In many cases, we have a dataset <span class="math inline">\(D = \{\bm{y},\bm{x}_i\}\)</span>, where we decomopose the ‘observations’ as <span class="math inline">\(\bm{y} = g(\bm{x}) + \epsilon\)</span>, where <span class="math inline">\(\epsilon\)</span> is a random noise parameter. In this case we are interested in finding an approximation to the data generating function <span class="math inline">\(g(\bm{x})\)</span>, which we call <span class="math inline">\(f(\bm{x},\bm{\beta})\)</span>, and <span class="math inline">\(\bm{\beta}\)</span> are some parameters of whose relationship with <span class="math inline">\(\bm{x}\)</span> we model to make this approximation, so we are interested in optimising over these parameters. The objective function we are minimising over is
+<p>The motivating example we have used throughout this section was concerned with optimising a two-dimensional function, of which we were only interested in two variables that controlled the value of the function <span class="math inline">\(f(\boldsymbol{x})\)</span>. In many cases, we have a dataset <span class="math inline">\(D = \{\boldsymbol{y},\boldsymbol{x}_i\}\)</span>, where we decomopose the ‘observations’ as <span class="math inline">\(\boldsymbol{y} = g(\boldsymbol{x}) + \epsilon\)</span>, where <span class="math inline">\(\epsilon\)</span> is a random noise parameter. In this case we are interested in finding an approximation to the data generating function <span class="math inline">\(g(\boldsymbol{x})\)</span>, which we call <span class="math inline">\(f(\boldsymbol{x},\boldsymbol{\beta})\)</span>, and <span class="math inline">\(\boldsymbol{\beta}\)</span> are some parameters of whose relationship with <span class="math inline">\(\boldsymbol{x}\)</span> we model to make this approximation, so we are interested in optimising over these parameters. The objective function we are minimising over is
 <span class="math display">\[
-\min_{\bm{\beta}} \sum^n_{i=1} r_i^2 = \min_{\bm{\beta}} \sum^n_{i=1} (y_i - f(x_i,\bm{\beta}))^2, 
+\min_{\boldsymbol{\beta}} \sum^n_{i=1} r_i^2 = \min_{\boldsymbol{\beta}} \sum^n_{i=1} (y_i - f(x_i,\boldsymbol{\beta}))^2, 
 \]</span>
-i.e. the squared difference between the observed dataset and the approximation to the data generating function that defines that dataset. Here, <span class="math inline">\(r_i = y_i - f(x_i,\bm{\beta})\)</span> is known as the <em>residuals</em>, and it is of the most interest in a least squares setting. Many optimisation methods are specifically designed to optimise the least squares problem, but all optimisation methods can be used (provided they find a minimum). Some of the most popular algorithms for least squares are the Gauss-Newton algorithm and the Levenberg-Marquardt algorithm. Both of these algorithms are extensions of Newton’s method for general optimisation. The general form of the Gauss-Newton method is
+i.e. the squared difference between the observed dataset and the approximation to the data generating function that defines that dataset. Here, <span class="math inline">\(r_i = y_i - f(x_i,\boldsymbol{\beta})\)</span> is known as the <em>residuals</em>, and it is of the most interest in a least squares setting. Many optimisation methods are specifically designed to optimise the least squares problem, but all optimisation methods can be used (provided they find a minimum). Some of the most popular algorithms for least squares are the Gauss-Newton algorithm and the Levenberg-Marquardt algorithm. Both of these algorithms are extensions of Newton’s method for general optimisation. The general form of the Gauss-Newton method is
 <span class="math display">\[
-\bm{\beta} \leftarrow \bm{\beta} - (J_r^TJ_r)^{-1}J_r^Tr_i,
+\boldsymbol{\beta} \leftarrow \boldsymbol{\beta} - (J_r^TJ_r)^{-1}J_r^Tr_i,
 \]</span>
 where <span class="math inline">\(J_r\)</span> is the Jacobian matrix of the residue <span class="math inline">\(r\)</span>, defined as
 <span class="math display">\[
-J_r = \frac{\partial r}{\partial \bm{\beta}}.
+J_r = \frac{\partial r}{\partial \boldsymbol{\beta}}.
 \]</span>
 So this is defined as the matrix of partial derivatives with respect to each coefficient <span class="math inline">\(\beta_i\)</span>. The Levenberg-Marquardt algorithm extends this approach by including a diagonal matrix of small entries to the <span class="math inline">\(J_r^TJ_r\)</span> term, to eliminate the possibility of this being a singular matrix. This has the update process of
 <span class="math display">\[
-\bm{\beta} \leftarrow \bm{\beta} - (J_r^TJ_r+\lambda I)^{-1}J_r^Tr_i,
+\boldsymbol{\beta} \leftarrow \boldsymbol{\beta} - (J_r^TJ_r+\lambda I)^{-1}J_r^Tr_i,
 \]</span>
 where <span class="math inline">\(\lambda\)</span> is some small value. In the simple case where <span class="math inline">\(\lambda = 0\)</span>, this reduces to the Gauss-Newton algorithm. This is a highly efficient method, but in the case where our dataset is large, we may want to use stochastic gradient descent.</p>
 <div id="stochastic-gradient-descent" class="section level3">
 <h3>Stochastic Gradient Descent</h3>
 <p>Stochastic Gradient Descent (SGD) is a stochastic approximation to the standard gradient descent method. Instead of calculating the gradient for an entire dataset (which can be extremely large) it calculates the gradient for a lower-dimensional subset of the dataset; picked randomly or deterministically. The form of this method is
 <span class="math display">\[
-\bm{x}_{k+1} = \bm{x}_k - t \nabla f_i(\bm{x}_k)
+\boldsymbol{x}_{k+1} = \boldsymbol{x}_k - t \nabla f_i(\boldsymbol{x}_k)
 \]</span>
 where <span class="math inline">\(i\)</span> is an index that refers to cycling through all points <span class="math inline">\(i \in D\)</span>, the points in the dataset. This can be in different sizes of groups, so depending on the problem, <span class="math inline">\(i\)</span> can be large or small (relative to the size of the dataset). Stochastic gradient methods are useful in the setting where your dataset is very large, otherwise it could be unnecessary.</p>
 </div>

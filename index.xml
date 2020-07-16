@@ -2004,7 +2004,7 @@ link_function(1:5)&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Numerical Optimisation&lt;/h2&gt;
 &lt;p&gt;The general idea in optimisation is to find a &lt;em&gt;minimum&lt;/em&gt; (or &lt;em&gt;maximum&lt;/em&gt;) of some function. Generally, our problem has the form
 &lt;span class=&#34;math display&#34;&gt;\[
-\min_{\bm{x}} f(\bm{x}).
+\min_{\boldsymbol{x}} f(\boldsymbol{x}).
 \]&lt;/span&gt;
 Sometimes our problem can be &lt;em&gt;constrained&lt;/em&gt;, which would take the general form
 &lt;span class=&#34;math display&#34;&gt;\[
@@ -2017,9 +2017,9 @@ for &lt;span class=&#34;math inline&#34;&gt;\(i=1,\dots,m\)&lt;/span&gt;, &lt;sp
 &lt;h3&gt;Optimising a complicated function&lt;/h3&gt;
 &lt;p&gt;To demonstrate the different optimisation methods, the speeds and abilities of each, consider optimising the Rastrigin function. This is a non-convex function that takes the form
 &lt;span class=&#34;math display&#34;&gt;\[
-f(\bm{x}) = An + \sum^n_{i=1} [x_i^2-A\cos(2\pi x_i)],
+f(\boldsymbol{x}) = An + \sum^n_{i=1} [x_i^2-A\cos(2\pi x_i)],
 \]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is the length of the vector &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}\)&lt;/span&gt;. We can plot this function in 3D using the &lt;code&gt;plotly&lt;/code&gt; package to inspect it.&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is the length of the vector &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}\)&lt;/span&gt;. We can plot this function in 3D using the &lt;code&gt;plotly&lt;/code&gt; package to inspect it.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f = function(x) A*n + sum(x^2 - A*cos(2*pi*x))
 A = 5
 n = 2
@@ -2032,19 +2032,19 @@ z.plot = list(x=x1, y=x2, z=z)
 image(z.plot, xlab = &amp;quot;x&amp;quot;, ylab = &amp;quot;y&amp;quot;, main = &amp;quot;Rastrigin Function&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/optimisation_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;
 
-So we are interested in optimising the function &lt;code&gt;f&lt;/code&gt;. We can see from inspection of the plot that there is a global minimum at &lt;span class=&#34;math inline&#34;&gt;\(\bm{x} = \bm{0}\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(f(\bm{0}) = 0\)&lt;/span&gt;, and likewise:&lt;/p&gt;
+So we are interested in optimising the function &lt;code&gt;f&lt;/code&gt;. We can see from inspection of the plot that there is a global minimum at &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x} = \boldsymbol{0}\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(f(\boldsymbol{0}) = 0\)&lt;/span&gt;, and likewise:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f(c(0,0))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;So we will be evaluating optimisation methods based on how close they get to this true solution. We continue this portfolio by explaining the different optimisation methods, and evaluating their performance in finding the global minimum of the Rastrigin function.&lt;/p&gt;
 &lt;p&gt;When &lt;span class=&#34;math inline&#34;&gt;\(n=2\)&lt;/span&gt;, the gradient and hessian for this function can be calculated analytically:
 &lt;span class=&#34;math display&#34;&gt;\[
-\nabla f(\bm{x}) = \begin{pmatrix}
+\nabla f(\boldsymbol{x}) = \begin{pmatrix}
 2 x_1 + 2\pi A \sin(2\pi x_1) \\
 2 x_2 + 2\pi A \sin(2\pi x_2)
 \end{pmatrix}
 \]&lt;/span&gt;
 &lt;span class=&#34;math display&#34;&gt;\[
-\nabla^2 f(\bm{x}) = \begin{pmatrix}
+\nabla^2 f(\boldsymbol{x}) = \begin{pmatrix}
 2 + 4\pi^2 A \cos (2\pi x_1) &amp;amp; 0 \\
 0 &amp;amp; 2 + 4\pi^2 A \cos (2\pi x_2)
 \end{pmatrix}
@@ -2069,14 +2069,14 @@ hess_f = function(x){
 &lt;h3&gt;Gradient Descent Methods&lt;/h3&gt;
 &lt;p&gt;Iterative algorithms take the form
 &lt;span class=&#34;math display&#34;&gt;\[
-\bm{x}_{k+1} = \bm{x}_k + t \bm{d}_k, \: \: \text{ for iterations } k=0,1,\dots, 
+\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + t \boldsymbol{d}_k, \: \: \text{ for iterations } k=0,1,\dots, 
 \]&lt;/span&gt;
-&lt;span class=&#34;math inline&#34;&gt;\(\bm{d}_k \in \R^n\)&lt;/span&gt; is the descent direction, &lt;span class=&#34;math inline&#34;&gt;\(t_k\)&lt;/span&gt; is the stepsize.
+&lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{d}_k \in \R^n\)&lt;/span&gt; is the descent direction, &lt;span class=&#34;math inline&#34;&gt;\(t_k\)&lt;/span&gt; is the stepsize.
 &lt;span class=&#34;math display&#34;&gt;\[
-f&amp;#39;(\bm{x}; \bm{d})=\nabla f(\bm{x})^T \bm{d} &amp;lt; 0.
+f&amp;#39;(\boldsymbol{x}; \boldsymbol{d})=\nabla f(\boldsymbol{x})^T \boldsymbol{d} &amp;lt; 0.
 \]&lt;/span&gt;
-So moving &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}\)&lt;/span&gt; in the descent direction for timestep &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; decreases the function, so we move towards a minimum.
-The  is the negative gradient of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, i.e. &lt;span class=&#34;math inline&#34;&gt;\(\bm{d}_k = -\nabla f(\bm{x}_k)\)&lt;/span&gt;, or normalised &lt;span class=&#34;math inline&#34;&gt;\(\bm{d}_k = {-\nabla f(\bm{x}_k)}/{\norm{\nabla f(\bm{x})}}\)&lt;/span&gt;. We can construct a general gradient descent method in R and evaluate performance on optimising the Rastrigin function.&lt;/p&gt;
+So moving &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}\)&lt;/span&gt; in the descent direction for timestep &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; decreases the function, so we move towards a minimum.
+The  is the negative gradient of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;, i.e. &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{d}_k = -\nabla f(\boldsymbol{x}_k)\)&lt;/span&gt;, or normalised &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{d}_k = {-\nabla f(\boldsymbol{x}_k)}/{\norm{\nabla f(\boldsymbol{x})}}\)&lt;/span&gt;. We can construct a general gradient descent method in R and evaluate performance on optimising the Rastrigin function.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gradient_method = function(f, x, gradient, eps=1e-4, t=0.1, maxiter=1000){
   converged = TRUE
   iterations = 0
@@ -2095,7 +2095,7 @@ The  is the negative gradient of &lt;span class=&#34;math inline&#34;&gt;\(f\)&l
                  cat(&amp;quot;Converged!&amp;quot;)}
   return(list(f=f(x),x=x))
 }&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This code essentially will continue running the while loop until the tolerance condition is satisfied, where the change in &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}\)&lt;/span&gt; from one iteration to another is negligible. Now we can see in which cases this will provide a solution to the problem of the Rastrigin function.&lt;/p&gt;
+&lt;p&gt;This code essentially will continue running the while loop until the tolerance condition is satisfied, where the change in &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}\)&lt;/span&gt; from one iteration to another is negligible. Now we can see in which cases this will provide a solution to the problem of the Rastrigin function.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gradient_method(f, x = c(1, 1), grad_f)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Not converged, stopping after 1001 iterations&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## $f
@@ -2112,7 +2112,7 @@ The  is the negative gradient of &lt;span class=&#34;math inline&#34;&gt;\(f\)&l
 ## [1] -2.962366 -2.962366&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Even when the initial guess of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; was very close to zero, the true solution, this function did not converge. This shows that under a complex and highly varying function such as the Rastrigin function, the gradient method has problems. This can be improved by including a backtracking line search to dynamically change the value of the stepsize &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; to &lt;span class=&#34;math inline&#34;&gt;\(t_k\)&lt;/span&gt; for each iteration &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt;. This method reduces the stepsize &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; for each iteration &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; via &lt;span class=&#34;math inline&#34;&gt;\(t_k = \beta t_k\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(\beta \in (0,1)\)&lt;/span&gt; while
 &lt;span class=&#34;math display&#34;&gt;\[
-f(\bm{x}_k) - f(\bm{x}_k + t_k \bm{d}_k) &amp;lt; -\alpha\nabla f(\bm{x}_k)^T \bm{d}_k.
+f(\boldsymbol{x}_k) - f(\boldsymbol{x}_k + t_k \boldsymbol{d}_k) &amp;lt; -\alpha\nabla f(\boldsymbol{x}_k)^T \boldsymbol{d}_k.
 \]&lt;/span&gt;
 and for &lt;span class=&#34;math inline&#34;&gt;\(\alpha \in (0,1)\)&lt;/span&gt;. We can add this to the gradient method function with the line &lt;code&gt;while( (f(x) - f(x + t*d) ) &amp;lt; (-alpha*t * t(gradf)%*%d)) t = beta*t&lt;/code&gt;. Meaning we need to specify &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt;. After this is added to the function, we have&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gradient_method(f, c(0.01,0.01), grad_f, maxiter = 10000)&lt;/code&gt;&lt;/pre&gt;
@@ -2127,11 +2127,11 @@ and for &lt;span class=&#34;math inline&#34;&gt;\(\alpha \in (0,1)\)&lt;/span&gt
 &lt;/div&gt;
 &lt;div id=&#34;newton-methods&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Newton Methods&lt;/h3&gt;
-&lt;p&gt;The Newton method seeks to solve the optimisation problem using evaluations of Hessians and a quadratic approximation of a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; around &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}_k\)&lt;/span&gt;. This is under the assumption is that the Hessian &lt;span class=&#34;math inline&#34;&gt;\(\nabla^2 f(\bm{x}_k)\)&lt;/span&gt; is . The unique minimiser of the quadratic approximation is
+&lt;p&gt;The Newton method seeks to solve the optimisation problem using evaluations of Hessians and a quadratic approximation of a function &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt; around &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}_k\)&lt;/span&gt;. This is under the assumption is that the Hessian &lt;span class=&#34;math inline&#34;&gt;\(\nabla^2 f(\boldsymbol{x}_k)\)&lt;/span&gt; is . The unique minimiser of the quadratic approximation is
 &lt;span class=&#34;math display&#34;&gt;\[
-\bm{x}_{k+1} = \bm{x}_k - (\nabla^2 f(\bm{x}_k))^{-1} \nabla f(\bm{x}_k),
+\boldsymbol{x}_{k+1} = \boldsymbol{x}_k - (\nabla^2 f(\boldsymbol{x}_k))^{-1} \nabla f(\boldsymbol{x}_k),
 \]&lt;/span&gt;
-which is known as . Here you can consider &lt;span class=&#34;math inline&#34;&gt;\((\nabla^2 f(\bm{x}_k))^{-1} \nabla f(\bm{x}_k)\)&lt;/span&gt; as the descent direction in a scaled gradient method. The &lt;code&gt;nlm&lt;/code&gt; function from base R uses the Newton method. It is an expensive algorithm to run, because it involves inverting a matrix, the hessian matrix of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;. Newton methods work a lot better if you can supply an algebraic expression for the hessian matrix, so that you do not need to numerically calculate the gradient on each iteration. We can use &lt;code&gt;nlm&lt;/code&gt; to test the Newton method on the Rastrigin function.&lt;/p&gt;
+which is known as . Here you can consider &lt;span class=&#34;math inline&#34;&gt;\((\nabla^2 f(\boldsymbol{x}_k))^{-1} \nabla f(\boldsymbol{x}_k)\)&lt;/span&gt; as the descent direction in a scaled gradient method. The &lt;code&gt;nlm&lt;/code&gt; function from base R uses the Newton method. It is an expensive algorithm to run, because it involves inverting a matrix, the hessian matrix of &lt;span class=&#34;math inline&#34;&gt;\(f\)&lt;/span&gt;. Newton methods work a lot better if you can supply an algebraic expression for the hessian matrix, so that you do not need to numerically calculate the gradient on each iteration. We can use &lt;code&gt;nlm&lt;/code&gt; to test the Newton method on the Rastrigin function.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f_fornlm = function(x){
   out = f(x)
   attr(out, &amp;#39;gradient&amp;#39;) &amp;lt;- grad_f(x)
@@ -2160,12 +2160,12 @@ nlm(f, c(-4, 4), check.analyticals = TRUE)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In complex cases, the hessian cannot be supplied analytically. Even if it can be supplied analytically, in high dimensions the hessian is a very large matrix, which makes it computationally expensive to invert for each iteration. The BFGS method approximates the hessian matrix, increasing computability and efficiency. The BFGS method is the most common quasi-Newton method, and it is one of the methods that can be suppled to the &lt;code&gt;optim&lt;/code&gt; function. It approximates the hessian matrix with &lt;span class=&#34;math inline&#34;&gt;\(B_k\)&lt;/span&gt;, and for iterations &lt;span class=&#34;math inline&#34;&gt;\(k=0,1,\dots\)&lt;/span&gt;, it has the following basic algorithm:&lt;/p&gt;
 &lt;p&gt;Initialise &lt;span class=&#34;math inline&#34;&gt;\(B_0 = I\)&lt;/span&gt; and initial guess &lt;span class=&#34;math inline&#34;&gt;\(x_0\)&lt;/span&gt;.&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;Obtain a direction &lt;span class=&#34;math inline&#34;&gt;\(\bm{d}_k\)&lt;/span&gt; through the solution of &lt;span class=&#34;math inline&#34;&gt;\(B_k \bm{d}_k = - \nabla f(\bm{x}_k)\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;Obtain a stepsize &lt;span class=&#34;math inline&#34;&gt;\(t_k\)&lt;/span&gt; by line search &lt;span class=&#34;math inline&#34;&gt;\(t_k = \text{argmin} f(\bm{x}_k + t\bm{d}_k)\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;Set &lt;span class=&#34;math inline&#34;&gt;\(s_k = t_k \bm{d}_k\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;Update &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}_{k+1} = \bm{x}_k + \bm{s}_k\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;Set &lt;span class=&#34;math inline&#34;&gt;\(\bm{y}_k = \nabla f(\bm{x}_{k+1}) - \nabla f(\bm{x}_k)\)&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;Update the hessian approximation &lt;span class=&#34;math inline&#34;&gt;\(B_{k+1} = B_k + \frac{\bm{y}_k\bm{y}_k^T}{\bm{y}_k^T \bm{s}_k} - \frac{B_k \bm{s}_k \bm{s}_k^T B_k}{\bm{s}_k^T B_k \bm{s}_k}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Obtain a direction &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{d}_k\)&lt;/span&gt; through the solution of &lt;span class=&#34;math inline&#34;&gt;\(B_k \boldsymbol{d}_k = - \nabla f(\boldsymbol{x}_k)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Obtain a stepsize &lt;span class=&#34;math inline&#34;&gt;\(t_k\)&lt;/span&gt; by line search &lt;span class=&#34;math inline&#34;&gt;\(t_k = \text{argmin} f(\boldsymbol{x}_k + t\boldsymbol{d}_k)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Set &lt;span class=&#34;math inline&#34;&gt;\(s_k = t_k \boldsymbol{d}_k\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Update &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}_{k+1} = \boldsymbol{x}_k + \boldsymbol{s}_k\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Set &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{y}_k = \nabla f(\boldsymbol{x}_{k+1}) - \nabla f(\boldsymbol{x}_k)\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Update the hessian approximation &lt;span class=&#34;math inline&#34;&gt;\(B_{k+1} = B_k + \frac{\boldsymbol{y}_k\boldsymbol{y}_k^T}{\boldsymbol{y}_k^T \boldsymbol{s}_k} - \frac{B_k \boldsymbol{s}_k \boldsymbol{s}_k^T B_k}{\boldsymbol{s}_k^T B_k \boldsymbol{s}_k}\)&lt;/span&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;BFGS is the fastest method that is guaranteed convergence, but has its downsides. BFGS stores the matrices &lt;span class=&#34;math inline&#34;&gt;\(B_k\)&lt;/span&gt; in memory, so if your dimension is high (i.e. a large amount of parameters), these matrices are going to be large and storing them is inefficient. Another version of BFGS is the low memory version of BFGS, named ‘L-BGFS’, which only stores some of the vectors that &lt;em&gt;represent&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(B_k\)&lt;/span&gt;. This method is almost as fast. In general, you should use BFGS if you can, but if your dimension is too high, reduce down to L-BFGS.&lt;/p&gt;
 &lt;p&gt;This is a very good but complicated method. Luckily, the function &lt;code&gt;optim&lt;/code&gt; from the &lt;code&gt;stats&lt;/code&gt; package in R has the ability to optimise with the BFGS method. Testing this on the Rastrigin function gives&lt;/p&gt;
@@ -2201,33 +2201,33 @@ nlm(f, c(-4, 4), check.analyticals = TRUE)&lt;/code&gt;&lt;/pre&gt;
 ## 
 ## $message
 ## NULL&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;So the BFGS method actually didn’t find the true solution for an initial value of &lt;span class=&#34;math inline&#34;&gt;\(\bm{x} = (1,1)\)&lt;/span&gt;, but did for when the initial value was &lt;span class=&#34;math inline&#34;&gt;\(\bm{x} = (0.1,0.1)\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;So the BFGS method actually didn’t find the true solution for an initial value of &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x} = (1,1)\)&lt;/span&gt;, but did for when the initial value was &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x} = (0.1,0.1)\)&lt;/span&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;non-linear-least-squares-optimisation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Non-Linear Least Squares Optimisation&lt;/h2&gt;
-&lt;p&gt;The motivating example we have used throughout this section was concerned with optimising a two-dimensional function, of which we were only interested in two variables that controlled the value of the function &lt;span class=&#34;math inline&#34;&gt;\(f(\bm{x})\)&lt;/span&gt;. In many cases, we have a dataset &lt;span class=&#34;math inline&#34;&gt;\(D = \{\bm{y},\bm{x}_i\}\)&lt;/span&gt;, where we decomopose the ‘observations’ as &lt;span class=&#34;math inline&#34;&gt;\(\bm{y} = g(\bm{x}) + \epsilon\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt; is a random noise parameter. In this case we are interested in finding an approximation to the data generating function &lt;span class=&#34;math inline&#34;&gt;\(g(\bm{x})\)&lt;/span&gt;, which we call &lt;span class=&#34;math inline&#34;&gt;\(f(\bm{x},\bm{\beta})\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(\bm{\beta}\)&lt;/span&gt; are some parameters of whose relationship with &lt;span class=&#34;math inline&#34;&gt;\(\bm{x}\)&lt;/span&gt; we model to make this approximation, so we are interested in optimising over these parameters. The objective function we are minimising over is
+&lt;p&gt;The motivating example we have used throughout this section was concerned with optimising a two-dimensional function, of which we were only interested in two variables that controlled the value of the function &lt;span class=&#34;math inline&#34;&gt;\(f(\boldsymbol{x})\)&lt;/span&gt;. In many cases, we have a dataset &lt;span class=&#34;math inline&#34;&gt;\(D = \{\boldsymbol{y},\boldsymbol{x}_i\}\)&lt;/span&gt;, where we decomopose the ‘observations’ as &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{y} = g(\boldsymbol{x}) + \epsilon\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt; is a random noise parameter. In this case we are interested in finding an approximation to the data generating function &lt;span class=&#34;math inline&#34;&gt;\(g(\boldsymbol{x})\)&lt;/span&gt;, which we call &lt;span class=&#34;math inline&#34;&gt;\(f(\boldsymbol{x},\boldsymbol{\beta})\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\beta}\)&lt;/span&gt; are some parameters of whose relationship with &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}\)&lt;/span&gt; we model to make this approximation, so we are interested in optimising over these parameters. The objective function we are minimising over is
 &lt;span class=&#34;math display&#34;&gt;\[
-\min_{\bm{\beta}} \sum^n_{i=1} r_i^2 = \min_{\bm{\beta}} \sum^n_{i=1} (y_i - f(x_i,\bm{\beta}))^2, 
+\min_{\boldsymbol{\beta}} \sum^n_{i=1} r_i^2 = \min_{\boldsymbol{\beta}} \sum^n_{i=1} (y_i - f(x_i,\boldsymbol{\beta}))^2, 
 \]&lt;/span&gt;
-i.e. the squared difference between the observed dataset and the approximation to the data generating function that defines that dataset. Here, &lt;span class=&#34;math inline&#34;&gt;\(r_i = y_i - f(x_i,\bm{\beta})\)&lt;/span&gt; is known as the &lt;em&gt;residuals&lt;/em&gt;, and it is of the most interest in a least squares setting. Many optimisation methods are specifically designed to optimise the least squares problem, but all optimisation methods can be used (provided they find a minimum). Some of the most popular algorithms for least squares are the Gauss-Newton algorithm and the Levenberg-Marquardt algorithm. Both of these algorithms are extensions of Newton’s method for general optimisation. The general form of the Gauss-Newton method is
+i.e. the squared difference between the observed dataset and the approximation to the data generating function that defines that dataset. Here, &lt;span class=&#34;math inline&#34;&gt;\(r_i = y_i - f(x_i,\boldsymbol{\beta})\)&lt;/span&gt; is known as the &lt;em&gt;residuals&lt;/em&gt;, and it is of the most interest in a least squares setting. Many optimisation methods are specifically designed to optimise the least squares problem, but all optimisation methods can be used (provided they find a minimum). Some of the most popular algorithms for least squares are the Gauss-Newton algorithm and the Levenberg-Marquardt algorithm. Both of these algorithms are extensions of Newton’s method for general optimisation. The general form of the Gauss-Newton method is
 &lt;span class=&#34;math display&#34;&gt;\[
-\bm{\beta} \leftarrow \bm{\beta} - (J_r^TJ_r)^{-1}J_r^Tr_i,
+\boldsymbol{\beta} \leftarrow \boldsymbol{\beta} - (J_r^TJ_r)^{-1}J_r^Tr_i,
 \]&lt;/span&gt;
 where &lt;span class=&#34;math inline&#34;&gt;\(J_r\)&lt;/span&gt; is the Jacobian matrix of the residue &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt;, defined as
 &lt;span class=&#34;math display&#34;&gt;\[
-J_r = \frac{\partial r}{\partial \bm{\beta}}.
+J_r = \frac{\partial r}{\partial \boldsymbol{\beta}}.
 \]&lt;/span&gt;
 So this is defined as the matrix of partial derivatives with respect to each coefficient &lt;span class=&#34;math inline&#34;&gt;\(\beta_i\)&lt;/span&gt;. The Levenberg-Marquardt algorithm extends this approach by including a diagonal matrix of small entries to the &lt;span class=&#34;math inline&#34;&gt;\(J_r^TJ_r\)&lt;/span&gt; term, to eliminate the possibility of this being a singular matrix. This has the update process of
 &lt;span class=&#34;math display&#34;&gt;\[
-\bm{\beta} \leftarrow \bm{\beta} - (J_r^TJ_r+\lambda I)^{-1}J_r^Tr_i,
+\boldsymbol{\beta} \leftarrow \boldsymbol{\beta} - (J_r^TJ_r+\lambda I)^{-1}J_r^Tr_i,
 \]&lt;/span&gt;
 where &lt;span class=&#34;math inline&#34;&gt;\(\lambda\)&lt;/span&gt; is some small value. In the simple case where &lt;span class=&#34;math inline&#34;&gt;\(\lambda = 0\)&lt;/span&gt;, this reduces to the Gauss-Newton algorithm. This is a highly efficient method, but in the case where our dataset is large, we may want to use stochastic gradient descent.&lt;/p&gt;
 &lt;div id=&#34;stochastic-gradient-descent&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Stochastic Gradient Descent&lt;/h3&gt;
 &lt;p&gt;Stochastic Gradient Descent (SGD) is a stochastic approximation to the standard gradient descent method. Instead of calculating the gradient for an entire dataset (which can be extremely large) it calculates the gradient for a lower-dimensional subset of the dataset; picked randomly or deterministically. The form of this method is
 &lt;span class=&#34;math display&#34;&gt;\[
-\bm{x}_{k+1} = \bm{x}_k - t \nabla f_i(\bm{x}_k)
+\boldsymbol{x}_{k+1} = \boldsymbol{x}_k - t \nabla f_i(\boldsymbol{x}_k)
 \]&lt;/span&gt;
 where &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is an index that refers to cycling through all points &lt;span class=&#34;math inline&#34;&gt;\(i \in D\)&lt;/span&gt;, the points in the dataset. This can be in different sizes of groups, so depending on the problem, &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; can be large or small (relative to the size of the dataset). Stochastic gradient methods are useful in the setting where your dataset is very large, otherwise it could be unnecessary.&lt;/p&gt;
 &lt;/div&gt;
