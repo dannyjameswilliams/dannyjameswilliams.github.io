@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MCMC | Danny James Williams</title>
-    <link>http://dannyjameswilliams.co.uk/tag/mcmc/</link>
-      <atom:link href="http://dannyjameswilliams.co.uk/tag/mcmc/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://dannyjameswilliams.co.uk/tag/mcmc/</link>
+      <atom:link href="https://dannyjameswilliams.co.uk/tag/mcmc/index.xml" rel="self" type="application/rss+xml" />
     <description>MCMC</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Sat, 27 Jun 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>MCMC</title>
-      <link>http://dannyjameswilliams.co.uk/tag/mcmc/</link>
+      <link>https://dannyjameswilliams.co.uk/tag/mcmc/</link>
     </image>
     
     <item>
       <title>Gaussian Process Classification</title>
-      <link>http://dannyjameswilliams.co.uk/projects/gpc/</link>
+      <link>https://dannyjameswilliams.co.uk/projects/gpc/</link>
       <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/projects/gpc/</guid>
+      <guid>https://dannyjameswilliams.co.uk/projects/gpc/</guid>
       <description>&lt;p&gt;The second group project I worked on at COMPASS mainly involved learning how Gaussian process classification worked, as it is a complicated procedure, and not as straight forward as Gaussian process classification.&lt;/p&gt;
 &lt;p&gt;Our work involved a number of aspects that have improved on Gaussian process classification in recent literatures:&lt;/p&gt;
 &lt;ul&gt;

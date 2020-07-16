@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistical Computing 2 | Danny James Williams</title>
-    <link>http://dannyjameswilliams.co.uk/portfolios/sc2/</link>
-      <atom:link href="http://dannyjameswilliams.co.uk/portfolios/sc2/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://dannyjameswilliams.co.uk/portfolios/sc2/</link>
+      <atom:link href="https://dannyjameswilliams.co.uk/portfolios/sc2/index.xml" rel="self" type="application/rss+xml" />
     <description>Statistical Computing 2</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Statistical Computing 2</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/</link>
     </image>
     
     <item>
       <title>Intro to C&#43;&#43;</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/intro/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/intro/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/intro/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/intro/</guid>
       <description>
 
 
@@ -117,9 +117,9 @@ int main()
     
     <item>
       <title>Integrating R and C</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/rnc/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/rnc/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/rnc/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/rnc/</guid>
       <description>
 
 
@@ -136,7 +136,7 @@ n = 200
 x = runif(n)
 y = sin(4*pi*x^3) + rnorm(n, 0, 0.2)
 plot(x, y, pch = 20)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;480&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;480&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 From the plot it is clear that the data are non-linear, so a simple linear model would not be suitable. A kernel regression smoother can be used to estimate the conditional expectation &lt;span class=&#34;math inline&#34;&gt;\(\mu(x) = \mathbb{E}(y|x)\)&lt;/span&gt; more flexibly using
 &lt;span class=&#34;math display&#34;&gt;\[
 \hat{\mu}(x) = \frac{\sum^n_{i=1}\kappa_\lambda (x, x_i)y_i}{\sum^n_{i=1}\kappa_\lambda(x, x_i)},
@@ -196,7 +196,7 @@ dyn.load(&amp;quot;meanKRS.so&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;meanKRS = function(y, x, x0, lambda) .Call(&amp;quot;meanKRS&amp;quot;, y, x, x0, lambda)
 plot(x, y, pch = 20)
 lines(seq(0, 1, len=1000), meanKRS(y, x, seq(0,1,len=1000), lambda = 0.02), col=&amp;quot;blue&amp;quot;, lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;528&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;528&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;So this kernel smoothing approach has provided a nice fit to the simulated data, and appears to be going through the centre of the points across the plot.&lt;/p&gt;
 &lt;p&gt;To compare the computational efficiency, we can compare this C function with a simpler function written in R, called &lt;code&gt;meanKRS_R&lt;/code&gt; (function not shown here for brevity, the R function performs the same operation whilst making use of R’s &lt;code&gt;sum&lt;/code&gt; function instead of having a loop).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;all.equal(meanKRS_R(y,x,seq(0,1,len=1000),0.06), meanKRS(y,x,seq(0,1,len=1000),0.06))&lt;/code&gt;&lt;/pre&gt;
@@ -304,7 +304,7 @@ best_lambda = cvKRS(y, x, k = 20, lambdas = lambda_seq)
 plot(x, y, pch = 20)
 lines(seq(0, 1, len=1000), meanKRS(y, x, seq(0,1,len=1000), best_lambda), 
       col=&amp;quot;deeppink&amp;quot;, lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 To compare computational efficiency, we can benchmark speeds against a function written in R (not shown here).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;microbenchmark(cvKRS(y, x, k = 20, lambdas = lambda_seq),
                cvKRS_R(y, x, k = 20, lambdas = lambda_seq), 
@@ -367,7 +367,7 @@ NumericVector mean_var_KRS_I(const NumericVector y, const NumericVector x,
 varied_mu = mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), lambda = best_lambda)
 plot(x, y, pch=20)
 lines(seq(0, 1, len=1000), varied_mu, col = &amp;quot;darkgoldenrod&amp;quot;, lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 This looks like a good fit, and the function is working as intended. How well does the speed of the function written in Rcpp compare to one written in R?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;microbenchmark(C = mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), 
                                 lambda = best_lambda),
@@ -435,7 +435,7 @@ cv_best_lambda = mean_var_cv_KRS(y, x, k=20, exp(seq(log(0.01), log(1), len=50))
 cv_varied_mu = mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), lambda = cv_best_lambda)
 plot(x, y, pch=20)
 lines(seq(0, 1, len=1000), cv_varied_mu, col = &amp;quot;darkorchid&amp;quot;, lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 This looks a lot smoother for lower values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; than before, which looks like a better fit overall!&lt;/p&gt;
 &lt;p&gt;A way to improve this model might involve a &lt;em&gt;local&lt;/em&gt; regression approach, which would be fitting parameter values at different (possibly uniform) intervals across the data set. Local regression will be covered in the next section.&lt;/p&gt;
 &lt;/div&gt;
@@ -445,9 +445,9 @@ This looks a lot smoother for lower values of &lt;span class=&#34;math inline&#3
     
     <item>
       <title>Local Polynomial Regression with Rcpp</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/</guid>
       <description>
 
 
@@ -551,7 +551,7 @@ resplot = ggplot(solarAU, mapping=aes(x=toy, y = tod, z = res)) +
   stat_summary_hex() +  xlab(&amp;quot;Time of Year&amp;quot;) + ylab(&amp;quot;Time of Day&amp;quot;) +
   theme(legend.title = element_blank())
 grid.arrange(predplot, resplot, ncol=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 There is a pattern in the residuals! This means that there is a feature not included in the model that can explain some of the noise. We need to extend this model to account for this.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;local-regression&#34; class=&#34;section level1&#34;&gt;
@@ -602,7 +602,7 @@ cpp_pred_local = local_lm_fit(y, x0, X0, x, X, H)&lt;/code&gt;&lt;/pre&gt;
 resPlot = ggplot(mapping=aes(x=x0[,2], y = x0[,1], z = y[sub] - cpp_pred_local)) + stat_summary_hex() +
   xlab(&amp;quot;Time of Year&amp;quot;) + ylab(&amp;quot;Time of Day&amp;quot;) + theme(legend.title = element_blank())
 grid.arrange(predPlot, resPlot, ncol=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 These look a lot better! There isn’t a systematic pattern in these residuals which show that the model isn’t missing anything important. Now we can check this C++ code against the basic R code.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mvtnorm)
 lmLocal &amp;lt;- function(y, x0, X0, x, X, H){
@@ -634,9 +634,9 @@ all.equal(R_pred_local, as.vector(cpp_pred_local))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Intro to OpenMP in C&#43;&#43;</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/openmp/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/openmp/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/openmp/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/openmp/</guid>
       <description>
 
 
@@ -825,9 +825,9 @@ export OMP_NUM_THREADS=8
     
     <item>
       <title>ParallelRcpp</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/parallelrcpp/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/parallelrcpp/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/parallelrcpp/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/parallelrcpp/</guid>
       <description>
 
 
@@ -935,9 +935,9 @@ all.equal(log(A), MatrixLog(A), MatrixLogPar(A))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Introduction to Python for Statistics</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Python is a powerful programming language that is very popular for data analysis as well as many other applications in the real world. This portfolio will go over some intermediary processes in Python 3.7.3, before  implementing basic statistical models; including linear models, regression and classification.&lt;/p&gt;
 &lt;h2 id=&#34;python-overview&#34;&gt;Python Overview&lt;/h2&gt;
@@ -1109,7 +1109,7 @@ y = np.random.normal(mu, .5, n)
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;data.plot.scatter(&amp;quot;x&amp;quot;, &amp;quot;y&amp;quot;, figsize=(14, 11));
 plt.plot(x, model.predict(data[[&amp;quot;x&amp;quot;]]), &#39;r&#39;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_36_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_36_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;multiple-linear-regression&#34;&gt;Multiple Linear Regression&lt;/h3&gt;
 &lt;p&gt;In the previous section, we fit a linear model with a single covariate vector. This is good for exemplary purposes as a two dimensional linear model is easy to visualise. Often in data analysis we can have multiple explanatory variables $\boldsymbol{x}_1, \dots, \boldsymbol{x}_p$ that give information about the respone variable $\boldsymbol{y}$.&lt;/p&gt;
 &lt;p&gt;For an example of multiple linear regression, we will be using the Boston house prices dataset, which is part of the freely provided datasets from &lt;code&gt;sklearn&lt;/code&gt;. This dataset describes the median value of owner-occupied homes (per $1000), as well as 13 predictors that could provide information about the house value. We load this dataset and convert it to a &lt;code&gt;pandas&lt;/code&gt; data frame.&lt;/p&gt;
@@ -1250,7 +1250,7 @@ cmap = seaborn.diverging_palette(-500, -720, as_cmap=True)
 plt.figure(figsize=(14, 11))
 seaborn.heatmap(corr, cmap=cmap);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_40_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_40_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There are two things to infer from this plot: how correlated the predictor variables are from one another, and how correlated the predictor variables are from the response. We are mostly interested in how correlated the predictors are with &lt;code&gt;MEDV&lt;/code&gt;, as if they influence the value of &lt;code&gt;MEDV&lt;/code&gt; significantly, then they are likely to be important to include in a model. Another plot we can use to explore the data is a multi variable scatter plot. That is, a scatter plot for each pair of variables. &lt;code&gt;pandas&lt;/code&gt; has a function for this, as part of the &lt;code&gt;plotting&lt;/code&gt; submodule.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from pandas.plotting import scatter_matrix
 scatter_matrix(boston, figsize=(16, 16));
@@ -1303,7 +1303,7 @@ plt.axis(&#39;tight&#39;)
 plt.legend(data.feature_names)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_50_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_50_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The coefficients for covariates that provide a lot of information to the response variable are likely going to take a very large value of regularisation parameter to shrink them to zero. These are the lines that are more separated in the plot above, i.e. &lt;code&gt;CRIM&lt;/code&gt;, &lt;code&gt;RM&lt;/code&gt;, &lt;code&gt;NOX&lt;/code&gt;, and &lt;code&gt;CHAS&lt;/code&gt;. Interestingly, these were not the variables that were selected in the scatter matrix approach earlier in this report, highlighting the variation in parameter selection depending on the method.&lt;/p&gt;
 &lt;h3 id=&#34;classification&#34;&gt;Classification&lt;/h3&gt;
 &lt;p&gt;The final statistical model introduced will be one interested in classifying. Classification is interested in prediction of a usually non-numeric &lt;em&gt;class&lt;/em&gt;, i.e. assign the output to a pre-defined class based on some inputs. The classification model explained here will be &lt;strong&gt;Logistic Regression&lt;/strong&gt; (ignore the name, it&amp;rsquo;s not a regression method).&lt;/p&gt;
@@ -1335,7 +1335,7 @@ colors[y == &amp;quot;Class 2&amp;quot;] = &amp;quot;blue&amp;quot;
 colors[y == &amp;quot;Class 3&amp;quot;] = &amp;quot;green&amp;quot;
 clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, figsize=(14, 11));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_54_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_54_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now that the data is set up, we can fit the logistic regression model to it. &lt;code&gt;LogisticRegression&lt;/code&gt; is a function as part of the &lt;code&gt;linear_model&lt;/code&gt; submodule of &lt;code&gt;sklearn&lt;/code&gt;, just as before, so this next step should be familiar to you.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;lr_model = lm.LogisticRegression(fit_intercept=True, solver=&#39;newton-cg&#39;, multi_class = &#39;auto&#39;)
 lr_model = lr_model.fit(clsf_dat[[&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;]], clsf_dat[&amp;quot;y&amp;quot;])
@@ -1362,7 +1362,7 @@ colors[predictions == &amp;quot;Class 2&amp;quot;] = &amp;quot;blue&amp;quot;
 colors[predictions == &amp;quot;Class 3&amp;quot;] = &amp;quot;green&amp;quot;
 clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, figsize=(14, 11));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_60_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_60_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Here we can see an extremely similar plot to the one above, although it is not quite exactly the same! At the point of overlap between classes, some points are mislabelled as the wrong class, due to uncertainty around the decision boundaries.&lt;/p&gt;
 &lt;p&gt;More complex models exist for classification and regression, but that&amp;rsquo;s for another time.&lt;/p&gt;
 </description>
@@ -1370,9 +1370,9 @@ clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, 
     
     <item>
       <title>Neural Network for Identifying Cats and Dogs</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;We fit a neural network to a dataset of cat and dog images, in an attempt to distinguish features that can correctly identify whether the image is of a cat or of a dog.&lt;/p&gt;
 &lt;p&gt;This work uses the &lt;code&gt;keras&lt;/code&gt; library from &lt;code&gt;tensorflow&lt;/code&gt;. This portfolio will go over the following processes:&lt;/p&gt;
@@ -1481,7 +1481,7 @@ for i in range(25):
     plt.xlabel(class_names[ind])
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/neuralnet_24_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_24_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;fitting-the-neural-network&#34;&gt;Fitting the Neural Network&lt;/h2&gt;
 &lt;p&gt;We use the &lt;code&gt;keras&lt;/code&gt; library, a part of &lt;code&gt;tensorflow&lt;/code&gt;, to fit a neural network to classify these images. Most importantly, the &lt;code&gt;Sequential&lt;/code&gt; function to build the model and different layer functions to create the neural network layers within the &lt;code&gt;Sequential&lt;/code&gt; model build.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from tensorflow.keras.models import Sequential
@@ -1567,7 +1567,7 @@ plt.legend(loc=&#39;upper right&#39;)
 plt.title(&#39;Training and Validation Loss&#39;)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/neuralnet_34_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_34_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;These plots show that the loss steadily decreases, and the accuracy increases in both cases. Now we can evaluate some predictions on the test set. The test set do not have specific class labels, and we are treating these as unknown.&lt;/p&gt;
 &lt;h4 id=&#34;test-set-predictions&#34;&gt;Test Set Predictions&lt;/h4&gt;
 &lt;p&gt;To further test the performance of the model, and inspect it ourselves, we can see how well the model predicts on a test set (which the model has never seen). This is a separate dataset to the validation set which was part of the model fitting process.&lt;/p&gt;
@@ -1600,7 +1600,7 @@ for i in np.arange(len(pred_list)):
     plt.xlabel(pred_class[i])
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/neuralnet_38_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_38_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There are some funny looking dogs in this sample, and some funny looking cats. Clearly we can see that oftentimes the model calls a cat a dog, and a dog a cat (I imagine the dogs are more offended by that), but for the most part the predictions look accurate.&lt;/p&gt;
 &lt;p&gt;There is a lot more that can go into improving this model, such as&lt;/p&gt;
 &lt;ul&gt;
@@ -1615,9 +1615,9 @@ for i in np.arange(len(pred_list)):
     
     <item>
       <title>Section 5: High Performance Computing with Bluecrystal</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/hpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/hpc/</guid>
       <description>
 
 

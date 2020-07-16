@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent &amp; Upcoming Talks | Danny James Williams</title>
-    <link>http://dannyjameswilliams.co.uk/talk/</link>
-      <atom:link href="http://dannyjameswilliams.co.uk/talk/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://dannyjameswilliams.co.uk/talk/</link>
+      <atom:link href="https://dannyjameswilliams.co.uk/talk/index.xml" rel="self" type="application/rss+xml" />
     <description>Recent &amp; Upcoming Talks</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Recent &amp; Upcoming Talks</title>
-      <link>http://dannyjameswilliams.co.uk/talk/</link>
+      <link>https://dannyjameswilliams.co.uk/talk/</link>
     </image>
     
     <item>
       <title>Example Talk</title>
-      <link>http://dannyjameswilliams.co.uk/talk/example/</link>
+      <link>https://dannyjameswilliams.co.uk/talk/example/</link>
       <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/talk/example/</guid>
+      <guid>https://dannyjameswilliams.co.uk/talk/example/</guid>
       <description>&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GAM | Danny James Williams</title>
-    <link>http://dannyjameswilliams.co.uk/tag/gam/</link>
-      <atom:link href="http://dannyjameswilliams.co.uk/tag/gam/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://dannyjameswilliams.co.uk/tag/gam/</link>
+      <atom:link href="https://dannyjameswilliams.co.uk/tag/gam/index.xml" rel="self" type="application/rss+xml" />
     <description>GAM</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Mon, 17 Feb 2020 15:39:00 +0000</lastBuildDate>
     <image>
-      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>GAM</title>
-      <link>http://dannyjameswilliams.co.uk/tag/gam/</link>
+      <link>https://dannyjameswilliams.co.uk/tag/gam/</link>
     </image>
     
     <item>
       <title>Electricity Demand Forecasting Hackathon</title>
-      <link>http://dannyjameswilliams.co.uk/post/hackathon/</link>
+      <link>https://dannyjameswilliams.co.uk/post/hackathon/</link>
       <pubDate>Mon, 17 Feb 2020 15:39:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/post/hackathon/</guid>
+      <guid>https://dannyjameswilliams.co.uk/post/hackathon/</guid>
       <description>
 
 
@@ -25,7 +25,7 @@
 &lt;p&gt;Our task was to output a set of predictions for a testing dataset and submit them to the group git repository. We only had access to the predictor variables of this dataset, so we wouldn’t know how well our model was doing until it was submit and checked by Dr Fasiolo, who then put all submitted scores on the projector at the front of the room. The team with the lowest root mean squared error at the end would be crowned the winner.&lt;/p&gt;
 &lt;p&gt;Me and my team “Jim” (named so because we went to the gym) performed well at the start, extending the basic GAM to include additional covariates and interactions, as well as including some feature engineering. The second team “AGang” (because all of their names began with “A”) took the edge over us by removing a single variable that we didn’t realise was actually making our model worse, and their GAM produced better predictions overall by a small margin. The third team “D &amp;amp; D” (because both their names began with a D) was having no luck at all, trying to implement a random forest model as opposed to a GAM, but their predictions were significantly off, and their code took much longer to run than ours, leaving them with little time to troubleshoot.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-1&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/hackaton.jpg&#34; alt=&#34;The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.&#34;  /&gt;
+&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/post/hackaton.jpg&#34; alt=&#34;The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.
 &lt;/p&gt;
@@ -39,13 +39,13 @@ Figure 1: The COMPASS cohort after participating in the hackathon, with Dr Jethr
     
     <item>
       <title>Downscaling Extremes of Precipitation in the South West</title>
-      <link>http://dannyjameswilliams.co.uk/projects/precip/</link>
+      <link>https://dannyjameswilliams.co.uk/projects/precip/</link>
       <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/projects/precip/</guid>
+      <guid>https://dannyjameswilliams.co.uk/projects/precip/</guid>
       <description>&lt;p&gt;For my Masters dissertation project, I used extreme value theory to model the extremes of precipitation across the South West of the UK, and downscale sparse areas using a numerical weather model on a gridded scale. Pictured is the high resolution elevation levels across the South West, with a grid that samples the same elevation levels every 0.25 degrees in longitude and latitude. This highlights one of the problems with downscaling in such a scenario.&lt;/p&gt;
 &lt;p&gt;Extreme values of rainfall can be categorised by their maxima, and using a generalised extreme value (GEV) distribution, these maxima can be modelled. I modelled two sets of maxima separately; for the observations (point locations) and the model output (gridded locations). A separate downscaling generalised additive model (GAM) was used to compare predictions from both models, and link them together using various covariates.&lt;/p&gt;
 &lt;p&gt;You can read more about this project in my final dissertation, which can be found 
-&lt;a href=&#34;http://dannyjameswilliams.co.uk/pdfs/proj/mastersdiss.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://dannyjameswilliams.co.uk/pdfs/proj/mastersdiss.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

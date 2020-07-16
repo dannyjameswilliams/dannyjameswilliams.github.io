@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Analysis | Danny James Williams</title>
-    <link>http://dannyjameswilliams.co.uk/tag/data-analysis/</link>
-      <atom:link href="http://dannyjameswilliams.co.uk/tag/data-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://dannyjameswilliams.co.uk/tag/data-analysis/</link>
+      <atom:link href="https://dannyjameswilliams.co.uk/tag/data-analysis/index.xml" rel="self" type="application/rss+xml" />
     <description>Data Analysis</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Mon, 06 Jul 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Data Analysis</title>
-      <link>http://dannyjameswilliams.co.uk/tag/data-analysis/</link>
+      <link>https://dannyjameswilliams.co.uk/tag/data-analysis/</link>
     </image>
     
     <item>
       <title>Natural Language Analysis of the Lyrics of Kanye West</title>
-      <link>http://dannyjameswilliams.co.uk/post/kanye/</link>
+      <link>https://dannyjameswilliams.co.uk/post/kanye/</link>
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/post/kanye/</guid>
+      <guid>https://dannyjameswilliams.co.uk/post/kanye/</guid>
       <description>
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/forceNetwork-binding/forceNetwork.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/forceNetwork-binding/forceNetwork.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;em&gt;“2020 I’mma run the whole election”&lt;/em&gt; may not sound like the words of a lyrical genius, but I ask you to &lt;em&gt;“name one genius that ain’t crazy”&lt;/em&gt;. For the duration of your read of this post, take a minute to separate an artist from their art. It is undeniable that Kanye West has had serious influence over the musical industry during his career. He has single-handedly influenced hip hop since his first album, &lt;em&gt;The College Dropout&lt;/em&gt;, and that’s not to mention &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_awards_and_nominations_received_by_Kanye_West&#34;&gt;all of his awards&lt;/a&gt;.
@@ -64,7 +64,7 @@ To see a larger version of this network, with the ability to filter by album and
 &lt;p&gt;But how do the frequency of these entities change over time? We can inspect the top 10 entities separately for each album, which gives a good indication of their individual themes, as well as Kanye’s use of different lyricism throughout his career.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/kanye/top10words_notitles.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/post/kanye/top10words_notitles.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 &lt;figcaption&gt;
 Top 10 entities by album in order of their release.
 &lt;/figcaption&gt;
@@ -87,7 +87,7 @@ Some of the entities which might seem ‘irrelevant’ that can be found within 
 &lt;p&gt;Firstly, the sentiment API extracts the sentiment from each sentence separately. We can take a look at the density of all sentence sentiments below.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/kanye/sentiment_density.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/post/kanye/sentiment_density.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 &lt;figcaption&gt;
 Density of sentence sentiment.
 &lt;/figcaption&gt;
@@ -103,7 +103,7 @@ Density of sentence sentiment.
 &lt;p&gt;A song’s &lt;em&gt;magnitude&lt;/em&gt; is defined as the sum of the absolute values of the sentiments for each sentence in the song. Quite a mouthful - consider it as the ‘emotionality’ of the song; the higher the sentiment is (in one way or another), the more emotional the song becomes. We can break down the sentiment and magnitude over all songs by album.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/kanye/sentiment_magnitude.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/post/kanye/sentiment_magnitude.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 &lt;figcaption&gt;
 Sentiment (top) and magnitude (bottom), averaged for each song and split by album.
 &lt;/figcaption&gt;

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Danny James Williams</title>
-    <link>http://dannyjameswilliams.co.uk/</link>
-      <atom:link href="http://dannyjameswilliams.co.uk/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://dannyjameswilliams.co.uk/</link>
+      <atom:link href="https://dannyjameswilliams.co.uk/index.xml" rel="self" type="application/rss+xml" />
     <description>Danny James Williams</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Danny James Williams</title>
-      <link>http://dannyjameswilliams.co.uk/</link>
+      <link>https://dannyjameswilliams.co.uk/</link>
     </image>
     
     <item>
       <title>Intro to C&#43;&#43;</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/intro/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/intro/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/intro/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/intro/</guid>
       <description>
 
 
@@ -117,9 +117,9 @@ int main()
     
     <item>
       <title>Introduction to R</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/intro/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/intro/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/intro/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/intro/</guid>
       <description>
 
 
@@ -168,9 +168,9 @@ EISPACK - logical: values other than FALSE are an error.&lt;/code&gt;&lt;/pre&gt
     
     <item>
       <title>Common R</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/common/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/common/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/common/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/common/</guid>
       <description>
 
 
@@ -302,7 +302,7 @@ A function that generates an &lt;span class=&#34;math inline&#34;&gt;\(ARMA(1,1)
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This will generate a vector of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; values for each timestep from &lt;span class=&#34;math inline&#34;&gt;\(t=1,\dots,N\)&lt;/span&gt;. We can see a plot of this generated time series by running a simulated &lt;span class=&#34;math inline&#34;&gt;\(ARMA\)&lt;/span&gt; timeseries of length &lt;span class=&#34;math inline&#34;&gt;\(N=1000\)&lt;/span&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(1:1000, arma11(initx=0.5,N=1000),type=&amp;quot;l&amp;quot;, xlab=&amp;quot;Time (t)&amp;quot;, ylab=expression(x), main=&amp;quot;Time Series Example&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/common_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/common_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now that the functions are set up for testing, we can now set up the computer to work in parallel. This involves loading the required packages and detecting the number of cores we have available.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(parallel)
 library(MASS)
@@ -358,9 +358,9 @@ FEoutput = foreach(i=1:1000) %dopar% {
     
     <item>
       <title>Integrating R and C</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/rnc/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/rnc/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/rnc/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/rnc/</guid>
       <description>
 
 
@@ -377,7 +377,7 @@ n = 200
 x = runif(n)
 y = sin(4*pi*x^3) + rnorm(n, 0, 0.2)
 plot(x, y, pch = 20)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;480&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;480&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 From the plot it is clear that the data are non-linear, so a simple linear model would not be suitable. A kernel regression smoother can be used to estimate the conditional expectation &lt;span class=&#34;math inline&#34;&gt;\(\mu(x) = \mathbb{E}(y|x)\)&lt;/span&gt; more flexibly using
 &lt;span class=&#34;math display&#34;&gt;\[
 \hat{\mu}(x) = \frac{\sum^n_{i=1}\kappa_\lambda (x, x_i)y_i}{\sum^n_{i=1}\kappa_\lambda(x, x_i)},
@@ -437,7 +437,7 @@ dyn.load(&amp;quot;meanKRS.so&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;meanKRS = function(y, x, x0, lambda) .Call(&amp;quot;meanKRS&amp;quot;, y, x, x0, lambda)
 plot(x, y, pch = 20)
 lines(seq(0, 1, len=1000), meanKRS(y, x, seq(0,1,len=1000), lambda = 0.02), col=&amp;quot;blue&amp;quot;, lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;528&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;528&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;So this kernel smoothing approach has provided a nice fit to the simulated data, and appears to be going through the centre of the points across the plot.&lt;/p&gt;
 &lt;p&gt;To compare the computational efficiency, we can compare this C function with a simpler function written in R, called &lt;code&gt;meanKRS_R&lt;/code&gt; (function not shown here for brevity, the R function performs the same operation whilst making use of R’s &lt;code&gt;sum&lt;/code&gt; function instead of having a loop).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;all.equal(meanKRS_R(y,x,seq(0,1,len=1000),0.06), meanKRS(y,x,seq(0,1,len=1000),0.06))&lt;/code&gt;&lt;/pre&gt;
@@ -545,7 +545,7 @@ best_lambda = cvKRS(y, x, k = 20, lambdas = lambda_seq)
 plot(x, y, pch = 20)
 lines(seq(0, 1, len=1000), meanKRS(y, x, seq(0,1,len=1000), best_lambda), 
       col=&amp;quot;deeppink&amp;quot;, lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 To compare computational efficiency, we can benchmark speeds against a function written in R (not shown here).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;microbenchmark(cvKRS(y, x, k = 20, lambdas = lambda_seq),
                cvKRS_R(y, x, k = 20, lambdas = lambda_seq), 
@@ -608,7 +608,7 @@ NumericVector mean_var_KRS_I(const NumericVector y, const NumericVector x,
 varied_mu = mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), lambda = best_lambda)
 plot(x, y, pch=20)
 lines(seq(0, 1, len=1000), varied_mu, col = &amp;quot;darkgoldenrod&amp;quot;, lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-15-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 This looks like a good fit, and the function is working as intended. How well does the speed of the function written in Rcpp compare to one written in R?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;microbenchmark(C = mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), 
                                 lambda = best_lambda),
@@ -676,7 +676,7 @@ cv_best_lambda = mean_var_cv_KRS(y, x, k=20, exp(seq(log(0.01), log(1), len=50))
 cv_varied_mu = mean_var_KRS(y = y, x = x, x0 = seq(0,1,len=1000), lambda = cv_best_lambda)
 plot(x, y, pch=20)
 lines(seq(0, 1, len=1000), cv_varied_mu, col = &amp;quot;darkorchid&amp;quot;, lwd=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rnc_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;528&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 This looks a lot smoother for lower values of &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; than before, which looks like a better fit overall!&lt;/p&gt;
 &lt;p&gt;A way to improve this model might involve a &lt;em&gt;local&lt;/em&gt; regression approach, which would be fitting parameter values at different (possibly uniform) intervals across the data set. Local regression will be covered in the next section.&lt;/p&gt;
 &lt;/div&gt;
@@ -686,9 +686,9 @@ This looks a lot smoother for lower values of &lt;span class=&#34;math inline&#3
     
     <item>
       <title>Local Polynomial Regression with Rcpp</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/rcpp/</guid>
       <description>
 
 
@@ -792,7 +792,7 @@ resplot = ggplot(solarAU, mapping=aes(x=toy, y = tod, z = res)) +
   stat_summary_hex() +  xlab(&amp;quot;Time of Year&amp;quot;) + ylab(&amp;quot;Time of Day&amp;quot;) +
   theme(legend.title = element_blank())
 grid.arrange(predplot, resplot, ncol=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 There is a pattern in the residuals! This means that there is a feature not included in the model that can explain some of the noise. We need to extend this model to account for this.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;local-regression&#34; class=&#34;section level1&#34;&gt;
@@ -843,7 +843,7 @@ cpp_pred_local = local_lm_fit(y, x0, X0, x, X, H)&lt;/code&gt;&lt;/pre&gt;
 resPlot = ggplot(mapping=aes(x=x0[,2], y = x0[,1], z = y[sub] - cpp_pred_local)) + stat_summary_hex() +
   xlab(&amp;quot;Time of Year&amp;quot;) + ylab(&amp;quot;Time of Day&amp;quot;) + theme(legend.title = element_blank())
 grid.arrange(predPlot, resPlot, ncol=2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc2/rcpp_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 These look a lot better! There isn’t a systematic pattern in these residuals which show that the model isn’t missing anything important. Now we can check this C++ code against the basic R code.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(mvtnorm)
 lmLocal &amp;lt;- function(y, x0, X0, x, X, H){
@@ -875,9 +875,9 @@ all.equal(R_pred_local, as.vector(cpp_pred_local))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Reproducibility</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility/</guid>
       <description>
 
 
@@ -963,7 +963,7 @@ to find the coefficients &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{w
 &lt;p&gt;We can see how close the predicted output is to the actual output with a plot. If our predictions are accurate, then they will be close to the actual output, and lie on a diagonal line. We can plot these two values against each other using the command:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(f,y,xlab = &amp;quot;Predicted Values&amp;quot;, ylab = &amp;quot;Actual Values&amp;quot;, main = &amp;quot;Log of Cancer Volume&amp;quot;)
 abline(0,1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/reproducibility_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;
 These match up almost perfectly, so our predictions are accurate.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;cross-validation&#34; class=&#34;section level2&#34;&gt;
@@ -1042,9 +1042,9 @@ wLS.new&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Git and GitHub</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/github/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/github/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/github/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/github/</guid>
       <description>
 
 
@@ -1095,7 +1095,7 @@ fit = LS.model(lpsa ~ lcavol, data = Prostate)&lt;/code&gt;&lt;/pre&gt;
 ## 5 2.0478064
 ## 6 0.7521390&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;LS.plot(fit, var=&amp;quot;lcavol&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/github_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/github_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;creating-the-package&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Creating the Package&lt;/h2&gt;
@@ -1172,9 +1172,9 @@ Skipped:  0&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Intro to OpenMP in C&#43;&#43;</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/openmp/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/openmp/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/openmp/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/openmp/</guid>
       <description>
 
 
@@ -1363,18 +1363,18 @@ export OMP_NUM_THREADS=8
     
     <item>
       <title>Performance and Debugging</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/performance/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/performance/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/performance/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/performance/</guid>
       <description>
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/profvis/profvis.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/profvis/profvis.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/highlight/textmate.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/highlight/highlight.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/profvis-binding/profvis.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/profvis/profvis.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/profvis/profvis.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/highlight/textmate.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/highlight/highlight.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/profvis-binding/profvis.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
@@ -1528,9 +1528,9 @@ profvis({
     
     <item>
       <title>Tidyverse</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse/</guid>
       <description>
 
 
@@ -1608,12 +1608,12 @@ meanreadings&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pl &amp;lt;- ggplot(meanreadings) + geom_line(mapping = aes(time, mean, col=primary_use), size=1.5)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Initially, the &lt;code&gt;ggplot&lt;/code&gt; function was called on the data frame &lt;code&gt;meanreadings&lt;/code&gt;, initialising the plotting sequence, then the &lt;code&gt;geom_line&lt;/code&gt; layer was added. The &lt;code&gt;mapping&lt;/code&gt; argument defines what goes into the plot, so that &lt;code&gt;time&lt;/code&gt; is on the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-axis, and &lt;code&gt;mean&lt;/code&gt; is on the &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;-axis. The specification of &lt;code&gt;col=primary_use&lt;/code&gt; in &lt;code&gt;mapping&lt;/code&gt; separated the different categories and plotted their lines separately on the same plot. We can see the plot by inspecting the &lt;code&gt;pl&lt;/code&gt; object.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;pl&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 This is an interesting plot, but doesn’t tell us much about the variation in meter readings on average during the day, for each building type. It does show that the ‘Education’ and ‘Services’ types of buildings on average require a lot more energy (or just have higher meter readings). To look at the variation between building types more closely, we can normalise each building type to be centred on zero by subtracting the mean across the average day and dividing by the standard deviation. This can be achieved by first creating a new data frame which includes both the mean and standard deviation.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;meanreadings2 &amp;lt;- meanreadings %&amp;gt;% group_by(primary_use) %&amp;gt;% summarise(mean2 = mean(mean), sd = sd(mean)) %&amp;gt;% right_join(meanreadings, by = &amp;quot;primary_use&amp;quot;)
 meanreadings2$norm.mean &amp;lt;- (meanreadings2$mean - meanreadings2$mean2)/meanreadings2$sd
 ggplot(meanreadings2) + geom_line(aes(time, norm.mean, col=primary_use),size=1.5)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;On inspection of this plot, we can make some interpretations about the mean daily temperature based on the primary use of the building. Most of these buildings seem to follow a sine curve, where the meter readings increase at midday at a time of around 0600 to 1900. The meter readings also seem to be periodic, as at the end of the day they finish at around the value they started at. Most building types follow the same periodic structure, but we can see that the Manufacturing/industrial category has a higher peak in the morning, and the parking category has a lower peak in the evening.&lt;/p&gt;
 &lt;p&gt;We can also split this analysis by season, and inspect how the season affects the mean meter readings per day. This can be achieved by first creating a new ‘season’ column in the original data frame.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;new.train$month = substr(new.train$timestamp, 6, 7)
@@ -1632,7 +1632,7 @@ seasonal_readings$norm.mean &amp;lt;- (seasonal_readings$mean_reading - seasonal
 ggplot(seasonal_readings, aes(time, norm.mean, group=1,col=primary_use)) + 
   geom_line(aes(group=primary_use), size=1.2)+
   facet_wrap(~season) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/tidyverse_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The first thing to note here is that the normalisation was done &lt;em&gt;before&lt;/em&gt; the seasonal split, which is why some building types have higher normalised mean in some seasons. For example, we can see that the education category uses on average more energy in the summer than in other seasons. There is also a general shift upwards for meter readings in winter, and downwards for summer, which could be due to requiring more energy for central heating.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1641,9 +1641,9 @@ ggplot(seasonal_readings, aes(time, norm.mean, group=1,col=primary_use)) +
     
     <item>
       <title>(Sparse) Matrices</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/matrices/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/matrices/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/matrices/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/matrices/</guid>
       <description>
 
 
@@ -1880,9 +1880,9 @@ M&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Object Oriented and Functional Programming</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/oop/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/oop/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/oop/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/oop/</guid>
       <description>
 
 
@@ -1994,9 +1994,9 @@ link_function(1:5)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Optimisation</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/optimisation/</guid>
       <description>
 
 
@@ -2030,7 +2030,7 @@ z = apply(xy,1,f)
 dim(z) = c(length(x1),length(x2))
 z.plot = list(x=x1, y=x2, z=z)
 image(z.plot, xlab = &amp;quot;x&amp;quot;, ylab = &amp;quot;y&amp;quot;, main = &amp;quot;Rastrigin Function&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/optimisation_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/optimisation_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;
 
 So we are interested in optimising the function &lt;code&gt;f&lt;/code&gt;. We can see from inspection of the plot that there is a global minimum at &lt;span class=&#34;math inline&#34;&gt;\(\bm{x} = \bm{0}\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(f(\bm{0}) = 0\)&lt;/span&gt;, and likewise:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;f(c(0,0))&lt;/code&gt;&lt;/pre&gt;
@@ -2237,9 +2237,9 @@ where &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is an index tha
     
     <item>
       <title>Numerical Integration</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc1/integration/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc1/integration/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc1/integration/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc1/integration/</guid>
       <description>
 
 
@@ -2304,7 +2304,7 @@ lagrange_polynomial = get_lagrange_polynomial(f, x_points)
 plot(x, f(x), type=&amp;quot;l&amp;quot;)
 points(x_points, f(x_points), col=&amp;quot;red&amp;quot;, pch=20)
 lines(x, lagrange_polynomial(x), col=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/integration_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/integration_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can see that the Lagrange polynomial approximation approximates the function reasonably well in the middle areas, but the approximation is completely off at the ends. This large deviation is known as &lt;em&gt;Runge’s phenomenon&lt;/em&gt;, and this occurs when using polynomial interpolation and equally spaced interpolation points. This can be fixed by using &lt;strong&gt;Chebyshev points&lt;/strong&gt;, which take the form
 &lt;span class=&#34;math display&#34;&gt;\[
 \cos \left(\frac{2i-1}{2k}\pi\right),
@@ -2316,7 +2316,7 @@ lagrange_polynomial = get_lagrange_polynomial(f, c_points)
 plot(x, f(x), type=&amp;quot;l&amp;quot;)
 points(c_points, f(c_points), col=&amp;quot;red&amp;quot;, pch=20)
 lines(x, lagrange_polynomial(x), col=&amp;quot;red&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/integration_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/integration_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;
 The function is approximated a lot better without any significant deviations from the function. Now that we have a more accurate approximation, we can estimate the area underneath the curve by using a ‘histogram’ approximation to the area. A basic method will simply sum over all small areas of the function evaluation at each point, and the distance between midpoints, i.e.
 &lt;span class=&#34;math display&#34;&gt;\[
 \sum^k_{i=1}w_k f(x_k),
@@ -2365,7 +2365,7 @@ for(b in 10:n) {
 plot(11:n, ints, xlab=&amp;quot;No. of Points&amp;quot;, log=&amp;quot;x&amp;quot;, type=&amp;quot;l&amp;quot;, ylab=&amp;quot;Approximated Area&amp;quot;)
 abline(h=0.0443078, col=&amp;quot;red&amp;quot;)
 legend(&amp;quot;topright&amp;quot;, col=&amp;quot;red&amp;quot;, legend=&amp;quot;True Integral&amp;quot;, lwd=2, lty=1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/portfolios/sc1/integration_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/portfolios/sc1/integration_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;
 This plot shows that at around 35 points, the accuracy of the integral doesn’t increase significantly.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2388,9 +2388,9 @@ This plot shows that at around 35 points, the accuracy of the integral doesn’t
     
     <item>
       <title>ParallelRcpp</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/parallelrcpp/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/parallelrcpp/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/parallelrcpp/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/parallelrcpp/</guid>
       <description>
 
 
@@ -2498,9 +2498,9 @@ all.equal(log(A), MatrixLog(A), MatrixLogPar(A))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Example Talk</title>
-      <link>http://dannyjameswilliams.co.uk/talk/example/</link>
+      <link>https://dannyjameswilliams.co.uk/talk/example/</link>
       <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/talk/example/</guid>
+      <guid>https://dannyjameswilliams.co.uk/talk/example/</guid>
       <description>&lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;div&gt;
     Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
@@ -2520,13 +2520,13 @@ all.equal(log(A), MatrixLog(A), MatrixLogPar(A))&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Natural Language Analysis of the Lyrics of Kanye West</title>
-      <link>http://dannyjameswilliams.co.uk/post/kanye/</link>
+      <link>https://dannyjameswilliams.co.uk/post/kanye/</link>
       <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/post/kanye/</guid>
+      <guid>https://dannyjameswilliams.co.uk/post/kanye/</guid>
       <description>
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://dannyjameswilliams.co.uk/rmarkdown-libs/forceNetwork-binding/forceNetwork.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/d3/d3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/rmarkdown-libs/forceNetwork-binding/forceNetwork.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;em&gt;“2020 I’mma run the whole election”&lt;/em&gt; may not sound like the words of a lyrical genius, but I ask you to &lt;em&gt;“name one genius that ain’t crazy”&lt;/em&gt;. For the duration of your read of this post, take a minute to separate an artist from their art. It is undeniable that Kanye West has had serious influence over the musical industry during his career. He has single-handedly influenced hip hop since his first album, &lt;em&gt;The College Dropout&lt;/em&gt;, and that’s not to mention &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_awards_and_nominations_received_by_Kanye_West&#34;&gt;all of his awards&lt;/a&gt;.
@@ -2570,7 +2570,7 @@ To see a larger version of this network, with the ability to filter by album and
 &lt;p&gt;But how do the frequency of these entities change over time? We can inspect the top 10 entities separately for each album, which gives a good indication of their individual themes, as well as Kanye’s use of different lyricism throughout his career.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/kanye/top10words_notitles.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/post/kanye/top10words_notitles.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 &lt;figcaption&gt;
 Top 10 entities by album in order of their release.
 &lt;/figcaption&gt;
@@ -2593,7 +2593,7 @@ Some of the entities which might seem ‘irrelevant’ that can be found within 
 &lt;p&gt;Firstly, the sentiment API extracts the sentiment from each sentence separately. We can take a look at the density of all sentence sentiments below.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/kanye/sentiment_density.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/post/kanye/sentiment_density.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 &lt;figcaption&gt;
 Density of sentence sentiment.
 &lt;/figcaption&gt;
@@ -2609,7 +2609,7 @@ Density of sentence sentiment.
 &lt;p&gt;A song’s &lt;em&gt;magnitude&lt;/em&gt; is defined as the sum of the absolute values of the sentiments for each sentence in the song. Quite a mouthful - consider it as the ‘emotionality’ of the song; the higher the sentiment is (in one way or another), the more emotional the song becomes. We can break down the sentiment and magnitude over all songs by album.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/kanye/sentiment_magnitude.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/post/kanye/sentiment_magnitude.png&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
 &lt;figcaption&gt;
 Sentiment (top) and magnitude (bottom), averaged for each song and split by album.
 &lt;/figcaption&gt;
@@ -2704,9 +2704,9 @@ Keep America great again&lt;br&gt;
     
     <item>
       <title>Hot Takes for R</title>
-      <link>http://dannyjameswilliams.co.uk/post/hottakes/</link>
+      <link>https://dannyjameswilliams.co.uk/post/hottakes/</link>
       <pubDate>Sun, 28 Jun 2020 15:39:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/post/hottakes/</guid>
+      <guid>https://dannyjameswilliams.co.uk/post/hottakes/</guid>
       <description>
 
 
@@ -2770,9 +2770,9 @@ plot.mys3class = function(x, ...){
     
     <item>
       <title>Gaussian Process Classification</title>
-      <link>http://dannyjameswilliams.co.uk/projects/gpc/</link>
+      <link>https://dannyjameswilliams.co.uk/projects/gpc/</link>
       <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/projects/gpc/</guid>
+      <guid>https://dannyjameswilliams.co.uk/projects/gpc/</guid>
       <description>&lt;p&gt;The second group project I worked on at COMPASS mainly involved learning how Gaussian process classification worked, as it is a complicated procedure, and not as straight forward as Gaussian process classification.&lt;/p&gt;
 &lt;p&gt;Our work involved a number of aspects that have improved on Gaussian process classification in recent literatures:&lt;/p&gt;
 &lt;ul&gt;
@@ -2788,9 +2788,9 @@ plot.mys3class = function(x, ...){
     
     <item>
       <title>Electricity Demand Forecasting Hackathon</title>
-      <link>http://dannyjameswilliams.co.uk/post/hackathon/</link>
+      <link>https://dannyjameswilliams.co.uk/post/hackathon/</link>
       <pubDate>Mon, 17 Feb 2020 15:39:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/post/hackathon/</guid>
+      <guid>https://dannyjameswilliams.co.uk/post/hackathon/</guid>
       <description>
 
 
@@ -2799,7 +2799,7 @@ plot.mys3class = function(x, ...){
 &lt;p&gt;Our task was to output a set of predictions for a testing dataset and submit them to the group git repository. We only had access to the predictor variables of this dataset, so we wouldn’t know how well our model was doing until it was submit and checked by Dr Fasiolo, who then put all submitted scores on the projector at the front of the room. The team with the lowest root mean squared error at the end would be crowned the winner.&lt;/p&gt;
 &lt;p&gt;Me and my team “Jim” (named so because we went to the gym) performed well at the start, extending the basic GAM to include additional covariates and interactions, as well as including some feature engineering. The second team “AGang” (because all of their names began with “A”) took the edge over us by removing a single variable that we didn’t realise was actually making our model worse, and their GAM produced better predictions overall by a small margin. The third team “D &amp;amp; D” (because both their names began with a D) was having no luck at all, trying to implement a random forest model as opposed to a GAM, but their predictions were significantly off, and their code took much longer to run than ours, leaving them with little time to troubleshoot.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-1&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/hackaton.jpg&#34; alt=&#34;The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.&#34;  /&gt;
+&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/post/hackaton.jpg&#34; alt=&#34;The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.
 &lt;/p&gt;
@@ -2813,9 +2813,9 @@ Figure 1: The COMPASS cohort after participating in the hackathon, with Dr Jethr
     
     <item>
       <title>Chicago Crime Classification</title>
-      <link>http://dannyjameswilliams.co.uk/projects/chicago/</link>
+      <link>https://dannyjameswilliams.co.uk/projects/chicago/</link>
       <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/projects/chicago/</guid>
+      <guid>https://dannyjameswilliams.co.uk/projects/chicago/</guid>
       <description>&lt;p&gt;My most recent project was a group project as part of the first term of the COMPASS CDT. It involved modelling different aspects of a large data set detailing crimes in Chicago. Pictured is a kernel density estimate of both the location of crimes in the city as well as the population.&lt;/p&gt;
 &lt;p&gt;My input to this project was to use logistic regression methods to classify whether an arrest would be successful or not, given other covariates in the crime set; detailing the location, the area, the type of crime type, amongst others. This involved feature engineering and using LASSO coefficient paths to judge the most &amp;lsquo;important&amp;rsquo; covariates.&lt;/p&gt;
 &lt;p&gt;The package that was created for this project can be found as a Github repository 
@@ -2825,9 +2825,9 @@ Figure 1: The COMPASS cohort after participating in the hackathon, with Dr Jethr
     
     <item>
       <title>Introduction to Python for Statistics</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Python is a powerful programming language that is very popular for data analysis as well as many other applications in the real world. This portfolio will go over some intermediary processes in Python 3.7.3, before  implementing basic statistical models; including linear models, regression and classification.&lt;/p&gt;
 &lt;h2 id=&#34;python-overview&#34;&gt;Python Overview&lt;/h2&gt;
@@ -2999,7 +2999,7 @@ y = np.random.normal(mu, .5, n)
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;data.plot.scatter(&amp;quot;x&amp;quot;, &amp;quot;y&amp;quot;, figsize=(14, 11));
 plt.plot(x, model.predict(data[[&amp;quot;x&amp;quot;]]), &#39;r&#39;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_36_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_36_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;multiple-linear-regression&#34;&gt;Multiple Linear Regression&lt;/h3&gt;
 &lt;p&gt;In the previous section, we fit a linear model with a single covariate vector. This is good for exemplary purposes as a two dimensional linear model is easy to visualise. Often in data analysis we can have multiple explanatory variables $\boldsymbol{x}_1, \dots, \boldsymbol{x}_p$ that give information about the respone variable $\boldsymbol{y}$.&lt;/p&gt;
 &lt;p&gt;For an example of multiple linear regression, we will be using the Boston house prices dataset, which is part of the freely provided datasets from &lt;code&gt;sklearn&lt;/code&gt;. This dataset describes the median value of owner-occupied homes (per $1000), as well as 13 predictors that could provide information about the house value. We load this dataset and convert it to a &lt;code&gt;pandas&lt;/code&gt; data frame.&lt;/p&gt;
@@ -3140,7 +3140,7 @@ cmap = seaborn.diverging_palette(-500, -720, as_cmap=True)
 plt.figure(figsize=(14, 11))
 seaborn.heatmap(corr, cmap=cmap);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_40_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_40_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There are two things to infer from this plot: how correlated the predictor variables are from one another, and how correlated the predictor variables are from the response. We are mostly interested in how correlated the predictors are with &lt;code&gt;MEDV&lt;/code&gt;, as if they influence the value of &lt;code&gt;MEDV&lt;/code&gt; significantly, then they are likely to be important to include in a model. Another plot we can use to explore the data is a multi variable scatter plot. That is, a scatter plot for each pair of variables. &lt;code&gt;pandas&lt;/code&gt; has a function for this, as part of the &lt;code&gt;plotting&lt;/code&gt; submodule.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from pandas.plotting import scatter_matrix
 scatter_matrix(boston, figsize=(16, 16));
@@ -3193,7 +3193,7 @@ plt.axis(&#39;tight&#39;)
 plt.legend(data.feature_names)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_50_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_50_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The coefficients for covariates that provide a lot of information to the response variable are likely going to take a very large value of regularisation parameter to shrink them to zero. These are the lines that are more separated in the plot above, i.e. &lt;code&gt;CRIM&lt;/code&gt;, &lt;code&gt;RM&lt;/code&gt;, &lt;code&gt;NOX&lt;/code&gt;, and &lt;code&gt;CHAS&lt;/code&gt;. Interestingly, these were not the variables that were selected in the scatter matrix approach earlier in this report, highlighting the variation in parameter selection depending on the method.&lt;/p&gt;
 &lt;h3 id=&#34;classification&#34;&gt;Classification&lt;/h3&gt;
 &lt;p&gt;The final statistical model introduced will be one interested in classifying. Classification is interested in prediction of a usually non-numeric &lt;em&gt;class&lt;/em&gt;, i.e. assign the output to a pre-defined class based on some inputs. The classification model explained here will be &lt;strong&gt;Logistic Regression&lt;/strong&gt; (ignore the name, it&amp;rsquo;s not a regression method).&lt;/p&gt;
@@ -3225,7 +3225,7 @@ colors[y == &amp;quot;Class 2&amp;quot;] = &amp;quot;blue&amp;quot;
 colors[y == &amp;quot;Class 3&amp;quot;] = &amp;quot;green&amp;quot;
 clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, figsize=(14, 11));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_54_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_54_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now that the data is set up, we can fit the logistic regression model to it. &lt;code&gt;LogisticRegression&lt;/code&gt; is a function as part of the &lt;code&gt;linear_model&lt;/code&gt; submodule of &lt;code&gt;sklearn&lt;/code&gt;, just as before, so this next step should be familiar to you.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;lr_model = lm.LogisticRegression(fit_intercept=True, solver=&#39;newton-cg&#39;, multi_class = &#39;auto&#39;)
 lr_model = lr_model.fit(clsf_dat[[&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;]], clsf_dat[&amp;quot;y&amp;quot;])
@@ -3252,7 +3252,7 @@ colors[predictions == &amp;quot;Class 2&amp;quot;] = &amp;quot;blue&amp;quot;
 colors[predictions == &amp;quot;Class 3&amp;quot;] = &amp;quot;green&amp;quot;
 clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, figsize=(14, 11));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/pythonstats_60_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_60_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Here we can see an extremely similar plot to the one above, although it is not quite exactly the same! At the point of overlap between classes, some points are mislabelled as the wrong class, due to uncertainty around the decision boundaries.&lt;/p&gt;
 &lt;p&gt;More complex models exist for classification and regression, but that&amp;rsquo;s for another time.&lt;/p&gt;
 </description>
@@ -3260,9 +3260,9 @@ clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, 
     
     <item>
       <title>Neural Network for Identifying Cats and Dogs</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/neuralnet/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;We fit a neural network to a dataset of cat and dog images, in an attempt to distinguish features that can correctly identify whether the image is of a cat or of a dog.&lt;/p&gt;
 &lt;p&gt;This work uses the &lt;code&gt;keras&lt;/code&gt; library from &lt;code&gt;tensorflow&lt;/code&gt;. This portfolio will go over the following processes:&lt;/p&gt;
@@ -3371,7 +3371,7 @@ for i in range(25):
     plt.xlabel(class_names[ind])
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/neuralnet_24_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_24_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;fitting-the-neural-network&#34;&gt;Fitting the Neural Network&lt;/h2&gt;
 &lt;p&gt;We use the &lt;code&gt;keras&lt;/code&gt; library, a part of &lt;code&gt;tensorflow&lt;/code&gt;, to fit a neural network to classify these images. Most importantly, the &lt;code&gt;Sequential&lt;/code&gt; function to build the model and different layer functions to create the neural network layers within the &lt;code&gt;Sequential&lt;/code&gt; model build.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from tensorflow.keras.models import Sequential
@@ -3457,7 +3457,7 @@ plt.legend(loc=&#39;upper right&#39;)
 plt.title(&#39;Training and Validation Loss&#39;)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/neuralnet_34_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_34_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;These plots show that the loss steadily decreases, and the accuracy increases in both cases. Now we can evaluate some predictions on the test set. The test set do not have specific class labels, and we are treating these as unknown.&lt;/p&gt;
 &lt;h4 id=&#34;test-set-predictions&#34;&gt;Test Set Predictions&lt;/h4&gt;
 &lt;p&gt;To further test the performance of the model, and inspect it ourselves, we can see how well the model predicts on a test set (which the model has never seen). This is a separate dataset to the validation set which was part of the model fitting process.&lt;/p&gt;
@@ -3490,7 +3490,7 @@ for i in np.arange(len(pred_list)):
     plt.xlabel(pred_class[i])
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/portfolios/neuralnet_38_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_38_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There are some funny looking dogs in this sample, and some funny looking cats. Clearly we can see that oftentimes the model calls a cat a dog, and a dog a cat (I imagine the dogs are more offended by that), but for the most part the predictions look accurate.&lt;/p&gt;
 &lt;p&gt;There is a lot more that can go into improving this model, such as&lt;/p&gt;
 &lt;ul&gt;
@@ -3505,9 +3505,9 @@ for i in np.arange(len(pred_list)):
     
     <item>
       <title>Slides</title>
-      <link>http://dannyjameswilliams.co.uk/slides/example/</link>
+      <link>https://dannyjameswilliams.co.uk/slides/example/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/slides/example/</guid>
+      <guid>https://dannyjameswilliams.co.uk/slides/example/</guid>
       <description>&lt;h1 id=&#34;create-slides-in-markdown-with-academic&#34;&gt;Create slides in Markdown with Academic&lt;/h1&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://sourcethemes.com/academic/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Academic&lt;/a&gt; | 
@@ -3639,21 +3639,21 @@ Three
     
     <item>
       <title>Downscaling Extremes of Precipitation in the South West</title>
-      <link>http://dannyjameswilliams.co.uk/projects/precip/</link>
+      <link>https://dannyjameswilliams.co.uk/projects/precip/</link>
       <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/projects/precip/</guid>
+      <guid>https://dannyjameswilliams.co.uk/projects/precip/</guid>
       <description>&lt;p&gt;For my Masters dissertation project, I used extreme value theory to model the extremes of precipitation across the South West of the UK, and downscale sparse areas using a numerical weather model on a gridded scale. Pictured is the high resolution elevation levels across the South West, with a grid that samples the same elevation levels every 0.25 degrees in longitude and latitude. This highlights one of the problems with downscaling in such a scenario.&lt;/p&gt;
 &lt;p&gt;Extreme values of rainfall can be categorised by their maxima, and using a generalised extreme value (GEV) distribution, these maxima can be modelled. I modelled two sets of maxima separately; for the observations (point locations) and the model output (gridded locations). A separate downscaling generalised additive model (GAM) was used to compare predictions from both models, and link them together using various covariates.&lt;/p&gt;
 &lt;p&gt;You can read more about this project in my final dissertation, which can be found 
-&lt;a href=&#34;http://dannyjameswilliams.co.uk/pdfs/proj/mastersdiss.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://dannyjameswilliams.co.uk/pdfs/proj/mastersdiss.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Section 5: High Performance Computing with Bluecrystal</title>
-      <link>http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/</link>
+      <link>https://dannyjameswilliams.co.uk/portfolios/sc2/hpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/portfolios/sc2/hpc/</guid>
+      <guid>https://dannyjameswilliams.co.uk/portfolios/sc2/hpc/</guid>
       <description>
 
 

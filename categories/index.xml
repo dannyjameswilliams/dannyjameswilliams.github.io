@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories | Danny James Williams</title>
-    <link>http://dannyjameswilliams.co.uk/categories/</link>
-      <atom:link href="http://dannyjameswilliams.co.uk/categories/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://dannyjameswilliams.co.uk/categories/</link>
+      <atom:link href="https://dannyjameswilliams.co.uk/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language>
     <image>
-      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Categories</title>
-      <link>http://dannyjameswilliams.co.uk/categories/</link>
+      <link>https://dannyjameswilliams.co.uk/categories/</link>
     </image>
     
   </channel>

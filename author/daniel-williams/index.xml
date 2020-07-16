@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Daniel Williams | Danny James Williams</title>
-    <link>http://dannyjameswilliams.co.uk/author/daniel-williams/</link>
-      <atom:link href="http://dannyjameswilliams.co.uk/author/daniel-williams/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://dannyjameswilliams.co.uk/author/daniel-williams/</link>
+      <atom:link href="https://dannyjameswilliams.co.uk/author/daniel-williams/index.xml" rel="self" type="application/rss+xml" />
     <description>Daniel Williams</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Sun, 28 Jun 2020 15:39:00 +0000</lastBuildDate>
     <image>
-      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Daniel Williams</title>
-      <link>http://dannyjameswilliams.co.uk/author/daniel-williams/</link>
+      <link>https://dannyjameswilliams.co.uk/author/daniel-williams/</link>
     </image>
     
     <item>
       <title>Hot Takes for R</title>
-      <link>http://dannyjameswilliams.co.uk/post/hottakes/</link>
+      <link>https://dannyjameswilliams.co.uk/post/hottakes/</link>
       <pubDate>Sun, 28 Jun 2020 15:39:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/post/hottakes/</guid>
+      <guid>https://dannyjameswilliams.co.uk/post/hottakes/</guid>
       <description>
 
 
@@ -80,9 +80,9 @@ plot.mys3class = function(x, ...){
     
     <item>
       <title>Electricity Demand Forecasting Hackathon</title>
-      <link>http://dannyjameswilliams.co.uk/post/hackathon/</link>
+      <link>https://dannyjameswilliams.co.uk/post/hackathon/</link>
       <pubDate>Mon, 17 Feb 2020 15:39:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/post/hackathon/</guid>
+      <guid>https://dannyjameswilliams.co.uk/post/hackathon/</guid>
       <description>
 
 
@@ -91,7 +91,7 @@ plot.mys3class = function(x, ...){
 &lt;p&gt;Our task was to output a set of predictions for a testing dataset and submit them to the group git repository. We only had access to the predictor variables of this dataset, so we wouldn’t know how well our model was doing until it was submit and checked by Dr Fasiolo, who then put all submitted scores on the projector at the front of the room. The team with the lowest root mean squared error at the end would be crowned the winner.&lt;/p&gt;
 &lt;p&gt;Me and my team “Jim” (named so because we went to the gym) performed well at the start, extending the basic GAM to include additional covariates and interactions, as well as including some feature engineering. The second team “AGang” (because all of their names began with “A”) took the edge over us by removing a single variable that we didn’t realise was actually making our model worse, and their GAM produced better predictions overall by a small margin. The third team “D &amp;amp; D” (because both their names began with a D) was having no luck at all, trying to implement a random forest model as opposed to a GAM, but their predictions were significantly off, and their code took much longer to run than ours, leaving them with little time to troubleshoot.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:unnamed-chunk-1&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;http://dannyjameswilliams.co.uk/img/post/hackaton.jpg&#34; alt=&#34;The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.&#34;  /&gt;
+&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/post/hackaton.jpg&#34; alt=&#34;The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: The COMPASS cohort after participating in the hackathon, with Dr Jethro Browell and Dr Mateo Fasiolo in the front.
 &lt;/p&gt;

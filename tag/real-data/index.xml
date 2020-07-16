@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Real Data | Danny James Williams</title>
-    <link>http://dannyjameswilliams.co.uk/tag/real-data/</link>
-      <atom:link href="http://dannyjameswilliams.co.uk/tag/real-data/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://dannyjameswilliams.co.uk/tag/real-data/</link>
+      <atom:link href="https://dannyjameswilliams.co.uk/tag/real-data/index.xml" rel="self" type="application/rss+xml" />
     <description>Real Data</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>http://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Real Data</title>
-      <link>http://dannyjameswilliams.co.uk/tag/real-data/</link>
+      <link>https://dannyjameswilliams.co.uk/tag/real-data/</link>
     </image>
     
     <item>
       <title>Chicago Crime Classification</title>
-      <link>http://dannyjameswilliams.co.uk/projects/chicago/</link>
+      <link>https://dannyjameswilliams.co.uk/projects/chicago/</link>
       <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/projects/chicago/</guid>
+      <guid>https://dannyjameswilliams.co.uk/projects/chicago/</guid>
       <description>&lt;p&gt;My most recent project was a group project as part of the first term of the COMPASS CDT. It involved modelling different aspects of a large data set detailing crimes in Chicago. Pictured is a kernel density estimate of both the location of crimes in the city as well as the population.&lt;/p&gt;
 &lt;p&gt;My input to this project was to use logistic regression methods to classify whether an arrest would be successful or not, given other covariates in the crime set; detailing the location, the area, the type of crime type, amongst others. This involved feature engineering and using LASSO coefficient paths to judge the most &amp;lsquo;important&amp;rsquo; covariates.&lt;/p&gt;
 &lt;p&gt;The package that was created for this project can be found as a Github repository 
@@ -26,13 +26,13 @@
     
     <item>
       <title>Downscaling Extremes of Precipitation in the South West</title>
-      <link>http://dannyjameswilliams.co.uk/projects/precip/</link>
+      <link>https://dannyjameswilliams.co.uk/projects/precip/</link>
       <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://dannyjameswilliams.co.uk/projects/precip/</guid>
+      <guid>https://dannyjameswilliams.co.uk/projects/precip/</guid>
       <description>&lt;p&gt;For my Masters dissertation project, I used extreme value theory to model the extremes of precipitation across the South West of the UK, and downscale sparse areas using a numerical weather model on a gridded scale. Pictured is the high resolution elevation levels across the South West, with a grid that samples the same elevation levels every 0.25 degrees in longitude and latitude. This highlights one of the problems with downscaling in such a scenario.&lt;/p&gt;
 &lt;p&gt;Extreme values of rainfall can be categorised by their maxima, and using a generalised extreme value (GEV) distribution, these maxima can be modelled. I modelled two sets of maxima separately; for the observations (point locations) and the model output (gridded locations). A separate downscaling generalised additive model (GAM) was used to compare predictions from both models, and link them together using various covariates.&lt;/p&gt;
 &lt;p&gt;You can read more about this project in my final dissertation, which can be found 
-&lt;a href=&#34;http://dannyjameswilliams.co.uk/pdfs/proj/mastersdiss.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://dannyjameswilliams.co.uk/pdfs/proj/mastersdiss.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
