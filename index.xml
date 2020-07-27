@@ -2625,7 +2625,7 @@ Sentiment (top) and magnitude (bottom), averaged for each song and split by albu
 &lt;p&gt;It turns out: well, maybe. Plotted below are the relationships between the mean sentiment and the mean magnitude, by album, against the aggregated critic reviews for each album collected from &lt;a href=&#34;https://www.metacritic.com/person/kanye-west&#34;&gt;Metacritic&lt;/a&gt;.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;iframe width=&#34;700&#34; height=&#34;450&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; src=&#34;//plotly.com/~dannyjameswilliams/3.embed&#34;&gt;
+&lt;iframe height=&#34;450&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;100%&#34; src=&#34;//plotly.com/~dannyjameswilliams/3.embed&#34;&gt;
 &lt;/iframe&gt;
 &lt;figcaption&gt;
 Linear regression for Album sentiment against metacritic score.
@@ -2634,7 +2634,7 @@ Linear regression for Album sentiment against metacritic score.
 &lt;/figure&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;iframe width=&#34;700&#34; height=&#34;450&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; src=&#34;//plotly.com/~dannyjameswilliams/6.embed&#34;&gt;
+&lt;iframe width=&#34;100%&#34; height=&#34;450&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; src=&#34;//plotly.com/~dannyjameswilliams/6.embed&#34;&gt;
 &lt;/iframe&gt;
 &lt;figcaption&gt;
 Linear regression for Album magnitude against metacritic score.
