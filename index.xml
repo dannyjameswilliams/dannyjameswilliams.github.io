@@ -2611,13 +2611,15 @@ Letter percentage in the English Language plotted against the number of times th
 &lt;p&gt;There is no significant relationship here, the &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt; value for a linear regression is very low, at &lt;span class=&#34;math inline&#34;&gt;\(R^2 \approx 0.152\)&lt;/span&gt;, meaning the model is not capturing the variability in the data. What else could be affecting how we are choosing these letters?&lt;/p&gt;
 &lt;p&gt;Earlier I stated the assumption that there was no intrinsic numeric value associated to a letter, so that we would not have any trouble with edge effects skewing the results. That assumption was wrong! If you’re reading this on a computer or laptop, take a look at what is just underneath your screen.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
-&lt;center&gt;
-&lt;iframe height=&#34;180&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;90%&#34; src=&#34;//plotly.com/~dannyjameswilliams/21.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
+&lt;div&gt;
+&lt;div style=&#34;position:relative;padding-top:31.25%;&#34;&gt;
+&lt;iframe scrolling=&#34;no&#34; src=&#34;//plotly.com/~dannyjameswilliams/21.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34; frameborder=&#34;0&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34;&gt;
 &lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;figcaption&gt;
 Frequency of chosen letters as a heatmap overlaid on a keyboard.
 &lt;/figcaption&gt;
-&lt;/center&gt;
 &lt;/figure&gt;
 &lt;p&gt;It turns out that the most frequently picked letters are those that are most central on a QWERTY keyboard. This notion of picking the most central option is corroborated by the choice of number in the first question, being that people do not like to pick numbers or letters that appear on what they consider as the ‘edge’.&lt;/p&gt;
 &lt;p&gt;Another interesting aspect to note is that Q, A and Z are a minor hotspot - all three of which are on the left-most side of the keyboard. For most of us, our left hand naturally rests on the left-hand side of the keyboard whilst our right hand holds the mouse. Did a large portion of people just press wherever their hands already were?&lt;/p&gt;
