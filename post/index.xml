@@ -5,12 +5,162 @@
     <link>https://dannyjameswilliams.co.uk/post/</link>
       <atom:link href="https://dannyjameswilliams.co.uk/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Mon, 06 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Mon, 19 Oct 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Blog</title>
       <link>https://dannyjameswilliams.co.uk/post/</link>
     </image>
+    
+    <item>
+      <title>How Random are you?</title>
+      <link>https://dannyjameswilliams.co.uk/post/randomchoices/</link>
+      <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://dannyjameswilliams.co.uk/post/randomchoices/</guid>
+      <description>
+
+
+&lt;p&gt;The notion of &lt;em&gt;true random&lt;/em&gt; has perplexed scientists and statisticians for decades, if not longer. But there’s one potentially random number generator that we really still don’t know much about - the human brain. What are the processes behind our decision making? When we are asked to ‘pick a random number between 1 and 10’, how ‘random’ is the number that we choose? Is it some complicated, deterministic neural signal in our brain? Or is it actually a random choice?&lt;/p&gt;
+&lt;p&gt;The following analysis and results come from a &lt;a href=&#34;https://www.reddit.com/r/SampleSize/comments/ja9gqd/academic_can_humans_truly_be_random_everyone/&#34;&gt;survey collected on Reddit&lt;/a&gt;, which obtained &lt;span class=&#34;math inline&#34;&gt;\(n = 2190\)&lt;/span&gt; participants.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If you’re in a hurry, or don’t fancy reading this article, &lt;/strong&gt;&lt;a href=&#34;infographic.png&#34;&gt;&lt;strong&gt;check out the handy infographic&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;pick-a-random-number-between-1-and-10-twice&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Pick a random number between 1 and 10, twice&lt;/h2&gt;
+&lt;p&gt;This is perhaps the most basic question to ask, and one that is very visually interpretable. This question was asked in two distinct ways, pictured below:&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;img/questionA.png&#34; width=&#34;642&#34; style=&#34;background-color: #9ecff7; padding:2px; display: inline-block;&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;figcaption&gt;
+Question A.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;img/questionB.png&#34; width=&#34;429&#34; style=&#34;background-color: #9ecff7; padding:2px; display: inline-block;&#34; style=&#34;display: block; margin: auto;&#34; /&gt;
+&lt;figcaption&gt;
+Question B.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;These survey questions are asked in an attempt to prove the following hypothesis: &lt;em&gt;the answer input being on a scale will cause responses to question type B to be more evenly distributied&lt;/em&gt;. In another way, if you are picking a random number, and you can see the numbers laid out in order in front of you, are you more likely to pick a number which is more central? Let’s look at the results to find out.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;iframe height=&#34;200&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;49%&#34; src=&#34;//plotly.com/~dannyjameswilliams/15.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
+&lt;/iframe&gt;
+&lt;iframe height=&#34;200&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;49%&#34; src=&#34;//plotly.com/~dannyjameswilliams/17.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
+&lt;/iframe&gt;
+&lt;figcaption&gt;
+Frequencies of choices between 1 and 10 for question style A (left) and question style B (right). Included is a line of the expected value &lt;span class=&#34;math inline&#34;&gt;\(\mathbb{E}(\text{no. of choices}) = np = 219\)&lt;/span&gt;, plotted within a &lt;span class=&#34;math inline&#34;&gt;\(\pm 1.96 \cdot \sqrt{\sigma}\)&lt;/span&gt; interval, where &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; is the binomial variance.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;Surprisingly, both results seem reasonably similar. Some interesting points about these are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;4 is the most frequent number in both cases&lt;/strong&gt;, &lt;a href=&#34;https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/&#34;&gt;different from the usual value of 7 that has been in similar surveys before&lt;/a&gt;. In the comments for this survey, people seemed to expect 7 to be the most picked. It is possible that since the participants were aware of previous research in the area, they deliberately would not have picked 7.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The average ‘difference from uniformity’ was around 2.1% for both types of questions&lt;/strong&gt;. This is the percentage difference from the expected value.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;10.1% of people picked the same number for both questions&lt;/strong&gt;, and for true random number generation, the true value would be 10%!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The values at the edges, 1 and 10, were chosen far less often&lt;/strong&gt; than values in the centre.&lt;/li&gt;
+&lt;li&gt;The largest difference between questions was that &lt;strong&gt;10 was picked less in question type B than question type A&lt;/strong&gt;. A possible reason is that 10 is two digits long, which would require extra effort for question type B than for question type A.&lt;/li&gt;
+&lt;li&gt;A Pearson’s &lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt; test for uniformity showed &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;-values where &lt;span class=&#34;math inline&#34;&gt;\(p &amp;lt;&amp;lt; 0.0001\)&lt;/span&gt;, indicating with a high level of certainty that &lt;strong&gt;neither sets of answers were uniformly distributed&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So people don’t seem to be entirely random in this case, as both plots show distinct lack of uniformity (and the &lt;span class=&#34;math inline&#34;&gt;\(\chi^2\)&lt;/span&gt; test confirms this). 1, 5, and 10 are picked far less frequently than the other values, and so we have almost a bi-modal, or ‘doubly peaked’ distribution. This makes sense to me: if someone asked me this exact question, I’d consider 1, 5, and 10 to be ‘too clean’, and random is slightly more ‘off-centre’ than that.&lt;/p&gt;
+&lt;p&gt;The hypothesis that I made earlier cannot be accepted; &lt;em&gt;people are not more uniformly random when they cannot see the number scale in front of them&lt;/em&gt;. Perhaps the notion of a ‘number line’ is too engrossed in our mind anyway?&lt;/p&gt;
+&lt;p&gt;However, all hope is not lost. People picked the same number for both questions roughly the correct amount of times! Now how about their pairs of answers, i.e. the answers that people gave for both &lt;em&gt;answer A&lt;/em&gt; and &lt;em&gt;answer B&lt;/em&gt;?&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;iframe height=&#34;350&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;100%&#34; src=&#34;//plotly.com/~dannyjameswilliams/25.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
+&lt;/iframe&gt;
+&lt;figcaption&gt;
+Distribution of (&lt;em&gt;answer A&lt;/em&gt; - &lt;em&gt;answer B&lt;/em&gt;), plotted with the expected Irwin–Hall distribution.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;If we subtract the answers from one another, we are essentially summing uniform random variables, which are expected to have a &lt;a href=&#34;https://en.wikipedia.org/wiki/Irwin%E2%80%93Hall_distribution&#34;&gt;Irwin-Hall distribution&lt;/a&gt;, or a triangular distribution when we are only summing two variables.&lt;/p&gt;
+&lt;p&gt;Put simply, imagine you are rolling two six-sided dice. The most common sum of their values is 7, since there are more combinations that can sum to 7 than anything else. The same is true in this case, we expect the most common result of &lt;em&gt;answer A&lt;/em&gt; - &lt;em&gt;answer B&lt;/em&gt; to be 0, and then equally 1 and -1, and so on.&lt;/p&gt;
+&lt;p&gt;Our distribution above actually does look similar to the expected triangular distribution (although we do have some oddities towards the centre of the triangle, likely caused by the lack of 1’s and 10’s). Does this mean human randomness isn’t too bad after all? In this aspect, we are quite good with the &lt;em&gt;pairs&lt;/em&gt; of our answers, even if our individual answers aren’t quite as good.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pick-a-random-letter-from-the-alphabet&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Pick a random letter from the alphabet&lt;/h2&gt;
+&lt;p&gt;Okay, so we have trouble with &lt;strong&gt;edge effects&lt;/strong&gt; - we don’t like to pick extreme highs and lows when we are trying to randomly think of a number. What if we were to randomly select a letter? There’s no real intrinsic numeric value associated to a letter (unless you count its position in the alphabet), so maybe we are better at selecting a random letter. Let’s take a look.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;iframe height=&#34;300&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;90%&#34; src=&#34;//plotly.com/~dannyjameswilliams/62.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
+&lt;/iframe&gt;
+&lt;figcaption&gt;
+Frequency of chosen letters arranged alphabetically.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;Ah, so we can’t select letters randomly either, but it doesn’t seem to depend on any sort of edge effects alphabetically. That is, people seem to pick A and Z a healthy amount. The frequencies for each letter are very far from what we’d expect if we were to have sampled these letters uniformly (we would expect around 84 choices per letter). What could have been affecting our judgement here? Maybe the popularity of a certain letter in the English language?&lt;/p&gt;
+&lt;p&gt;Plotted below is the relationship between the &lt;em&gt;frequency at which a letter occurs in the English language&lt;/em&gt; (as a percentage) versus the &lt;em&gt;frequency it was picked in the survey&lt;/em&gt;.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;iframe height=&#34;300&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;90%&#34; src=&#34;//plotly.com/~dannyjameswilliams/23.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
+&lt;/iframe&gt;
+&lt;figcaption&gt;
+Letter percentage in the English Language plotted against the number of times the letter was picked in the survey. The red line is a line of best fit captured from a linear regression with a cubic polynomial transform on the English language percentage.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;There is no significant relationship here, the &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt; value for a linear regression is very low, at &lt;span class=&#34;math inline&#34;&gt;\(R^2 \approx 0.152\)&lt;/span&gt;, meaning the model is not capturing the variability in the data. What else could be affecting how we are choosing these letters?&lt;/p&gt;
+&lt;p&gt;Earlier I stated the assumption that there was no intrinsic numeric value associated to a letter, so that we would not have any trouble with edge effects skewing the results. That assumption was wrong! If you’re reading this on a computer or laptop, take a look at what is just underneath your screen.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;iframe height=&#34;180&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;90%&#34; src=&#34;//plotly.com/~dannyjameswilliams/21.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
+&lt;/iframe&gt;
+&lt;figcaption&gt;
+Frequency of chosen letters as a heatmap overlaid on a keyboard.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;It turns out that the most frequently picked letters are those that are most central on a QWERTY keyboard. This notion of picking the most central option is corroborated by the choice of number in the first question, being that people do not like to pick numbers or letters that appear on what they consider as the ‘edge’.&lt;/p&gt;
+&lt;p&gt;Another interesting aspect to note is that Q, A and Z are a minor hotspot - all three of which are on the left-most side of the keyboard. For most of us, our left hand naturally rests on the left-hand side of the keyboard whilst our right hand holds the mouse. Did a large portion of people just press wherever their hands already were?&lt;/p&gt;
+&lt;p&gt;So maybe if we aren’t actually random, &lt;em&gt;are we just lazy?&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pick-a-random-number-between-1-and-50&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Pick a random number between 1 and 50&lt;/h2&gt;
+&lt;p&gt;What if our selection range is so large that these edge effects can be nullified? If we ask people to select numbers between 1 and 50, will we see an extension of the result from the first question? I.e. are people going to pick the most central values again (say, between 10 and 40), or will it be something else?&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;iframe height=&#34;300&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;90%&#34; src=&#34;//plotly.com/~dannyjameswilliams/19.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
+&lt;/iframe&gt;
+&lt;figcaption&gt;
+Frequency of chosen numbers between 1 and 50. Included is the line of expected value, which in this case is at &lt;span class=&#34;math inline&#34;&gt;\(\mathbb{E}(\text{no. of choices}) \approx 44\)&lt;/span&gt;.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;An interesting selection of numbers here. This range does not seem to be uniformly distributed in the slightest. Here are some facts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Against the expected value of 10%, only &lt;strong&gt;4.3% of people selected a multiple of 10&lt;/strong&gt;, whereas &lt;strong&gt;18.7% of people chose a number with a 7&lt;/strong&gt; (i.e. 7, 17, 27, 37, 47).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The least frequently selected number was 30, chosen by 0.5% of people&lt;/strong&gt;, and &lt;strong&gt;the most frequently chosen number was 37, picked by 5.8% of people&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The highest numbers within the spectrum were chosen more often than the lowest&lt;/strong&gt;, which could be because this question was &lt;em&gt;after&lt;/em&gt; people had already picked a number between 1 and 10 (although as discussed earlier, we were quite consistent with pairs of answers, so this may not be the reason).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So in general, when picking over a larger range of numbers, &lt;em&gt;the randomness of our choices worsens&lt;/em&gt;. That is, there are so many aspects of what to pick that we seem to get stuck in different areas. We don’t think multiples of 10 are random enough, maybe because they are too ‘clean’, and for some reason, we really enjoy picking the number 7!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;discussion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Discussion&lt;/h2&gt;
+&lt;p&gt;No, as expected, humans are terrible random number generators, and we’re terrible at picking items at random in general. When asked to randomly select a letter, most of us will have pressed somewhere in the centre of our keyboard. When asked to pick a random number, we are most likely to either choose 4 or 37, based on the range of values we are choosing from.&lt;/p&gt;
+&lt;p&gt;Perhaps you remember the ‘trick’ that your friend would play on you as a kid in the playground. They would ask you a series of maths questions, and then ask you to &lt;em&gt;name a vegetable&lt;/em&gt;. You would inevitably say ‘carrot’, then they’d reveal a piece of paper with the word ‘carrot’ on it. Were you truly tricked? Turns out, if you’re asked to name a vegetable, &lt;a href=&#34;http://sciencechatforum.com/viewtopic.php?p=264070&#34;&gt;most people say carrot regardless&lt;/a&gt;. It’s not a trick: when asked to name something at random, we pick something that’s extremely common.&lt;/p&gt;
+&lt;div id=&#34;extensions&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Extensions&lt;/h3&gt;
+&lt;p&gt;Can we extend this data collection further? Instead of choosing letters or numbers, what if we were instead to ask: “Select an item at random from the following”, and the options were something like &lt;em&gt;nose&lt;/em&gt;, &lt;em&gt;calendar&lt;/em&gt;, &lt;em&gt;person&lt;/em&gt;, &lt;em&gt;dog&lt;/em&gt;, and &lt;em&gt;politics&lt;/em&gt;. Essentially, these would be items that have no relevance or connection, so we cannot assign any sort of numerical weight to them, would we be better at randomly selecting then? In my opinion, no, we wouldn’t. I believe these results would be skewed by the order which they are presented in. For example, if these items were put into a list, the first and last elements of this list would be selected far less often than the other items.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;limitations&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Limitations&lt;/h3&gt;
+&lt;p&gt;Survey data was collected on Reddit, on the subreddit &lt;a href=&#34;https://www.reddit.com/r/samplesize&#34;&gt;/r/SampleSize&lt;/a&gt;, where users fill in various surveys. The pool of participants was largely limited by internet users, which could introduce a bias to the dataset. For example, these users may be more accustomed to using a keyboard than the general population, which could’ve affected the random letter analysis by keyboard position.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;If you can spot anything else that I’ve missed about these results, the data and code used for everything is available on github in the repository &lt;a href=&#34;https://www.github.com/dannyjameswilliams/randomchoices&#34;&gt;randomchoices&lt;/a&gt;. Tweet at me, &lt;a href=&#34;https://www.twitter.com/DanielW966&#34;&gt;@DanielW966&lt;/a&gt;, for anything that you find.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;referencesfurther-reading&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;References/Further Reading&lt;/h2&gt;
+&lt;p&gt;[1] &lt;a href=&#34;https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/&#34;&gt;Asking over 8500 students to pick a random number from 1 to 10&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[2] &lt;a href=&#34;https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.294.1160&amp;amp;rep=rep1&amp;amp;type=pdf&#34;&gt;Generation of Random Sequences by Human Subjects: A Critical Survey of Literature&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[3] &lt;a href=&#34;http://sciencechatforum.com/viewtopic.php?p=264070&#34;&gt;Why do we say carrot?&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Natural Language Analysis of the Lyrics of Kanye West</title>
@@ -119,7 +269,7 @@ Sentiment (top) and magnitude (bottom), averaged for each song and split by albu
 &lt;p&gt;It turns out: well, maybe. Plotted below are the relationships between the mean sentiment and the mean magnitude, by album, against the aggregated critic reviews for each album collected from &lt;a href=&#34;https://www.metacritic.com/person/kanye-west&#34;&gt;Metacritic&lt;/a&gt;.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;iframe height=&#34;450&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;100%&#34; src=&#34;//plotly.com/~dannyjameswilliams/3.embed&#34;&gt;
+&lt;iframe height=&#34;450&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;100%&#34; src=&#34;//plotly.com/~dannyjameswilliams/3.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
 &lt;/iframe&gt;
 &lt;figcaption&gt;
 Linear regression for Album sentiment against metacritic score.
@@ -128,7 +278,7 @@ Linear regression for Album sentiment against metacritic score.
 &lt;/figure&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
-&lt;iframe width=&#34;100%&#34; height=&#34;450&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; src=&#34;//plotly.com/~dannyjameswilliams/6.embed&#34;&gt;
+&lt;iframe width=&#34;100%&#34; height=&#34;450&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; src=&#34;//plotly.com/~dannyjameswilliams/6.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
 &lt;/iframe&gt;
 &lt;figcaption&gt;
 Linear regression for Album magnitude against metacritic score.

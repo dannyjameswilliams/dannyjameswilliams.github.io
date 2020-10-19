@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistics | Danny James Williams</title>
+    <link>/tag/statistics/</link>
+      <atom:link href="/tag/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <description>Statistics</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Mon, 06 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <title>Statistics</title>
+      <link>/tag/statistics/</link>
+    </image>
+    
+    <item>
+      <title>How random are you?</title>
+      <link>/post/randomchoices/</link>
+      <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/post/randomchoices/</guid>
+      <description>
+
+
+&lt;p&gt;The notion of &lt;em&gt;true random&lt;/em&gt; has perplexed scientists and statisticians for decades, if not longer. But there’s one process that we still don’t know much about - the human brain. What is it that causes our decisions to be made? When we are asked to ‘pick a random number between 1 and 10’, how ‘random’ is the number we give? Is it some complicated, deterministic signal of neurons in our brain? Or is it actually random?&lt;/p&gt;
+Here is the keyboard heatmap
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;iframe height=&#34;200&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; width=&#34;100%&#34; src=&#34;//plotly.com/~dannyjameswilliams/21.embed?autosize=true&amp;amp;link=false&amp;amp;modebar=false&#34;&gt;
+&lt;/iframe&gt;
+&lt;figcaption&gt;
+Frequency of chosen letters as a heatmap overlaid on a keyboard.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;Perhaps you remember the ‘trick’ that your friend would play on you as a kid in the playground. They would ask you the following questions: ‘4+2’, ‘3+3’ and ‘5+1’, and then ask you to &lt;em&gt;name a vegetable&lt;/em&gt;. You would inevitably say ‘carrot’, then they’d reveal a piece of paper with the word ‘carrot’ on it. Were you truly tricked? Turns out, if you’re asked to name a vegetable, &lt;a href=&#34;http://sciencechatforum.com/viewtopic.php?p=264070&#34;&gt;most people say carrot regardless&lt;/a&gt;. It’s not a trick, when asked to name something at random, we pick an extremely common vegetable.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
