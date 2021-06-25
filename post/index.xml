@@ -5,12 +5,145 @@
     <link>https://dannyjameswilliams.co.uk/post/</link>
       <atom:link href="https://dannyjameswilliams.co.uk/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Mon, 06 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Fri, 11 Jun 2021 12:19:03 +0000</lastBuildDate>
     <image>
       <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Blog</title>
       <link>https://dannyjameswilliams.co.uk/post/</link>
     </image>
+    
+    <item>
+      <title>How can we do data science without all of our data?</title>
+      <link>https://dannyjameswilliams.co.uk/post/nodata/</link>
+      <pubDate>Fri, 11 Jun 2021 12:19:03 +0000</pubDate>
+      <guid>https://dannyjameswilliams.co.uk/post/nodata/</guid>
+      <description>  
+
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/post/nodata/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;strong&gt;This research serves as a pre-cursor to the work that I am carrying out as part of my PhD, and involves unnormalised and truncated probability density estimation. This is a field which I find extremely interesting, and I believe that it has far reaching applications not just across data science and machine learning, but across many other disciplines as well. This blog post is an attempt at a more accessible explanation behind some of the core concepts in &lt;a href=&#34;https://arxiv.org/pdf/1910.03834.pdf&#34;&gt;this paper (in pre-print)&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Firstly, consider the locations of reported crimes in Chicago below, and think about where the ‘centres’ of these reported crimes would be.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;../../img/post/nodata/chicago.png&#34; alt=&#34;&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 1:&lt;/strong&gt; Homicide locations inside the city of Chicago recorded in 2008.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;Now think about where typical statistical estimation methods would put these crime ‘centres’. How do you think these would differ to what the ‘true’ centres are? Something like &lt;em&gt;maximum likelihood&lt;/em&gt; estimation may be slightly incorrect in some way, because the reported crimes get cut off, or &lt;em&gt;truncated&lt;/em&gt; beyond the city’s borders.&lt;/p&gt;
+&lt;p&gt;The dataset is incomplete; crimes do not magically stop where we decide the city ends, but data collection does.&lt;/p&gt;
+&lt;p&gt;This is an example of a more general problem in statistics named &lt;strong&gt;truncated probability density estimation&lt;/strong&gt;: How do we estimate the parameters of a statistical model when data are not fully observed, and are cut off by some artificial boundary?&lt;/p&gt;
+&lt;div id=&#34;the-problem&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;A statistical model (a probability density function involving some parameters &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\boldsymbol{\theta}}\)&lt;/span&gt;) is defined as:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+p(\boldsymbol{x}; \boldsymbol{\boldsymbol{\theta}}) = \frac{1}{Z(\boldsymbol{\boldsymbol{\theta}})} \bar{p}(\boldsymbol{x};\boldsymbol{\boldsymbol{\theta}}), \qquad Z(\boldsymbol{\boldsymbol{\theta}}) = \int \bar{p}(\boldsymbol{x};\boldsymbol{\boldsymbol{\theta}})d\boldsymbol{x}.
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This is made up of two components: &lt;span class=&#34;math inline&#34;&gt;\(\bar{p}(\boldsymbol{x}; \boldsymbol{\boldsymbol{\theta}}\)&lt;/span&gt;), the unnormalised part of the model, which is known analytically; and &lt;span class=&#34;math inline&#34;&gt;\(Z(\boldsymbol{\boldsymbol{\theta}})\)&lt;/span&gt;, the normalising constant. Over complicated boundaries such as city borders, &lt;em&gt;this normalising constant cannot be calculated directly&lt;/em&gt;, which is why something like maximum likelihood would fail in this case.&lt;/p&gt;
+&lt;p&gt;When we perform estimation, we aim to find &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\boldsymbol{\theta}}\)&lt;/span&gt; which makes our model density, &lt;span class=&#34;math inline&#34;&gt;\(p(\boldsymbol{x}; \boldsymbol{\boldsymbol{\theta}})\)&lt;/span&gt;, as closely resemble a theoretical data density, &lt;span class=&#34;math inline&#34;&gt;\(q(\boldsymbol{x})\)&lt;/span&gt;, as possible. Usually, we can estimate &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\boldsymbol{\theta}}\)&lt;/span&gt; by trying to minimise some measure of difference between the &lt;span class=&#34;math inline&#34;&gt;\(p(\boldsymbol{x};\boldsymbol{\boldsymbol{\theta}})\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(q(\boldsymbol{x})\)&lt;/span&gt;. But we cannot do this while &lt;span class=&#34;math inline&#34;&gt;\(Z(\boldsymbol{\boldsymbol{\theta}})\)&lt;/span&gt; is unknown!&lt;/p&gt;
+&lt;p&gt;Most methods in this regard opt for a numerical approximation to integration, such as &lt;a href=&#34;https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo&#34;&gt;MCMC&lt;/a&gt;. But these methods are usually very slow and computationally heavy. Surely there must be a better way?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-recipe-for-a-solution&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A Recipe for a Solution&lt;/h2&gt;
+&lt;div id=&#34;ingredient-1-score-matching&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Ingredient #1: Score Matching&lt;/h4&gt;
+&lt;p&gt;A novel estimation method called score matching enables estimation even when the normalising constant, &lt;span class=&#34;math inline&#34;&gt;\(Z(\boldsymbol{\boldsymbol{\theta}})\)&lt;/span&gt;, is unknown. Score matching begins by taking the derivative of the logarithm of the probability density function, i.e.,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\nabla_\boldsymbol{x} \log p(\boldsymbol{x}; \boldsymbol{\theta}) = \nabla_\boldsymbol{x} \log \bar{p}(\boldsymbol{x};\boldsymbol{\theta}),
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;which has become known as the score function. When taking the derivative, the dependence on &lt;span class=&#34;math inline&#34;&gt;\(Z(\boldsymbol{\theta})\)&lt;/span&gt; is removed. To estimate the parameter vector &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\theta}\)&lt;/span&gt;, we can minimise the difference between &lt;span class=&#34;math inline&#34;&gt;\(q(\boldsymbol{x})\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(p(\boldsymbol{x};\boldsymbol{\theta})\)&lt;/span&gt; by minimising the difference between the two score functions, &lt;span class=&#34;math inline&#34;&gt;\(\nabla_\boldsymbol{x} \log p(\boldsymbol{x}; \boldsymbol{\theta})\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\nabla_\boldsymbol{x} \log q(\boldsymbol{x})\)&lt;/span&gt;. One such distance measure is the expected squared distance, so that score matching aims to minimise&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\mathbb{E} [\| \nabla_\boldsymbol{x} \log p(\boldsymbol{x}; \boldsymbol{\theta}) - \nabla_\boldsymbol{x} \log q(\boldsymbol{x})\|_2^2].
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;With this first ingredient, we have eliminated the requirement that we must know the normalising constant.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ingredient-2-a-weighting-function&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Ingredient #2: A Weighting Function&lt;/h4&gt;
+&lt;p&gt;Heuristically, we can imagine our weighting function should vary with how close a point is to the boundary. To satisfy score matching assumptions, we require that this weighting function &lt;span class=&#34;math inline&#34;&gt;\(g(\boldsymbol{x})\)&lt;/span&gt; must have the property that &lt;span class=&#34;math inline&#34;&gt;\(g(\boldsymbol{x}&amp;#39;)\)&lt;/span&gt; = 0 for any point &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}&amp;#39;\)&lt;/span&gt; on the boundary. A natural candidate would be the Euclidean distance from a point &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}\)&lt;/span&gt; to the boundary, i.e.,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+g(\boldsymbol{x}) = \|\boldsymbol{x} - \tilde{\boldsymbol{x}}\|_2, \qquad \tilde{\boldsymbol{x}} = \text{argmin}_{\boldsymbol{x}&amp;#39;\text{ in boundary}} \|\boldsymbol{x} - \boldsymbol{x}&amp;#39;\|_2.
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This easily satisfies our criteria. The distance is going to be exactly zero on the boundary itself, and will approach zero the closer the points are to the edges.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ingredient-3-any-statistical-model&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Ingredient #3: Any Statistical Model&lt;/h4&gt;
+&lt;p&gt;Since we do not require knowledge of the normalising constant through the use of score matching, we can choose any probability density function &lt;span class=&#34;math inline&#34;&gt;\(p(\boldsymbol{x}; \boldsymbol{\theta})\)&lt;/span&gt; that is appropriate for our data. For example, if we are modelling count data, we may choose a Poisson distribution. If we have some sort of centralised location data, such as in the Chicago crime example in the introduction, we may choose a multivariate Normal distribution.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;combine-ingredients-and-mix&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Combine Ingredients and Mix&lt;/h3&gt;
+&lt;p&gt;We aim to minimise the expected distance between the score functions, and we weight this by our function &lt;span class=&#34;math inline&#34;&gt;\(g(\boldsymbol{x})\)&lt;/span&gt;, to give&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\min_{\boldsymbol{\theta}} \mathbb{E} [g(\boldsymbol{x}) \| \nabla_\boldsymbol{x} \log p(\boldsymbol{x}; \boldsymbol{\theta}) - \nabla_\boldsymbol{x} \log q(\boldsymbol{x})\|_2^2].
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The only unknown in this equation now is the data density &lt;span class=&#34;math inline&#34;&gt;\(q(\boldsymbol{x})\)&lt;/span&gt; (if we knew the true data density, there would be no point in estimating it with &lt;span class=&#34;math inline&#34;&gt;\(p(\boldsymbol{x};\boldsymbol{\theta})\)&lt;/span&gt;). However, we can rewrite this equation using integration by parts as&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+\min_{\boldsymbol{\theta}} \mathbb{E} \big[ g(\boldsymbol{x}) [\|\nabla_\boldsymbol{x} \log p(\boldsymbol{x}; \boldsymbol{\theta})\|_2^2 + 2\text{trace}(\nabla_\boldsymbol{x}^2 \log p(\boldsymbol{x}; \boldsymbol{\theta}))] + 2 \nabla_\boldsymbol{x} g(\boldsymbol{x})^\top \nabla_\boldsymbol{x} \log p(\boldsymbol{x};\boldsymbol{\theta})\big].
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This can be numerically minimised, or if &lt;span class=&#34;math inline&#34;&gt;\(p(\boldsymbol{x}; \boldsymbol{\theta})\)&lt;/span&gt; is in the exponential family, analytically minimised to obtain estimates for &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\theta}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;div id=&#34;artificial-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Artificial Data&lt;/h3&gt;
+&lt;p&gt;As a sanity check for testing estimation methods, it is often reassuring to perform some experiments on simulated data before moving to real world applications. Since we know the true parameter values, it is possible to calculate how far our estimated values are from their true counterparts, thus giving a way to measure estimation accuracy.&lt;/p&gt;
+&lt;p&gt;Pictured below in Figure 2 are two experiments where data are simulated from a multivariate normal distribution with mean &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\mu}^* = [1, 1]\)&lt;/span&gt; and known variance &lt;span class=&#34;math inline&#34;&gt;\(\sigma^2 = 1\)&lt;/span&gt;. Our aim is to estimate the parameter &lt;span class=&#34;math inline&#34;&gt;\(\hat{\boldsymbol{\mu}}\)&lt;/span&gt; to be close to &lt;span class=&#34;math inline&#34;&gt;\([1,1]\)&lt;/span&gt;. The red crosses in the image are the true means at &lt;span class=&#34;math inline&#34;&gt;\([1,1]\)&lt;/span&gt;, and the red dots are the estimates given by truncated score matching.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;../../img/post/nodata/mvn_l2.png&#34; alt=&#34;&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 2 (a)&lt;/strong&gt;: Points are only visible around a unit ball from [0,0].
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;../../img/post/nodata/mvn_box.png&#34; alt=&#34;&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 2 (b)&lt;/strong&gt;: Points are only visible inside a box to the left of the mean.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;These figures clearly indicate that in this basic case, this method is giving sensible results. Even by ignoring most of our data, as long as we formulate our problem correctly, we can still get accurate results for estimation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;chicago-crime&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Chicago Crime&lt;/h3&gt;
+&lt;p&gt;Back to our motivating example, where the task is to estimate the ‘centres’ of reported crime in the city of Chicago, given the longitudes and latitudes of homicides in 2008. Our specification changes from the synthetic data somewhat:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;from the original plots, it seems like there are two centres, so the statistical model we choose is a 2-dimensional mixed multivariate Normal distribution;&lt;/li&gt;
+&lt;li&gt;the variance is no longer known, but to keep estimation straightforward, the standard deviation &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; is fixed so that &lt;span class=&#34;math inline&#34;&gt;\(2\sigma\)&lt;/span&gt; roughly covers the ‘width’ of the city (&lt;span class=&#34;math inline&#34;&gt;\(\sigma = 0.06^\circ\)&lt;/span&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Below I implement estimation for the mean for both truncated score matching and maximum likelihood.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;../../img/post/nodata/chicago_estimate.png&#34; alt=&#34;&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 3:&lt;/strong&gt; Homicides in Chicago recorded in 2008, with the means estimated by truncated score matching (truncSM) and maximum likelihood estimation (MLE).
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;Truncated score matching has placed its estimates for the means in similar, but slightly different places than standard MLE. Whereas the MLE means are more central to the truncated dataset, the truncated score matching estimates are placed closer to the outer edges of the city. For the region of crime in the top half of the city, the data are more ‘tightly packed’ around the border – which is a property we expect of Normally distributed data closer to its mean.&lt;/p&gt;
+&lt;p&gt;Whilst we don’t have any definitive ‘true’ mean to compare it to, we could say that the truncSM mean is closer to what we would expect than the one estimated by MLE.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note that this result does not reflect the true likelihood of crime in a certain neighbourhood, and has only been presented to provide a visual explanation of the method. The actual likelihood depends on various characteristics in the city that are not included in our analysis, &lt;a href=&#34;https://link.springer.com/article/10.1007/s41109-019-0239-8&#34;&gt;see here for more details&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;final-thoughts&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Final Thoughts&lt;/h2&gt;
+&lt;p&gt;Score matching is a powerful tool, and by not requiring any form of normalising constant, enables the use of some more complicated models. Truncated probability density estimation is just one such example of an intricate problem which can be solved with this methodology, but it is one with far reaching and interesting applications.&lt;/p&gt;
+&lt;p&gt;Whilst this blog post has focused on location-based data and estimation, truncated probability density estimation could have a range of applications. For example, consider disease/virus modelling such as the COVID-19 pandemic: The true number of cases is obscured by the number of tests that can be performed, so the density evolution of the pandemic through time could be fully modelled with incorporation of this constraint using this method. Other applications as well as extensions to this method will be fully investigated in my future PhD projects.&lt;/p&gt;
+&lt;div id=&#34;further-reading-and-bibliography&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Further Reading and Bibliography&lt;/h3&gt;
+&lt;p&gt;Firstly, &lt;a href=&#34;https://github.com/dannyjameswilliams/truncsm-blog&#34;&gt;here is the github page&lt;/a&gt; where you can reproduce all the plots made available in this blog post, as well as some generic code for the implementation of truncated score matching.&lt;/p&gt;
+&lt;p&gt;The original score matching reference:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://jmlr.org/papers/volume6/hyvarinen05a/hyvarinen05a.pdf&#34;&gt;Estimation of Non-Normalized Statistical Models by Score Matching, Aapo Hyvärinen (2005)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The paper from which this blog post originates:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://arxiv.org/pdf/1910.03834.pdf&#34;&gt;Estimating Density Models with Truncation Boundaries using Score Matching. Song Liu, Takafumi Kanamori, &amp;amp; Daniel J. Williams (2021)&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>How random are you?</title>
