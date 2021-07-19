@@ -5,7 +5,7 @@
     <link>https://dannyjameswilliams.co.uk/author/daniel-williams/</link>
       <atom:link href="https://dannyjameswilliams.co.uk/author/daniel-williams/index.xml" rel="self" type="application/rss+xml" />
     <description>Daniel Williams</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Fri, 11 Jun 2021 12:19:03 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Thu, 24 Jun 2021 12:19:03 +0000</lastBuildDate>
     <image>
       <url>https://dannyjameswilliams.co.uk/author/daniel-williams/avatar_hud775384d6e1de19a81664cb136eec910_257483_270x270_fill_q90_lanczos_center.jpg</url>
       <title>Daniel Williams</title>
@@ -15,7 +15,7 @@
     <item>
       <title>How can we do data science without all of our data?</title>
       <link>https://dannyjameswilliams.co.uk/post/nodata/</link>
-      <pubDate>Fri, 11 Jun 2021 12:19:03 +0000</pubDate>
+      <pubDate>Thu, 24 Jun 2021 12:19:03 +0000</pubDate>
       <guid>https://dannyjameswilliams.co.uk/post/nodata/</guid>
       <description>  
 
@@ -23,7 +23,7 @@
 
 
 &lt;p&gt;&lt;strong&gt;This research serves as a pre-cursor to the work that I am carrying out as part of my PhD, and involves unnormalised and truncated probability density estimation. This is a field which I find extremely interesting, and I believe that it has far reaching applications not just across data science and machine learning, but across many other disciplines as well. This blog post is an attempt at a more accessible explanation behind some of the core concepts in &lt;a href=&#34;https://arxiv.org/pdf/1910.03834.pdf&#34;&gt;this paper (in pre-print)&lt;/a&gt;, by Song Liu, Takafumi Kanamori and myself.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Firstly, consider the locations of reported crimes in Chicago below, and think about where the ‘centres’ of these reported crimes would be.&lt;/p&gt;
+&lt;p&gt;Firstly, consider the locations of reported crimes in Chicago below, and think about where the ‘centres’ of these reported crimes are.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;
 &lt;img src=&#34;../../img/post/nodata/chicago.png&#34; alt=&#34;&#34; /&gt;
