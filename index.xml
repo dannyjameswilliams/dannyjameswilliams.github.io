@@ -2528,7 +2528,7 @@ all.equal(log(A), MatrixLog(A), MatrixLogPar(A))&lt;/code&gt;&lt;/pre&gt;
 &lt;script src=&#34;https://dannyjameswilliams.co.uk/post/nodata/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;&lt;strong&gt;This research serves as a pre-cursor to the work that I am carrying out as part of my PhD, and involves unnormalised and truncated probability density estimation. This is a field which I find extremely interesting, and I believe that it has far reaching applications not just across data science and machine learning, but across many other disciplines as well. This blog post is an attempt at a more accessible explanation behind some of the core concepts in &lt;a href=&#34;https://arxiv.org/pdf/1910.03834.pdf&#34;&gt;this paper (in pre-print)&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This research serves as a pre-cursor to the work that I am carrying out as part of my PhD, and involves unnormalised and truncated probability density estimation. This is a field which I find extremely interesting, and I believe that it has far reaching applications not just across data science and machine learning, but across many other disciplines as well. This blog post is an attempt at a more accessible explanation behind some of the core concepts in &lt;a href=&#34;https://arxiv.org/pdf/1910.03834.pdf&#34;&gt;this paper (in pre-print)&lt;/a&gt;, by Song Liu, Takafumi Kanamori and myself.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Firstly, consider the locations of reported crimes in Chicago below, and think about where the ‘centres’ of these reported crimes would be.&lt;/p&gt;
 &lt;figure class=&#34;image&#34;&gt;
 &lt;center&gt;

@@ -1,0 +1,1355 @@
+<!DOCTYPE html><html lang="en-gb" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Williams">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction Python is a powerful programming language that is very popular for data analysis as well as many other applications in the real world. This portfolio will go over some intermediary processes in Python 3.">
+
+  
+  <link rel="alternate" hreflang="en-gb" href="https://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@DanielW966">
+  <meta property="twitter:creator" content="@DanielW966">
+  
+  <meta property="og:site_name" content="Danny James Williams">
+  <meta property="og:url" content="https://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/">
+  <meta property="og:title" content="Introduction to Python for Statistics | Danny James Williams">
+  <meta property="og:description" content="Introduction Python is a powerful programming language that is very popular for data analysis as well as many other applications in the real world. This portfolio will go over some intermediary processes in Python 3."><meta property="og:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-gb">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Introduction to Python for Statistics | Danny James Williams</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Danny James Williams</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#home"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/projects/"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/portfolios/"><span>Portfolios</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="Search..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc1/">Statistical Computing 1</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc1/intro/">Introduction to R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/reproducibility/">Reproducibility</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/common/">Common R</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/github/">Git and GitHub</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/performance/">Performance and Debugging</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/tidyverse/">Tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/matrices/">(Sparse) Matrices</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/oop/">Object Oriented and Functional Programming</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/optimisation/">Optimisation</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc1/integration/">Numerical Integration</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/portfolios/sc2/">Statistical Computing 2</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/portfolios/sc2/intro/">Intro to C&#43;&#43;</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rnc/">Integrating R and C</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/rcpp/">Local Polynomial Regression with Rcpp</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/openmp/">Intro to OpenMP in C&#43;&#43;</a>
+      </li>
+      
+      <li class="active">
+        <a href="/portfolios/sc2/pythonstats/">Introduction to Python for Statistics</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/neuralnet/">Neural Network for Identifying Cats and Dogs in Python</a>
+      </li>
+      
+      <li >
+        <a href="/portfolios/sc2/parallelrcpp/">Parallel Rcpp</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>Introduction to Python for Statistics</h1>
+
+          <div class="article-style">
+            <h2 id="introduction">Introduction</h2>
+<p>Python is a powerful programming language that is very popular for data analysis as well as many other applications in the real world. This portfolio will go over some intermediary processes in Python 3.7.3, before  implementing basic statistical models; including linear models, regression and classification.</p>
+<h2 id="python-overview">Python Overview</h2>
+<h3 id="functions-and-modules">Functions and Modules</h3>
+<p>Similar to R, functions can be defined and called in the same script. The function definition syntax is as follows</p>
+<pre><code>def function_name(input1, input2):
+    variable = function_operation
+    second_variable = second_function_operation
+    return output
+</code></pre>
+<p>There&rsquo;s a couple things to note here. Firstly, indentation is essential to defining the function. Unlike R or MATLAB, there is nothing to write that marks the beginning or end of the function as this is all handled by where the indentation begins and ends. Secondly, the function name comes after the <code>def</code>, instead of the other way around (as in R). Finally, the colon (<code>:</code>) is necessary, as it is in loops and if statements.</p>
+<p>Functions can be written in one script, and called in another, and the way this is achieved is through <em>modules</em>. Modules are a collection of code that you can load from another file, similar to how <code>source</code> and <code>library</code> work in R. You load modules with any of these lines:</p>
+<pre><code>import module_name
+import module_name as short_name
+from module_name import function_name
+from module_name import *
+</code></pre>
+<p>All these commands load the module (or parts of it), but do it slightly differently. In Python, all modules loaded have to be accessed through their name to use their functions. For example, to use a function from NumPy, you would have to use <code>numpy.function_name</code>. This name can be shortened if you used the second line above to load the module, commonly, NumPy is abbreviated to <code>np</code> so that you would only have to type <code>np.function_name</code> to access it.</p>
+<p>You can also load specific functions from a module by using the third and fourth line above, where the asterisk <code>*</code> indicates to load all functions from the module. Note that if the module is loaded this way, you do <em>not</em> need to specify the name of the module preceding the function. It is considered bad practice to load functions this way, as declaring the module name removes the chance of overlapping function names within modules.</p>
+<h4 id="example-morse-code">Example: Morse Code</h4>
+<p>As an example of basic operations in Python, consider writing two functions to encode and decode morse code respectively. The encoding function will take a string, or a piece of text, and convert it into morse code. The decoding function does the opposite: converts morse code into plain english text. To write these functions, we first must define a dictionary:</p>
+<pre><code class="language-python">letter_to_morse = {'a':'.-', 'b':'-...', 'c':'-.-.', 'd':'-..', 'e':'.', 
+        'f':'..-.', 'g':'--.', 'h':'....', 'i':'..', 'j':'.---', 'k':'-.-', 
+        'l':'.-..', 'm':'--', 'n':'-.', 'o':'---', 'p':'.--.', 'q':'--.-', 
+        'r':'.-.', 's':'...', 't':'-', 'u':'..-', 'v':'...-', 'w':'.--', 
+        'x':'-..-', 'y':'-.--', 'z':'--..', '0':'-----', '1':'.----', 
+        '2':'..---', '3':'...--', '4':'....-','5':'.....', '6':'-....', 
+        '7':'--...', '8':'---..', '9':'----.', ' ':'/'}
+</code></pre>
+<p>So this dictionary can be accessed by indexing with the letter that we want a translation for. For example</p>
+<pre><code class="language-python">letter_to_morse[&quot;6&quot;]
+</code></pre>
+<p>Likewise, we need to define the reverse; a dictionary that takes morse code and outputs an english letter. We can reverse this dictionary with a loop.</p>
+<pre><code class="language-python">morse_to_letter = {}
+for letter in letter_to_morse:
+    morse = letter_to_morse[letter]
+    morse_to_letter[morse] = letter
+morse_to_letter[&quot;.-&quot;]
+</code></pre>
+<p>Now we can define the two functions <code>encode</code> and <code>decode</code> that use these two dictionaries. For the encoding function:</p>
+<pre><code class="language-python">def encode(x): 
+    morse = []
+    for letter in x:
+        letter = letter.lower()
+        morse.append(letter_to_morse[letter])
+
+    morse_message = &quot; &quot;.join(morse)
+    return morse_message
+</code></pre>
+<p>This function initialises an array <code>morse</code>, and loops over all letters in the input <code>x</code> and appends to the <code>morse</code> array the translation in morse code. After the loop, the <code>morse</code> array is joined together. For the decoding function:</p>
+<pre><code class="language-python">def decode(x):
+    english = []
+    morse_letters = x.split(&quot; &quot;)
+    for letter in morse_letters:
+        english.append(morse_to_letter[letter])
+        
+    english_message = &quot;&quot;.join(english)
+    return english_message
+</code></pre>
+<p>This has a similar process as with <code>encode</code>. First the input <code>x</code> is split, and then each split morse symbol is looped over and converted to english using the <code>morse_to_letter</code> dictionary. Before we run these functions, we can save them in a separate file called <code>morse.py</code> and put it in our working directory. Then using another script (which will be called <code>run_morse.py</code>), we can import the <code>morse.py</code> functions as a module.</p>
+<p>So we can import <code>morse</code> and run the <code>decode</code> function.</p>
+<pre><code class="language-python">import morse
+morse_message = &quot;.... . .-.. .--. / .. -- / - .-. .- .--. .--. . -.. / .. -. / ... --- -- . / -- --- .-. ... . / -.-. --- -.. .&quot;
+morse.decode(morse_message)
+</code></pre>
+<p>Likewise, we can encode a secret message using <code>morse.encode</code>:</p>
+<pre><code class="language-python">morse.encode(&quot;please dont turn me into morse code&quot;)
+</code></pre>
+<p>One thing to note here is that the dictionaries <code>morse_to_letter</code> and <code>letter_to_morse</code> were defined outside of the functions. Since this module was imported, we can actually access this:</p>
+<pre><code class="language-python">morse.letter_to_morse
+</code></pre>
+<p>Although oftentimes we would want variables to remain hidden, this is not possible if we are importing all the contents of a script. Importing Python files as modules is usually done so that functions can be imported across the working directory, as opposed to having one big file that contains all the code.</p>
+<h3 id="classes">Classes</h3>
+<p>Object oriented programming in Python is done through <em>classes</em>, the general form of which is</p>
+<pre><code>class class_name:
+      def __init__(self):
+          self.variable_I_want_to_define = variable
+          self.another_variable_I_want_to_define = variable_2
+      def some_class_function(self, x):
+          something_I_can_do_with_my_variables = x
+          return some_output
+      def some_other_function(self):
+          self.an_internal_variable = 3
+          return another_output
+</code></pre>
+<p>The functions can be run as a member of the class, and the <code>__init__(self)</code> section of the class is a function that is run when the class is <em>initialised</em>. Any variables that are within the <code>__init__</code> section of the class become defined, sometimes depending on the inputs to the <code>__init__</code> function. These could be variables such as initial conditions, or initial estimates. We could add more inputs to the <code>__init__</code> function after <code>self</code>, if needed.</p>
+<p>The other functions can be called, and these could change some of the internal <code>self.</code> variables, e.g. updating the initial conditions, running a certain loop or adding additional variables.</p>
+<h4 id="example-morse-code-again">Example: Morse Code Again</h4>
+<p>We can update the morse code example to write a class called <code>morse_code_translator</code> that has an encode and decode function as part of the class. This is written as</p>
+<pre><code class="language-python">class morse_code_translator:
+      def __init__(self):
+          self.letter_to_morse = {'a':'.-', 'b':'-...', 'c':'-.-.', 'd':'-..', 
+            'e':'.', 'f':'..-.',  'g':'--.', 'h':'....', 'i':'..', 'j':'.---', 
+            'k':'-.-', 'l':'.-..', 'm':'--', 'n':'-.', 'o':'---', 'p':'.--.', 
+            'q':'--.-', 'r':'.-.', 's':'...', 't':'-', 'u':'..-', 'v':'...-', 
+            'w':'.--', 'x':'-..-', 'y':'-.--', 'z':'--..', '0':'-----', 
+            '1':'.----', '2':'..---', '3':'...--', '4':'....-', '5':'.....', 
+            '6':'-....', '7':'--...', '8':'---..', '9':'----.', ' ':'/'}
+          self.morse_to_letter = {}
+          for letter in self.letter_to_morse:
+              morse = self.letter_to_morse[letter]
+              self.morse_to_letter[morse] = letter
+          self.english_message_history = []
+          self.morse_message_history = []
+      def encode(self, x):
+          morse = []
+          for letter in x:
+              letter = letter.lower()
+              morse.append(self.letter_to_morse[letter])
+          morse_message = &quot; &quot;.join(morse)       
+          self.english_message_history.append(x)
+          self.morse_message_history.append(morse_message)
+          return morse_message
+      def decode(self, x):
+          english = []
+          morse_letters = x.split(&quot; &quot;)
+          for letter in morse_letters:
+              english.append(self.morse_to_letter[letter])
+          english_message = &quot;&quot;.join(english)
+          self.english_message_history.append(english_message)
+          self.morse_message_history.append(x)
+          return english_message
+</code></pre>
+<p>So this has simply moved the <code>decode</code> and <code>encode</code> functions over inside a class. The dictionaries are now written as <code>self.letter_to_morse</code> and <code>self.morse_to_letter</code>, with the <code>self.</code> prefix. Other than that, I have also added two more variables: <code>english_message_history</code> and <code>morse_message_history</code>, to exemplify how variables can be updated by calling the functions. Every time <code>encode</code> or <code>decode</code> is run, these arrays keep track of all messages that have passed through either function. We can test to see if this works, by importing this class from <code>morse_class.py</code>.</p>
+<pre><code class="language-python">from morse_class import morse_code_translator
+translator = morse_code_translator()
+translator.encode(&quot;please not again&quot;)
+translator.decode(&quot;.--. .-.. . .- ... . / -.. --- -. - / - ..- .-. -. / -- . / .. -. - --- / . -. --. .-.. .. ... ....&quot;)
+</code></pre>
+<p>So this has worked as expected, and the <code>translator</code> object now can both decode and encode morse code messages. Now that these two messages have passed through the class, we can see if the history has worked.</p>
+<pre><code class="language-python">translator.english_message_history
+translator.morse_message_history
+</code></pre>
+<p>So the internal <code>self</code> variables have been updated with the two messages that were passed through the class.</p>
+<h2 id="statistical-models">Statistical Models</h2>
+<p>Python has a lot of support for fitting statistical models and machine learning, this is mostly as part of the <code>sklearn</code> package. Other modules must also be imported that provide different funtionality. Statistical models are handled by <code>sklearn</code>, dataframes are handled by <code>pandas</code> and <code>numpy</code>, randomness is handled by <code>numpy</code> and <code>random</code>, and plots are handled by <code>matplotlib</code>.</p>
+<pre><code class="language-python">import sklearn as sk
+import sklearn.linear_model as lm
+import pandas as pd
+import numpy as np
+import random
+import matplotlib.pyplot as plt
+</code></pre>
+<h3 id="linear-regression">Linear Regression</h3>
+<p>A basic linear regression model in python is handled as part of the <code>sklearn.linear_model</code> module. The use of a linear model in Python can be explained through an example. Some simulated data can be set up as follows
+$$
+\boldsymbol{x} \sim \text{Unif}(0,1), \qquad y \sim N(\boldsymbol{\mu}, .5), \qquad \boldsymbol{\mu} = \beta_0 + \beta_1 \boldsymbol{x},
+$$
+where both $\boldsymbol{x}$ and $\boldsymbol{y}$ are of length $n$. Since this is simulated data, we pre-define $\beta_0 = 5$ and $\beta_1 = -2$ as the intercept and the gradient. We can use <code>numpy</code> to sample this data, and the <code>linear_model</code> module in <code>sklearn</code> to fit a linear model to it.</p>
+<pre><code class="language-python">n = 200
+beta0 = 5
+beta1 = -2
+x = np.random.uniform(0, 1, n)
+mu = beta0 + beta1*x
+y = np.random.normal(mu, .5, n)
+</code></pre>
+<p>This data can be converted into a dataframe with the <code>DataFrame</code> function in <code>pandas</code>.</p>
+<pre><code class="language-python">data = pd.DataFrame({&quot;x&quot;:x, &quot;y&quot;:y})
+</code></pre>
+<p>To set up the linear model, a model object must be set up in advance, and then the fitting routine can be called to it. This can be done in one line by nesting operations.</p>
+<pre><code class="language-python">model = lm.LinearRegression(fit_intercept=True).fit(data[[&quot;x&quot;]], data[&quot;y&quot;])
+</code></pre>
+<p>Here, the model has been fit by first creating a linear model object with <code>lm.LinearRegression</code> (and specifying that we <em>do</em> want an intercept). Secondly, the <code>.fit()</code> function has been called on that object to obtain parameter estimates $\beta_0$ and $\beta_1$ by passing the covariates <code>x</code> and response variable <code>y</code> to it. Now we can see whether these estimates bare resemblance to the true parameter values used to simulate the data.</p>
+<pre><code class="language-python">print(&quot;Intercept:&quot;, model.intercept_, &quot;,&quot;, &quot;Gradient:&quot;, model.coef_)
+</code></pre>
+<pre><code>Intercept: 4.89676478340633 , Gradient: [-1.90845212]
+</code></pre>
+<p>This is reasonably close to the true values. Note that here there is only one covariate vector, but this method is applicable to multiple covariates which would give multiple estimates of the gradient for each covariate. Now we can plot the data and the fit, a <code>pandas</code> data frame has an inbuilt method used for plotting the data, which produces a scatter plot from <code>matplotlib</code>.</p>
+<pre><code class="language-python">data.plot.scatter(&quot;x&quot;, &quot;y&quot;, figsize=(14, 11));
+plt.plot(x, model.predict(data[[&quot;x&quot;]]), 'r');
+</code></pre>
+<p><img src="/img/portfolios/pythonstats_36_0.png" alt="png"></p>
+<h3 id="multiple-linear-regression">Multiple Linear Regression</h3>
+<p>In the previous section, we fit a linear model with a single covariate vector. This is good for exemplary purposes as a two dimensional linear model is easy to visualise. Often in data analysis we can have multiple explanatory variables $\boldsymbol{x}_1, \dots, \boldsymbol{x}_p$ that give information about the respone variable $\boldsymbol{y}$.</p>
+<p>For an example of multiple linear regression, we will be using the Boston house prices dataset, which is part of the freely provided datasets from <code>sklearn</code>. This dataset describes the median value of owner-occupied homes (per $1000), as well as 13 predictors that could provide information about the house value. We load this dataset and convert it to a <code>pandas</code> data frame.</p>
+<pre><code class="language-python">from sklearn.datasets import load_boston
+data = load_boston()
+boston = pd.DataFrame(data.data, columns = data.feature_names)
+boston[&quot;MEDV&quot;] = data.target
+boston.head()
+</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CRIM</th>
+      <th>ZN</th>
+      <th>INDUS</th>
+      <th>CHAS</th>
+      <th>NOX</th>
+      <th>RM</th>
+      <th>AGE</th>
+      <th>DIS</th>
+      <th>RAD</th>
+      <th>TAX</th>
+      <th>PTRATIO</th>
+      <th>B</th>
+      <th>LSTAT</th>
+      <th>MEDV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00632</td>
+      <td>18.0</td>
+      <td>2.31</td>
+      <td>0.0</td>
+      <td>0.538</td>
+      <td>6.575</td>
+      <td>65.2</td>
+      <td>4.0900</td>
+      <td>1.0</td>
+      <td>296.0</td>
+      <td>15.3</td>
+      <td>396.90</td>
+      <td>4.98</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.02731</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0.0</td>
+      <td>0.469</td>
+      <td>6.421</td>
+      <td>78.9</td>
+      <td>4.9671</td>
+      <td>2.0</td>
+      <td>242.0</td>
+      <td>17.8</td>
+      <td>396.90</td>
+      <td>9.14</td>
+      <td>21.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.02729</td>
+      <td>0.0</td>
+      <td>7.07</td>
+      <td>0.0</td>
+      <td>0.469</td>
+      <td>7.185</td>
+      <td>61.1</td>
+      <td>4.9671</td>
+      <td>2.0</td>
+      <td>242.0</td>
+      <td>17.8</td>
+      <td>392.83</td>
+      <td>4.03</td>
+      <td>34.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.03237</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0.0</td>
+      <td>0.458</td>
+      <td>6.998</td>
+      <td>45.8</td>
+      <td>6.0622</td>
+      <td>3.0</td>
+      <td>222.0</td>
+      <td>18.7</td>
+      <td>394.63</td>
+      <td>2.94</td>
+      <td>33.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.06905</td>
+      <td>0.0</td>
+      <td>2.18</td>
+      <td>0.0</td>
+      <td>0.458</td>
+      <td>7.147</td>
+      <td>54.2</td>
+      <td>6.0622</td>
+      <td>3.0</td>
+      <td>222.0</td>
+      <td>18.7</td>
+      <td>396.90</td>
+      <td>5.33</td>
+      <td>36.2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>The variable we are interested in predicting is <code>MEDV</code>, and all other variables will be used to give information to predicting <code>MEDV</code>.</p>
+<p>Before fitting any models, we can perform some exploratory data analysis to help the decision as to what predictor variables need to be included in the model fitting. Luckily, there are easy methods available that inspect how strongly correlated variables are with other variables in a <code>pandas</code> data frame. Firstly, we will be using the inbuilt <code>corr</code> function and plotting it as a heatmap. This uses the <code>seaborn</code> module to create a heatmap.</p>
+<pre><code class="language-python">import seaborn
+corr = boston.corr()
+cmap = seaborn.diverging_palette(-500, -720, as_cmap=True)
+plt.figure(figsize=(14, 11))
+seaborn.heatmap(corr, cmap=cmap);
+</code></pre>
+<p><img src="/img/portfolios/pythonstats_40_0.png" alt="png"></p>
+<p>There are two things to infer from this plot: how correlated the predictor variables are from one another, and how correlated the predictor variables are from the response. We are mostly interested in how correlated the predictors are with <code>MEDV</code>, as if they influence the value of <code>MEDV</code> significantly, then they are likely to be important to include in a model. Another plot we can use to explore the data is a multi variable scatter plot. That is, a scatter plot for each pair of variables. <code>pandas</code> has a function for this, as part of the <code>plotting</code> submodule.</p>
+<pre><code class="language-python">from pandas.plotting import scatter_matrix
+scatter_matrix(boston, figsize=(16, 16));
+</code></pre>
+<p><img src="./pythonstats_42_0.png" alt="png"></p>
+<p>There is a lot to process in this plot, but you can restrict your attention to the final column on the right. This column will show scatter plots with all predictor variables and the response <code>MEDV</code>. We are looking for obvious relationships between the two variables. <code>CRIM</code> seems to have an effect at lower values, <code>ZN</code> seems to have a small effect, <code>INDUS</code> has a non-linear relationship,<code>RM</code> has a clear linear relationship, <code>AGE</code> seems to have a significant effect at lower values, <code>B</code> has an effect at larger values and <code>LSTAT</code> seems to have a quadratic relationship. These variables will be important to consider, but that does not mean all others are not. Since some of these predictors are categorical (even binary), it can be hard to infer their relationship with <code>MEDV</code> from a scatter plot.</p>
+<p>We can now fit the model using the information above. The predictors we want to include are <code>CRIM</code>, <code>ZN</code>, <code>INDUS</code>, <code>RM</code>, <code>AGE</code>, <code>B</code> and <code>LSTAT</code>. We use the linear model from <code>sklearn</code> again, but first create the new data frame of the reduced dataset. Additionally we can include a quadratic effect for certain predictors by creating a new column in the data frame with the squared values.</p>
+<pre><code class="language-python">boston_x = boston[[&quot;CRIM&quot;, &quot;ZN&quot;, &quot;INDUS&quot;, &quot;RM&quot;, &quot;AGE&quot;, &quot;B&quot;, &quot;LSTAT&quot;]]
+boston_x.insert(len(boston_x.columns), &quot;LSTAT2&quot;, [i**2 for i in boston_x[&quot;LSTAT&quot;] ]) 
+boston_x.insert(len(boston_x.columns), &quot;AGE2&quot;, [i**2 for i in boston_x[&quot;AGE&quot;] ]) 
+boston_x.insert(len(boston_x.columns), &quot;B2&quot;, [i**2 for i in boston_x[&quot;B&quot;] ]) 
+
+</code></pre>
+<p>Now using the linear model with this modified data frame to fit the full model.</p>
+<pre><code class="language-python">mv_model = lm.LinearRegression(fit_intercept=True).fit(boston_x, data.target)
+print(&quot;Intercept: \n&quot;, mv_model.intercept_, &quot;\n&quot;)
+print(&quot;Coefficients:&quot;)
+print(&quot; \n&quot;.join([str(boston_x.columns[i]) + &quot; &quot; + str(mv_model.coef_[i]) for i in np.arange(len(mv_model.coef_))]))
+</code></pre>
+<pre><code>Intercept: 
+ 5.916804277809813 
+
+Coefficients:
+CRIM -0.11229848683846888 
+ZN 0.0037476008537828498 
+INDUS -0.0021805395766587208 
+RM 4.0621316253156285 
+AGE 0.07875634757295602 
+B 0.042639346099976716 
+LSTAT -2.063750521016358 
+LSTAT2 0.042240400122337596 
+AGE2 -0.0002509463690499019 
+B2 -7.788232883181183e-05
+</code></pre>
+<h3 id="penalised-regression">Penalised Regression</h3>
+<p>The <code>linear_model</code> submodule of <code>sklearn</code> doesn&rsquo;t <em>just</em> contain the <code>LinearRegression</code> object, it contains many other variations of linear models. Some examples of these are penalised regression models, such as the Lasso model or ridge regression model. You can view the documentation for these online, and they work similarly to <code>LinearRegression</code>. Below I will briefly go through an example of using a Lasso path algorithm on the dataset provided above. Firstly, the model object can be created immediately using the <code>linear_model.lars_path</code> object.</p>
+<pre><code class="language-python">_,_,coefs = lm.lars_path(data.data, data.target)
+</code></pre>
+<p>This is using the full dataset provided in <code>data.data</code>, as the Lasso path plot can be used for feature selection, similar to the scatter matrix approach above.</p>
+<pre><code class="language-python">xx = np.sum(np.abs(coefs.T), axis=1)
+xx /= xx[-1]
+plt.figure(figsize=(16, 9))
+plt.plot(xx, coefs.T)
+ymin, ymax = plt.ylim()
+plt.vlines(xx, ymin, ymax, linestyle='dashed')
+plt.xlabel('|coef| / max|coef|')
+plt.ylabel('Coefficients')
+plt.title('LASSO Path')
+plt.axis('tight')
+plt.legend(data.feature_names)
+plt.show()
+</code></pre>
+<p><img src="/img/portfolios/pythonstats_50_0.png" alt="png"></p>
+<p>The coefficients for covariates that provide a lot of information to the response variable are likely going to take a very large value of regularisation parameter to shrink them to zero. These are the lines that are more separated in the plot above, i.e. <code>CRIM</code>, <code>RM</code>, <code>NOX</code>, and <code>CHAS</code>. Interestingly, these were not the variables that were selected in the scatter matrix approach earlier in this report, highlighting the variation in parameter selection depending on the method.</p>
+<h3 id="classification">Classification</h3>
+<p>The final statistical model introduced will be one interested in classifying. Classification is interested in prediction of a usually non-numeric <em>class</em>, i.e. assign the output to a pre-defined class based on some inputs. The classification model explained here will be <strong>Logistic Regression</strong> (ignore the name, it&rsquo;s not a regression method).</p>
+<p>Logistic regression is called so because it uses a <em>logistic function</em> to map fitted values to probabilities. The basic form of a classification model is the same of that of a regression method, except the output from the model corresponds to latent, unobserved fitted values which decide the class of each set of inputs.</p>
+<p>We will start by simulating some data $\boldsymbol{y}$ that need to be classified, which will be generated by a mathematical combination of some inputs $\boldsymbol{x}$. Each element of $\boldsymbol{y}$ will be given one of the class labels $\mathcal{C}_1$, $\mathcal{C}_2$ or $\mathcal{C}_3$. The goal of the statistical model is parameter estimation, similar to the regression methods.</p>
+<pre><code class="language-python"># Simulate x
+n = 1000
+x1 = np.random.uniform(0, 1, n)
+x2 = np.random.uniform(0, 1, n)
+
+# Create parameters and mean
+beta0 = 3
+beta1 = 1.5
+beta2 = -4.8
+beta3 = 0.5
+mu = beta0 + beta1*x1 + beta2*x2 + beta3*x1**2
+
+# Set class based on value of mean
+y = np.repeat(&quot;Class 1&quot;, n)
+y[mu &gt; 0] = &quot;Class 2&quot;
+y[mu &gt; 2] = &quot;Class 3&quot;
+
+# Combine into DataFrame
+clsf_dat = pd.DataFrame({&quot;y&quot;:y,&quot;x1&quot;:x1,&quot;x2&quot;:x2 })
+</code></pre>
+<pre><code class="language-python">colors = y
+colors[y == &quot;Class 1&quot;] = &quot;red&quot;
+colors[y == &quot;Class 2&quot;] = &quot;blue&quot;
+colors[y == &quot;Class 3&quot;] = &quot;green&quot;
+clsf_dat.plot.scatter(&quot;x1&quot;, &quot;x2&quot;, c=colors, figsize=(14, 11));
+</code></pre>
+<p><img src="/img/portfolios/pythonstats_54_0.png" alt="png"></p>
+<p>Now that the data is set up, we can fit the logistic regression model to it. <code>LogisticRegression</code> is a function as part of the <code>linear_model</code> submodule of <code>sklearn</code>, just as before, so this next step should be familiar to you.</p>
+<pre><code class="language-python">lr_model = lm.LogisticRegression(fit_intercept=True, solver='newton-cg', multi_class = 'auto')
+lr_model = lr_model.fit(clsf_dat[[&quot;x1&quot;, &quot;x2&quot;]], clsf_dat[&quot;y&quot;])
+</code></pre>
+<pre><code class="language-python">print(&quot;Intercept: \n&quot;, lr_model.intercept_, &quot;\n&quot;)
+print(&quot;Coefficients:&quot;)
+print(&quot; \n&quot;.join([str(clsf_dat.columns[i]) + &quot; &quot; + str(lr_model.coef_[i]) for i in np.arange(len(lr_model.coef_))]))
+</code></pre>
+<pre><code>Intercept: 
+ [-4.45432353  0.92640783  3.52791569] 
+
+Coefficients:
+y [-4.06694321  9.66044839] 
+x1 [0.18794764 0.76440687] 
+x2 [  3.87899558 -10.42485527]
+</code></pre>
+<p>Note that there are multiple coefficients for each input! This is because even though the data were simulated using one parameter each, the logistic regression model has a different input combination for each class. The first class has both coefficients aliased to the intercept, and anything significantly different (in line with the combination of the remaining parameters) is given a different class.</p>
+<p>We can roughly evaluate the model&rsquo;s performance by inspecting a plot of its predictions.</p>
+<pre><code class="language-python">predictions = lr_model.predict(clsf_dat[[&quot;x1&quot;, &quot;x2&quot;]])
+</code></pre>
+<pre><code class="language-python">colors = predictions
+colors[predictions == &quot;Class 1&quot;] = &quot;red&quot;
+colors[predictions == &quot;Class 2&quot;] = &quot;blue&quot;
+colors[predictions == &quot;Class 3&quot;] = &quot;green&quot;
+clsf_dat.plot.scatter(&quot;x1&quot;, &quot;x2&quot;, c=colors, figsize=(14, 11));
+</code></pre>
+<p><img src="/img/portfolios/pythonstats_60_0.png" alt="png"></p>
+<p>Here we can see an extremely similar plot to the one above, although it is not quite exactly the same! At the point of overlap between classes, some points are mislabelled as the wrong class, due to uncertainty around the decision boundaries.</p>
+<p>More complex models exist for classification and regression, but that&rsquo;s for another time.</p>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/portfolios/sc2/parallelrcpp/" rel="next">ParallelRcpp</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/portfolios/sc2/neuralnet/" rel="prev">Neural Network for Identifying Cats and Dogs in Python</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on May 5, 2019</p>
+
+          
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
