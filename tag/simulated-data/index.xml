@@ -17,7 +17,7 @@
       <link>https://dannyjameswilliams.co.uk/projects/gpc/</link>
       <pubDate>Sat, 27 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://dannyjameswilliams.co.uk/projects/gpc/</guid>
-      <description>&lt;p&gt;The second group project I worked on at COMPASS mainly involved learning how Gaussian process classification worked, as it is a complicated procedure, and not as straight forward as Gaussian process classification.&lt;/p&gt;
+      <description>&lt;p&gt;The second group project I worked on at COMPASS mainly involved learning how Gaussian process classification worked, as it is a complicated procedure, and not as straight forward as Gaussian process regression.&lt;/p&gt;
 &lt;p&gt;Our work involved a number of aspects that have improved on Gaussian process classification in recent literatures:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Pseudo-Marginal Likelihood:&lt;/strong&gt; An importance sampling procedure to approximate the marginal likelihood in MCMC sampling.&lt;/li&gt;
