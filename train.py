@@ -174,7 +174,7 @@ def main(args):
         elif last_checkpoint is not None and training_args.resume_from_checkpoint is None:
             logger.info(
                 f"Checkpoint detected, resuming training at {last_checkpoint}. To avoid this behavior, change "
-                "the `--output_dir` or add `--overwrite_output_dir` to train from scratch."
+                "the `--output_dir` or add `--overwrite_output_dir True` to train from scratch."
             )
     
     ## -- Train
@@ -248,7 +248,7 @@ if __name__ == "__main__":
     # Fitting arguments
     parser.add_argument("--preprocessing_num_workers", type=int, default = torch.cuda.device_count())
     parser.add_argument("--resume_from_checkpoint", type=bool, default = True)
-    parser.add_argument("--overwrite_output_dir", type=bool, default = True)
+    parser.add_argument("--overwrite_output_dir", type=bool, default = False)
     parser.add_argument("--gradient_checkpointing", type=bool, default = True)
     parser.add_argument("--epochs", type=float, default=3.0)
     parser.add_argument("--per_device_train_batch_size", type=int, default=4)
