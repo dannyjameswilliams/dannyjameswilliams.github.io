@@ -27,7 +27,7 @@
   
     
   
-  <meta name="description" content="  ">
+  <meta name="description" content="Interested in how to plot BERT embeddings for different text? In the example linked, I obtained BERT embeddings for all the sentences from the book series ‘A Song of Ice and Fire’ (ASOIAF), the original novels which gave birth to the ‘A Game of Thrones’ TV show.">
 
   
   <link rel="alternate" hreflang="en-gb" href="https://dannyjameswilliams.co.uk/post/tutorialasoiaf/">
@@ -239,14 +239,14 @@
   
   <meta property="og:site_name" content="Danny James Williams">
   <meta property="og:url" content="https://dannyjameswilliams.co.uk/post/tutorialasoiaf/">
-  <meta property="og:title" content="(BERT Embeddings Tutorial) NLP Embeddings of A Song of Ice and Fire | Danny James Williams">
-  <meta property="og:description" content="  "><meta property="og:image" content="https://dannyjameswilliams.co.uk/post/tutorialasoiaf/featured.jpeg">
+  <meta property="og:title" content="(Tutorial) Exploring Natural Language Embeddings | Danny James Williams">
+  <meta property="og:description" content="Interested in how to plot BERT embeddings for different text? In the example linked, I obtained BERT embeddings for all the sentences from the book series ‘A Song of Ice and Fire’ (ASOIAF), the original novels which gave birth to the ‘A Game of Thrones’ TV show."><meta property="og:image" content="https://dannyjameswilliams.co.uk/post/tutorialasoiaf/featured.jpeg">
   <meta property="twitter:image" content="https://dannyjameswilliams.co.uk/post/tutorialasoiaf/featured.jpeg"><meta property="og:locale" content="en-gb">
   
     
-      <meta property="article:published_time" content="2012-01-10T00:00:00&#43;00:00">
+      <meta property="article:published_time" content="2022-01-20T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2022-01-10T14:44:52&#43;01:00">
+    <meta property="article:modified_time" content="2022-01-20T14:44:52&#43;01:00">
   
 
   
@@ -272,14 +272,14 @@
     "@type": "WebPage",
     "@id": "https://dannyjameswilliams.co.uk/post/tutorialasoiaf/"
   },
-  "headline": "(BERT Embeddings Tutorial) NLP Embeddings of A Song of Ice and Fire",
+  "headline": "(Tutorial) Exploring Natural Language Embeddings",
   
   "image": [
     "https://dannyjameswilliams.co.uk/post/tutorialasoiaf/featured.jpeg"
   ],
   
-  "datePublished": "2012-01-10T00:00:00Z",
-  "dateModified": "2022-01-10T14:44:52+01:00",
+  "datePublished": "2022-01-20T00:00:00Z",
+  "dateModified": "2022-01-20T14:44:52+01:00",
   
   "author": {
     "@type": "Person",
@@ -294,7 +294,7 @@
       "url": "https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "  "
+  "description": "Interested in how to plot BERT embeddings for different text? In the example linked, I obtained BERT embeddings for all the sentences from the book series ‘A Song of Ice and Fire’ (ASOIAF), the original novels which gave birth to the ‘A Game of Thrones’ TV show."
 }
 </script>
 
@@ -312,7 +312,7 @@
 
 
 
-  <title>(BERT Embeddings Tutorial) NLP Embeddings of A Song of Ice and Fire | Danny James Williams</title>
+  <title>(Tutorial) Exploring Natural Language Embeddings | Danny James Williams</title>
 
 </head>
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
@@ -634,7 +634,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>(BERT Embeddings Tutorial) NLP Embeddings of A Song of Ice and Fire</h1>
+  <h1>(Tutorial) Exploring Natural Language Embeddings</h1>
 
   
   <p class="page-subtitle">Words are wind.</p>
@@ -656,7 +656,7 @@
           Last updated on
       
     
-    Jan 10, 2022
+    Jan 20, 2022
   </span>
   
 
@@ -707,6 +707,113 @@
 <script src="https://dannyjameswilliams.co.uk/post/tutorialasoiaf/index_files/header-attrs/header-attrs.js"></script>
 
 
+<p>Interested in how <a href="http://dannyjameswilliams.co.uk/post/asoiaf/">to plot BERT embeddings for different text</a>? In the example linked, I obtained <a href="https://arxiv.org/pdf/1810.04805.pdf">BERT</a> embeddings for all the sentences from the book series ‘A Song of Ice and Fire’ (ASOIAF), the original novels which gave birth to the ‘A Game of Thrones’ TV show. By inspecting these embeddings, we could make mathematically make clear distinctions between how different characters were written, and how George RR Martin’s writing style changed for each book.</p>
+<p>This is straightforward to do if you know how. Overall, you need to follow the process:</p>
+<ol style="list-style-type: decimal">
+<li>Get the texts or the data that you want to embed and split it into chunks.</li>
+<li>Use each input in a forward pass on a pretrained BERT model, getting the last hidden state for the first token from the BERT model output.</li>
+<li>(Optional) Project each embedding into a lower dimension using dimensionality reduction, and plot.</li>
+</ol>
+<p>These methods will use <a href="https://pytorch.org/">PyTorch</a>. If you don’t have it installed, you will need to install it either via</p>
+<pre><code>pip install torch</code></pre>
+<p>or</p>
+<pre><code>conda install torch</code></pre>
+<p>in your terminal. If you are using a notebook (like this tutorial), you must append an exclamation mark to the beginning of the lines.</p>
+<div id="get-the-text-or-data" class="section level2">
+<h2><strong>1. Get the Text or Data</strong></h2>
+<p>For the ASOIAF novels, I had access to the e-books, which I converted into a text file using <a href="https://ghostscript.com/">Ghostscript</a>. For the tutorial, I am going to assume that you have access to a file which contains the data you want to embed, otherwise I will be providing a different example. Due to copyright reasons, I will not be using any excerpts from a Song of Ice and Fire in this tutorial.</p>
+<p>Instead, I will use an open source data set from the <code>datasets</code> library, called <code>sms_spam</code>. This contains raw SMS messages and a hand-classified label indicating if they are spam or not. You can of course completely customise the text that you use, as all these methods will be generally applicable.</p>
+<div id="download-the-dataset" class="section level3">
+<h3>Download the dataset</h3>
+<p>If you haven’t already, you will need to install the library into python, using e.g.</p>
+<pre><code>pip install datasets</code></pre>
+<p>After that, we load the dataset.</p>
+<pre class="python"><code>from datasets import load_dataset
+df = load_dataset(&quot;sms_spam&quot;, split=&quot;train&quot;)</code></pre>
+<pre><code>## Reusing dataset sms_spam (/home/danny/.cache/huggingface/datasets/sms_spam/plain_text/1.0.0/53f051d3b5f62d99d61792c91acefe4f1577ad3e4c216fb0ad39e30b9f20019c)</code></pre>
+<p>Once the dataset is loaded, we can inspect it:</p>
+<pre class="python"><code>df</code></pre>
+<pre><code>## Dataset({
+##     features: [&#39;sms&#39;, &#39;label&#39;],
+##     num_rows: 5574
+## })</code></pre>
+<p>Currently it is a huggingface <code>Dataset</code> object. It makes it easier to use a <code>pandas</code> dataframe, which we will use only 10% of (for simplicity, it’s a big dataset).</p>
+<pre class="python"><code>import pandas as pd
+df = pd.DataFrame(df).sample(frac=0.1)
+df.columns = [&quot;text&quot;, &quot;label&quot;]</code></pre>
+<p>We can take a first look at the dataset using the <code>.head()</code> command giving us the top 5 entries</p>
+<pre class="python"><code>df.head()</code></pre>
+<pre><code>##                                                    text  label
+## 2995  No idea, I guess we&#39;ll work that out an hour a...      0
+## 3951  I got to video tape pple type in message lor. ...      0
+## 3134                        So no messages. Had food?\n      0
+## 3873  I am joining today formally.Pls keep praying.w...      0
+## 456   Si si. I think ill go make those oreo truffles.\n      0</code></pre>
+<p>Here, a 1 corresponds to the text message being a spam message and 0 corresponds to a regular SMS.</p>
+<p>We can embed each message (in the <code>text</code> column) individually, and see if there is any separability between spam messages and regular ones. Note that similar to the <a href="http://dannyjameswilliams.co.uk/post/asoiaf/">original ASOIAF example</a>, we may also want to do an embedding for each individual sentence. In that case, we may want to split the text by sentence, then form a large dataframe for each sentence. However, for simplicity, I am going to embed each text in its entirety with BERT.</p>
+</div>
+</div>
+<div id="pass-the-text-through-the-bert-model" class="section level2">
+<h2><strong>2. Pass the text through the BERT model</strong></h2>
+<p>To get access to the BERT model, we will use <a href="https://huggingface.co/bert-base-uncased">Huggingface</a>. This is a python library and open source repository containing large amounts of language models and datasets. Like before, we will need to install the <code>transformers</code> library to access the models, via</p>
+<pre><code>pip install transformers</code></pre>
+<p>then we can use python to load the BERT model.</p>
+<div id="using-a-gpu-or-cpu" class="section level3">
+<h3>Using a GPU or CPU</h3>
+<p>If you have access to a GPU with CUDA set up, great! It makes the model run a lot faster, but requires moving variables to the <code>cuda</code> device. Otherwise, a CPU will be fine. Either way, you can run this line to set up the device that we are using.</p>
+<pre class="python"><code>import torch
+device = &quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;</code></pre>
+<p>For me, this is:</p>
+<pre class="python"><code>device</code></pre>
+<pre><code>## &#39;cuda&#39;</code></pre>
+</div>
+<div id="downloading-and-using-the-model-and-tokenizer" class="section level3">
+<h3>Downloading and using the Model and Tokenizer</h3>
+<p>Now we import two classes from Huggingface: the model itself, used for forward passes, and the tokenizer, used to translate raw text input into something that the model understands. Then we use the <code>.from_pretrained()</code> function to download the specific model and tokenizer from the BERT class of models that we want to use. In this case, I am specifying <em>bert-base-cased</em>, the smaller BERT model.</p>
+<pre class="python"><code>from transformers import BertModel, BertTokenizer
+model = BertModel.from_pretrained(&quot;bert-base-cased&quot;).to(device)</code></pre>
+<pre><code>## Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: [&#39;cls.predictions.bias&#39;, &#39;cls.predictions.transform.LayerNorm.bias&#39;, &#39;cls.predictions.transform.LayerNorm.weight&#39;, &#39;cls.seq_relationship.bias&#39;, &#39;cls.seq_relationship.weight&#39;, &#39;cls.predictions.decoder.weight&#39;, &#39;cls.predictions.transform.dense.weight&#39;, &#39;cls.predictions.transform.dense.bias&#39;]
+## - This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+## - This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).</code></pre>
+<pre class="python"><code>tokenizer = BertTokenizer.from_pretrained(&quot;bert-base-cased&quot;)</code></pre>
+<p>Next I make a function where raw text is the input, and the output is a BERT embedding. I will explain each step in this function afterwards.</p>
+<pre class="python"><code>def embed(prompt):
+    encoded_input = tokenizer(prompt, return_tensors=&#39;pt&#39;, padding=True, truncation=True).to(device)
+    X = model(**encoded_input)
+    return X.last_hidden_state[:, 0, :]</code></pre>
+<p>The function inputs a <code>prompt</code>, which is a string. This string gets passed to the model’s <code>tokenizer</code> (which is already defined in the environment), which is padded and truncated. This means that if the string is too large for the model, it cuts off the end, and if it is too small, null strings get padded so that all inputs are the same length. Next, the encoded input goes through as forward pass of the <code>model</code>, which means augmenting the original input many times based on the parameters of BERT.</p>
+<p>During the tokenizing of the string, an extra <code>[CLS]</code> token is added to the beginning of the text, called a <em>classification token</em>. This token depends on the context of the sentence/paragraph because of the model architecture. This token is exactly what we want to use to represent our input, so we take the final hidden state output by the BERT model, and then the first element from that hidden state which corresponds to the <code>[CLS]</code> token, which is what the function is returning.</p>
+</div>
+<div id="embedding-the-text" class="section level3">
+<h3>Embedding the Text</h3>
+<p>As an example of what the embedding actually is, we input a text and output a vector with shape:</p>
+<pre class="python"><code>embed(&quot;Help I&#39;m stuck in a function input&quot;).shape</code></pre>
+<pre><code>## torch.Size([1, 768])</code></pre>
+<p>And so is a 768-dimensional representation of our input. Now we just need to repeat this for our entire data set to build our embeddings. In this example, we have a representation of <code>Help I'm stuck in a function input</code>, but we will want representations of text in our data. We preemptively make a new <code>DataFrame</code> for our embeddings, and embed each input text as a row, by looping over our data:</p>
+<pre class="python"><code>embedding_df = pd.DataFrame(index=df.index, columns = range(768))
+for i in range(len(df)):
+    embedding_df.loc[df.index[i], :] = embed(df.text.values[i]).cpu().detach()</code></pre>
+<p>Note that in my case, I am saving <code>embedding_df</code> to the CPU, as I won’t have enough memory to store this on my GPU. The extra <code>.cpu().detach()</code> line is not necessary if you have been using a CPU the whole time.</p>
+</div>
+</div>
+<div id="project-the-embeddings-into-a-lower-dimension-to-plot" class="section level2">
+<h2><strong>3. Project the Embeddings into a Lower Dimension to Plot</strong></h2>
+<p>Since the embeddings are 768-dimensional, we cannot inspect them manually to see how they look! Instead, we are going to use <a href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a> to project the 768 dimensions to 2 (or 3) and plot them as a scatter plot. For completeness, I will use the same hyperparameters as the original blog post, with <code>n_neighbors=30</code> and <code>min_dist=0</code>, to try to preserve out-of-class clustering. See the <a href="https://umap-learn.readthedocs.io/en/latest/parameters.html">basic UMAP parameters</a> section on the UMAP documentation for more information.</p>
+<pre class="python"><code>import umap
+reducer = umap.UMAP(n_components = 2, n_neighbors = 30, min_dist=0.0, )
+projected_embeddings = reducer.fit_transform(embedding_df.values)</code></pre>
+<p>We have used the parameter <code>n_components=2</code> as we want UMAP in 2D. If you wanted to do a 3D scatter plot, you could change this to <code>n_components=3</code>, but you would also need to adjust the scatter plot below to be 3D.</p>
+<p>Now we can plot the projected embeddings.</p>
+<pre class="python"><code>import matplotlib.pyplot as plt
+labels = df.label
+for l in labels.unique():
+    plt.scatter(projected_embeddings[labels == l, 0], projected_embeddings[labels == l, 1], label = l)
+plt.legend();</code></pre>
+<p><img src="plot.png" /></p>
+<p>Recall: a label of 1 corresponds to spam and 0 corresponds to no spam. We can clearly see there is a large distinction between spam messages and regular text messages, as expected!</p>
+<p>This indicates that the language that a spam message uses is identifiably different to the language from a regular message. Whilst this might seem trivial to a human, it means that we can use these embeddings to classify a spam message. Since we can easily draw a line to distinguish the two classes, a classification approach (such as logistic regression) can be straightforwardly applied to accurately detect if a message is a spam one.</p>
+<p>These methods are obviously applicable to more complex scenarios, such as book chapters in the <a href="http://dannyjameswilliams.co.uk/post/asoiaf/">original post</a>.</p>
+</div>
 
     </div>
 
@@ -738,7 +845,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/&amp;text=%28BERT%20Embeddings%20Tutorial%29%20NLP%20Embeddings%20of%20A%20Song%20of%20Ice%20and%20Fire" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/&amp;text=%28Tutorial%29%20Exploring%20Natural%20Language%20Embeddings" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -751,7 +858,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/&amp;t=%28BERT%20Embeddings%20Tutorial%29%20NLP%20Embeddings%20of%20A%20Song%20of%20Ice%20and%20Fire" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/&amp;t=%28Tutorial%29%20Exploring%20Natural%20Language%20Embeddings" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -764,7 +871,7 @@
       
       
       <li>
-        <a href="mailto:?subject=%28BERT%20Embeddings%20Tutorial%29%20NLP%20Embeddings%20of%20A%20Song%20of%20Ice%20and%20Fire&amp;body=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=%28Tutorial%29%20Exploring%20Natural%20Language%20Embeddings&amp;body=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -777,7 +884,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/&amp;title=%28BERT%20Embeddings%20Tutorial%29%20NLP%20Embeddings%20of%20A%20Song%20of%20Ice%20and%20Fire" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/&amp;title=%28Tutorial%29%20Exploring%20Natural%20Language%20Embeddings" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -790,7 +897,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=%28BERT%20Embeddings%20Tutorial%29%20NLP%20Embeddings%20of%20A%20Song%20of%20Ice%20and%20Fire%20https://dannyjameswilliams.co.uk/post/tutorialasoiaf/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=%28Tutorial%29%20Exploring%20Natural%20Language%20Embeddings%20https://dannyjameswilliams.co.uk/post/tutorialasoiaf/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -803,7 +910,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/&amp;title=%28BERT%20Embeddings%20Tutorial%29%20NLP%20Embeddings%20of%20A%20Song%20of%20Ice%20and%20Fire" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://dannyjameswilliams.co.uk/post/tutorialasoiaf/&amp;title=%28Tutorial%29%20Exploring%20Natural%20Language%20Embeddings" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

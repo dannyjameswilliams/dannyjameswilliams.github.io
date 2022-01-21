@@ -5,7 +5,7 @@
     <link>https://dannyjameswilliams.co.uk/tag/tutorial/</link>
       <atom:link href="https://dannyjameswilliams.co.uk/tag/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <description>Tutorial</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Tue, 10 Jan 2012 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Thu, 20 Jan 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Tutorial</title>
@@ -13,14 +13,121 @@
     </image>
     
     <item>
-      <title>(BERT Embeddings Tutorial) NLP Embeddings of A Song of Ice and Fire</title>
+      <title>(Tutorial) Exploring Natural Language Embeddings</title>
       <link>https://dannyjameswilliams.co.uk/post/tutorialasoiaf/</link>
-      <pubDate>Tue, 10 Jan 2012 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 20 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://dannyjameswilliams.co.uk/post/tutorialasoiaf/</guid>
       <description>
 &lt;script src=&#34;https://dannyjameswilliams.co.uk/post/tutorialasoiaf/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
+&lt;p&gt;Interested in how &lt;a href=&#34;http://dannyjameswilliams.co.uk/post/asoiaf/&#34;&gt;to plot BERT embeddings for different text&lt;/a&gt;? In the example linked, I obtained &lt;a href=&#34;https://arxiv.org/pdf/1810.04805.pdf&#34;&gt;BERT&lt;/a&gt; embeddings for all the sentences from the book series ‘A Song of Ice and Fire’ (ASOIAF), the original novels which gave birth to the ‘A Game of Thrones’ TV show. By inspecting these embeddings, we could make mathematically make clear distinctions between how different characters were written, and how George RR Martin’s writing style changed for each book.&lt;/p&gt;
+&lt;p&gt;This is straightforward to do if you know how. Overall, you need to follow the process:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Get the texts or the data that you want to embed and split it into chunks.&lt;/li&gt;
+&lt;li&gt;Use each input in a forward pass on a pretrained BERT model, getting the last hidden state for the first token from the BERT model output.&lt;/li&gt;
+&lt;li&gt;(Optional) Project each embedding into a lower dimension using dimensionality reduction, and plot.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;These methods will use &lt;a href=&#34;https://pytorch.org/&#34;&gt;PyTorch&lt;/a&gt;. If you don’t have it installed, you will need to install it either via&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install torch&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conda install torch&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;in your terminal. If you are using a notebook (like this tutorial), you must append an exclamation mark to the beginning of the lines.&lt;/p&gt;
+&lt;div id=&#34;get-the-text-or-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;1. Get the Text or Data&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;For the ASOIAF novels, I had access to the e-books, which I converted into a text file using &lt;a href=&#34;https://ghostscript.com/&#34;&gt;Ghostscript&lt;/a&gt;. For the tutorial, I am going to assume that you have access to a file which contains the data you want to embed, otherwise I will be providing a different example. Due to copyright reasons, I will not be using any excerpts from a Song of Ice and Fire in this tutorial.&lt;/p&gt;
+&lt;p&gt;Instead, I will use an open source data set from the &lt;code&gt;datasets&lt;/code&gt; library, called &lt;code&gt;sms_spam&lt;/code&gt;. This contains raw SMS messages and a hand-classified label indicating if they are spam or not. You can of course completely customise the text that you use, as all these methods will be generally applicable.&lt;/p&gt;
+&lt;div id=&#34;download-the-dataset&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Download the dataset&lt;/h3&gt;
+&lt;p&gt;If you haven’t already, you will need to install the library into python, using e.g.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install datasets&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After that, we load the dataset.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;from datasets import load_dataset
+df = load_dataset(&amp;quot;sms_spam&amp;quot;, split=&amp;quot;train&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Reusing dataset sms_spam (/home/danny/.cache/huggingface/datasets/sms_spam/plain_text/1.0.0/53f051d3b5f62d99d61792c91acefe4f1577ad3e4c216fb0ad39e30b9f20019c)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once the dataset is loaded, we can inspect it:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;df&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Dataset({
+##     features: [&amp;#39;sms&amp;#39;, &amp;#39;label&amp;#39;],
+##     num_rows: 5574
+## })&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Currently it is a huggingface &lt;code&gt;Dataset&lt;/code&gt; object. It makes it easier to use a &lt;code&gt;pandas&lt;/code&gt; dataframe, which we will use only 10% of (for simplicity, it’s a big dataset).&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import pandas as pd
+df = pd.DataFrame(df).sample(frac=0.1)
+df.columns = [&amp;quot;text&amp;quot;, &amp;quot;label&amp;quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can take a first look at the dataset using the &lt;code&gt;.head()&lt;/code&gt; command giving us the top 5 entries&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;df.head()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                                                    text  label
+## 2995  No idea, I guess we&amp;#39;ll work that out an hour a...      0
+## 3951  I got to video tape pple type in message lor. ...      0
+## 3134                        So no messages. Had food?\n      0
+## 3873  I am joining today formally.Pls keep praying.w...      0
+## 456   Si si. I think ill go make those oreo truffles.\n      0&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, a 1 corresponds to the text message being a spam message and 0 corresponds to a regular SMS.&lt;/p&gt;
+&lt;p&gt;We can embed each message (in the &lt;code&gt;text&lt;/code&gt; column) individually, and see if there is any separability between spam messages and regular ones. Note that similar to the &lt;a href=&#34;http://dannyjameswilliams.co.uk/post/asoiaf/&#34;&gt;original ASOIAF example&lt;/a&gt;, we may also want to do an embedding for each individual sentence. In that case, we may want to split the text by sentence, then form a large dataframe for each sentence. However, for simplicity, I am going to embed each text in its entirety with BERT.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;pass-the-text-through-the-bert-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;2. Pass the text through the BERT model&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;To get access to the BERT model, we will use &lt;a href=&#34;https://huggingface.co/bert-base-uncased&#34;&gt;Huggingface&lt;/a&gt;. This is a python library and open source repository containing large amounts of language models and datasets. Like before, we will need to install the &lt;code&gt;transformers&lt;/code&gt; library to access the models, via&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install transformers&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;then we can use python to load the BERT model.&lt;/p&gt;
+&lt;div id=&#34;using-a-gpu-or-cpu&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Using a GPU or CPU&lt;/h3&gt;
+&lt;p&gt;If you have access to a GPU with CUDA set up, great! It makes the model run a lot faster, but requires moving variables to the &lt;code&gt;cuda&lt;/code&gt; device. Otherwise, a CPU will be fine. Either way, you can run this line to set up the device that we are using.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import torch
+device = &amp;quot;cuda&amp;quot; if torch.cuda.is_available() else &amp;quot;cpu&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For me, this is:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;device&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;#39;cuda&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;downloading-and-using-the-model-and-tokenizer&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Downloading and using the Model and Tokenizer&lt;/h3&gt;
+&lt;p&gt;Now we import two classes from Huggingface: the model itself, used for forward passes, and the tokenizer, used to translate raw text input into something that the model understands. Then we use the &lt;code&gt;.from_pretrained()&lt;/code&gt; function to download the specific model and tokenizer from the BERT class of models that we want to use. In this case, I am specifying &lt;em&gt;bert-base-cased&lt;/em&gt;, the smaller BERT model.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;from transformers import BertModel, BertTokenizer
+model = BertModel.from_pretrained(&amp;quot;bert-base-cased&amp;quot;).to(device)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Some weights of the model checkpoint at bert-base-cased were not used when initializing BertModel: [&amp;#39;cls.predictions.bias&amp;#39;, &amp;#39;cls.predictions.transform.LayerNorm.bias&amp;#39;, &amp;#39;cls.predictions.transform.LayerNorm.weight&amp;#39;, &amp;#39;cls.seq_relationship.bias&amp;#39;, &amp;#39;cls.seq_relationship.weight&amp;#39;, &amp;#39;cls.predictions.decoder.weight&amp;#39;, &amp;#39;cls.predictions.transform.dense.weight&amp;#39;, &amp;#39;cls.predictions.transform.dense.bias&amp;#39;]
+## - This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+## - This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;tokenizer = BertTokenizer.from_pretrained(&amp;quot;bert-base-cased&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next I make a function where raw text is the input, and the output is a BERT embedding. I will explain each step in this function afterwards.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;def embed(prompt):
+    encoded_input = tokenizer(prompt, return_tensors=&amp;#39;pt&amp;#39;, padding=True, truncation=True).to(device)
+    X = model(**encoded_input)
+    return X.last_hidden_state[:, 0, :]&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The function inputs a &lt;code&gt;prompt&lt;/code&gt;, which is a string. This string gets passed to the model’s &lt;code&gt;tokenizer&lt;/code&gt; (which is already defined in the environment), which is padded and truncated. This means that if the string is too large for the model, it cuts off the end, and if it is too small, null strings get padded so that all inputs are the same length. Next, the encoded input goes through as forward pass of the &lt;code&gt;model&lt;/code&gt;, which means augmenting the original input many times based on the parameters of BERT.&lt;/p&gt;
+&lt;p&gt;During the tokenizing of the string, an extra &lt;code&gt;[CLS]&lt;/code&gt; token is added to the beginning of the text, called a &lt;em&gt;classification token&lt;/em&gt;. This token depends on the context of the sentence/paragraph because of the model architecture. This token is exactly what we want to use to represent our input, so we take the final hidden state output by the BERT model, and then the first element from that hidden state which corresponds to the &lt;code&gt;[CLS]&lt;/code&gt; token, which is what the function is returning.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;embedding-the-text&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Embedding the Text&lt;/h3&gt;
+&lt;p&gt;As an example of what the embedding actually is, we input a text and output a vector with shape:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;embed(&amp;quot;Help I&amp;#39;m stuck in a function input&amp;quot;).shape&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## torch.Size([1, 768])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And so is a 768-dimensional representation of our input. Now we just need to repeat this for our entire data set to build our embeddings. In this example, we have a representation of &lt;code&gt;Help I&#39;m stuck in a function input&lt;/code&gt;, but we will want representations of text in our data. We preemptively make a new &lt;code&gt;DataFrame&lt;/code&gt; for our embeddings, and embed each input text as a row, by looping over our data:&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;embedding_df = pd.DataFrame(index=df.index, columns = range(768))
+for i in range(len(df)):
+    embedding_df.loc[df.index[i], :] = embed(df.text.values[i]).cpu().detach()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that in my case, I am saving &lt;code&gt;embedding_df&lt;/code&gt; to the CPU, as I won’t have enough memory to store this on my GPU. The extra &lt;code&gt;.cpu().detach()&lt;/code&gt; line is not necessary if you have been using a CPU the whole time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;project-the-embeddings-into-a-lower-dimension-to-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;&lt;strong&gt;3. Project the Embeddings into a Lower Dimension to Plot&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Since the embeddings are 768-dimensional, we cannot inspect them manually to see how they look! Instead, we are going to use &lt;a href=&#34;https://umap-learn.readthedocs.io/en/latest/&#34;&gt;UMAP&lt;/a&gt; to project the 768 dimensions to 2 (or 3) and plot them as a scatter plot. For completeness, I will use the same hyperparameters as the original blog post, with &lt;code&gt;n_neighbors=30&lt;/code&gt; and &lt;code&gt;min_dist=0&lt;/code&gt;, to try to preserve out-of-class clustering. See the &lt;a href=&#34;https://umap-learn.readthedocs.io/en/latest/parameters.html&#34;&gt;basic UMAP parameters&lt;/a&gt; section on the UMAP documentation for more information.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import umap
+reducer = umap.UMAP(n_components = 2, n_neighbors = 30, min_dist=0.0, )
+projected_embeddings = reducer.fit_transform(embedding_df.values)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have used the parameter &lt;code&gt;n_components=2&lt;/code&gt; as we want UMAP in 2D. If you wanted to do a 3D scatter plot, you could change this to &lt;code&gt;n_components=3&lt;/code&gt;, but you would also need to adjust the scatter plot below to be 3D.&lt;/p&gt;
+&lt;p&gt;Now we can plot the projected embeddings.&lt;/p&gt;
+&lt;pre class=&#34;python&#34;&gt;&lt;code&gt;import matplotlib.pyplot as plt
+labels = df.label
+for l in labels.unique():
+    plt.scatter(projected_embeddings[labels == l, 0], projected_embeddings[labels == l, 1], label = l)
+plt.legend();&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;plot.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Recall: a label of 1 corresponds to spam and 0 corresponds to no spam. We can clearly see there is a large distinction between spam messages and regular text messages, as expected!&lt;/p&gt;
+&lt;p&gt;This indicates that the language that a spam message uses is identifiably different to the language from a regular message. Whilst this might seem trivial to a human, it means that we can use these embeddings to classify a spam message. Since we can easily draw a line to distinguish the two classes, a classification approach (such as logistic regression) can be straightforwardly applied to accurately detect if a message is a spam one.&lt;/p&gt;
+&lt;p&gt;These methods are obviously applicable to more complex scenarios, such as book chapters in the &lt;a href=&#34;http://dannyjameswilliams.co.uk/post/asoiaf/&#34;&gt;original post&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     

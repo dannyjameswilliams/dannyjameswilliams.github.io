@@ -5,7 +5,7 @@
     <link>https://dannyjameswilliams.co.uk/tag/bert/</link>
       <atom:link href="https://dannyjameswilliams.co.uk/tag/bert/index.xml" rel="self" type="application/rss+xml" />
     <description>BERT</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Tue, 10 Jan 2012 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Fri, 21 Jan 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>BERT</title>
@@ -15,7 +15,7 @@
     <item>
       <title>Exploring Natural Language Embeddings of A Game of Thrones</title>
       <link>https://dannyjameswilliams.co.uk/post/asoiaf/</link>
-      <pubDate>Tue, 10 Jan 2012 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate>
       <guid>https://dannyjameswilliams.co.uk/post/asoiaf/</guid>
       <description>
 &lt;script src=&#34;https://dannyjameswilliams.co.uk/post/asoiaf/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
@@ -24,11 +24,11 @@
 &lt;p&gt;For those of you familiar with either HBO’s Game of Thrones, or George RR Martin’s A Song of Ice and Fire (ASOIAF), you will probably be aware of the vast differences between each character and the depth of each storyline. For those of you who aren’t familiar; each book chapter is written from the perspective of a different character, and George RR Martin writes each character in a distinct and unique way. A chapter written from the perspective of Eddard Stark, an aged and grizzled war veteran, will be portrayed vastly different to a chapter from the perspective of his son, Bran Stark, a 9 year old innocent ‘sweet summer child’.&lt;/p&gt;
 &lt;p&gt;The stories surrounding all of the characters span continents, explore diverse themes and face different problems, and so we would expect there to be intrinsic differences between the language used for all of these different perspectives. &lt;em&gt;Can we use Natural Language Processing (NLP) to show how George RR Martin writes each of these characters?&lt;/em&gt; More specifically, is there actually a &lt;em&gt;mathematical difference&lt;/em&gt; between the chapters, grouped by character, based on the language alone?&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;A note on spoilers&lt;/strong&gt;: I am not including any excerpts from either the books or the show, and do not discuss the story. However, you will be able to see how many chapters are included for each character, as well as if any characters &lt;em&gt;stop&lt;/em&gt; having point-of-view chapters after a specific book.&lt;/p&gt;
-&lt;div id=&#34;what-are-bert-embeddings&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What are BERT Embeddings?&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://arxiv.org/pdf/1810.04805.pdf&#34;&gt;Bidirectional Encoder Representations from Transformers&lt;/a&gt;, or BERT for short, is a NLP model built by Google, an extremely powerful tool which can output &lt;em&gt;sentence embeddings&lt;/em&gt;. Put simply, a sentence embedding is a sequence of words, e.g. a sentence, which has been converted to a very high-dimensional mathematical vector. The vector itself won’t have any meaning to you or I on its own, but it has context relative to other sentences. For example, if two different sentence embeddings are very far away from each other, we can probably infer that the two original sentences are quite different.&lt;/p&gt;
-&lt;p&gt;BERT can achieve this as it has been trained on a large corpus of language data: &lt;a href=&#34;https://arxiv.org/pdf/1506.06724.pdf&#34;&gt;a dataset of books&lt;/a&gt; and the full English Wikipedia. One way in which BERT trains is by &lt;em&gt;masked language modelling&lt;/em&gt;, which masks words at random, then tries to predict that masked word using the ‘transformer’ architecture, which is an extremely clever way of incorporating left-to-right and right-to-left directionality in a sentence so that the full context of the word is used. Essentially, BERT is an AI model that can give us a lot of information about language based on historical data from books and the internet.&lt;/p&gt;
-&lt;p&gt;Fortunately for us, BERT is made completely open-source and free to use via &lt;a href=&#34;https://huggingface.co/bert-base-uncased&#34;&gt;Huggingface&lt;/a&gt;, a collection of NLP models, datasets, and more.&lt;/p&gt;
+&lt;div id=&#34;how-are-we-going-to-use-nlp-for-game-of-thrones&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;How are we going to use NLP for Game of Thrones?&lt;/h2&gt;
+&lt;p&gt;To show how characters are different amongst the ASOIAF books, I will use &lt;a href=&#34;https://arxiv.org/pdf/1810.04805.pdf&#34;&gt;BERT&lt;/a&gt;, which is a NLP model built by Google, and an extremely powerful tool which can output &lt;em&gt;sentence embeddings&lt;/em&gt;. Put simply, a sentence embedding is a sequence of words, e.g. a sentence, which has been converted to a very high-dimensional mathematical vector. The vector itself won’t have any meaning to you or I on its own, but it has context relative to other sentences. For example, if two different sentence embeddings are very far away from each other, we can probably infer that the two original sentences are quite different.&lt;/p&gt;
+&lt;p&gt;BERT can achieve this as it has been trained on a large corpus of language data: &lt;a href=&#34;https://arxiv.org/pdf/1506.06724.pdf&#34;&gt;a dataset of books&lt;/a&gt; and the full English Wikipedia. One way in which BERT trains is by &lt;em&gt;masked language modelling&lt;/em&gt;, which means it tries to predict random words in the dataset using the ‘transformer’ architecture, which is an extremely clever way of incorporating left-to-right and right-to-left directionality in a sentence so that the full context of the word is integrated. By learning where words come in the context of a sentence, BERT learns a lot about the English language. Whilst we aren’t trying to predict any words for our task, we will use the information that BERT learned whilst training as our emebeddings.&lt;/p&gt;
+&lt;p&gt;Fortunately for us, BERT is made completely open-source and free to use via &lt;a href=&#34;https://huggingface.co/bert-base-uncased&#34;&gt;Huggingface&lt;/a&gt;, a collection of NLP models, datasets, and more. We can extract the embeddings from BERT and visualise them for each chapter to see if there is a strong degree of separation, which would indicate key differences in the language for different characters.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;asoiaf-embeddings&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;ASOIAF Embeddings&lt;/h1&gt;
