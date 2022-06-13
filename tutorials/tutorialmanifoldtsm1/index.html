@@ -27,11 +27,11 @@
   
     
   
-  <meta name="description" content="The arrow assigment operator &lt;- is useless. Before I’m crucified by the R community, hear me out and read this post.
-Every time I read code written by an academic, lecturer or someone who uses R frequently, I come across the arrow symbol &lt;- used for assignment of variables.">
+  <meta name="description" content="von-Mises Fisher distribution We simulate \(n=1000\) samples from a von-Mises distribution with mean direction \((\pi/2, \pi)\) on the sphere, using the rvmf function from the Rfast package.
+# Simulated VMF n = 1000 centre = c(pi/2, pi) centre_euclid = sphere_to_euclid(centre) set.">
 
   
-  <link rel="alternate" hreflang="en-gb" href="https://dannyjameswilliams.co.uk/post/hottakes/">
+  <link rel="alternate" hreflang="en-gb" href="https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/">
 
   
 
@@ -221,7 +221,7 @@ Every time I read code written by an academic, lecturer or someone who uses R fr
   <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://dannyjameswilliams.co.uk/post/hottakes/">
+  <link rel="canonical" href="https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/">
 
   
   
@@ -231,76 +231,30 @@ Every time I read code written by an academic, lecturer or someone who uses R fr
   
   
     
+    
   
   
-  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:card" content="summary">
   
   <meta property="twitter:site" content="@DanielW966">
   <meta property="twitter:creator" content="@DanielW966">
   
   <meta property="og:site_name" content="Danny James Williams">
-  <meta property="og:url" content="https://dannyjameswilliams.co.uk/post/hottakes/">
-  <meta property="og:title" content="Hot Takes for R | Danny James Williams">
-  <meta property="og:description" content="The arrow assigment operator &lt;- is useless. Before I’m crucified by the R community, hear me out and read this post.
-Every time I read code written by an academic, lecturer or someone who uses R frequently, I come across the arrow symbol &lt;- used for assignment of variables."><meta property="og:image" content="https://dannyjameswilliams.co.uk/post/hottakes/featured.jpg">
-  <meta property="twitter:image" content="https://dannyjameswilliams.co.uk/post/hottakes/featured.jpg"><meta property="og:locale" content="en-gb">
+  <meta property="og:url" content="https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/">
+  <meta property="og:title" content="(Tutorial) Basic Usage of the Manifold TSM R Package | Danny James Williams">
+  <meta property="og:description" content="von-Mises Fisher distribution We simulate \(n=1000\) samples from a von-Mises distribution with mean direction \((\pi/2, \pi)\) on the sphere, using the rvmf function from the Rfast package.
+# Simulated VMF n = 1000 centre = c(pi/2, pi) centre_euclid = sphere_to_euclid(centre) set."><meta property="og:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-gb">
   
     
-      <meta property="article:published_time" content="2020-06-28T15:39:00&#43;00:00">
+      <meta property="article:published_time" content="2022-06-09T00:00:00&#43;00:00">
     
-    <meta property="article:modified_time" content="2020-06-28T15:39:00&#43;00:00">
+    <meta property="article:modified_time" content="2022-01-20T13:41:11&#43;01:00">
   
 
   
 
 
-    
-
-
-
-
-
-
-  
-
-
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://dannyjameswilliams.co.uk/post/hottakes/"
-  },
-  "headline": "Hot Takes for R",
-  
-  "image": [
-    "https://dannyjameswilliams.co.uk/post/hottakes/featured.jpg"
-  ],
-  
-  "datePublished": "2020-06-28T15:39:00Z",
-  "dateModified": "2020-06-28T15:39:00Z",
-  
-  "author": {
-    "@type": "Person",
-    "name": "Daniel Williams"
-  },
-  
-  "publisher": {
-    "@type": "Organization",
-    "name": "University of Bristol",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png"
-    }
-  },
-  "description": "The arrow assigment operator \u0026lt;- is useless. Before I’m crucified by the R community, hear me out and read this post.\nEvery time I read code written by an academic, lecturer or someone who uses R frequently, I come across the arrow symbol \u0026lt;- used for assignment of variables."
-}
-</script>
-
-  
 
   
 
@@ -314,7 +268,7 @@ Every time I read code written by an academic, lecturer or someone who uses R fr
 
 
 
-  <title>Hot Takes for R | Danny James Williams</title>
+  <title>(Tutorial) Basic Usage of the Manifold TSM R Package | Danny James Williams</title>
 
 </head>
 <body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
@@ -436,7 +390,7 @@ Every time I read code written by an academic, lecturer or someone who uses R fr
         
 
         <li class="nav-item">
-          <a class="nav-link  active" href="/post/"><span>Blog</span></a>
+          <a class="nav-link " href="/post/"><span>Blog</span></a>
         </li>
 
         
@@ -480,7 +434,7 @@ Every time I read code written by an academic, lecturer or someone who uses R fr
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/tutorials/"><span>Tutorials</span></a>
+          <a class="nav-link  active" href="/tutorials/"><span>Tutorials</span></a>
         </li>
 
         
@@ -643,42 +597,22 @@ Every time I read code written by an academic, lecturer or someone who uses R fr
 
 
 
-
-
-
-
-
-
-
+  
 
   
+  
+  
+<div class="article-container pt-3">
+  <h1>(Tutorial) Basic Usage of the Manifold TSM R Package</h1>
+
+  
+
   
     
-  
-
-
-<div class="article-container pt-3">
-  <h1>Hot Takes for R</h1>
-
-  
-  <p class="page-subtitle">Why you should stop pointing and accept equality.</p>
-  
-
-  
 
 
 <div class="article-metadata">
 
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span ><a href="/author/daniel-williams/">Daniel Williams</a></span>
-  </div>
   
   
 
@@ -687,8 +621,10 @@ Every time I read code written by an academic, lecturer or someone who uses R fr
     
     
       
+          Last updated on
+      
     
-    Jun 28, 2020
+    Jan 20, 2022
   </span>
   
 
@@ -705,29 +641,22 @@ Every time I read code written by an academic, lecturer or someone who uses R fr
 
 </div>
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 480px;">
-  <div style="position: relative">
-    <img src="/post/hottakes/featured_hu3d03a01dcc18bc5be0e67db3d8d209a6_920394_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
     
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 </div>
 
 
@@ -736,65 +665,115 @@ Every time I read code written by an academic, lecturer or someone who uses R fr
 
     <div class="article-style">
       
-<script src="https://dannyjameswilliams.co.uk/post/hottakes/index_files/header-attrs/header-attrs.js"></script>
+<script src="https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/index_files/header-attrs/header-attrs.js"></script>
 
 
-<p>The arrow assigment operator <code>&lt;-</code> is useless. Before I’m crucified by the R community, hear me out and read this post.</p>
-<p>Every time I read code written by an academic, lecturer or someone who uses R frequently, I come across the arrow symbol <code>&lt;-</code> used for assignment of variables. Never in my career have I seen someone systematically use the equals symbol <code>=</code> across their code.</p>
-<div id="benefits-of-the-arrow" class="section level3">
-<h3>Benefits of the arrow</h3>
-<p>A frequent association with <code>&lt;-</code> is in how assignment works in R. The variable on the right hand side of the operator is assigned to the one on the left. Hence the arrow makes a lot of sense. We can also do it the other way around, for instance:</p>
-<pre class="r"><code>3 -&gt; x
-y &lt;- 5
-cat(&quot;x is&quot;, x, &quot;and y is&quot;, y, &quot;\n&quot;)</code></pre>
-<pre><code>## x is 3 and y is 5</code></pre>
-<p>So the arrow has a benefit when teaching programming, so if you’re a beginner it is obvious which way around variables are assigned. If you’re not a beginner, it might reinforce this knowledge so that you don’t make mistakes.</p>
-<p>You can also use the arrow inside of functions to assign variables, for example:</p>
-<pre class="r"><code>system.time(x &lt;- solve(matrix(rnorm(100^2), 100, 100)))</code></pre>
-<pre><code>##    user  system elapsed 
-##   0.002   0.000   0.004</code></pre>
-<p>Now we can view <code>x</code> separately, even though it was assigned inside the <code>system.time</code> function.</p>
-<pre class="r"><code>x[1:5, 1:5]</code></pre>
-<pre><code>##             [,1]        [,2]        [,3]       [,4]        [,5]
-## [1,]  0.50730275 -0.35703351 -0.39847262  0.7788050  0.14551130
-## [2,] -0.18092188  0.23194703  0.11982541 -0.4136690 -0.04548487
-## [3,] -0.09788994  0.08614508  0.10585201 -0.1223789 -0.01548020
-## [4,]  0.06537141 -0.16506482  0.09142846  0.1438222  0.02654319
-## [5,]  0.03935626 -0.05008914 -0.09419370  0.2286113 -0.03929192</code></pre>
-<p>This is perhaps its most useful application, which you cannot do with <code>=</code>. The <code>=</code> sign inside of a function argument is strictly used for matching the function argument with the variable you’re passing through.</p>
-<p>The arrow also has historical significance, since R’s predecessor, S, used <code>&lt;-</code> exclusively. This <a href="https://www.r-bloggers.com/why-do-we-use-arrow-as-an-assignment-operator/">R-bloggers post</a> explains that S was based on an older language called APL, which was designed on a keyboard that had an arrow key exactly like <code>&lt;-</code>. But our keyboards now only have a key for <code>=</code>, right?</p>
+<div id="von-mises-fisher-distribution" class="section level2">
+<h2>von-Mises Fisher distribution</h2>
+<p>We simulate <span class="math inline">\(n=1000\)</span> samples from a von-Mises distribution with mean direction <span class="math inline">\((\pi/2, \pi)\)</span> on the sphere, using the <code>rvmf</code> function from the <code>Rfast</code> package.</p>
+<pre class="r"><code># Simulated VMF
+n = 1000              
+centre = c(pi/2, pi) 
+centre_euclid = sphere_to_euclid(centre)   
+set.seed(4)
+z = rvmf(n, centre_euclid, k = 6)
+x = euclid_to_sphere(z)</code></pre>
+<p>Now this can be estimated directly, using various methods such as MLE, but if we could only see a portion of this data, then truncated score matching can be used. Say there is a boundary set up such that all measurements below a constant line of <span class="math inline">\(\phi = \pi/2 + 0.2\)</span> were missing. This can be constructed as follows</p>
+<pre class="r"><code>dV = cbind(rep(pi/2+0.2, 200), seq(0, 2*pi, len=200))
+outside_boundary = x[,1] &gt; (pi/2+0.2)
+truncated_x = x[outside_boundary,]</code></pre>
+<p>The mean direction can be estimated by calling <code>sphere_sm</code> with a specified boundary function, one of <code>"Haversine"</code> or <code>"Euclidean"</code>.</p>
+<pre class="r"><code>est_hav = sphere_sm(truncated_x, dV, g = &quot;Haversine&quot;, family = vmf(k=6))
+est_euc = sphere_sm(truncated_x, dV, g = &quot;Euclidean&quot;, family = vmf(k=6))</code></pre>
+<p>Note that the <code>family</code> argument is <code>vmf(k=6)</code>. This is a wrapper function that specifies which distribution to use. The argument <code>k=6</code> corresponds to the concentration parameter being fixed a t 6, if this weren’t supplied and <code>vmf()</code> was used alone, the concentration parameter will be esitmated. By default the <code>sphere_sm</code> function uses the von Mises Fisher distribution without specifying a value for <code>k</code>. Now that the points are estimated, we can plot them using <code>ggplot</code>.</p>
+<pre class="r"><code>plot_data = data.frame(colat = c(x[!as.logical(outside_boundary),1],
+                                 x[as.logical(outside_boundary),1]),
+                       lon = c(x[!as.logical(outside_boundary),2],
+                               x[as.logical(outside_boundary),2]),
+                       Data = c(rep(&quot;Not-Observed&quot;, sum(!as.logical(outside_boundary))),
+                                rep(&quot;Observed&quot;, sum(outside_boundary))))
+centre_data = data.frame(
+  colat = c(est_hav$mu[1], est_euc$mu[1], centre[1]),
+  lon = c(est_hav$mu[2], est_euc$mu[2], centre[2]),
+  Centres = c(&quot;Haversine&quot;, &quot;Projected Euclidean&quot;, &quot;Real Centre&quot;)
+)
+ ggplot(plot_data) + geom_point(aes(x=lon, y=colat, col=Data), alpha=.7, size=2) +
+  scale_color_brewer(type=&quot;qual&quot;, palette=3) + theme_minimal() +
+  xlab(expression(theta)) + ylab(expression(phi)) +
+   geom_point(data=centre_data, aes(lon, colat, fill=Centres), size=4, shape = &quot;diamond filled&quot;)</code></pre>
+<p><img src="https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/index_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
+The point has been estimated reasonably well. Now lets try the same approach <em>without</em> fixing the concentration parameter.</p>
+<pre class="r"><code>est_hav = sphere_sm(truncated_x, dV, g = &quot;Haversine&quot;, family = vmf())
+est_euc = sphere_sm(truncated_x, dV, g = &quot;Euclidean&quot;, family = vmf())</code></pre>
+<p><img src="https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/index_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
+Again, the centre has been found with good accuracy. We can inspect the output of <code>sphere_sm</code> to see what value was estimated for <code>k</code>.</p>
+<pre class="r"><code>est_hav
+#&gt; $mu
+#&gt;    colat      lon 
+#&gt; 1.539329 3.112377 
+#&gt; 
+#&gt; $k
+#&gt;        k 
+#&gt; 5.415736 
+#&gt; 
+#&gt; $family
+#&gt; [1] &quot;von Mises Fisher&quot;
+#&gt; 
+#&gt; $val
+#&gt; [1] -2.044959
+est_euc
+#&gt; $mu
+#&gt;    colat      lon 
+#&gt; 1.584297 3.111693 
+#&gt; 
+#&gt; $k
+#&gt;        k 
+#&gt; 5.481328 
+#&gt; 
+#&gt; $family
+#&gt; [1] &quot;von Mises Fisher&quot;
+#&gt; 
+#&gt; $val
+#&gt; [1] -1.713839</code></pre>
+<div id="a-different-boundary" class="section level3">
+<h3>A different Boundary</h3>
+<p>We can experiment with a different boundary, implementing the same approach to the same dataset but a different truncation region. Start by simulating different data from the same distribution and constructing the boundary as before:</p>
+<pre class="r"><code>set.seed(7)
+z = rvmf(n, centre_euclid, k = 6)
+x = euclid_to_sphere(z)
+dV = cbind(c(rep(1.2, 200), seq(1.2, 3, len=200)), c(seq(0, 3.6, len=200), rep(3.6, len=200)))
+outside_boundary = x[,2] &lt; 3.6 &amp; x[,1] &gt; 1.2
+truncated_x = x[as.logical(outside_boundary),]</code></pre>
+<p>So in this case, the boundary is anything that fits <span class="math inline">\(\phi &gt; 1.2\)</span> and <span class="math inline">\(\theta &lt; 3.6\)</span>, roughly a box around the top left portion of the data. We call <code>sphere_sm</code> as before.</p>
+<pre class="r"><code>est_hav = sphere_sm(truncated_x, dV, g = &quot;Haversine&quot;, family=vmf())
+est_euc = sphere_sm(truncated_x, dV, g = &quot;Euclidean&quot;, family=vmf())</code></pre>
+<p><img src="https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/index_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" />
+The results are slightly less accurate than before, but still hold.</p>
 </div>
-<div id="why-you-should-accept-the-equals-sign" class="section level3">
-<h3>Why you should accept the equals sign</h3>
-<p>But I’m here today to tell you to not use <code>&lt;-</code> and to use <code>=</code> instead. Start by asking yourself why you use the arrow? Maybe you have historical reasons and used R before 2001, or more likely, you’re following convention for coding in R that even <a href="https://google.github.io/styleguide/Rguide.html">styling guides</a> <a href="http://adv-r.had.co.nz/Style.html">recommend</a>.</p>
-<p>Firstly, no other programming language uses the arrows, at least, none of the most frequently used ones such as Python, MATLAB, C++, Julia, Javascript, etc. So if you’re like me and use R alongside other programming languages, why would you bother using <code>&lt;-</code> instead of <code>=</code>? Wouldn’t you like consistency across the languages you write in, at least so that your muscle memory doesn’t have to change depending on whether you’re fitting a Neural network in Python, or a GAM in R?</p>
-<p>Okay fair enough, maybe you don’t mind switching coding styles depending on what language you’re writing in, after all, you are going to be changing a lot more than just the assignment operator. So what other benefits does <code>=</code> have?</p>
-<ul>
-<li>There is a button for it on the keyboard.</li>
-<li>Consistency between function arguments and assignment.</li>
-<li>Increased readability and neatness since it has fewer character (admittedly, this is subjective).</li>
-<li>Similarity with equality operator (<code>==</code>).</li>
-<li>No confusion between for example <code>x&lt;-2</code> (<span class="math inline">\(x=2\)</span>) and <code>x &lt; -2</code> (<span class="math inline">\(x &lt; -2\)</span>).</li>
-<li>Consistency with <em>mathematics itself</em>.</li>
-</ul>
-<p>In general, I prefer to use the equals assigment operator over the arrow, because I like to code in more than just one language.</p>
 </div>
-<div id="the-neat-full-stop" class="section level3">
-<h3>The neat full stop</h3>
-<p>While I’m on the subject of the arrow, using a full stop in a variable name brings a lot of confusion. This one is a lot less controversial than disregarding the arrow in my opinion. We can name a variable in R as</p>
-<pre class="r"><code>some.variable = 1</code></pre>
-<p>This looks neat! But in other languages, this would throw an error. Why is that? Languages like Python use <code>.</code> as a class operator, and you use it to access elements of a class exclusively, so you cannot use it in variable names. But R doesn’t have this problem, right?</p>
-<p>When defining an S3 class in R, you can overwrite some default functions (such as <code>print</code> or <code>plot</code>) with a new function that handles these default operations in a different way for your specific S3 class. To do this for an S3 class called <code>mys3class</code>, you would write a new functions as follows:</p>
-<pre class="r"><code>print.mys3class = function(x, ...){
-  ...
-}
-plot.mys3class = function(x, ...){
-  ...
-}</code></pre>
-<p>Look familiar? So full stops <em>do</em> have a purpose in R apart from assigning neat variable names. For me, I don’t like using full stops for the main reason I don’t like using the <code>&lt;-</code> operator: <strong>consistency</strong>. If I’m using <code>&lt;-</code> or <code>.</code>, it will be for a specific purpose where I cant use <code>=</code> or <code>_</code> (however, these are rules that I’ve broken myself, and you can probably find instances of it in my portfolios).</p>
-<p>So whilst neither the arrow (<code>&lt;-</code>) for assignment nor the full stop (<code>.</code>) for variable naming are completely useless, better alternatives <em>do</em> exist. However, if you value your code looking neat above all else, and aren’t bothered by cross platform consistency; then you can use R’s exclusive <code>&lt;-</code>, or its inconsistent <code>.</code> without issue.</p>
-<pre class="r"><code>plot(1:5, 1:5)</code></pre>
-<p><img src="https://dannyjameswilliams.co.uk/post/hottakes/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div id="kent-distribution" class="section level2">
+<h2>Kent Distribution</h2>
+<p>We adopt a similar approach for the Kent distribution, simulating data, truncating it at an artificial boundary and experimenting with fitting the model to see how well the estimated mean direction <span class="math inline">\(\mu\)</span> is. Firstly, we use a boundary similar to before, truncated at <span class="math inline">\(\phi = \pi/2+0.1\)</span>.</p>
+<pre class="r"><code>z = rkent(n, k = 10, m = centre_euclid, b=3)
+x = euclid_to_sphere(z)
+dV = cbind(rep(pi/2+0.1, 500), seq(0, 2*pi, len=500))
+outside_boundary = x[,1] &gt; (pi/2 + 0.1)
+truncated_x = x[outside_boundary,]</code></pre>
+<p>Since the Kent distribution has five parameters, estimation can be difficult and slow in some cases. For the Kent distribution, we assume that the concentration parameter <code>k</code> and ovalness parameter <code>b</code> are known, and specified in advance.</p>
+<pre class="r"><code>est_hav = sphere_sm(truncated_x, dV, g=&quot;Haversine&quot;, family=kent(k=10, b=3))
+est_euc = sphere_sm(truncated_x, dV, g=&quot;Euclidean&quot;, family=kent(k=10, b=3))</code></pre>
+<p><img src="https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/index_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>And another boundary, similar to before.</p>
+<pre class="r"><code>set.seed(12)
+z = rkent(n, m=centre_euclid, k = 10, b=3)
+dV = cbind(c(rep(1.2, 200), seq(1.2, 3, len=200)), c(seq(0, 3.6, len=200), rep(3.6, len=200)))
+x = euclid_to_sphere(z)
+outside_boundary = x[,2] &lt; 3.6 &amp; x[,1] &gt; 1.2
+truncated_x = x[as.logical(outside_boundary),]
+
+est_hav = sphere_sm(truncated_x, dV, g = &quot;Haversine&quot;, family=kent(k=10, b=3))
+est_euc = sphere_sm(truncated_x, dV, g = &quot;Euclidean&quot;, family=kent(k=10, b=3))</code></pre>
+<p><img src="https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/index_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 
     </div>
@@ -806,9 +785,15 @@ plot.mys3class = function(x, ...){
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tag/r/">R</a>
+  <a class="badge badge-light" href="/tag/data-science/">Data Science</a>
   
-  <a class="badge badge-light" href="/tag/programming/">programming</a>
+  <a class="badge badge-light" href="/tag/estimation/">Estimation</a>
+  
+  <a class="badge badge-light" href="/tag/phd/">PhD</a>
+  
+  <a class="badge badge-light" href="/tag/research/">Research</a>
+  
+  <a class="badge badge-light" href="/tag/score-matching/">Score Matching</a>
   
 </div>
 
@@ -825,7 +810,7 @@ plot.mys3class = function(x, ...){
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://dannyjameswilliams.co.uk/post/hottakes/&amp;text=Hot%20Takes%20for%20R" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/&amp;text=%28Tutorial%29%20Basic%20Usage%20of%20the%20Manifold%20TSM%20R%20Package" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -838,7 +823,7 @@ plot.mys3class = function(x, ...){
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://dannyjameswilliams.co.uk/post/hottakes/&amp;t=Hot%20Takes%20for%20R" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/&amp;t=%28Tutorial%29%20Basic%20Usage%20of%20the%20Manifold%20TSM%20R%20Package" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -851,7 +836,7 @@ plot.mys3class = function(x, ...){
       
       
       <li>
-        <a href="mailto:?subject=Hot%20Takes%20for%20R&amp;body=https://dannyjameswilliams.co.uk/post/hottakes/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=%28Tutorial%29%20Basic%20Usage%20of%20the%20Manifold%20TSM%20R%20Package&amp;body=https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -864,7 +849,7 @@ plot.mys3class = function(x, ...){
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://dannyjameswilliams.co.uk/post/hottakes/&amp;title=Hot%20Takes%20for%20R" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/&amp;title=%28Tutorial%29%20Basic%20Usage%20of%20the%20Manifold%20TSM%20R%20Package" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -877,7 +862,7 @@ plot.mys3class = function(x, ...){
       
       
       <li>
-        <a href="whatsapp://send?text=Hot%20Takes%20for%20R%20https://dannyjameswilliams.co.uk/post/hottakes/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=%28Tutorial%29%20Basic%20Usage%20of%20the%20Manifold%20TSM%20R%20Package%20https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -890,7 +875,7 @@ plot.mys3class = function(x, ...){
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://dannyjameswilliams.co.uk/post/hottakes/&amp;title=Hot%20Takes%20for%20R" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/&amp;title=%28Tutorial%29%20Basic%20Usage%20of%20the%20Manifold%20TSM%20R%20Package" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -910,8 +895,7 @@ plot.mys3class = function(x, ...){
 
 
   
-    
-    
+  
 
 
 
@@ -995,20 +979,6 @@ plot.mys3class = function(x, ...){
   
 
 
-  
-
-
-
-
-
-<section id="comments">
-  
-    <div id="commento"></div>
-
-<script src="https://cdn.commento.io/js/commento.js" defer></script>
-
-  
-</section>
 
 
 
@@ -1017,17 +987,9 @@ plot.mys3class = function(x, ...){
 
 
 
-  
-  
-  <div class="article-widget content-widget-hr">
-    <h3>Related</h3>
-    <ul>
-      
-      <li><a href="/post/nodata/">How can we do data science without all of our data?</a></li>
-      
-    </ul>
-  </div>
-  
+
+
+
 
 
 

@@ -89,17 +89,72 @@
   
   <url>
     <loc>https://dannyjameswilliams.co.uk/</loc>
-    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+    <lastmod>2050-06-01T13:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://dannyjameswilliams.co.uk/talk/example/</loc>
-    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+    <lastmod>2050-06-01T13:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://dannyjameswilliams.co.uk/talk/</loc>
-    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+    <lastmod>2050-06-01T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tutorials/tutorialmanifoldtsm1/</loc>
+    <lastmod>2022-01-20T13:41:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tutorials/test/</loc>
+    <lastmod>2022-01-20T03:41:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tag/data-science/</loc>
+    <lastmod>2022-01-20T13:41:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tag/estimation/</loc>
+    <lastmod>2022-01-20T13:41:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tag/phd/</loc>
+    <lastmod>2022-01-20T13:41:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tag/r/</loc>
+    <lastmod>2022-01-20T13:41:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tag/research/</loc>
+    <lastmod>2022-01-20T13:41:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tag/score-matching/</loc>
+    <lastmod>2022-01-20T13:41:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tags/</loc>
+    <lastmod>2022-01-21T14:31:13+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tag/test/</loc>
+    <lastmod>2022-01-20T03:41:11+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://dannyjameswilliams.co.uk/tutorials/</loc>
+    <lastmod>2022-01-20T14:44:52+01:00</lastmod>
   </url>
   
   <url>
@@ -128,11 +183,6 @@
   </url>
   
   <url>
-    <loc>https://dannyjameswilliams.co.uk/tags/</loc>
-    <lastmod>2022-01-21T14:31:13+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://dannyjameswilliams.co.uk/tutorials/tutorialasoiaf/</loc>
     <lastmod>2022-01-20T14:44:52+01:00</lastmod>
   </url>
@@ -144,11 +194,6 @@
   
   <url>
     <loc>https://dannyjameswilliams.co.uk/tag/tutorial/</loc>
-    <lastmod>2022-01-20T14:44:52+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dannyjameswilliams.co.uk/tutorials/</loc>
     <lastmod>2022-01-20T14:44:52+01:00</lastmod>
   </url>
   
@@ -169,11 +214,6 @@
   
   <url>
     <loc>https://dannyjameswilliams.co.uk/tag/programming/</loc>
-    <lastmod>2021-06-28T15:39:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://dannyjameswilliams.co.uk/tag/r/</loc>
     <lastmod>2021-06-28T15:39:00+00:00</lastmod>
   </url>
   

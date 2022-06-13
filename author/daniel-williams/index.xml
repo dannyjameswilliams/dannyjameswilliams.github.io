@@ -151,6 +151,7 @@ g(\boldsymbol{x}) = \|\boldsymbol{x} - \tilde{\boldsymbol{x}}\|_2, \qquad \tilde
       <pubDate>Sun, 28 Jun 2020 15:39:00 +0000</pubDate>
       <guid>https://dannyjameswilliams.co.uk/post/hottakes/</guid>
       <description>
+&lt;script src=&#34;https://dannyjameswilliams.co.uk/post/hottakes/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;The arrow assigment operator &lt;code&gt;&amp;lt;-&lt;/code&gt; is useless. Before I’m crucified by the R community, hear me out and read this post.&lt;/p&gt;
@@ -166,15 +167,15 @@ cat(&amp;quot;x is&amp;quot;, x, &amp;quot;and y is&amp;quot;, y, &amp;quot;\n&a
 &lt;p&gt;You can also use the arrow inside of functions to assign variables, for example:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;system.time(x &amp;lt;- solve(matrix(rnorm(100^2), 100, 100)))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##    user  system elapsed 
-##   0.009   0.007   0.004&lt;/code&gt;&lt;/pre&gt;
+##   0.002   0.000   0.004&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we can view &lt;code&gt;x&lt;/code&gt; separately, even though it was assigned inside the &lt;code&gt;system.time&lt;/code&gt; function.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;x[1:5, 1:5]&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##             [,1]         [,2]        [,3]        [,4]        [,5]
-## [1,] -0.06462205 -0.020931424  0.11817438 -0.18430566 -0.03781733
-## [2,]  0.03279143 -0.007782603 -0.12716072  0.03636665  0.10505115
-## [3,]  0.02362454 -0.001848696 -0.05952053 -0.04676793 -0.01750361
-## [4,] -0.05040604  0.047707725  0.02687982 -0.01738263  0.01374564
-## [5,] -0.01643280 -0.040117354  0.12479274 -0.00396290 -0.05332341&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##             [,1]        [,2]        [,3]       [,4]        [,5]
+## [1,]  0.50730275 -0.35703351 -0.39847262  0.7788050  0.14551130
+## [2,] -0.18092188  0.23194703  0.11982541 -0.4136690 -0.04548487
+## [3,] -0.09788994  0.08614508  0.10585201 -0.1223789 -0.01548020
+## [4,]  0.06537141 -0.16506482  0.09142846  0.1438222  0.02654319
+## [5,]  0.03935626 -0.05008914 -0.09419370  0.2286113 -0.03929192&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is perhaps its most useful application, which you cannot do with &lt;code&gt;=&lt;/code&gt;. The &lt;code&gt;=&lt;/code&gt; sign inside of a function argument is strictly used for matching the function argument with the variable you’re passing through.&lt;/p&gt;
 &lt;p&gt;The arrow also has historical significance, since R’s predecessor, S, used &lt;code&gt;&amp;lt;-&lt;/code&gt; exclusively. This &lt;a href=&#34;https://www.r-bloggers.com/why-do-we-use-arrow-as-an-assignment-operator/&#34;&gt;R-bloggers post&lt;/a&gt; explains that S was based on an older language called APL, which was designed on a keyboard that had an arrow key exactly like &lt;code&gt;&amp;lt;-&lt;/code&gt;. But our keyboards now only have a key for &lt;code&gt;=&lt;/code&gt;, right?&lt;/p&gt;
 &lt;/div&gt;
@@ -207,6 +208,8 @@ plot.mys3class = function(x, ...){
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Look familiar? So full stops &lt;em&gt;do&lt;/em&gt; have a purpose in R apart from assigning neat variable names. For me, I don’t like using full stops for the main reason I don’t like using the &lt;code&gt;&amp;lt;-&lt;/code&gt; operator: &lt;strong&gt;consistency&lt;/strong&gt;. If I’m using &lt;code&gt;&amp;lt;-&lt;/code&gt; or &lt;code&gt;.&lt;/code&gt;, it will be for a specific purpose where I cant use &lt;code&gt;=&lt;/code&gt; or &lt;code&gt;_&lt;/code&gt; (however, these are rules that I’ve broken myself, and you can probably find instances of it in my portfolios).&lt;/p&gt;
 &lt;p&gt;So whilst neither the arrow (&lt;code&gt;&amp;lt;-&lt;/code&gt;) for assignment nor the full stop (&lt;code&gt;.&lt;/code&gt;) for variable naming are completely useless, better alternatives &lt;em&gt;do&lt;/em&gt; exist. However, if you value your code looking neat above all else, and aren’t bothered by cross platform consistency; then you can use R’s exclusive &lt;code&gt;&amp;lt;-&lt;/code&gt;, or its inconsistent &lt;code&gt;.&lt;/code&gt; without issue.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(1:5, 1:5)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/post/hottakes/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
