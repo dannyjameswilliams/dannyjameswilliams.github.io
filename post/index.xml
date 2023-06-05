@@ -5,12 +5,162 @@
     <link>https://dannyjameswilliams.co.uk/post/</link>
       <atom:link href="https://dannyjameswilliams.co.uk/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Blog</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Fri, 21 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Mon, 05 Jun 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_3.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Blog</title>
       <link>https://dannyjameswilliams.co.uk/post/</link>
     </image>
+    
+    <item>
+      <title>2 Years of PhD Research: Stein Discrepancies with a Twist</title>
+      <link>https://dannyjameswilliams.co.uk/post/tksd/</link>
+      <pubDate>Mon, 05 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://dannyjameswilliams.co.uk/post/tksd/</guid>
+      <description>
+
+
+&lt;p&gt;This is a blog post detailing &lt;a href=&#34;https://arxiv.org/abs/2306.00602&#34;&gt;Approximate Stein Classes for Truncated Density Estimation&lt;/a&gt;, by myself and my supervisor, Song Liu, which recently got accepted into &lt;strong&gt;ICML 2023&lt;/strong&gt;.&lt;/p&gt;
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Pretend, for a moment, that you are the kind of person who likes to see where animals live, and you go out for the day to find where all the animal habitats are. You are interested in the broader picture; the general spread of habitat locations across a certain region. What you would be doing is looking to &lt;strong&gt;model a density&lt;/strong&gt; based on each observation of a habitat. However, you might find that these habitats arbitrarily stop after some point, and you don’t have an exact reason why. In a similar way, you might not be allowed to cross into a neighbouring country to continue measurements. In both of these scenarios, you are prohibited from viewing a &lt;em&gt;full picture&lt;/em&gt; of your dataset due to some unknown circumstances - but you &lt;em&gt;do&lt;/em&gt; have access to something, which is a collection of points that roughly make up the ‘edge’ of your domain, where &lt;strong&gt;your data are truncated&lt;/strong&gt;. &lt;em&gt;How do you estimate your density now?&lt;/em&gt;&lt;/p&gt;
+&lt;div id=&#34;background&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;p&gt;Up until the introduction of this work, to estimate the density of your wildlife habitat locations, you would probably try to use &lt;em&gt;TruncSM&lt;/em&gt; &lt;a href=&#34;#truncsm&#34;&gt;[1]&lt;/a&gt;, a very fine work which uses Score Matching &lt;a href=&#34;#scorematching1&#34;&gt;[2]&lt;/a&gt; to do truncated density estimation. This work is quite interesting if you are a fan of this kind of thing. If you want to read more about it I also wrote a &lt;a href=&#34;https://dannyjameswilliams.co.uk/post/nodata/&#34;&gt;blog post last year&lt;/a&gt; which goes into a few more details, or read &lt;a href=&#34;https://www.jmlr.org/papers/volume23/21-0218/21-0218.pdf&#34;&gt;the full paper here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The jist of the method is that our true density, &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, (which is made up of only samples, only the wildlife habitats we observed) needs to be modelled by something which we denote as &lt;span class=&#34;math inline&#34;&gt;\(p_{\boldsymbol{\theta}}\)&lt;/span&gt;, which looks like
+&lt;span class=&#34;math display&#34;&gt;\[
+p_{\boldsymbol{\theta}}= \frac{\bar{p}_{\boldsymbol{\theta}}}{Z(\boldsymbol{\theta})}, \; \; \; Z(\boldsymbol{\theta}) = \int_{V}\bar{p}_{\boldsymbol{\theta}} d\boldsymbol{x}.
+\]&lt;/span&gt;
+We can modify &lt;span class=&#34;math inline&#34;&gt;\(p_{\boldsymbol{\theta}}\)&lt;/span&gt; only through &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\theta}\)&lt;/span&gt;, and so we want to find a &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\theta}\)&lt;/span&gt; such that
+&lt;span class=&#34;math display&#34;&gt;\[
+p_{\boldsymbol{\theta}}\approx q.
+\]&lt;/span&gt;
+This is relatively straightforward most of the time, when we integrate &lt;span class=&#34;math inline&#34;&gt;\(Z(\boldsymbol{\theta})\)&lt;/span&gt; in a ‘normal’ way (&lt;span class=&#34;math inline&#34;&gt;\(V = \mathbb{R}^d\)&lt;/span&gt;). But this blog post is not about ‘most of the time’, we are looking at something harder (&lt;span class=&#34;math inline&#34;&gt;\(V \neq \mathbb{R}^d\)&lt;/span&gt;). The integration for &lt;span class=&#34;math inline&#34;&gt;\(Z(\boldsymbol{\theta})\)&lt;/span&gt; is really hard. So hard in fact, that no one wants to integrate it at all (sorry &lt;span class=&#34;math inline&#34;&gt;\(Z(\boldsymbol{\theta})\)&lt;/span&gt; but you’re too difficult). This is known as &lt;em&gt;unnormalised density estimation&lt;/em&gt;. Well, turns out we can ignore our issues altogether if we just use Score matching. &lt;strong&gt;By using Score Matching we can ignore the difficult parts of what makes estimating a truncated density hard&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Our method, Truncated Kernelised Stein Discrepancies (what a mouthful, we’ll call it TKSD from now on), uses the same broad strokes as Score Matching, which, roughly speaking, means we also use the &lt;em&gt;score function&lt;/em&gt;,
+&lt;span class=&#34;math display&#34;&gt;\[
+\boldsymbol{\psi}_{p_{\boldsymbol{\theta}}} = \nabla_\boldsymbol{x} \log p(\boldsymbol{x}; \boldsymbol{\theta}),
+\]&lt;/span&gt;
+a Stein operator,
+&lt;span class=&#34;math display&#34;&gt;\[
+\mathcal{T}_{p_{\boldsymbol{\theta}}} \boldsymbol{f}(\boldsymbol{x}) := \sum^d_{l=1}\psi_{p_{\boldsymbol{\theta}}, l}(\boldsymbol{x}) f_l(\boldsymbol{x}) + \partial_{x_l}f_l(\boldsymbol{x}),
+\]&lt;/span&gt;
+and the knowledge that
+&lt;span class=&#34;math display&#34; id=&#34;eq:stein&#34;&gt;\[\begin{equation}
+\mathbb{E}_{q} [\mathcal{T}_{q} \boldsymbol{f}(\boldsymbol{x})] = 0 \tag{1}
+\end{equation}\]&lt;/span&gt;
+if, for &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{f} \in \mathcal{F}^d\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}^d\)&lt;/span&gt; is a &lt;em&gt;Stein class&lt;/em&gt; of functions (note that both the expectation and Stein operator are with respect to the density &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;). These three equations form the basis for a lot of unnormalised density estimation, thus it makes sense that we want to use them when developing a new method.&lt;/p&gt;
+&lt;p&gt;Instead of minimising the score matching divergence like &lt;em&gt;TruncSM&lt;/em&gt;, we want to construct a discrepancy based on Minimum Stein discrepancies &lt;a href=&#34;#barp2019&#34;&gt;[3]&lt;/a&gt;. If we want to make the two densities, &lt;span class=&#34;math inline&#34;&gt;\(p_{\boldsymbol{\theta}}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt;, as close to each other as possible, we would want to minimise &lt;a href=&#34;#eq:stein&#34;&gt;(1)&lt;/a&gt;, since if it equals zero, then the two densities are equal. We also go one step further than that, by making this problem &lt;em&gt;as challenging as possible&lt;/em&gt; by including a maximisation (supremum) over the function class also:
+&lt;span class=&#34;math display&#34; id=&#34;eq:minsup&#34;&gt;\[\begin{equation}
+\min_{\boldsymbol{\theta}} \sup_{\boldsymbol{f} \in \mathcal{F}^d}\mathbb{E}_{q} [\mathcal{T}_{p_{\boldsymbol{\theta}}} \boldsymbol{f}(\boldsymbol{x})]. \tag{2}
+\end{equation}\]&lt;/span&gt;
+If we let &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}^d\)&lt;/span&gt; be an reproducing kernel Hilbert space (RKHS), then &lt;a href=&#34;#eq:minsup&#34;&gt;(2)&lt;/a&gt; can be evaluated exactly. This is called Kernelised Stein Discrepancy (KSD) &lt;a href=&#34;#ksd&#34;&gt;[4]&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tksd-how-does-he-do-it&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;TKSD: How &lt;em&gt;does&lt;/em&gt; he do it?&lt;/h1&gt;
+&lt;p&gt;Well, we described above what we &lt;em&gt;want&lt;/em&gt; to use, but we can’t &lt;em&gt;actually&lt;/em&gt; use it. All because of that pesky truncation. The issue is due to &lt;a href=&#34;#eq:stein&#34;&gt;(1)&lt;/a&gt; &lt;em&gt;not actually holding&lt;/em&gt; when the density is truncated in a way which we do not know (recall the aim of this project is to be able to estimate the density when we do not have an exact form of the truncation boundary, and instead access it through a set of points). The actual cause is complicated, but involves the derivation of &lt;a href=&#34;#eq:stein&#34;&gt;(1)&lt;/a&gt;, and a boundary condition on an integration by parts not holding when the density is truncated. So, we have to do something slightly different.&lt;/p&gt;
+&lt;p&gt;Two lemmas, one proposition, one remark and one final theorem later, we get the following:
+&lt;span class=&#34;math display&#34; id=&#34;eq:approxstein&#34;&gt;\[\begin{equation}
+\mathbb{E}_{q} [ \mathcal{T}_{q} \tilde{\boldsymbol{g}}(\boldsymbol{x}) ] = O_P(\varepsilon_m), \tag{3}
+\end{equation}\]&lt;/span&gt;
+for &lt;span class=&#34;math inline&#34;&gt;\(\tilde{\boldsymbol{g}} \in \mathcal{G}^d_{0, m}\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{G}^d_{0, m}\)&lt;/span&gt; is basically a set of functions which we optimise over (similar to &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{F}^d\)&lt;/span&gt; above), but also include a constraint on a &lt;em&gt;finite set of boundary points&lt;/em&gt; of size &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;, such that &lt;span class=&#34;math inline&#34;&gt;\(\tilde{\boldsymbol{g}}(\boldsymbol{x}&amp;#39;) = 0\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{x}&amp;#39;\)&lt;/span&gt; in this finite set. This constraint enables the above equation to hold!&lt;/p&gt;
+&lt;p&gt;Note that &lt;a href=&#34;#eq:approxstein&#34;&gt;(3)&lt;/a&gt; is not an exact analogue of &lt;a href=&#34;#eq:stein&#34;&gt;(1)&lt;/a&gt; from before, but instead, &lt;span class=&#34;math inline&#34;&gt;\(O_P(\varepsilon_m)\)&lt;/span&gt; means that it &lt;em&gt;decreases towards zero&lt;/em&gt; as &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; increases. I like to think of this as similar to sample size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; in most of statistics. Our accuracy increases as &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; does, and in this case the same can be said of &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;🚨🚨 &lt;strong&gt;Caution: Long Equation Ahead&lt;/strong&gt; 🚨🚨&lt;/p&gt;
+&lt;p&gt;We can minimise in the same way as &lt;a href=&#34;#eq:minsup&#34;&gt;(2)&lt;/a&gt;. Two theorems and a long analytic solution later we obtain our objective function,
+&lt;span class=&#34;math display&#34;&gt;\[
+\sum^d_{l=1} \mathbb{E}_{\boldsymbol{x} \sim q} \mathbb{E}_{\boldsymbol{y} \sim q} \left[ u_l(\boldsymbol{x}, \boldsymbol{y}) - \mathbf{v}_l(\boldsymbol{x})^\top(\mathbf{K}&amp;#39;)^{-1}\mathbf{v}_l(\boldsymbol{y}) \right]
+\]&lt;/span&gt;
+where
+&lt;span class=&#34;math display&#34;&gt;\[\begin{align}
+u_l(\boldsymbol{x}, \boldsymbol{y}) &amp;amp;=\psi_{p, l}(\boldsymbol{x})\psi_{p, l}(\boldsymbol{y})k(\boldsymbol{x},\boldsymbol{y}) +\psi_{p, l}(\boldsymbol{x}) \partial_{y_l}k(\boldsymbol{x}, \boldsymbol{y}) \nonumber \\
+&amp;amp;\qquad \qquad+\psi_{p, l}(\boldsymbol{y}) \partial_{x_l}k(\boldsymbol{x}, \boldsymbol{y}) + \partial_{x_l}\partial_{y_l}k(\boldsymbol{x}, \boldsymbol{y}), \label{eq:ul}
+\end{align}\]&lt;/span&gt;
+&lt;span class=&#34;math inline&#34;&gt;\(\mathbf{v}_l(\boldsymbol{z}) =\psi_{p, l}(\boldsymbol{z}) \boldsymbol{\varphi}_{\boldsymbol{z}, \mathbf{x}&amp;#39;}^\top+ (\partial_{z_l}\boldsymbol{\varphi}_{\boldsymbol{z}, \mathbf{x}&amp;#39;})^\top\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\varphi}_{\boldsymbol{z}, \mathbf{x}&amp;#39;} = [ k(\boldsymbol{z}, \boldsymbol{x}_1&amp;#39;), \dots, k(\boldsymbol{z}, \boldsymbol{x}_m&amp;#39;) ]\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; is the kernel function associated with the RKHS &lt;span class=&#34;math inline&#34;&gt;\(\mathcal{G}^d_{0, m}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\phi}_{\mathbf{x}&amp;#39;} = [k(\boldsymbol{x}_1&amp;#39;, \cdot), \dots, k(\boldsymbol{x}_m&amp;#39;, \cdot)]^\top\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mathbf{K}&amp;#39; = \boldsymbol{\phi}_{\mathbf{x}&amp;#39;}\boldsymbol{\phi}_{\mathbf{x}&amp;#39;}^\top\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Yes this is quite a lot. No it is not important to understand every detail.&lt;/strong&gt; The key takeaway is that we have a loss function, consisting only of linear algebra operations, which we can minimise to obtain a truncated density estimate when the boundary is not known fully! 🎉🎉🎉&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(There are also two assumptions for one final theorem which proves this is a consistent estimator. You think this sounds like a lot of theorems? This is only mild, as far as statistics papers go.)&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;finally-something-interesting-results&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Finally something interesting, results!&lt;/h1&gt;
+&lt;p&gt;I know, I know, you must be thinking “Is the estimation error across a range of experiments comparable to previous implementations of truncated density estimators considering the use of an approximate set of boundary points instead of an exact functional form?”.&lt;/p&gt;
+&lt;p&gt;Or maybe you are just thinking “Is it better than the state-of-the-art?”. Same question, really. The answer is yes, it does pretty well.&lt;/p&gt;
+&lt;div id=&#34;simulation-study&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Simulation Study&lt;/h2&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;l2_d_approximate.png&#34; alt=&#34;&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 1&lt;/strong&gt;: Simple simulation experiment with &lt;span class=&#34;math inline&#34;&gt;\(\ell_2\)&lt;/span&gt; ball truncation.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;This plot shows mean estimation error over 64 trials in a simple task of estimating the mean of Gaussian distribution truncated within a &lt;span class=&#34;math inline&#34;&gt;\(\ell_2\)&lt;/span&gt; ball, whilst varying the dimension &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;. We compare TKSD to &lt;em&gt;TruncSM&lt;/em&gt; under two scenarios, the exact scenario is where &lt;em&gt;TruncSM&lt;/em&gt; has access to the explicit boundary formulation, and the approximate scenario is where it only has access to a finite number of samples on the boundary - the same samples we give to TKSD. Overall, TKSD trades blows with &lt;em&gt;TruncSM (exact)&lt;/em&gt;, and does significantly better than &lt;em&gt;TruncSM (approximate)&lt;/em&gt;, even though it is given the exact same information. &lt;strong&gt;So with less information, TKSD still matches the state-of-the-art method.&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;l1_d_approximate.png&#34; alt=&#34;&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 2&lt;/strong&gt;: Simple simulation experiment with &lt;span class=&#34;math inline&#34;&gt;\(\ell_1\)&lt;/span&gt; ball truncation.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;This second plot shows the same experiment setup but for truncation of the &lt;span class=&#34;math inline&#34;&gt;\(\ell_1\)&lt;/span&gt; ball instead of the &lt;span class=&#34;math inline&#34;&gt;\(\ell_2\)&lt;/span&gt; ball. We also plot runtime for all methods. Similar to the last experiment, TKSD and &lt;em&gt;TruncSM (exact)&lt;/em&gt; have comparable errors across all dimensions. The main message in this example is how &lt;em&gt;long&lt;/em&gt; it takes &lt;em&gt;TruncSM (exact)&lt;/em&gt; to run, because analytically calculating the functional boundary for high dimension &lt;span class=&#34;math inline&#34;&gt;\(\ell_1\)&lt;/span&gt; balls is costly, combinatorically costly with &lt;span class=&#34;math inline&#34;&gt;\(d\)&lt;/span&gt;, in fact. &lt;em&gt;TruncSM (approximate)&lt;/em&gt; is, like before, not very good, even though it is cheaper to run. Both instances of &lt;em&gt;TruncSM&lt;/em&gt; have issues, whereas TKSD seems to be the superior option.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;mixture_ex.png&#34; alt=&#34;&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 3&lt;/strong&gt;: More complicated simulation experiment with &lt;span class=&#34;math inline&#34;&gt;\(\ell_2\)&lt;/span&gt; ball truncation on a mixed Gaussian distribution.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;mixture.png&#34; alt=&#34;&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 4&lt;/strong&gt;: Mixed Gaussian experiment results, varying across sample size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;, and number of mixture modes (amount of means estimated at once).
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;The next set of experiments contains a more complex setup, which is estimating multiple modes of a mixed Gaussian distribution. This is a similar experiment setup to before, except we are estimating 2, 3 and 4 means of a Gaussian at the same time. Figure 3 shows the experiment visually; as we vary the number of mixture modes, the distribution becomes more complex and thus harder to estimate accurately.&lt;/p&gt;
+&lt;p&gt;Figure 4 shows the mean estimation error across 64 trials for TKSD and &lt;em&gt;TruncSM (exact)&lt;/em&gt;. We vary the number of mixture modes (left) from 2-4, and measure how that changes the error across both methods. We also fix the number of mixture modes as 2, and vary sample size &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; (right), and also compare the error. Across both experiments, TKSD is Ivan Drago, and &lt;em&gt;TruncSM&lt;/em&gt; is Apollo Creed (sorry). &lt;strong&gt;TKSD has a significantly smaller error than &lt;em&gt;TruncSM&lt;/em&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;regression-example&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Regression Example&lt;/h2&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;regression.png&#34; alt=&#34;&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 5&lt;/strong&gt;: Example of using TKSD for regression on simulated data (left) and a real world example (right).
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;Let’s look at one specific example before we go, a simple linear regression. Since TKSD is a density estimation method, we can use it to estimate parameters of the (conditional) mean of a Normal distribution, given some feature variables. Truncation happens in the &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; domain, so that all of our data is truncated according to conditions on &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;. In the first plot, we simulate a regression setting where we know the true parameters and can see the untruncated data. We pretend to only observe &lt;span class=&#34;math inline&#34;&gt;\(y_i \geq 5\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\forall i = 1,\dots, n\)&lt;/span&gt;, and fit the model to the remaining data. When comparing the TKSD fit to a naive least squares implementation (MLE) which does not account for truncation, you can clearly see the difference that accounting for this simple truncation makes in our regression line.&lt;/p&gt;
+&lt;p&gt;The second plot is an experiment on a real-world dataset, given by UCLA: Statistical Consulting Group &lt;a href=&#34;#data&#34;&gt;[5]&lt;/a&gt;. This dataset contains student test scores in a school for which the acceptance threshold is 40/100, and therefore the response variable (the
+test scores) are truncated below by 40 and above by 100. Since no scores get close to 100, we only consider one-sided
+truncation at &lt;span class=&#34;math inline&#34;&gt;\(y = 40\)&lt;/span&gt;. The aim of the regression is to model the response variable, the test scores, based on a single covariate of each students’ corresponding score on a different test. We see very clearly in this example that accounting for this truncation seems to give a better fit than a regular least squares solution.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusions&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Conclusions&lt;/h1&gt;
+&lt;p&gt;This work has taken up the majority of my PhD, around 2 years. It is more complicated than I have given it credit for in this post, and please do read the full paper if you want more detail. Even with all the detail, it is not a work that would normally take 2 years. It started as a way of extending the previous implementation we developed in &lt;em&gt;TruncSM&lt;/em&gt;, to try and adaptively solve for what we were calling a ‘boundary function’. It became clear that score matching was holding us back, and then we kept having to add extra constraints and details to an implementation around Stein discrepancies. Amongst loads of different ideas, things also kept going wrong, so it is a great relief to see this research finished, working, and even performing extremely well, not to mention being accepted to ICML!&lt;/p&gt;
+&lt;p&gt;Anyway, why would you be interested in TKSD in general? If you care about truncated densities, and want something that is&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;adaptive to the dataset at hand&lt;/li&gt;
+&lt;li&gt;requires no prior knowledge about the boundary, except being able to obtain samples from it&lt;/li&gt;
+&lt;li&gt;performs better in more complicated scenarios&lt;/li&gt;
+&lt;li&gt;has a nice theoretical and empirical results&lt;/li&gt;
+&lt;li&gt;is an acronym&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;then look no further than TKSD!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jmlr.org/papers/volume23/21-0218/21-0218.pdf&#34;&gt;[1]&lt;/a&gt; &lt;a id=&#34;truncsm&#34;&gt;&lt;/a&gt;Liu, S., Kanamori, T., and Williams, D. J. Estimating density models with truncation boundaries using score matching. Journal of Machine Learning Research, 23(186):1–38, 2022.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jmlr.org/papers/volume6/hyvarinen05a/hyvarinen05a.pdf&#34;&gt;[2]&lt;/a&gt; &lt;a id=&#34;scorematching1&#34;&gt;&lt;/a&gt;Hyvärinen, A. Estimation of non-normalized statistical models by score matching. Journal of Machine Learning Research, 6(24):695–709, 2005.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://proceedings.neurips.cc/paper_files/paper/2019/file/ba7609ee5789cc4dff171045a693a65f-Paper.pdf&#34;&gt;[3]&lt;/a&gt; &lt;a id=&#34;barp2019&#34;&gt;&lt;/a&gt; Barp, A., Briol, F.-X., Duncan, A., Girolami, M., and Mackey, L. Minimum stein discrepancy estimators. In Advances in Neural Information Processing Systems, volume 32, 2019.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://proceedings.mlr.press/v48/chwialkowski16.pdf&#34;&gt;[4]&lt;/a&gt;&lt;a id=&#34;ksd&#34;&gt;&lt;/a&gt; Chwialkowski, K., Strathmann, H., and Gretton, A. A kernel test of goodness of fit. In Proceedings of The 33rd International Conference on Machine Learning, volume 48 of Proceedings of Machine Learning Research, pp. 2606–2615. PMLR, 2016&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stats.oarc.ucla.edu/stata/dae/truncated-regression/&#34;&gt;[5]&lt;/a&gt; &lt;a id=&#34;data&#34;&gt;&lt;/a&gt; UCLA: Statistical Consulting Group. Truncated regression — stata data analysis examples. URL &lt;a href=&#34;https://stats.oarc.ucla.edu/stata/dae/truncated-regression/&#34; class=&#34;uri&#34;&gt;https://stats.oarc.ucla.edu/stata/dae/truncated-regression/&lt;/a&gt;. Accessed March 17, 2023.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Exploring Natural Language Embeddings of A Game of Thrones</title>
