@@ -7,7 +7,7 @@
     <description>Danny James Williams</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Wed, 01 Jun 2050 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_3.png</url>
       <title>Danny James Williams</title>
       <link>https://dannyjameswilliams.co.uk/</link>
     </image>
@@ -4228,7 +4228,7 @@ for i in np.arange(len(pred_list)):
 &lt;li&gt;Increasing the dataset size&lt;/li&gt;
 &lt;li&gt;Increasing the image resolution&lt;/li&gt;
 &lt;li&gt;Adding more layers to the neural network&lt;/li&gt;
-&lt;li&gt;Adding &amp;lsquo;null&amp;rsquo; images, that show neither a cat nor dog, so that the model does not always predict a cat or dog, it can be neither&lt;/li&gt;
+&lt;li&gt;Adding &amp;rsquo;null&amp;rsquo; images, that show neither a cat nor dog, so that the model does not always predict a cat or dog, it can be neither&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -4287,15 +4287,15 @@ $$&lt;/p&gt;
 {{% fragment %}} Three {{% /fragment %}}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Press &lt;code&gt;Space&lt;/code&gt; to play!&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;fragment &#34; &gt;
-One
+&lt;span class=&#34;fragment &#34; &gt;
+   One 
 &lt;/span&gt;
 &lt;span class=&#34;fragment &#34; &gt;
-&lt;strong&gt;Two&lt;/strong&gt;
+   **Two** 
 &lt;/span&gt;
 &lt;span class=&#34;fragment &#34; &gt;
-Three
-&lt;/span&gt;&lt;/p&gt;
+   Three 
+&lt;/span&gt;
 &lt;hr&gt;
 &lt;p&gt;A fragment can accept two optional parameters:&lt;/p&gt;
 &lt;ul&gt;
@@ -4316,6 +4316,7 @@ Three
 &lt;li&gt;Only the speaker can read these notes&lt;/li&gt;
 &lt;li&gt;Press &lt;code&gt;S&lt;/code&gt; key to view&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;/aside&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;themes&#34;&gt;Themes&lt;/h2&gt;
