@@ -7,7 +7,7 @@
     <description>Statistical Computing 2</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_3.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Statistical Computing 2</title>
       <link>https://dannyjameswilliams.co.uk/portfolios/sc2/</link>
     </image>
@@ -1608,7 +1608,7 @@ for i in np.arange(len(pred_list)):
 &lt;li&gt;Increasing the dataset size&lt;/li&gt;
 &lt;li&gt;Increasing the image resolution&lt;/li&gt;
 &lt;li&gt;Adding more layers to the neural network&lt;/li&gt;
-&lt;li&gt;Adding &amp;rsquo;null&amp;rsquo; images, that show neither a cat nor dog, so that the model does not always predict a cat or dog, it can be neither&lt;/li&gt;
+&lt;li&gt;Adding &amp;lsquo;null&amp;rsquo; images, that show neither a cat nor dog, so that the model does not always predict a cat or dog, it can be neither&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
