@@ -385,6 +385,28 @@
         
 
         <li class="nav-item">
+          <a class="nav-link  active" href="/publications/"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
           <a class="nav-link " href="/post/"><span>Blog</span></a>
         </li>
 
@@ -609,7 +631,15 @@
 
 <div class="universal-wrapper">
   
-  <div class="article-style"><p>Watch this space!</p>
+  <div class="article-style"><h2 id="a-hrefhttpsproceedingsmlrpressv202williams23bwilliams23bpdfapproximate-stein-classes-for-truncated-density-estimationa"><a href="https://proceedings.mlr.press/v202/williams23b/williams23b.pdf">Approximate Stein Classes for Truncated Density Estimation</a></h2>
+<h4 id="daniel-j-williams-song-liu-icml-2023">Daniel J. Williams, Song Liu. <em>ICML 2023</em></h4>
+<p><strong>Abstract:</strong> Estimating truncated density models is challenging due to their intractable normalizing constants and difficult boundary conditions. Score matching can address this but necessitates a specific continuous weighting function. Evaluating this function and its gradient often requires a closed-form expression of the boundary and solving complex optimization problems. The paper proposes approximate Stein classes, leading to a relaxed Stein identity for truncated density estimation. A novel measure called truncated kernelized Stein discrepancy (TKSD) is developed, which doesn&rsquo;t require a predefined weighting function and can be evaluated using only boundary samples. Experimental results demonstrate the method&rsquo;s improved accuracy over previous approaches, even without explicit knowledge of the boundary&rsquo;s functional form.</p>
+<h2 id="a-hrefhttpsproceedingsmlrpressv196williams22awilliams22apdfscore-matching-for-truncated-density-estimation-on-a-manifold-a"><a href="https://proceedings.mlr.press/v196/williams22a/williams22a.pdf">Score Matching for Truncated Density Estimation on a Manifold </a></h2>
+<h4 id="daniel-j-williams-song-liu-tagml-icml-workshop-2022">Daniel J. Williams, Song Liu. <em>TAGML, ICML Workshop 2022</em></h4>
+<p><strong>Abstract:</strong> When observations are truncated, we are limited to an incomplete picture of our dataset. Recent methods deal with truncated density estimation problems by turning to score matching, where the access to the intractable normalising constant is not required. We present a novel extension to truncated score matching for a Riemannian manifold. Applications are presented for the von Mises-Fisher and Kent distributions on a two dimensional sphere in $\mathbb{R}^3$, as well as a real-world application of extreme storm observations in the USA. In simulated data experiments, our score matching estimator is able to approximate the true parameter values with a low estimation error and shows improvements over a maximum likelihood estimator.</p>
+<h2 id="a-hrefhttpsjmlrorgpapersvolume2321-021821-0218pdfestimating-density-models-with-truncation-boundaries-using-score-matching-a"><a href="https://jmlr.org/papers/volume23/21-0218/21-0218.pdf">Estimating Density Models with Truncation Boundaries using Score Matching </a></h2>
+<h4 id="song-liu-takafumi-kanamori-daniel-j-williams-jmlr">Song Liu, Takafumi Kanamori, Daniel J. Williams. <em>JMLR</em></h4>
+<p><strong>Abstract:</strong> Truncated probability density functions share the same parametric form with their non-truncated counterparts up to a normalizing constant, which is usually intractable. Score Matching (SM), an unnormalised model estimation framework, cannot be directly applied here as the boundary conditions that derive a tractable objective are not satisfied by truncated densities. This paper studies parameter estimation for truncated probability densities using SM. The estimator minimizes a weighted Fisher divergence, weighted based on the shortest distance from a data point to the domain&rsquo;s boundary. We show this choice of weight function naturally arises from minimizing the Stein discrepancy and upper bounding the finite-sample estimation error. We demonstrate the usefulness of our method via numerical experiments and a study on the Chicago crime data set. We also show that the proposed density estimation can correct the outlier-trimming bias caused by aggressive outlier detection methods.</p>
 </div>
   
 
