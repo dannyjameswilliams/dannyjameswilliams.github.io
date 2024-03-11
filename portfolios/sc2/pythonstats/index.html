@@ -217,8 +217,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="https://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/">
 
@@ -241,8 +241,8 @@
   <meta property="og:site_name" content="Danny James Williams">
   <meta property="og:url" content="https://dannyjameswilliams.co.uk/portfolios/sc2/pythonstats/">
   <meta property="og:title" content="Introduction to Python for Statistics | Danny James Williams">
-  <meta property="og:description" content="Introduction Python is a powerful programming language that is very popular for data analysis as well as many other applications in the real world. This portfolio will go over some intermediary processes in Python 3."><meta property="og:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-gb">
+  <meta property="og:description" content="Introduction Python is a powerful programming language that is very popular for data analysis as well as many other applications in the real world. This portfolio will go over some intermediary processes in Python 3."><meta property="og:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-gb">
   
     
       <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
@@ -909,7 +909,7 @@ y = np.random.normal(mu, .5, n)
 <pre><code class="language-python">data.plot.scatter(&quot;x&quot;, &quot;y&quot;, figsize=(14, 11));
 plt.plot(x, model.predict(data[[&quot;x&quot;]]), 'r');
 </code></pre>
-<p><img src="/img/portfolios/pythonstats_36_0.png" alt="png"></p>
+<p><img alt="png" src="/img/portfolios/pythonstats_36_0.png"></p>
 <h3 id="multiple-linear-regression">Multiple Linear Regression</h3>
 <p>In the previous section, we fit a linear model with a single covariate vector. This is good for exemplary purposes as a two dimensional linear model is easy to visualise. Often in data analysis we can have multiple explanatory variables $\boldsymbol{x}_1, \dots, \boldsymbol{x}_p$ that give information about the respone variable $\boldsymbol{y}$.</p>
 <p>For an example of multiple linear regression, we will be using the Boston house prices dataset, which is part of the freely provided datasets from <code>sklearn</code>. This dataset describes the median value of owner-occupied homes (per $1000), as well as 13 predictors that could provide information about the house value. We load this dataset and convert it to a <code>pandas</code> data frame.</p>
@@ -1050,12 +1050,12 @@ cmap = seaborn.diverging_palette(-500, -720, as_cmap=True)
 plt.figure(figsize=(14, 11))
 seaborn.heatmap(corr, cmap=cmap);
 </code></pre>
-<p><img src="/img/portfolios/pythonstats_40_0.png" alt="png"></p>
+<p><img alt="png" src="/img/portfolios/pythonstats_40_0.png"></p>
 <p>There are two things to infer from this plot: how correlated the predictor variables are from one another, and how correlated the predictor variables are from the response. We are mostly interested in how correlated the predictors are with <code>MEDV</code>, as if they influence the value of <code>MEDV</code> significantly, then they are likely to be important to include in a model. Another plot we can use to explore the data is a multi variable scatter plot. That is, a scatter plot for each pair of variables. <code>pandas</code> has a function for this, as part of the <code>plotting</code> submodule.</p>
 <pre><code class="language-python">from pandas.plotting import scatter_matrix
 scatter_matrix(boston, figsize=(16, 16));
 </code></pre>
-<p><img src="./pythonstats_42_0.png" alt="png"></p>
+<p><img alt="png" src="./pythonstats_42_0.png"></p>
 <p>There is a lot to process in this plot, but you can restrict your attention to the final column on the right. This column will show scatter plots with all predictor variables and the response <code>MEDV</code>. We are looking for obvious relationships between the two variables. <code>CRIM</code> seems to have an effect at lower values, <code>ZN</code> seems to have a small effect, <code>INDUS</code> has a non-linear relationship,<code>RM</code> has a clear linear relationship, <code>AGE</code> seems to have a significant effect at lower values, <code>B</code> has an effect at larger values and <code>LSTAT</code> seems to have a quadratic relationship. These variables will be important to consider, but that does not mean all others are not. Since some of these predictors are categorical (even binary), it can be hard to infer their relationship with <code>MEDV</code> from a scatter plot.</p>
 <p>We can now fit the model using the information above. The predictors we want to include are <code>CRIM</code>, <code>ZN</code>, <code>INDUS</code>, <code>RM</code>, <code>AGE</code>, <code>B</code> and <code>LSTAT</code>. We use the linear model from <code>sklearn</code> again, but first create the new data frame of the reduced dataset. Additionally we can include a quadratic effect for certain predictors by creating a new column in the data frame with the squared values.</p>
 <pre><code class="language-python">boston_x = boston[[&quot;CRIM&quot;, &quot;ZN&quot;, &quot;INDUS&quot;, &quot;RM&quot;, &quot;AGE&quot;, &quot;B&quot;, &quot;LSTAT&quot;]]
@@ -1103,7 +1103,7 @@ plt.axis('tight')
 plt.legend(data.feature_names)
 plt.show()
 </code></pre>
-<p><img src="/img/portfolios/pythonstats_50_0.png" alt="png"></p>
+<p><img alt="png" src="/img/portfolios/pythonstats_50_0.png"></p>
 <p>The coefficients for covariates that provide a lot of information to the response variable are likely going to take a very large value of regularisation parameter to shrink them to zero. These are the lines that are more separated in the plot above, i.e. <code>CRIM</code>, <code>RM</code>, <code>NOX</code>, and <code>CHAS</code>. Interestingly, these were not the variables that were selected in the scatter matrix approach earlier in this report, highlighting the variation in parameter selection depending on the method.</p>
 <h3 id="classification">Classification</h3>
 <p>The final statistical model introduced will be one interested in classifying. Classification is interested in prediction of a usually non-numeric <em>class</em>, i.e. assign the output to a pre-defined class based on some inputs. The classification model explained here will be <strong>Logistic Regression</strong> (ignore the name, it&rsquo;s not a regression method).</p>
@@ -1135,7 +1135,7 @@ colors[y == &quot;Class 2&quot;] = &quot;blue&quot;
 colors[y == &quot;Class 3&quot;] = &quot;green&quot;
 clsf_dat.plot.scatter(&quot;x1&quot;, &quot;x2&quot;, c=colors, figsize=(14, 11));
 </code></pre>
-<p><img src="/img/portfolios/pythonstats_54_0.png" alt="png"></p>
+<p><img alt="png" src="/img/portfolios/pythonstats_54_0.png"></p>
 <p>Now that the data is set up, we can fit the logistic regression model to it. <code>LogisticRegression</code> is a function as part of the <code>linear_model</code> submodule of <code>sklearn</code>, just as before, so this next step should be familiar to you.</p>
 <pre><code class="language-python">lr_model = lm.LogisticRegression(fit_intercept=True, solver='newton-cg', multi_class = 'auto')
 lr_model = lr_model.fit(clsf_dat[[&quot;x1&quot;, &quot;x2&quot;]], clsf_dat[&quot;y&quot;])
@@ -1162,7 +1162,7 @@ colors[predictions == &quot;Class 2&quot;] = &quot;blue&quot;
 colors[predictions == &quot;Class 3&quot;] = &quot;green&quot;
 clsf_dat.plot.scatter(&quot;x1&quot;, &quot;x2&quot;, c=colors, figsize=(14, 11));
 </code></pre>
-<p><img src="/img/portfolios/pythonstats_60_0.png" alt="png"></p>
+<p><img alt="png" src="/img/portfolios/pythonstats_60_0.png"></p>
 <p>Here we can see an extremely similar plot to the one above, although it is not quite exactly the same! At the point of overlap between classes, some points are mislabelled as the wrong class, due to uncertainty around the decision boundaries.</p>
 <p>More complex models exist for classification and regression, but that&rsquo;s for another time.</p>
 
@@ -1359,7 +1359,7 @@ clsf_dat.plot.scatter(&quot;x1&quot;, &quot;x2&quot;, c=colors, figsize=(14, 11)
     
     
     
-    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+    <script src="/js/academic.min.23966d19f6915d56260b05a4b1937395.js"></script>
 
     
 

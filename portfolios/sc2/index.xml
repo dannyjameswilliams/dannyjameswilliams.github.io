@@ -7,7 +7,7 @@
     <description>Statistical Computing 2</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_3.png</url>
       <title>Statistical Computing 2</title>
       <link>https://dannyjameswilliams.co.uk/portfolios/sc2/</link>
     </image>
@@ -1109,7 +1109,7 @@ y = np.random.normal(mu, .5, n)
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;data.plot.scatter(&amp;quot;x&amp;quot;, &amp;quot;y&amp;quot;, figsize=(14, 11));
 plt.plot(x, model.predict(data[[&amp;quot;x&amp;quot;]]), &#39;r&#39;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_36_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_36_0.png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;multiple-linear-regression&#34;&gt;Multiple Linear Regression&lt;/h3&gt;
 &lt;p&gt;In the previous section, we fit a linear model with a single covariate vector. This is good for exemplary purposes as a two dimensional linear model is easy to visualise. Often in data analysis we can have multiple explanatory variables $\boldsymbol{x}_1, \dots, \boldsymbol{x}_p$ that give information about the respone variable $\boldsymbol{y}$.&lt;/p&gt;
 &lt;p&gt;For an example of multiple linear regression, we will be using the Boston house prices dataset, which is part of the freely provided datasets from &lt;code&gt;sklearn&lt;/code&gt;. This dataset describes the median value of owner-occupied homes (per $1000), as well as 13 predictors that could provide information about the house value. We load this dataset and convert it to a &lt;code&gt;pandas&lt;/code&gt; data frame.&lt;/p&gt;
@@ -1250,12 +1250,12 @@ cmap = seaborn.diverging_palette(-500, -720, as_cmap=True)
 plt.figure(figsize=(14, 11))
 seaborn.heatmap(corr, cmap=cmap);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_40_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_40_0.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There are two things to infer from this plot: how correlated the predictor variables are from one another, and how correlated the predictor variables are from the response. We are mostly interested in how correlated the predictors are with &lt;code&gt;MEDV&lt;/code&gt;, as if they influence the value of &lt;code&gt;MEDV&lt;/code&gt; significantly, then they are likely to be important to include in a model. Another plot we can use to explore the data is a multi variable scatter plot. That is, a scatter plot for each pair of variables. &lt;code&gt;pandas&lt;/code&gt; has a function for this, as part of the &lt;code&gt;plotting&lt;/code&gt; submodule.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from pandas.plotting import scatter_matrix
 scatter_matrix(boston, figsize=(16, 16));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;./pythonstats_42_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;./pythonstats_42_0.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There is a lot to process in this plot, but you can restrict your attention to the final column on the right. This column will show scatter plots with all predictor variables and the response &lt;code&gt;MEDV&lt;/code&gt;. We are looking for obvious relationships between the two variables. &lt;code&gt;CRIM&lt;/code&gt; seems to have an effect at lower values, &lt;code&gt;ZN&lt;/code&gt; seems to have a small effect, &lt;code&gt;INDUS&lt;/code&gt; has a non-linear relationship,&lt;code&gt;RM&lt;/code&gt; has a clear linear relationship, &lt;code&gt;AGE&lt;/code&gt; seems to have a significant effect at lower values, &lt;code&gt;B&lt;/code&gt; has an effect at larger values and &lt;code&gt;LSTAT&lt;/code&gt; seems to have a quadratic relationship. These variables will be important to consider, but that does not mean all others are not. Since some of these predictors are categorical (even binary), it can be hard to infer their relationship with &lt;code&gt;MEDV&lt;/code&gt; from a scatter plot.&lt;/p&gt;
 &lt;p&gt;We can now fit the model using the information above. The predictors we want to include are &lt;code&gt;CRIM&lt;/code&gt;, &lt;code&gt;ZN&lt;/code&gt;, &lt;code&gt;INDUS&lt;/code&gt;, &lt;code&gt;RM&lt;/code&gt;, &lt;code&gt;AGE&lt;/code&gt;, &lt;code&gt;B&lt;/code&gt; and &lt;code&gt;LSTAT&lt;/code&gt;. We use the linear model from &lt;code&gt;sklearn&lt;/code&gt; again, but first create the new data frame of the reduced dataset. Additionally we can include a quadratic effect for certain predictors by creating a new column in the data frame with the squared values.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;boston_x = boston[[&amp;quot;CRIM&amp;quot;, &amp;quot;ZN&amp;quot;, &amp;quot;INDUS&amp;quot;, &amp;quot;RM&amp;quot;, &amp;quot;AGE&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;LSTAT&amp;quot;]]
@@ -1303,7 +1303,7 @@ plt.axis(&#39;tight&#39;)
 plt.legend(data.feature_names)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_50_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_50_0.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The coefficients for covariates that provide a lot of information to the response variable are likely going to take a very large value of regularisation parameter to shrink them to zero. These are the lines that are more separated in the plot above, i.e. &lt;code&gt;CRIM&lt;/code&gt;, &lt;code&gt;RM&lt;/code&gt;, &lt;code&gt;NOX&lt;/code&gt;, and &lt;code&gt;CHAS&lt;/code&gt;. Interestingly, these were not the variables that were selected in the scatter matrix approach earlier in this report, highlighting the variation in parameter selection depending on the method.&lt;/p&gt;
 &lt;h3 id=&#34;classification&#34;&gt;Classification&lt;/h3&gt;
 &lt;p&gt;The final statistical model introduced will be one interested in classifying. Classification is interested in prediction of a usually non-numeric &lt;em&gt;class&lt;/em&gt;, i.e. assign the output to a pre-defined class based on some inputs. The classification model explained here will be &lt;strong&gt;Logistic Regression&lt;/strong&gt; (ignore the name, it&amp;rsquo;s not a regression method).&lt;/p&gt;
@@ -1335,7 +1335,7 @@ colors[y == &amp;quot;Class 2&amp;quot;] = &amp;quot;blue&amp;quot;
 colors[y == &amp;quot;Class 3&amp;quot;] = &amp;quot;green&amp;quot;
 clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, figsize=(14, 11));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_54_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_54_0.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now that the data is set up, we can fit the logistic regression model to it. &lt;code&gt;LogisticRegression&lt;/code&gt; is a function as part of the &lt;code&gt;linear_model&lt;/code&gt; submodule of &lt;code&gt;sklearn&lt;/code&gt;, just as before, so this next step should be familiar to you.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;lr_model = lm.LogisticRegression(fit_intercept=True, solver=&#39;newton-cg&#39;, multi_class = &#39;auto&#39;)
 lr_model = lr_model.fit(clsf_dat[[&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;]], clsf_dat[&amp;quot;y&amp;quot;])
@@ -1362,7 +1362,7 @@ colors[predictions == &amp;quot;Class 2&amp;quot;] = &amp;quot;blue&amp;quot;
 colors[predictions == &amp;quot;Class 3&amp;quot;] = &amp;quot;green&amp;quot;
 clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, figsize=(14, 11));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_60_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_60_0.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Here we can see an extremely similar plot to the one above, although it is not quite exactly the same! At the point of overlap between classes, some points are mislabelled as the wrong class, due to uncertainty around the decision boundaries.&lt;/p&gt;
 &lt;p&gt;More complex models exist for classification and regression, but that&amp;rsquo;s for another time.&lt;/p&gt;
 </description>
@@ -1481,7 +1481,7 @@ for i in range(25):
     plt.xlabel(class_names[ind])
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_24_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_24_0.png&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;fitting-the-neural-network&#34;&gt;Fitting the Neural Network&lt;/h2&gt;
 &lt;p&gt;We use the &lt;code&gt;keras&lt;/code&gt; library, a part of &lt;code&gt;tensorflow&lt;/code&gt;, to fit a neural network to classify these images. Most importantly, the &lt;code&gt;Sequential&lt;/code&gt; function to build the model and different layer functions to create the neural network layers within the &lt;code&gt;Sequential&lt;/code&gt; model build.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from tensorflow.keras.models import Sequential
@@ -1567,7 +1567,7 @@ plt.legend(loc=&#39;upper right&#39;)
 plt.title(&#39;Training and Validation Loss&#39;)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_34_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_34_0.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;These plots show that the loss steadily decreases, and the accuracy increases in both cases. Now we can evaluate some predictions on the test set. The test set do not have specific class labels, and we are treating these as unknown.&lt;/p&gt;
 &lt;h4 id=&#34;test-set-predictions&#34;&gt;Test Set Predictions&lt;/h4&gt;
 &lt;p&gt;To further test the performance of the model, and inspect it ourselves, we can see how well the model predicts on a test set (which the model has never seen). This is a separate dataset to the validation set which was part of the model fitting process.&lt;/p&gt;
@@ -1600,7 +1600,7 @@ for i in np.arange(len(pred_list)):
     plt.xlabel(pred_class[i])
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_38_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_38_0.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There are some funny looking dogs in this sample, and some funny looking cats. Clearly we can see that oftentimes the model calls a cat a dog, and a dog a cat (I imagine the dogs are more offended by that), but for the most part the predictions look accurate.&lt;/p&gt;
 &lt;p&gt;There is a lot more that can go into improving this model, such as&lt;/p&gt;
 &lt;ul&gt;
@@ -1608,7 +1608,7 @@ for i in np.arange(len(pred_list)):
 &lt;li&gt;Increasing the dataset size&lt;/li&gt;
 &lt;li&gt;Increasing the image resolution&lt;/li&gt;
 &lt;li&gt;Adding more layers to the neural network&lt;/li&gt;
-&lt;li&gt;Adding &amp;lsquo;null&amp;rsquo; images, that show neither a cat nor dog, so that the model does not always predict a cat or dog, it can be neither&lt;/li&gt;
+&lt;li&gt;Adding &amp;rsquo;null&amp;rsquo; images, that show neither a cat nor dog, so that the model does not always predict a cat or dog, it can be neither&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
