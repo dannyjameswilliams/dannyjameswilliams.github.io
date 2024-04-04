@@ -7,7 +7,7 @@
     <description>Danny James Williams</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-gb</language><lastBuildDate>Wed, 01 Jun 2050 13:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_3.png</url>
+      <url>https://dannyjameswilliams.co.uk/images/icon_hu6de9a8f7dd4e8a8bd7c2613cf2ad59bf_37670_512x512_fill_lanczos_center_2.png</url>
       <title>Danny James Williams</title>
       <link>https://dannyjameswilliams.co.uk/</link>
     </image>
@@ -2519,6 +2519,80 @@ all.equal(log(A), MatrixLog(A), MatrixLogPar(A))&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
+      <title>The Importance of Double and Triple Checking</title>
+      <link>https://dannyjameswilliams.co.uk/post/mistakes/</link>
+      <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://dannyjameswilliams.co.uk/post/mistakes/</guid>
+      <description>
+
+
+&lt;p&gt;If you’re a PhD student, like me, you’ll probably have made a few (if not a lot) of mistakes over the course of your research. If you’re an aspiring PhD student, I implore you to read this post to learn about the greatest mistake I made during my studentship. This mistake was disguised, and I did not realise the implications it had.&lt;/p&gt;
+&lt;div id=&#34;the-bait&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Bait&lt;/h2&gt;
+&lt;p&gt;In my second year of the PhD, I arrived at this incredible result.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;good_example.png&#34; alt=&#34;An experiment with good results&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 1&lt;/strong&gt;: Estimation error (lower is better) for my method, TKSD, against the previous method, &lt;em&gt;TruncSM&lt;/em&gt;, across different dimensions.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;Amazing! TKSD, which is the method I was working on, outperformed the previous state-of-the-art method, &lt;em&gt;TruncSM&lt;/em&gt; by a huge margin. Across all dimensions, my error was lower, and this gap is widening as we increase the number of dimensions. &lt;em&gt;TruncSM&lt;/em&gt; &lt;a href=&#34;#truncsm&#34;&gt;[1]&lt;/a&gt; has been described in a &lt;a href=&#34;https://dannyjameswilliams.co.uk/post/nodata/&#34;&gt;previous blog post&lt;/a&gt; by me.&lt;/p&gt;
+&lt;p&gt;The task given to the methods was a simple truncated density estimation problem - estimate the mean of a truncated multivariate Gaussian distribution, assuming the variance is known. We only observe a portion of our dataset, and assuming we know the truncation effect, we can give a good estimate of where the mean is. In this experiment, the true mean to be estimated was &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\mu}^\star = \boldsymbol{1}_d\)&lt;/span&gt;, the vector of ones, and whilst both methods got values close to &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{1}_d\)&lt;/span&gt;, TKSD seemed a lot better. But I wouldn’t be writing this blog post if something wasn’t wrong.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-switch&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Switch&lt;/h2&gt;
+&lt;p&gt;I would like to say that at the time of performing this experiment, I was a young and naive student. But this is not true, I had already been studying at University for 5 years, doing research for maybe 2 years at this point. Instead I think I was blindsided by how excellent these initial results were, I had been working towards this goal for what at the time was my entire PhD, and was very excited that my method was working so well. After seeing these results, I did double check - I tried (in 2D) estimating different values of means &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\mu}^\star\)&lt;/span&gt;, such as &lt;span class=&#34;math inline&#34;&gt;\([-1, -1]\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\([0.5, 0.5]\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\([2, 2]\)&lt;/span&gt; and more. All worked just as well, so I thought it can’t have been a fluke. I continued with these good results, put it into a poster I presented at the University (nothing official, thankfully), and got very excited.&lt;/p&gt;
+&lt;p&gt;So what went wrong? You may have noticed that the different values of &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\mu}^\star\)&lt;/span&gt; I double checked with were all repeated values. If we repeat the experiment where &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\mu}^\star\)&lt;/span&gt; is different, for example, &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\mu}^\star = [1, \dots, 1, -1]\)&lt;/span&gt;, such that the last dimension of &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\mu}^\star\)&lt;/span&gt; is -1 instead of 1, we come to a slightly different result.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;bad_example.png&#34; alt=&#34;An experiment with not so good results&#34; /&gt;
+&lt;figcaption&gt;
+&lt;strong&gt;Figure 2&lt;/strong&gt;: Results with an extremely small change in the experiment from &lt;strong&gt;Figure 1&lt;/strong&gt;.
+&lt;/figcaption&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;Our error is not good. In fact, it is very bad indeed. So much worse in fact, that it begs the question whether the method is even working at all?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-reason&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Reason&lt;/h2&gt;
+&lt;p&gt;No, it isn’t. The method described earlier, TKSD, is not a method at all. It is a glorified bug in the code. I am going to be very slightly technical in this section to explain what I never realised for a very long time when I was working on this.&lt;/p&gt;
+&lt;p&gt;Mathematically derived, my objective function that I was minimising over had the following term in it:
+&lt;span class=&#34;math display&#34;&gt;\[
+\sum_{i=1}^n \sum_{j=1}^n \boldsymbol{\psi}_{p, i}^{\top} \boldsymbol{\psi}_{p, j} k\left(\mathbf{X}_i, \mathbf{X}_j\right).
+\]&lt;/span&gt;
+It is not really important what this term represents, other than that involves summing over some variables twice. If you’re interested, that is the double sum over a kernel function and the score function, &lt;span class=&#34;math inline&#34;&gt;\(\boldsymbol{\psi}\)&lt;/span&gt;. Coding this in MATLAB, we could write something like&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;matlab_loop.png&#34; alt=&#34;&#34; /&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;However, using two for loops is slow, especially when we will be evaluating this function multiple times during optimisation. Instead, we often seek to vectorise code, for which I attempted by writing&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;center&gt;
+&lt;img src=&#34;matlab_vectorised.png&#34; alt=&#34;&#34; /&gt;
+&lt;/center&gt;
+&lt;/figure&gt;
+&lt;p&gt;Those of you familiar with vectorisation will know that this is &lt;strong&gt;not correct&lt;/strong&gt;. The operations are being performed in the wrong order, and what will come out of this ‘vectorised’ implementation is complete nonsense. But I fell for it. &lt;em&gt;The only way I tested if this was working was by running the first experiment&lt;/em&gt;, and since it seemed to work, I never questioned it.&lt;/p&gt;
+&lt;p&gt;So there was a bug in the code, a bug that inexplicably caused good results. On its own, the vectorised implementation made no sense. To this day, I have no idea why this one particular change in the MATLAB code caused the method to &lt;em&gt;perform so well for such a randomly specific task&lt;/em&gt;. Trying to estimate parameters of a different distribution doesn’t work either, nor can it be used to estimate the variance of a multivariate Normal. All attempts to do anything other than estimate a symmetrical mean fail, and give nonsensical results. But this highlights the importance of &lt;em&gt;triple checking&lt;/em&gt; your work, maybe even &lt;em&gt;quadruple checking&lt;/em&gt; it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-payoff&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Payoff&lt;/h2&gt;
+&lt;p&gt;This isn’t the first mistake I made, and it won’t be the last, but it was the most interesting one. What lessons have I learned from this disaster? Aside from being better at writing code for the remaining 3 years of my PhD, I will now always, &lt;strong&gt;always&lt;/strong&gt;, &lt;strong&gt;ALWAYS&lt;/strong&gt; verify the vectorised code against a looped implementation for a few &lt;em&gt;different&lt;/em&gt; cases before confirming that it works. Don’t rely on a strangely good result to verify that your coding is correct. You will nearly always make a bug in the code, assume it is wrong before assuming anything else.&lt;/p&gt;
+&lt;p&gt;This extends further than this specific case - verification in any form of work is probably the most important thing you can do. Even under time pressure, I would prefer to make sure something is correct than to get more results that are wrong.&lt;/p&gt;
+&lt;p&gt;But this kind of thing may happen for more than just incorrectly vectorising code - your brain doesn’t always work correctly, even for long periods of time. It’s good to get a new set of eyes on anything that seems fishy. It’s good to doubt yourself and make sure you don’t blindly trust positive results.&lt;/p&gt;
+&lt;p&gt;Don’t quit when something goes wrong. It took about another whole year after this stage, but eventually, the TSKD method made it to a fully functioning and well performing method that (after extensive testing, verification, double, triple and quadruple checking) was accepted at ICML! &lt;a href=&#34;#tksd&#34;&gt;[2]&lt;/a&gt; &lt;a href=&#34;https://dannyjameswilliams.co.uk/post/tksd/&#34;&gt;I wrote a blog post&lt;/a&gt; about the finished method, if you are interested. And whilst the results aren’t &lt;em&gt;as&lt;/em&gt; good as the first experiment shown here, at least it is correct!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jmlr.org/papers/volume23/21-0218/21-0218.pdf&#34;&gt;[1]&lt;/a&gt; &lt;a id=&#34;truncsm&#34;&gt;&lt;/a&gt;Liu, S., Kanamori, T., and Williams, D. J. Estimating density models with truncation boundaries using score matching. &lt;i&gt;Journal of Machine Learning Research&lt;/i&gt;, 23(186):1–38, 2022.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://proceedings.mlr.press/v202/williams23b/williams23b.pdf&#34;&gt;[2]&lt;/a&gt; &lt;a id=&#34;tksd&#34;&gt;&lt;/a&gt;Williams, D.J., Liu, S. (2023). Approximate Stein Classes for Truncated Density Estimation. &lt;i&gt;Proceedings of the 40th International Conference on Machine Learning&lt;/i&gt;, in &lt;i&gt;Proceedings of Machine Learning Research&lt;/i&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>2 Years of PhD Research: Stein Discrepancies with a Twist</title>
       <link>https://dannyjameswilliams.co.uk/post/tksd/</link>
       <pubDate>Mon, 05 Jun 2023 00:00:00 +0000</pubDate>
@@ -3729,7 +3803,7 @@ y = np.random.normal(mu, .5, n)
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;data.plot.scatter(&amp;quot;x&amp;quot;, &amp;quot;y&amp;quot;, figsize=(14, 11));
 plt.plot(x, model.predict(data[[&amp;quot;x&amp;quot;]]), &#39;r&#39;);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_36_0.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_36_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;multiple-linear-regression&#34;&gt;Multiple Linear Regression&lt;/h3&gt;
 &lt;p&gt;In the previous section, we fit a linear model with a single covariate vector. This is good for exemplary purposes as a two dimensional linear model is easy to visualise. Often in data analysis we can have multiple explanatory variables $\boldsymbol{x}_1, \dots, \boldsymbol{x}_p$ that give information about the respone variable $\boldsymbol{y}$.&lt;/p&gt;
 &lt;p&gt;For an example of multiple linear regression, we will be using the Boston house prices dataset, which is part of the freely provided datasets from &lt;code&gt;sklearn&lt;/code&gt;. This dataset describes the median value of owner-occupied homes (per $1000), as well as 13 predictors that could provide information about the house value. We load this dataset and convert it to a &lt;code&gt;pandas&lt;/code&gt; data frame.&lt;/p&gt;
@@ -3870,12 +3944,12 @@ cmap = seaborn.diverging_palette(-500, -720, as_cmap=True)
 plt.figure(figsize=(14, 11))
 seaborn.heatmap(corr, cmap=cmap);
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_40_0.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_40_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There are two things to infer from this plot: how correlated the predictor variables are from one another, and how correlated the predictor variables are from the response. We are mostly interested in how correlated the predictors are with &lt;code&gt;MEDV&lt;/code&gt;, as if they influence the value of &lt;code&gt;MEDV&lt;/code&gt; significantly, then they are likely to be important to include in a model. Another plot we can use to explore the data is a multi variable scatter plot. That is, a scatter plot for each pair of variables. &lt;code&gt;pandas&lt;/code&gt; has a function for this, as part of the &lt;code&gt;plotting&lt;/code&gt; submodule.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from pandas.plotting import scatter_matrix
 scatter_matrix(boston, figsize=(16, 16));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;./pythonstats_42_0.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./pythonstats_42_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There is a lot to process in this plot, but you can restrict your attention to the final column on the right. This column will show scatter plots with all predictor variables and the response &lt;code&gt;MEDV&lt;/code&gt;. We are looking for obvious relationships between the two variables. &lt;code&gt;CRIM&lt;/code&gt; seems to have an effect at lower values, &lt;code&gt;ZN&lt;/code&gt; seems to have a small effect, &lt;code&gt;INDUS&lt;/code&gt; has a non-linear relationship,&lt;code&gt;RM&lt;/code&gt; has a clear linear relationship, &lt;code&gt;AGE&lt;/code&gt; seems to have a significant effect at lower values, &lt;code&gt;B&lt;/code&gt; has an effect at larger values and &lt;code&gt;LSTAT&lt;/code&gt; seems to have a quadratic relationship. These variables will be important to consider, but that does not mean all others are not. Since some of these predictors are categorical (even binary), it can be hard to infer their relationship with &lt;code&gt;MEDV&lt;/code&gt; from a scatter plot.&lt;/p&gt;
 &lt;p&gt;We can now fit the model using the information above. The predictors we want to include are &lt;code&gt;CRIM&lt;/code&gt;, &lt;code&gt;ZN&lt;/code&gt;, &lt;code&gt;INDUS&lt;/code&gt;, &lt;code&gt;RM&lt;/code&gt;, &lt;code&gt;AGE&lt;/code&gt;, &lt;code&gt;B&lt;/code&gt; and &lt;code&gt;LSTAT&lt;/code&gt;. We use the linear model from &lt;code&gt;sklearn&lt;/code&gt; again, but first create the new data frame of the reduced dataset. Additionally we can include a quadratic effect for certain predictors by creating a new column in the data frame with the squared values.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;boston_x = boston[[&amp;quot;CRIM&amp;quot;, &amp;quot;ZN&amp;quot;, &amp;quot;INDUS&amp;quot;, &amp;quot;RM&amp;quot;, &amp;quot;AGE&amp;quot;, &amp;quot;B&amp;quot;, &amp;quot;LSTAT&amp;quot;]]
@@ -3923,7 +3997,7 @@ plt.axis(&#39;tight&#39;)
 plt.legend(data.feature_names)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_50_0.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_50_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The coefficients for covariates that provide a lot of information to the response variable are likely going to take a very large value of regularisation parameter to shrink them to zero. These are the lines that are more separated in the plot above, i.e. &lt;code&gt;CRIM&lt;/code&gt;, &lt;code&gt;RM&lt;/code&gt;, &lt;code&gt;NOX&lt;/code&gt;, and &lt;code&gt;CHAS&lt;/code&gt;. Interestingly, these were not the variables that were selected in the scatter matrix approach earlier in this report, highlighting the variation in parameter selection depending on the method.&lt;/p&gt;
 &lt;h3 id=&#34;classification&#34;&gt;Classification&lt;/h3&gt;
 &lt;p&gt;The final statistical model introduced will be one interested in classifying. Classification is interested in prediction of a usually non-numeric &lt;em&gt;class&lt;/em&gt;, i.e. assign the output to a pre-defined class based on some inputs. The classification model explained here will be &lt;strong&gt;Logistic Regression&lt;/strong&gt; (ignore the name, it&amp;rsquo;s not a regression method).&lt;/p&gt;
@@ -3955,7 +4029,7 @@ colors[y == &amp;quot;Class 2&amp;quot;] = &amp;quot;blue&amp;quot;
 colors[y == &amp;quot;Class 3&amp;quot;] = &amp;quot;green&amp;quot;
 clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, figsize=(14, 11));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_54_0.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_54_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Now that the data is set up, we can fit the logistic regression model to it. &lt;code&gt;LogisticRegression&lt;/code&gt; is a function as part of the &lt;code&gt;linear_model&lt;/code&gt; submodule of &lt;code&gt;sklearn&lt;/code&gt;, just as before, so this next step should be familiar to you.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;lr_model = lm.LogisticRegression(fit_intercept=True, solver=&#39;newton-cg&#39;, multi_class = &#39;auto&#39;)
 lr_model = lr_model.fit(clsf_dat[[&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;]], clsf_dat[&amp;quot;y&amp;quot;])
@@ -3982,7 +4056,7 @@ colors[predictions == &amp;quot;Class 2&amp;quot;] = &amp;quot;blue&amp;quot;
 colors[predictions == &amp;quot;Class 3&amp;quot;] = &amp;quot;green&amp;quot;
 clsf_dat.plot.scatter(&amp;quot;x1&amp;quot;, &amp;quot;x2&amp;quot;, c=colors, figsize=(14, 11));
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_60_0.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/pythonstats_60_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Here we can see an extremely similar plot to the one above, although it is not quite exactly the same! At the point of overlap between classes, some points are mislabelled as the wrong class, due to uncertainty around the decision boundaries.&lt;/p&gt;
 &lt;p&gt;More complex models exist for classification and regression, but that&amp;rsquo;s for another time.&lt;/p&gt;
 </description>
@@ -4101,7 +4175,7 @@ for i in range(25):
     plt.xlabel(class_names[ind])
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_24_0.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_24_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;fitting-the-neural-network&#34;&gt;Fitting the Neural Network&lt;/h2&gt;
 &lt;p&gt;We use the &lt;code&gt;keras&lt;/code&gt; library, a part of &lt;code&gt;tensorflow&lt;/code&gt;, to fit a neural network to classify these images. Most importantly, the &lt;code&gt;Sequential&lt;/code&gt; function to build the model and different layer functions to create the neural network layers within the &lt;code&gt;Sequential&lt;/code&gt; model build.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from tensorflow.keras.models import Sequential
@@ -4187,7 +4261,7 @@ plt.legend(loc=&#39;upper right&#39;)
 plt.title(&#39;Training and Validation Loss&#39;)
 plt.show()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_34_0.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_34_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;These plots show that the loss steadily decreases, and the accuracy increases in both cases. Now we can evaluate some predictions on the test set. The test set do not have specific class labels, and we are treating these as unknown.&lt;/p&gt;
 &lt;h4 id=&#34;test-set-predictions&#34;&gt;Test Set Predictions&lt;/h4&gt;
 &lt;p&gt;To further test the performance of the model, and inspect it ourselves, we can see how well the model predicts on a test set (which the model has never seen). This is a separate dataset to the validation set which was part of the model fitting process.&lt;/p&gt;
@@ -4220,7 +4294,7 @@ for i in np.arange(len(pred_list)):
     plt.xlabel(pred_class[i])
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img alt=&#34;png&#34; src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_38_0.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dannyjameswilliams.co.uk/img/portfolios/neuralnet_38_0.png&#34; alt=&#34;png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;There are some funny looking dogs in this sample, and some funny looking cats. Clearly we can see that oftentimes the model calls a cat a dog, and a dog a cat (I imagine the dogs are more offended by that), but for the most part the predictions look accurate.&lt;/p&gt;
 &lt;p&gt;There is a lot more that can go into improving this model, such as&lt;/p&gt;
 &lt;ul&gt;
@@ -4228,7 +4302,7 @@ for i in np.arange(len(pred_list)):
 &lt;li&gt;Increasing the dataset size&lt;/li&gt;
 &lt;li&gt;Increasing the image resolution&lt;/li&gt;
 &lt;li&gt;Adding more layers to the neural network&lt;/li&gt;
-&lt;li&gt;Adding &amp;rsquo;null&amp;rsquo; images, that show neither a cat nor dog, so that the model does not always predict a cat or dog, it can be neither&lt;/li&gt;
+&lt;li&gt;Adding &amp;lsquo;null&amp;rsquo; images, that show neither a cat nor dog, so that the model does not always predict a cat or dog, it can be neither&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -4287,15 +4361,15 @@ $$&lt;/p&gt;
 {{% fragment %}} Three {{% /fragment %}}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Press &lt;code&gt;Space&lt;/code&gt; to play!&lt;/p&gt;
-&lt;span class=&#34;fragment &#34; &gt;
-   One 
+&lt;p&gt;&lt;span class=&#34;fragment &#34; &gt;
+One
 &lt;/span&gt;
 &lt;span class=&#34;fragment &#34; &gt;
-   **Two** 
+&lt;strong&gt;Two&lt;/strong&gt;
 &lt;/span&gt;
 &lt;span class=&#34;fragment &#34; &gt;
-   Three 
-&lt;/span&gt;
+Three
+&lt;/span&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;A fragment can accept two optional parameters:&lt;/p&gt;
 &lt;ul&gt;
@@ -4316,7 +4390,6 @@ $$&lt;/p&gt;
 &lt;li&gt;Only the speaker can read these notes&lt;/li&gt;
 &lt;li&gt;Press &lt;code&gt;S&lt;/code&gt; key to view&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;/aside&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;themes&#34;&gt;Themes&lt;/h2&gt;
